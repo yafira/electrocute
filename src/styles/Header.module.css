@@ -1,0 +1,18 @@
+.Header {
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Cute Font', cursive;
+}
+
+.Header a {
+	text-decoration: none;
+	color: #000000;
+}
+
+.Header h1 {
+	text-align: center;
+	color: rgb(0, 0, 0);
+	font-size: 100px;
+}

@@ -1,0 +1,27 @@
+.Footer h3 {
+	color: black;
+	height: 50px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	padding-top: 10px;
+}
+
+.Footer a {
+	font-weight: bold;
+	text-decoration: none;
+	color: rgb(224, 126, 237);
+}
+
+.Footer a:hover {
+	color: rgb(215, 175, 240);
+}
+
+@media screen and (max-width: 750px) {
+	.Footer h3 {
+		font-size: 13px;
+		text-decoration: none;
+	}
+}
