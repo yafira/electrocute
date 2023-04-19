@@ -1,5 +1,6 @@
 .main {
 	background-color: #fbfcf5;
+	color: #000000;
 	user-select: none;
 	box-sizing: border-box;
 	scroll-behavior: smooth;
@@ -8,24 +9,22 @@
 .container {
 	max-width: 960px;
 	margin: 0 auto;
-	padding: 20px;
+	padding: 30px;
 }
 
 .container a {
 	text-decoration: none;
 }
 
-.container h2 {
-	margin-top: 10px;
-}
-
 .container h3 {
+	color: #000000;
 	font-size: 18px;
 	font-weight: bold;
 	margin-bottom: 5px;
 }
 
 .container p {
+	color: #000000;
 	font-size: 14px;
 	margin-top: 5px;
 	text-align: center;
