@@ -8,7 +8,7 @@ export default function Footer() {
 			<h3>
 				© 2023 made with{' '}
 				<FontAwesomeIcon icon={faHeart} style={{ color: '#B2A4D4' }} /> by
-				<a href='https://electrocute.io'> electrocute</a>
+				electrocute
 			</h3>
 		</div>
 	)
