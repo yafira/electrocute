@@ -12,9 +12,8 @@ export default function Container() {
 
 			<div className={styles.projectGrid}>
 				<Link
-					href='/electrocute.io/cute-technologies/'
+					href='https://cute-technologies.vercel.app'
 					className={styles.projectCard1}
-					src='https://cute-technologies.vercel.app'
 				>
 					<Image className={styles.logo} src={Logo} alt='project 1' />
 					<h3>cute technologies</h3>
