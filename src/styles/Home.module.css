@@ -81,3 +81,13 @@
 	background-color: #d3d7f8;
 	border: #727ae5 2px solid;
 }
+
+@media screen and (max-width: 750px) {
+	.projectGrid {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		margin: 5px;
+		padding: 0 50px;
+		text-align: center;
+	}
+}
