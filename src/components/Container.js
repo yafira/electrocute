@@ -11,10 +11,7 @@ export default function Container() {
 			</div>
 
 			<div className={styles.projectGrid}>
-				<Link
-					href='https://cute-technologies.vercel.app'
-					className={styles.projectCard1}
-				>
+				<Link href='https://cutetech.tools' className={styles.projectCard1}>
 					<Image className={styles.logo} src={Logo} alt='project 1' />
 					<h3>cute technologies</h3>
 					<p>
