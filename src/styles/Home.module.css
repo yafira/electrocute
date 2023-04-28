@@ -75,11 +75,12 @@
 	padding: 10px;
 	text-align: center;
 	background-color: #f3daed;
+	border: transparent 2px solid;
 }
 
 .projectCard1:hover {
 	background-color: #d3d7f8;
-	border: #727ae5 2px solid;
+	border-color: #727ae5;
 }
 
 @media screen and (max-width: 750px) {
