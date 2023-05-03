@@ -1,9 +1,9 @@
-.socialIcons {
+.Icons {
 	padding: 50px;
 	text-align: center;
 }
 
-.socialIcons a {
+.Icons a {
 	color: #d3d7f8;
 	line-height: 30px;
 	font-size: 30px;
@@ -11,7 +11,7 @@
 	text-decoration: none;
 }
 
-.socialIcons a:hover {
+.Icons a:hover {
 	color: #9fa5d8;
 	line-height: 30px;
 	font-size: 30px;

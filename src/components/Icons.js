@@ -2,15 +2,15 @@ import styles from '../styles/Icons.module.css'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-	faGithub,
-	faInstagram,
-	faPinterest,
 	faWordpress,
+	faInstagram,
+	faGithub,
+	faPinterest,
 } from '@fortawesome/free-brands-svg-icons'
 
-export default function Header() {
+export default function Icons() {
 	return (
-		<div className={styles.socialIcons}>
+		<div className={styles.Icons}>
 			<Link href='http://blog.electrocute.io/' title='wordpress'>
 				<FontAwesomeIcon icon={faWordpress} aria-hidden='true' />
 			</Link>
