@@ -1,9 +1,9 @@
-import Icons from 'src/components/Icons'
-import Header from 'src/components/Header'
-import Footer from 'src/components/Footer'
-import Container from '@/components/Container'
-import styles from 'src/styles/Home.module.css'
 import Head from 'next/head'
+import Icons from '@/components/Icons'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import Container from '@/components/Container'
+import styles from '@/styles/Home.module.css'
 
 export default function Home({ posts }) {
 	return (

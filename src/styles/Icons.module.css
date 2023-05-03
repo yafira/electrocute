@@ -3,16 +3,18 @@
 	text-align: center;
 }
 
-.Icons a {
-	color: #d3d7f8;
+.Icons a,
+.Icons Image {
+	color: #000000;
 	line-height: 30px;
 	font-size: 30px;
 	margin: 0 10px;
 	text-decoration: none;
 }
 
-.Icons a:hover {
-	color: #9fa5d8;
+.Icons a:hover,
+.Icons Image {
+	/* color: #9fa5d8; */
 	line-height: 30px;
 	font-size: 30px;
 	margin: 0 10px;

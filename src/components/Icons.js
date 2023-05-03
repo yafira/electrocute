@@ -1,5 +1,6 @@
 import styles from '../styles/Icons.module.css'
 import Link from 'next/link'
+import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
 	faWordpress,
@@ -22,6 +23,15 @@ export default function Icons() {
 			</Link>
 			<Link href='https://www.pinterest.com/electr0cute/' title='pinterest'>
 				<FontAwesomeIcon icon={faPinterest} aria-hidden='true' />
+			</Link>
+			<Link href='https://www.are.na/yafira/electr0cute' title='arena'>
+				<Image
+					src='https://goligorsky.neocities.org/logo-arena.svg'
+					alt='are.na logo'
+					width={30}
+					height={30}
+					aria-hidden='true'
+				/>
 			</Link>
 		</div>
 	)
