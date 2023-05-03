@@ -3,7 +3,6 @@
 
 * {
 	cursor: url('../assets/bolt.png'), pointer;
-	pointer-events: auto;
 }
 
 html,

@@ -1,0 +1,20 @@
+.socialIcons {
+	padding: 50px;
+	text-align: center;
+}
+
+.socialIcons a {
+	color: #d3d7f8;
+	line-height: 30px;
+	font-size: 30px;
+	margin: 0 10px;
+	text-decoration: none;
+}
+
+.socialIcons a:hover {
+	color: #9fa5d8;
+	line-height: 30px;
+	font-size: 30px;
+	margin: 0 10px;
+	text-decoration: none;
+}

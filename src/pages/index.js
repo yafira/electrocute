@@ -1,3 +1,4 @@
+import Icons from 'src/components/Icons'
 import Header from 'src/components/Header'
 import Footer from 'src/components/Footer'
 import Container from '@/components/Container'
@@ -10,6 +11,7 @@ export default function Home({ posts }) {
 			<Head>
 				<title>electrocute</title>
 			</Head>
+			<Icons />
 			<Header />
 			<Container />
 			<Footer />
