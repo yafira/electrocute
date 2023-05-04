@@ -21,12 +21,12 @@
 @media screen and (max-width: 750px) {
 	.Header {
 		padding: 10px;
-		margin: 0px;
+		margin: 20px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 	.Header h1 {
-		font-size: 50px;
+		font-size: 60px;
 	}
 }
