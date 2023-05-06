@@ -25,3 +25,10 @@
 	margin: 0 10px;
 	text-decoration: none;
 }
+
+@media screen and (max-width: 750px) {
+	.Icons a {
+		line-height: 25px;
+		font-size: 25px;
+	}
+}
