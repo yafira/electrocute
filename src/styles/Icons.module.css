@@ -27,8 +27,12 @@
 }
 
 @media screen and (max-width: 750px) {
+	.Icons {
+		position: relative;
+		padding-bottom: 2px;
+	}
 	.Icons a {
-		line-height: 25px;
-		font-size: 25px;
+		line-height: 22px;
+		font-size: 22px;
 	}
 }

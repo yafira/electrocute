@@ -27,6 +27,7 @@
 		justify-content: center;
 	}
 	.Header h1 {
-		font-size: 70px;
+		font-size: 65px;
+		padding-bottom: 0;
 	}
 }
