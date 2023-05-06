@@ -18,7 +18,6 @@
 
 .container h3 {
 	color: #000000;
-	/* font-size: 18px; */
 	margin-bottom: 5px;
 }
 
@@ -46,8 +45,8 @@
 }
 
 .logo {
-	height: 80px;
-	width: 80px;
+	height: 70px;
+	width: 70px;
 	display: inline-block;
 	vertical-align: middle;
 }
@@ -77,9 +76,23 @@
 	border: transparent 2px solid;
 }
 
+.projectCard2 {
+	padding: 10px;
+	text-align: center;
+	background-color: #f3daed;
+	border: transparent 2px solid;
+}
+
 .projectCard1:hover {
 	background-color: #d3d7f8;
 	border-color: #727ae5;
+}
+
+.projectCard2 {
+	padding: 10px;
+	text-align: center;
+	background-color: #f7eecf;
+	border: transparent 2px solid;
 }
 
 @media screen and (max-width: 750px) {
