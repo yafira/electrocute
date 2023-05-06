@@ -2,8 +2,8 @@ import styles from '../styles/Icons.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
 import {
-	faWordpress,
 	faInstagram,
 	faGithub,
 	faPinterest,
@@ -12,8 +12,12 @@ import {
 export default function Icons() {
 	return (
 		<div className={styles.Icons}>
-			<Link href='http://blog.electrocute.io/' title='wordpress'>
-				<FontAwesomeIcon icon={faWordpress} aria-hidden='true' />
+			<Link href='http://blog.electrocute.io/' title='blog'>
+				<FontAwesomeIcon
+					icon={faPen}
+					style={{ color: '#000000' }}
+					aria-hidden='true'
+				/>
 			</Link>
 			<Link href='https://www.instagram.com/electrocutelab/' title='instagram'>
 				<FontAwesomeIcon icon={faInstagram} aria-hidden='true' />
