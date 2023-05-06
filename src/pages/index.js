@@ -11,9 +11,9 @@ export default function Home({ posts }) {
 			<Head>
 				<title>electrocute</title>
 			</Head>
-			<Icons />
 			<Header />
 			<Container />
+			<Icons />
 			<Footer />
 		</div>
 	)
