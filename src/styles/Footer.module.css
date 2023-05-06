@@ -3,16 +3,17 @@
 	font-weight: 200;
 	color: black;
 	height: 50px;
-	position: fixed;
 	left: 0;
 	bottom: 0;
 	width: 100%;
+	position: fixed;
 	text-align: center;
 	padding-top: 10px;
 }
 
 @media screen and (max-width: 750px) {
 	.Footer h3 {
+		position: relative;
 		font-size: 13px;
 	}
 }
