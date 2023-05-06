@@ -20,7 +20,7 @@ export default function Container() {
 						your computing .env cuter.
 					</p>
 				</Link>
-				<Link href='https://cutetech.tools' className={styles.projectCard2}>
+				<Link href='/' className={styles.projectCard2}>
 					<Image className={styles.logo} src={Logo2} alt='project 2' />
 					<h3>*****</h3>
 					<p>coming soon, work in progress ・₊✧</p>
