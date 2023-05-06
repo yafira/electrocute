@@ -1,6 +1,11 @@
 .Icons {
-	padding: 50px;
-	text-align: center;
+	padding: 80px 0px;
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
 }
 
 .Icons a,
