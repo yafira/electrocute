@@ -2,7 +2,7 @@ import styles from '../styles/Icons.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faPen } from '@fortawesome/free-solid-svg-icons'
 import {
 	faInstagram,
 	faGithub,
@@ -36,6 +36,9 @@ export default function Icons() {
 					height={30}
 					aria-hidden='true'
 				/>
+			</Link>
+			<Link href='mailto:electrocutelab@gmail.com' title='email'>
+				<FontAwesomeIcon icon={faEnvelope} aria-hidden='true' />
 			</Link>
 		</div>
 	)
