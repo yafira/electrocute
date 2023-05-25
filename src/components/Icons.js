@@ -25,7 +25,7 @@ export default function Icons() {
 			<Link href='https://github.com/Yafira' title='github'>
 				<FontAwesomeIcon icon={faGithub} aria-hidden='true' />
 			</Link>
-			<Link href='https://www.pinterest.com/electr0cute/' title='pinterest'>
+			<Link href='https://www.pinterest.com/electr0cute' title='pinterest'>
 				<FontAwesomeIcon icon={faPinterest} aria-hidden='true' />
 			</Link>
 			<Link href='https://www.are.na/yafira/electr0cute' title='arena'>
