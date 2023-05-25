@@ -73,19 +73,19 @@
 	border: transparent 2px solid;
 }
 
-.projectCard2 {
-	padding: 10px;
-	text-align: center;
-	background-color: #f3daed;
-	border: transparent 2px solid;
-}
-
 .projectCard1:hover {
 	background-color: #d3d7f8;
 	border-color: #727ae5;
 }
 
 .projectCard2 {
+	padding: 10px;
+	text-align: center;
+	background-color: #e6f2fe;
+	border: transparent 2px solid;
+}
+
+.projectCard3 {
 	padding: 10px;
 	text-align: center;
 	background-color: #f7eecf;
