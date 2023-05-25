@@ -86,9 +86,11 @@
 }
 
 .projectCard3 {
+	opacity: 40%;
 	padding: 10px;
 	text-align: center;
-	background-color: #f7eecf;
+	background-color: #eaebe7;
+	/* background-color: #f7eecf; */
 	border: transparent 2px solid;
 }
 
