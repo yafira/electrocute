@@ -94,6 +94,15 @@
 	border: transparent 2px solid;
 }
 
+.projectCard3 img {
+	max-width: 100%;
+	height: 70px;
+	width: 70px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0px;
+}
+
 .projectCard3 {
 	opacity: 40%;
 	padding: 10px;
