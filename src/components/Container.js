@@ -23,6 +23,11 @@ export default function Container() {
 				<Link href='/' className={styles.projectCard2}>
 					<Image className={styles.logo} src={Logo2} alt='project 2' />
 					<h3>*****</h3>
+					<p>work in progress ・₊✧</p>
+				</Link>
+				<Link href='/' className={styles.projectCard3}>
+					<Image className={styles.logo} src={Logo2} alt='project 3' />
+					<h3>*****</h3>
 					<p>coming soon ・₊✧</p>
 				</Link>
 			</div>
