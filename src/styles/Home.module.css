@@ -78,6 +78,15 @@
 	border-color: #727ae5;
 }
 
+.projectCard2 img {
+	max-width: 100%;
+	height: 65px;
+	width: 65px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 4px;
+}
+
 .projectCard2 {
 	padding: 10px;
 	text-align: center;
