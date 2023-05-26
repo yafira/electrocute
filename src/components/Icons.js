@@ -2,7 +2,7 @@ import styles from '../styles/Icons.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faPen } from '@fortawesome/free-solid-svg-icons'
+import { faCloud, faEnvelope, faPen } from '@fortawesome/free-solid-svg-icons'
 import {
 	faInstagram,
 	faGithub,
@@ -24,6 +24,12 @@ export default function Icons() {
 			</Link>
 			<Link href='https://github.com/Yafira' title='github'>
 				<FontAwesomeIcon icon={faGithub} aria-hidden='true' />
+			</Link>
+			<Link
+				href='https://bsky.app/profile/electrocute.bsky.social'
+				title='bluesky'
+			>
+				<FontAwesomeIcon icon={faCloud} aria-hidden='true' />
 			</Link>
 			<Link href='https://www.pinterest.com/electr0cute' title='pinterest'>
 				<FontAwesomeIcon icon={faPinterest} aria-hidden='true' />
