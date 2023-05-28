@@ -11,6 +11,15 @@
 	padding-top: 10px;
 }
 
+.Footer a {
+	color: black;
+}
+
+.Footer a:hover {
+	color: rgb(172, 135, 245);
+	font-weight: 300;
+}
+
 @media screen and (max-width: 750px) {
 	.Footer h3 {
 		position: relative;
