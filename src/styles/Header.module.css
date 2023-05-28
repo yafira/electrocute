@@ -11,11 +11,12 @@
 }
 
 .Header h1 {
-	padding-bottom: 40px;
+	padding-top: 60px;
+	padding-bottom: 10px;
 	margin: 10px;
 	text-align: center;
 	color: rgb(0, 0, 0);
-	font-size: 120px;
+	font-size: 140px;
 }
 
 @media screen and (max-width: 750px) {
