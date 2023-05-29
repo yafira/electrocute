@@ -9,7 +9,6 @@ export default function Home({ posts }) {
 	return (
 		<div className={styles.container}>
 			<Head>
-				<link rel='icon' href='/public/favicon.ico'></link>
 				<title>electrocute</title>
 			</Head>
 			<Header />
