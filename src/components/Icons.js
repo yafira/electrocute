@@ -1,38 +1,57 @@
 import styles from '../styles/Icons.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCloud, faEnvelope, faPen } from '@fortawesome/free-solid-svg-icons'
-import {
-	faInstagram,
-	faGithub,
-	faPinterest,
-} from '@fortawesome/free-brands-svg-icons'
+import pen from '../assets/pen.png'
+import github from '../assets/github.png'
+import ig from '../assets/instagram.png'
+import cloud from '../assets/cloud.png'
+import pinterest from '../assets/pin.png'
+import email from '../assets/email.png'
 
 export default function Icons() {
 	return (
 		<div className={styles.Icons}>
 			<Link href='http://blog.electrocute.io/' title='blog'>
-				<FontAwesomeIcon
-					icon={faPen}
-					style={{ color: '#000000' }}
+				<Image src={pen} alt='pen' width={30} height={30} aria-hidden='true' />
+			</Link>
+			<Link href='https://github.com/Yafira' title='github'>
+				<Image
+					src={github}
+					alt='github'
+					width={30}
+					height={30}
 					aria-hidden='true'
 				/>
 			</Link>
 			<Link href='https://www.instagram.com/electrocutelab/' title='instagram'>
-				<FontAwesomeIcon icon={faInstagram} aria-hidden='true' />
-			</Link>
-			<Link href='https://github.com/Yafira' title='github'>
-				<FontAwesomeIcon icon={faGithub} aria-hidden='true' />
+				<Image
+					src={ig}
+					alt='instagram'
+					width={30}
+					height={30}
+					aria-hidden='true'
+				/>
 			</Link>
 			<Link
 				href='https://bsky.app/profile/electrocute.bsky.social'
 				title='bluesky'
 			>
-				<FontAwesomeIcon icon={faCloud} aria-hidden='true' />
+				<Image
+					src={cloud}
+					alt='cloud'
+					width={30}
+					height={30}
+					aria-hidden='true'
+				/>
 			</Link>
 			<Link href='https://www.pinterest.com/electr0cute' title='pinterest'>
-				<FontAwesomeIcon icon={faPinterest} aria-hidden='true' />
+				<Image
+					src={pinterest}
+					alt='pinterest'
+					width={30}
+					height={30}
+					aria-hidden='true'
+				/>
 			</Link>
 			<Link href='https://www.are.na/yafira/electr0cute' title='arena'>
 				<Image
@@ -44,7 +63,13 @@ export default function Icons() {
 				/>
 			</Link>
 			<Link href='mailto:electrocutelab@gmail.com' title='email'>
-				<FontAwesomeIcon icon={faEnvelope} aria-hidden='true' />
+				<Image
+					src={email}
+					alt='envelope'
+					width={38}
+					height={38}
+					aria-hidden='true'
+				/>
 			</Link>
 		</div>
 	)
