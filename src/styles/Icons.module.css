@@ -11,28 +11,13 @@
 .Icons a,
 .Icons Image {
 	color: #000000;
-	line-height: 30px;
-	font-size: 30px;
-	margin: 0 10px;
-	text-decoration: none;
-}
-
-.Icons a:hover,
-.Icons Image {
-	/* color: #9fa5d8; */
-	line-height: 30px;
-	font-size: 30px;
-	margin: 0 10px;
+	margin: 0 6px;
 	text-decoration: none;
 }
 
 @media screen and (max-width: 750px) {
 	.Icons {
 		position: relative;
-		padding-bottom: 2px;
-	}
-	.Icons a {
-		line-height: 22px;
-		font-size: 22px;
+		padding-bottom: 0px;
 	}
 }

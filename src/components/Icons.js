@@ -12,14 +12,14 @@ export default function Icons() {
 	return (
 		<div className={styles.Icons}>
 			<Link href='http://blog.electrocute.io/' title='blog'>
-				<Image src={pen} alt='pen' width={30} height={30} aria-hidden='true' />
+				<Image src={pen} alt='pen' width={25} height={25} aria-hidden='true' />
 			</Link>
 			<Link href='https://github.com/Yafira' title='github'>
 				<Image
 					src={github}
 					alt='github'
-					width={30}
-					height={30}
+					width={25}
+					height={25}
 					aria-hidden='true'
 				/>
 			</Link>
@@ -27,8 +27,8 @@ export default function Icons() {
 				<Image
 					src={ig}
 					alt='instagram'
-					width={30}
-					height={30}
+					width={25}
+					height={25}
 					aria-hidden='true'
 				/>
 			</Link>
@@ -39,8 +39,8 @@ export default function Icons() {
 				<Image
 					src={cloud}
 					alt='cloud'
-					width={30}
-					height={30}
+					width={25}
+					height={25}
 					aria-hidden='true'
 				/>
 			</Link>
@@ -48,8 +48,8 @@ export default function Icons() {
 				<Image
 					src={pinterest}
 					alt='pinterest'
-					width={30}
-					height={30}
+					width={25}
+					height={25}
 					aria-hidden='true'
 				/>
 			</Link>
@@ -66,8 +66,8 @@ export default function Icons() {
 				<Image
 					src={email}
 					alt='envelope'
-					width={38}
-					height={38}
+					width={30}
+					height={30}
 					aria-hidden='true'
 				/>
 			</Link>
