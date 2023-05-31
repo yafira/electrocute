@@ -18,7 +18,7 @@ export default function Container() {
 					<h3>cute technologies</h3>
 					<p>
 						A collection of cybertwee functional tools and resources to make
-						your computing .env cuter.
+						your computing .env cuter while amplifying productivity.
 					</p>
 				</Link>
 				<Link href='/' className={styles.projectCard2}>
