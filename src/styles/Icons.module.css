@@ -6,13 +6,17 @@
 	left: 0;
 	bottom: 0;
 	width: 100%;
+	transition: all 0.3s ease 0s;
 }
 
 .Icons a,
 .Icons Image {
-	color: #000000;
 	margin: 0 6px;
 	text-decoration: none;
+}
+
+.Icons a:hover {
+	transform: translateY(-5px);
 }
 
 @media screen and (max-width: 750px) {
