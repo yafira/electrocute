@@ -56,21 +56,21 @@
 	text-align: center;
 }
 
-/* img for project cards */
-.projectCard1 img {
-	max-width: 100%;
-	height: 40px;
-	width: 40px;
-	display: inline-block;
-	vertical-align: middle;
-	margin: 10px;
-}
-
 .projectCard1 {
 	padding: 10px;
 	text-align: center;
-	background-color: #f3daed;
+	background-color: #f5eefb;
 	border: transparent 2px solid;
+}
+
+/* img for project cards */
+.projectCard1 img {
+	max-width: 100%;
+	height: 60px;
+	width: 60px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 10px;
 }
 
 .projectCard1:hover {
@@ -78,38 +78,58 @@
 	border-color: #727ae5;
 }
 
-.projectCard2 img {
-	max-width: 100%;
-	height: 65px;
-	width: 65px;
-	display: inline-block;
-	vertical-align: middle;
-	margin: 4px;
-}
-
 .projectCard2 {
 	padding: 10px;
 	text-align: center;
-	background-color: #e6f2fe;
+	background-color: #fef8f3;
+	border: transparent 2px solid;
+}
+
+.projectCard2:hover {
+	background-color: #d3d7f8;
+	border-color: #727ae5;
+}
+
+.projectCard2 img {
+	max-width: 100%;
+	height: 60px;
+	width: 60px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 10px;
+}
+
+.projectCard3 {
+	padding: 10px;
+	text-align: center;
+	background-color: #fef2ff;
 	border: transparent 2px solid;
 }
 
 .projectCard3 img {
 	max-width: 100%;
-	height: 70px;
-	width: 70px;
+	height: 60px;
+	width: 60px;
 	display: inline-block;
 	vertical-align: middle;
-	margin: 0px;
+	margin: 4px;
 }
 
-.projectCard3 {
+.projectCard4 {
 	opacity: 40%;
 	padding: 10px;
 	text-align: center;
-	background-color: #eaebe7;
-	/* background-color: #f7eecf; */
+	background-color: #f3f4ef;
 	border: transparent 2px solid;
+}
+
+.projectCard4 img {
+	max-width: 100%;
+	height: 85px;
+	width: 85px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0px;
 }
 
 @media screen and (max-width: 750px) {
