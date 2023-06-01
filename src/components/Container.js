@@ -27,7 +27,7 @@ export default function Container() {
 					<Image className={styles.logo} src={Logo2} alt='project 2' />
 					<h3>snax</h3>
 					<p>
-						A blog for sharing my own reviews/ratings on vegan and plant-based
+						A blog for sharing my own reviews and ratings on vegan/plant-based
 						snacks and bevs. Also a peanut-free zone.
 					</p>
 				</Link>
