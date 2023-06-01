@@ -1,7 +1,8 @@
 import Logo from '../assets/cutetech.png'
 import Logo2 from '../assets/snax.png'
-import Logo3 from '../assets/bag.png'
-import Logo4 from '../assets/iclay.png'
+import Logo3 from '../assets/calc.png'
+import Logo4 from '../assets/bag.png'
+import Logo5 from '../assets/iclay.png'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
@@ -34,12 +35,21 @@ export default function Container() {
 
 				<Link href='/' className={styles.projectCard3}>
 					<Image className={styles.logo} src={Logo3} alt='project 3' />
-					<h3>*****</h3>
-					<p>work in progress ・₊✧</p>
+					<h3>sailor moon calculator</h3>
+					<p>
+						A basic Sailor Moon calculator inspired by one of the communicators
+						used in one of the best Animes of all time.{' '}
+					</p>
 				</Link>
 
 				<Link href='/' className={styles.projectCard4}>
 					<Image className={styles.logo} src={Logo4} alt='project 4' />
+					<h3>*****</h3>
+					<p>work in progress ・₊✧</p>
+				</Link>
+
+				<Link href='/' className={styles.projectCard5}>
+					<Image className={styles.logo} src={Logo5} alt='project 5' />
 					<h3>*****</h3>
 					<p>coming soon ・₊✧</p>
 				</Link>
