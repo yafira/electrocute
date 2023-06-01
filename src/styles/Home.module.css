@@ -66,8 +66,8 @@
 /* img for project cards */
 .projectCard1 img {
 	max-width: 100%;
-	height: 60px;
-	width: 60px;
+	height: 90px;
+	width: 90px;
 	display: inline-block;
 	vertical-align: middle;
 	margin: 10px;
@@ -92,8 +92,8 @@
 
 .projectCard2 img {
 	max-width: 100%;
-	height: 60px;
-	width: 60px;
+	height: 90px;
+	width: 90px;
 	display: inline-block;
 	vertical-align: middle;
 	margin: 10px;
@@ -113,8 +113,8 @@
 
 .projectCard3 img {
 	max-width: 100%;
-	height: 60px;
-	width: 60px;
+	height: 90px;
+	width: 90px;
 	display: inline-block;
 	vertical-align: middle;
 	margin: 10px;
@@ -129,8 +129,8 @@
 
 .projectCard4 img {
 	max-width: 100%;
-	height: 60px;
-	width: 60px;
+	height: 90px;
+	width: 90px;
 	display: inline-block;
 	vertical-align: middle;
 	margin: 8px;
@@ -151,11 +151,11 @@
 
 .projectCard5 img {
 	max-width: 100%;
-	height: 85px;
-	width: 85px;
+	height: 90px;
+	width: 90px;
 	display: inline-block;
 	vertical-align: middle;
-	margin: 0px;
+	margin: 8px;
 }
 
 @media screen and (max-width: 750px) {
