@@ -102,16 +102,32 @@
 .projectCard3 {
 	padding: 10px;
 	text-align: center;
+	background-color: #fffee9;
+	border: transparent 2px solid;
+}
+
+.projectCard3:hover {
+	background-color: #fcfade;
+	border-color: #f7f3cf;
+}
+
+.projectCard3 img {
+	max-width: 100%;
+	height: 60px;
+	width: 60px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 10px;
+}
+
+.projectCard4 {
+	padding: 10px;
+	text-align: center;
 	background-color: #faf6ff;
 	border: transparent 2px solid;
 }
 
-/* .projectCard3:hover {
-	background-color: #f3ebfd;
-	border-color: #d8c5fc;
-} */
-
-.projectCard3 img {
+.projectCard4 img {
 	max-width: 100%;
 	height: 60px;
 	width: 60px;
@@ -120,7 +136,12 @@
 	margin: 8px;
 }
 
-.projectCard4 {
+/* .projectCard4:hover {
+	background-color: #f3ebfd;
+	border-color: #d8c5fc;
+} */
+
+.projectCard5 {
 	opacity: 40%;
 	padding: 10px;
 	text-align: center;
@@ -128,7 +149,7 @@
 	border: transparent 2px solid;
 }
 
-.projectCard4 img {
+.projectCard5 img {
 	max-width: 100%;
 	height: 85px;
 	width: 85px;
