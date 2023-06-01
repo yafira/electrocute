@@ -33,7 +33,10 @@ export default function Container() {
 					</p>
 				</Link>
 
-				<Link href='/' className={styles.projectCard3}>
+				<Link
+					href='https://sailor-moon-calculator.glitch.me/'
+					className={styles.projectCard3}
+				>
 					<Image className={styles.logo} src={Logo3} alt='project 3' />
 					<h3>sailor moon calculator</h3>
 					<p>
