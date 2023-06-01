@@ -59,7 +59,7 @@
 .projectCard1 {
 	padding: 10px;
 	text-align: center;
-	background-color: #f5eefb;
+	background-color: #f3faea;
 	border: transparent 2px solid;
 }
 
@@ -74,20 +74,20 @@
 }
 
 .projectCard1:hover {
-	background-color: #d3d7f8;
-	border-color: #727ae5;
+	background-color: #f0fae3;
+	border-color: #d8f0ba;
 }
 
 .projectCard2 {
 	padding: 10px;
 	text-align: center;
-	background-color: #fef8f3;
+	background-color: #fff3f4;
 	border: transparent 2px solid;
 }
 
 .projectCard2:hover {
-	background-color: #d3d7f8;
-	border-color: #727ae5;
+	background-color: #ffeef0;
+	border-color: #f8d9da;
 }
 
 .projectCard2 img {
@@ -102,9 +102,14 @@
 .projectCard3 {
 	padding: 10px;
 	text-align: center;
-	background-color: #fef2ff;
+	background-color: #faf6ff;
 	border: transparent 2px solid;
 }
+
+/* .projectCard3:hover {
+	background-color: #f3ebfd;
+	border-color: #d8c5fc;
+} */
 
 .projectCard3 img {
 	max-width: 100%;
