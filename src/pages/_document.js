@@ -26,7 +26,6 @@ export default function Document() {
 				<meta name='msapplication-TileColor' content='#603cba' />
 				<meta name='theme-color' content='#ffffff' />
 			</Head>
-			<Head />
 			<body>
 				<Main />
 				<NextScript />
