@@ -123,13 +123,13 @@
 .projectCard4 {
 	padding: 10px;
 	text-align: center;
-	background-color: #fff6ef;
+	background-color: #f6fffe;
 	border: transparent 2px solid;
 }
 
 .projectCard4:hover {
-	background-color: #fcf2ea;
-	border-color: #fde5d2;
+	background-color: #eafdfc;
+	border-color: #bdfef8;
 }
 
 .projectCard4 img {
