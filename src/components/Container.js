@@ -46,7 +46,10 @@ export default function Container() {
 					</p>
 				</Link>
 
-				<Link href='/' className={styles.projectCard4}>
+				<Link
+					href='https://electrocute.gumroad.com/l/cute-folder-pack'
+					className={styles.projectCard4}
+				>
 					<Image className={styles.logo} src={Logo4} alt='project 4' />
 					<h3>cute folder icon pack</h3>
 					<p>
