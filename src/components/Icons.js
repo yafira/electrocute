@@ -4,7 +4,7 @@ import Image from 'next/image'
 import pen from '../assets/pen.png'
 import github from '../assets/github.png'
 import ig from '../assets/instagram.png'
-import cloud from '../assets/cloud.png'
+import fig from '../assets/figma.png'
 import pinterest from '../assets/pin.png'
 import email from '../assets/email.png'
 
@@ -32,13 +32,10 @@ export default function Icons() {
 					aria-hidden='true'
 				/>
 			</Link>
-			<Link
-				href='https://bsky.app/profile/electrocute.bsky.social'
-				title='bluesky'
-			>
+			<Link href='https://www.figma.com/@electrocute' title='figma'>
 				<Image
-					src={cloud}
-					alt='cloud'
+					src={fig}
+					alt='figma'
 					width={25}
 					height={25}
 					aria-hidden='true'
