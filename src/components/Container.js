@@ -66,8 +66,8 @@ export default function Container() {
 					<Image className={styles.logo} src={Logo5} alt='project 5' />
 					<h3>electrojute</h3>
 					<p>
-						A custom DIY jute tote bag with felt flowers and Sakura lilac LEDs
-						sown with conductive thread.
+						A custom DIY jute tote bag with felt flowers and sewable Sakura
+						lilac LEDs sown with conductive thread.
 					</p>
 				</Link>
 
