@@ -184,7 +184,7 @@
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		margin: 5px;
-		padding: 0 50px;
+		padding: 10px;
 		text-align: center;
 	}
 }
