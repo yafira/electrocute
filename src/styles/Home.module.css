@@ -183,7 +183,7 @@
 	.projectGrid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		margin: 5px;
+		/* margin: 5px; */
 		padding: 10px;
 		text-align: center;
 	}

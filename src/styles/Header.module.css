@@ -32,3 +32,10 @@
 		padding-bottom: 0;
 	}
 }
+
+@media screen and (max-width: 768px) {
+	.Header h1 {
+		font-size: 75px;
+		padding-bottom: 0;
+	}
+}
