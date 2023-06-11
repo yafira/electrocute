@@ -180,6 +180,11 @@
 }
 
 @media screen and (max-width: 750px) {
+	.container {
+		max-width: 750px;
+		margin: 0 auto;
+		padding: 0;
+	}
 	.projectGrid {
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
