@@ -59,10 +59,16 @@ export default function Container() {
 					</p>
 				</Link>
 
-				<Link href='/' className={styles.projectCard5}>
+				<Link
+					href='https://www.craft.do/s/n728rE3K9pjrQx'
+					className={styles.projectCard5}
+				>
 					<Image className={styles.logo} src={Logo5} alt='project 5' />
-					<h3>*****</h3>
-					<p>work in progress ・₊✧</p>
+					<h3>electrojute</h3>
+					<p>
+						A custom DIY jute tote bag with felt flowers and Sakura lilac LEDs
+						sown with conductive thread.
+					</p>
 				</Link>
 
 				<Link href='/' className={styles.projectCard6}>
