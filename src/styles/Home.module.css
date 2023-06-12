@@ -188,3 +188,23 @@
 		text-align: center;
 	}
 }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+	.projectGrid {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		margin: 5px;
+		padding: 10px;
+		text-align: center;
+	}
+}
+
+@media only screen and (-webkit-max-device-pixel-ratio: 2) {
+	.projectGrid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		margin: 5px;
+		padding: 10px;
+		text-align: center;
+	}
+}
