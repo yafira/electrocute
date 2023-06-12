@@ -11,8 +11,8 @@
 }
 
 .Header h1 {
-	padding-top: 60px;
-	padding-bottom: 10px;
+	/* padding-top: 60px;
+	padding-bottom: 10px; */
 	margin: 10px;
 	text-align: center;
 	color: rgb(0, 0, 0);
@@ -34,10 +34,15 @@
 }
 
 @media screen and (min-width: 768px) {
-	.Header h1 {
+	.Header {
+		padding: 0px;
 		margin: 0px;
-		padding: 0;
-		font-size: 85px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.Header h1 {
+		font-size: 90px;
 		padding-bottom: 0;
 	}
 }
