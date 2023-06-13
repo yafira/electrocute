@@ -87,17 +87,17 @@
 }
 
 .projectCard1:hover {
-	background-color: #f0fae3;
+	background-color: #edfdda;
 	border-color: #d8f0ba;
 }
 
 .projectCard2 {
-	background-color: #fff3f4;
+	background-color: #fff3f8;
 }
 
 .projectCard2:hover {
-	background-color: #ffeef0;
-	border-color: #f8d9da;
+	background-color: #fae7ef;
+	border-color: #fecfe2;
 }
 
 .projectCard3 {
