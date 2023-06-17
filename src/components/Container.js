@@ -72,7 +72,10 @@ export default function Container() {
 					</p>
 				</Link>
 
-				<Link href='/' className={styles.projectCard6}>
+				<Link
+					href='https://electrocute.gumroad.com/l/coding-hub'
+					className={styles.projectCard6}
+				>
 					<Image className={styles.logo} src={Logo6} alt='project 6' />
 					<h3>coding hub notion template</h3>
 					<p>
