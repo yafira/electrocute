@@ -77,7 +77,7 @@ export default function Container() {
 					className={styles.projectCard6}
 				>
 					<Image className={styles.logo} src={Logo6} alt='project 6' />
-					<h3>coding hub notion template</h3>
+					<h3>coding hub</h3>
 					<p>
 						A Notion template to keep track of your programming progress and all
 						around journey.
