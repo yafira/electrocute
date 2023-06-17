@@ -3,7 +3,8 @@ import Logo2 from '../assets/snax.png'
 import Logo3 from '../assets/calc.png'
 import Logo4 from '../assets/cutefolder.png'
 import Logo5 from '../assets/bag.png'
-import Logo6 from '../assets/iclay.png'
+import Logo6 from '../assets/chub.png'
+import Logo7 from '../assets/iclay.png'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
@@ -73,6 +74,15 @@ export default function Container() {
 
 				<Link href='/' className={styles.projectCard6}>
 					<Image className={styles.logo} src={Logo6} alt='project 6' />
+					<h3>coding hub notion template</h3>
+					<p>
+						A Notion template to keep track of your programming progress and all
+						around journey.
+					</p>
+				</Link>
+
+				<Link href='/' className={styles.projectCard7}>
+					<Image className={styles.logo} src={Logo7} alt='project 7' />
 					<h3>*****</h3>
 					<p>coming soon ・₊✧</p>
 				</Link>
