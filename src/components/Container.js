@@ -21,8 +21,9 @@ export default function Container() {
 					<Image className={styles.logo} src={Logo} alt='project 1' />
 					<h3>cute technologies</h3>
 					<p>
-						A collection of cybertwee functional tools and resources to make
-						your computing .env cuter while amplifying productivity.
+						A digital catalog featuring a collection of cybertwee functional
+						tools and resources to make your computing .env cuter while
+						amplifying productivity.
 					</p>
 				</Link>
 
