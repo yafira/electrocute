@@ -22,8 +22,7 @@ export default function Container() {
 					<h3>cute technologies</h3>
 					<p>
 						A digital catalog featuring a collection of cybertwee functional
-						tools and resources to make your computing .env cuter while
-						amplifying productivity.
+						tools and resources to make your computing .env cuter.
 					</p>
 				</Link>
 
@@ -31,8 +30,8 @@ export default function Container() {
 					<Image className={styles.logo} src={Logo2} alt='project 2' />
 					<h3>snax</h3>
 					<p>
-						A blog for sharing my own reviews and ratings on vegan/plant-based
-						snacks and bevs. Also a peanut-free zone.
+						A pokedex-like blog for sharing my own reviews and ratings on
+						vegan/plant-based snacks and bevs. Also a peanut-free zone.
 					</p>
 				</Link>
 
