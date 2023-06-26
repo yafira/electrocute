@@ -42,8 +42,8 @@ export default function Container() {
 					<Image className={styles.logo} src={Logo3} alt='project 3' />
 					<h3>sailor moon calculator</h3>
 					<p>
-						A basic on-screen Sailor Moon calculator inspired by one of the
-						communicators used in one of the best Animes of all time.{' '}
+						A basic on-screen calculator inspired by one of the communicators
+						used in Sailor Moon.{' '}
 					</p>
 				</Link>
 
