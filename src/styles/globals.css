@@ -3,6 +3,7 @@
 
 * {
 	cursor: url('../assets/bolt.png'), auto;
+	user-select: none;
 }
 
 html,
