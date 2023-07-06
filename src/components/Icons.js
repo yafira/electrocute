@@ -51,21 +51,21 @@ export default function Icons() {
 					aria-hidden='true'
 				/>
 			</Link>
-			<Link href='https://www.pinterest.com/electr0cute' title='pinterest'>
-				<Image
-					src={pinterest}
-					alt='pinterest'
-					width={25}
-					height={25}
-					aria-hidden='true'
-				/>
-			</Link>
 			<Link href='https://www.are.na/yafira/electr0cute' title='arena'>
 				<Image
 					src='https://goligorsky.neocities.org/logo-arena.svg'
 					alt='are.na logo'
 					width={30}
 					height={30}
+					aria-hidden='true'
+				/>
+			</Link>
+			<Link href='https://www.pinterest.com/electr0cute' title='pinterest'>
+				<Image
+					src={pinterest}
+					alt='pinterest'
+					width={25}
+					height={25}
 					aria-hidden='true'
 				/>
 			</Link>
