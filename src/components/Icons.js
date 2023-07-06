@@ -7,6 +7,7 @@ import ig from '../assets/instagram.png'
 import fig from '../assets/figma.png'
 import pinterest from '../assets/pin.png'
 import email from '../assets/email.png'
+import online from '../assets/globe.png'
 
 export default function Icons() {
 	return (
@@ -27,6 +28,15 @@ export default function Icons() {
 				<Image
 					src={ig}
 					alt='instagram'
+					width={25}
+					height={25}
+					aria-hidden='true'
+				/>
+			</Link>
+			<Link href='https://electrocute.online/' title='electrocute-online'>
+				<Image
+					src={online}
+					alt='omg.lol'
 					width={25}
 					height={25}
 					aria-hidden='true'
