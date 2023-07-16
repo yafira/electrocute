@@ -9,7 +9,7 @@ export default function Footer() {
 			<h3>
 				© 2023 made with{' '}
 				<FontAwesomeIcon icon={faHeart} style={{ color: '#B2A4D4' }} /> by
-				<Link href='https://bento.me/electrocute'> Yafira (electrocute) </Link>
+				<Link href='https://bento.me/electrocute'> yafira (electrocute) </Link>
 			</h3>
 		</div>
 	)
