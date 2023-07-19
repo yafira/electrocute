@@ -70,6 +70,7 @@
 	text-align: center;
 	border: transparent 3px solid;
 }
+
 /* img for project cards */
 .projectCard1 img,
 .projectCard2 img,
@@ -77,6 +78,7 @@
 .projectCard4 img,
 .projectCard5 img,
 .projectCard6 img,
+.projectCard7 img,
 .projectCard8 img {
 	max-width: 100%;
 	height: 90px;
@@ -84,13 +86,6 @@
 	display: inline-block;
 	vertical-align: middle;
 	margin: 10px;
-}
-.projectCard7 img {
-	max-width: 100%;
-	height: 50px;
-	width: 50px;
-	display: inline-block;
-	vertical-align: middle;
 }
 
 .projectCard1 {
