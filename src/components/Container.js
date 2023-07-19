@@ -4,7 +4,8 @@ import Logo3 from '../assets/calc.png'
 import Logo4 from '../assets/cutefolder.png'
 import Logo5 from '../assets/bag.png'
 import Logo6 from '../assets/chub.png'
-import Logo7 from '../assets/iclay.png'
+import Logo7 from '../assets/dhub.png'
+import Logo8 from '../assets/iclay.png'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
@@ -84,8 +85,20 @@ export default function Container() {
 					</p>
 				</Link>
 
-				<Link href='/' className={styles.projectCard7}>
+				<Link
+					href='https://electrocute.gumroad.com/l/design-hub'
+					className={styles.projectCard7}
+				>
 					<Image className={styles.logo} src={Logo7} alt='project 7' />
+					<h3>design hub</h3>
+					<p>
+						A Notion template to keep track of your progress on design learnings
+						and all around journey.
+					</p>
+				</Link>
+
+				<Link href='/' className={styles.projectCard8}>
+					<Image className={styles.logo} src={Logo8} alt='project 8' />
 					<h3>*****</h3>
 					<p>coming soon ・₊✧</p>
 				</Link>
