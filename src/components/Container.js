@@ -5,7 +5,8 @@ import Logo4 from '../assets/cutefolder.png'
 import Logo5 from '../assets/bag.png'
 import Logo6 from '../assets/chub.png'
 import Logo7 from '../assets/dhub.png'
-import Logo8 from '../assets/iclay.png'
+import Logo8 from '../assets/led.png'
+import Logo9 from '../assets/iclay.png'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
@@ -97,8 +98,17 @@ export default function Container() {
 					</p>
 				</Link>
 
-				<Link href='/' className={styles.projectCard8}>
+				<Link
+					href='https://www.craft.me/s/UPIseOWDQQ2AAx'
+					className={styles.projectCard8}
+				>
 					<Image className={styles.logo} src={Logo8} alt='project 8' />
+					<h3>custom light LEDs</h3>
+					<p>A tutorial on how to create custom LED lights with UV resin.</p>
+				</Link>
+
+				<Link href='/' className={styles.projectCard9}>
+					<Image className={styles.logo} src={Logo9} alt='project 9' />
 					<h3>*****</h3>
 					<p>coming soon ・₊✧</p>
 				</Link>
