@@ -6,7 +6,8 @@ import Logo5 from '../assets/bag.png'
 import Logo6 from '../assets/chub.png'
 import Logo7 from '../assets/dhub.png'
 import Logo8 from '../assets/led.png'
-import Logo9 from '../assets/iclay.png'
+import Logo9 from '../assets/write.png'
+import Logo10 from '../assets/iclay.png'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
@@ -107,8 +108,17 @@ export default function Container() {
 					<p>A tutorial on how to create custom LED lights with UV resin.</p>
 				</Link>
 
-				<Link href='/' className={styles.projectCard9}>
+				<Link
+					href='https://mind-write.vercel.app/'
+					className={styles.projectCard9}
+				>
 					<Image className={styles.logo} src={Logo9} alt='project 9' />
+					<h3>mind write</h3>
+					<p>A space to free-write what's on your mind, no commitments.</p>
+				</Link>
+
+				<Link href='/' className={styles.projectCard10}>
+					<Image className={styles.logo} src={Logo10} alt='project 10' />
 					<h3>*****</h3>
 					<p>coming soon ・₊✧</p>
 				</Link>
