@@ -163,6 +163,15 @@
 }
 
 .projectCard9 {
+	background-color: #f1f0ff;
+}
+
+.projectCard9:hover {
+	background-color: #e1dffb;
+	border-color: #b8b4f3;
+}
+
+.projectCard10 {
 	opacity: 40%;
 	background-color: #f3f4ef;
 	border: transparent 2px solid;
