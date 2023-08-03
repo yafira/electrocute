@@ -114,7 +114,7 @@ export default function Container() {
 				>
 					<Image className={styles.logo} src={Logo9} alt='project 9' />
 					<h3>mind write</h3>
-					<p>A space to free-write what's on your mind, no commitments.</p>
+					<p>A space to free-write what&apos;s on your mind, no commitments.</p>
 				</Link>
 
 				<Link href='/' className={styles.projectCard10}>
