@@ -113,7 +113,7 @@ export default function Container() {
 					className={styles.projectCard9}
 				>
 					<Image className={styles.logo} src={Logo9} alt='project 9' />
-					<h3>mind write</h3>
+					<h3>write mind</h3>
 					<p>A space to free-write what&apos;s on your mind, no commitments.</p>
 				</Link>
 
