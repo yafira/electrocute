@@ -109,7 +109,7 @@ export default function Container() {
 				</Link>
 
 				<Link
-					href='https://mind-write.vercel.app/'
+					href='https://the-write-mind.vercel.app/'
 					className={styles.projectCard9}
 				>
 					<Image className={styles.logo} src={Logo9} alt='project 9' />
