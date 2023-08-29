@@ -7,7 +7,8 @@ import Logo6 from '../assets/chub.png'
 import Logo7 from '../assets/dhub.png'
 import Logo8 from '../assets/led.png'
 import Logo9 from '../assets/write.png'
-import Logo10 from '../assets/iclay.png'
+import Logo10 from '../assets/ecuteui.png'
+import Logo11 from '../assets/iclay.png'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
@@ -117,8 +118,19 @@ export default function Container() {
 					<p>A space to free-write what&apos;s on your mind, no commitments.</p>
 				</Link>
 
-				<Link href='/' className={styles.projectCard10}>
+				<Link
+					href='https://www.figma.com/community/file/1277066355478459322/Electrocute-Design-System'
+					className={styles.projectCard10}
+				>
 					<Image className={styles.logo} src={Logo10} alt='project 10' />
+					<h3>electrocute UI</h3>
+					<p>
+						A mini design system in the making. <i>ongoing project</i>
+					</p>
+				</Link>
+
+				<Link href='/' className={styles.projectCard11}>
+					<Image className={styles.logo} src={Logo11} alt='project 11' />
 					<h3>*****</h3>
 					<p>coming soon ・₊✧</p>
 				</Link>
