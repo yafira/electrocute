@@ -125,7 +125,7 @@ export default function Container() {
 					<Image className={styles.logo} src={Logo10} alt='project 10' />
 					<h3>electrocute UI</h3>
 					<p>
-						A mini design system in the making. <i>ongoing project</i>
+						A mini design system in the making. <i>ongoing</i>
 					</p>
 				</Link>
 
