@@ -8,7 +8,8 @@ import Logo7 from '../assets/dhub.png'
 import Logo8 from '../assets/led.png'
 import Logo9 from '../assets/write.png'
 import Logo10 from '../assets/ecuteui.png'
-import Logo11 from '../assets/iclay.png'
+import Logo11 from '../assets/kml.png'
+import Logo12 from '../assets/iclay.png'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
@@ -129,8 +130,17 @@ export default function Container() {
 					</p>
 				</Link>
 
-				<Link href='/' className={styles.projectCard11}>
+				<Link
+					href='https://www.figma.com/community/file/1282166884816539041/Kawaii-ML-Deck'
+					className={styles.projectCard11}
+				>
 					<Image className={styles.logo} src={Logo11} alt='project 11' />
+					<h3>kawaii ML</h3>
+					<p>A card deck referencing the top 10 machine learning algorithms.</p>
+				</Link>
+
+				<Link href='/' className={styles.projectCard12}>
+					<Image className={styles.logo} src={Logo12} alt='project 12' />
 					<h3>*****</h3>
 					<p>coming soon ・₊✧</p>
 				</Link>
