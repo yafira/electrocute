@@ -67,7 +67,9 @@
 .projectCard7,
 .projectCard8,
 .projectCard9,
-.projectCard10 {
+.projectCard10,
+.projectCard11,
+.projectCard12 {
 	padding: 10px;
 	text-align: center;
 	border: transparent 3px solid;
@@ -190,7 +192,7 @@
 
 .projectCard11:hover {
 	background-color: #d9f9ef;
-	border-color: #aaf1db;
+	border-color: #94f1d3;
 }
 
 .projectCard12 {
