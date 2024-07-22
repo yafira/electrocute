@@ -51,7 +51,7 @@ export default function Icons() {
 					aria-hidden='true'
 				/>
 			</Link>
-			<Link href='https://www.are.na/yafira/electr0cute' title='arena'>
+			<Link href='https://www.are.na/yafira/electrocute' title='arena'>
 				<Image
 					src='https://goligorsky.neocities.org/logo-arena.svg'
 					alt='are.na logo'
