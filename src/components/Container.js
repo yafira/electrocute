@@ -10,7 +10,8 @@ import Logo9 from '../assets/write.png'
 import Logo10 from '../assets/ecuteui.png'
 import Logo11 from '../assets/kml.png'
 import Logo12 from '../assets/journal.png'
-import Logo13 from '../assets/iclay.png'
+import Logo13 from '../assets/bsod.png'
+import Logo14 from '../assets/iclay.png'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
@@ -151,8 +152,17 @@ export default function Container() {
 					</p>
 				</Link>
 
-				<Link href='/' className={styles.projectCard13}>
+				<Link
+					href='https://www.figma.com/community/file/1400293722476346528/bsod-error-but-cute'
+					className={styles.projectCard13}
+				>
 					<Image className={styles.logo} src={Logo13} alt='project 13' />
+					<h3>BSOD but cute</h3>
+					<p>A blue screen of death but more positive and charming. </p>
+				</Link>
+
+				<Link href='/' className={styles.projectCard14}>
+					<Image className={styles.logo} src={Logo14} alt='project 14' />
 					<h3>*****</h3>
 					<p>coming soon ・₊✧</p>
 				</Link>
