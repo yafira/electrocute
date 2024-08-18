@@ -11,7 +11,8 @@ import Logo10 from '../assets/ecuteui.png'
 import Logo11 from '../assets/kml.png'
 import Logo12 from '../assets/journal.png'
 import Logo13 from '../assets/bsod.png'
-import Logo14 from '../assets/iclay.png'
+import Logo14 from '../assets/flower.png'
+import Logo15 from '../assets/iclay.png'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
@@ -161,8 +162,19 @@ export default function Container() {
 					<p>A blue screen of death but more positive and charming. </p>
 				</Link>
 
-				<Link href='/' className={styles.projectCard14}>
+				<Link
+					href='https://synthwave-chimes.glitch.me/'
+					className={styles.projectCard14}
+				>
 					<Image className={styles.logo} src={Logo14} alt='project 14' />
+					<h3>synthwave chimes</h3>
+					<p>
+						A digital synth chime that blends shapes with interactive sound.
+					</p>
+				</Link>
+
+				<Link href='/' className={styles.projectCard15}>
+					<Image className={styles.logo} src={Logo15} alt='project 15' />
 					<h3>*****</h3>
 					<p>coming soon ・₊✧</p>
 				</Link>
