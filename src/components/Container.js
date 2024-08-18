@@ -62,9 +62,8 @@ export default function Container() {
 					<Image className={styles.logo} src={Logo4} alt='project 4' />
 					<h3>cute folder icon pack</h3>
 					<p>
-						A simple but cute folder icon pack that comes in pastel colors, as
-						well as neutral and monochrome shades. Named after potential macaron
-						flavors and other delicacies.
+						A cute folder icon pack in pastel, neutral, and monochrome shades,
+						named after macaron flavors and other delicacies.
 					</p>
 				</Link>
 
