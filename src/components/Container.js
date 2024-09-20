@@ -43,7 +43,7 @@ export default function Container() {
 				</Link>
 
 				<Link
-					href='https://www.figma.com/community/file/1400293722476346528/bsod-error-but-cute'
+					href='https://www.figma.com/design/nqnNJpEGPfSWT6xAJEZOcH/BSOD-error-but-cute?node-id=0-1&t=AI1pm6CX26AQYtCb-1'
 					className={styles.projectCard13}
 				>
 					<Image className={styles.logo} src={Logo13} alt='project 13' />
