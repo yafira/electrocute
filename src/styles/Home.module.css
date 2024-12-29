@@ -229,10 +229,19 @@
 }
 
 .projectCard15 {
+	background-color: #fff0f0;
+}
+
+.projectCard15:hover {
+	background-color: #fae3e3;
+	border-color: #ebcece;
+}
+
+/* .projectCard16 {
 	opacity: 40%;
 	background-color: #f3f4ef;
 	border: transparent 2px solid;
-}
+} */
 
 @media screen and (max-width: 750px) {
 	.projectGrid {
