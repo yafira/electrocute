@@ -13,6 +13,7 @@ import Logo12 from '../assets/journal.png'
 import Logo13 from '../assets/bsod.png'
 import Logo14 from '../assets/flower.png'
 import Logo15 from '../assets/glowmotion.png'
+import Logo16 from '../assets/scribble.png'
 // import Logo16 from '../assets/iclay.png'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -31,6 +32,15 @@ export default function Container() {
 					<h3>*****</h3>
 					<p>coming soon ・₊✧</p>
 				</Link> */}
+
+				<Link
+					href='https://scribble-pop.netlify.app/'
+					className={styles.projectCard16}
+				>
+					<Image className={styles.logo} src={Logo16} alt='project 16' />
+					<h3>scribble pop</h3>
+					<p>A hand held drawing tool for mobile and the web.</p>
+				</Link>
 
 				<Link
 					href='https://months-tap-da9.craft.me/glowmotion'
