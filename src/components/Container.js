@@ -68,7 +68,7 @@ export default function Container() {
 				>
 					<Image className={styles.logo} src={Logo13} alt='project 13' />
 					<h3>BSOD but cute</h3>
-					<p>A blue screen of death but more positive and charming.</p>
+					<p>A blue screen of death but positive and charming.</p>
 				</Link>
 
 				<Link
