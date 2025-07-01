@@ -252,12 +252,12 @@
 	border-color: #e9fca2;
 }
 .projectCard17 {
-	background-color: #e3e5ef;
+	background-color: #f1f3fe;
 	border: transparent 2px solid;
 }
 .projectCard17:hover {
-	background-color: #f1f3fe;
-	border: transparent 2px solid;
+	background-color: #e3e5ef;
+	border-color: #a2aadb;
 }
 
 .projectCard20 {
