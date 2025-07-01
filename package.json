@@ -1,25 +1,25 @@
 {
-  "name": "electrocute",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.4.0",
-    "@fortawesome/free-brands-svg-icons": "^6.4.0",
-    "@fortawesome/free-solid-svg-icons": "^6.4.0",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "eslint": "8.38.0",
-    "eslint-config-next": "13.3.0",
-    "framer-motion": "^10.12.4",
-    "mini-css-extract-plugin": "^2.7.6",
-    "next": "13.3.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "sharp": "^0.32.0"
-  }
+	"name": "electrocute",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^6.4.0",
+		"@fortawesome/free-brands-svg-icons": "^6.4.0",
+		"@fortawesome/free-solid-svg-icons": "^6.4.0",
+		"@fortawesome/react-fontawesome": "^0.2.0",
+		"eslint": "8.38.0",
+		"eslint-config-next": "13.3.0",
+		"framer-motion": "^10.12.4",
+		"mini-css-extract-plugin": "^2.7.6",
+		"next": "13.3.0",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"sharp": "^0.32.0"
+	}
 }

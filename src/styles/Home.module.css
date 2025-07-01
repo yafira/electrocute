@@ -74,7 +74,8 @@
 .projectCard14,
 .projectCard15,
 .projectCard16,
-.projectCard17 {
+.projectCard17,
+.projectCard20 {
 	padding: 10px;
 	text-align: center;
 	border: transparent 3px solid;
@@ -97,7 +98,8 @@
 .projectCard14 img,
 .projectCard15 img,
 .projectCard16 img,
-.projectCard17 img {
+.projectCard17 img,
+.projectCard20 img {
 	max-width: 100%;
 	height: 90px;
 	width: 90px;
@@ -250,6 +252,15 @@
 	border-color: #e9fca2;
 }
 .projectCard17 {
+	background-color: #e3e5ef;
+	border: transparent 2px solid;
+}
+.projectCard17:hover {
+	background-color: #f1f3fe;
+	border: transparent 2px solid;
+}
+
+.projectCard20 {
 	opacity: 40%;
 	background-color: #f3f4ef;
 	border: transparent 2px solid;

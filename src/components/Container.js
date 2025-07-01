@@ -14,7 +14,8 @@ import Logo13 from '../assets/bsod.png'
 import Logo14 from '../assets/flower.png'
 import Logo15 from '../assets/glowmotion.png'
 import Logo16 from '../assets/scribble.png'
-import Logo17 from '../assets/iclay.png'
+import Logo17 from '../assets/moonpocket.png'
+import Logo20 from '../assets/iclay.png'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
@@ -27,10 +28,22 @@ export default function Container() {
 			</div>
 
 			<div className={styles.projectGrid}>
-				<Link href='/' className={styles.projectCard17}>
-					<Image className={styles.logo} src={Logo17} alt='project 17' />
+				<Link href='/' className={styles.projectCard20}>
+					<Image className={styles.logo} src={Logo20} alt='project 20' />
 					<h3>*****</h3>
 					<p>coming soon ・₊✧</p>
+				</Link>
+
+				<Link
+					href='https://www.instagram.com/p/DLgqioeNVeR/?utm_source=ig_web_copy_link&igsh=NWZheG1zanRhdjk4'
+					className={styles.projectCard17}
+				>
+					<Image className={styles.logo} src={Logo17} alt='project 17' />
+					<h3>moon pocket</h3>
+					<p>
+						A poetic connected device for tracking lunar and tidal cycles in
+						real time.
+					</p>
 				</Link>
 
 				<Link
