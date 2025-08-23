@@ -69,13 +69,7 @@
 .projectCard9,
 .projectCard10,
 .projectCard11,
-.projectCard12,
-.projectCard13,
-.projectCard14,
-.projectCard15,
-.projectCard16,
-.projectCard17,
-.projectCard20 {
+.projectCard12 {
 	padding: 10px;
 	text-align: center;
 	border: transparent 3px solid;
@@ -93,13 +87,7 @@
 .projectCard9 img,
 .projectCard10 img,
 .projectCard11 img,
-.projectCard12 img,
-.projectCard13 img,
-.projectCard14 img,
-.projectCard15 img,
-.projectCard16 img,
-.projectCard17 img,
-.projectCard20 img {
+.projectCard12 img {
 	max-width: 100%;
 	height: 90px;
 	width: 90px;
@@ -181,42 +169,39 @@
 }
 
 .projectCard9 {
-	background-color: #f1f0ff;
-}
-
-.projectCard9:hover {
-	background-color: #e1dffb;
-	border-color: #b8b4f3;
-}
-
-.projectCard10 {
 	background-color: #f2f8ff;
 }
 
-.projectCard10:hover {
+.projectCard9:hover {
 	background-color: #dae9fa;
 	border-color: #b4d4f9;
 }
 
-.projectCard11 {
+.projectCard10 {
 	background-color: #ecfff9;
 }
 
-.projectCard11:hover {
+.projectCard10:hover {
 	background-color: #d9f9ef;
 	border-color: #94f1d3;
 }
 
+.projectCard11 {
+	background-color: #f5e6fd;
+}
+
+.projectCard11:hover {
+	background-color: #e9d4f4;
+	border-color: #e89cf1;
+}
+
 .projectCard12 {
-	background-color: #f0fceb;
+	opacity: 40%;
+	background-color: #f3f4ef;
+	border: transparent 2px solid;
 }
 
-.projectCard12:hover {
-	background-color: #ddfbcf;
-	border-color: #b0f98e;
-}
-
-.projectCard13 {
+/* .projectCard13 {
 	background-color: #e0ddfe;
 }
 
@@ -264,7 +249,7 @@
 	opacity: 40%;
 	background-color: #f3f4ef;
 	border: transparent 2px solid;
-}
+} */
 
 @media screen and (max-width: 750px) {
 	.projectGrid {
