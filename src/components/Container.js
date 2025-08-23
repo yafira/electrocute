@@ -1,24 +1,18 @@
-import Logo from '../assets/cutetech.png'
-import Logo2 from '../assets/snax.png'
-import Logo3 from '../assets/calc.png'
-import Logo4 from '../assets/cutefolder.png'
-import Logo5 from '../assets/bag.png'
-import Logo6 from '../assets/chub.png'
-import Logo7 from '../assets/dhub.png'
-import Logo8 from '../assets/led.png'
-import Logo9 from '../assets/write.png'
-import Logo10 from '../assets/ecuteui.png'
-import Logo11 from '../assets/kml.png'
-import Logo12 from '../assets/journal.png'
-import Logo13 from '../assets/bsod.png'
-import Logo14 from '../assets/flower.png'
-import Logo15 from '../assets/glowmotion.png'
-import Logo16 from '../assets/scribble.png'
-import Logo17 from '../assets/moonpocket.png'
-import Logo20 from '../assets/iclay.png'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import Link from 'next/link'
+import Logo from '../assets/cutetech.png';
+import Logo2 from '../assets/snax.png';
+import Logo3 from '../assets/calc.png';
+import Logo4 from '../assets/cutefolder.png';
+import Logo5 from '../assets/bag.png';
+import Logo6 from '../assets/chub.png';
+import Logo7 from '../assets/dhub.png';
+import Logo8 from '../assets/led.png';
+import Logo9 from '../assets/ecuteui.png';
+import Logo10 from '../assets/kml.png';
+import Logo11 from '../assets/flower.png';
+import Logo12 from '../assets/iclay.png';
+import Image from 'next/image';
+import styles from '../styles/Home.module.css';
+import Link from 'next/link';
 
 export default function Container() {
 	return (
@@ -28,47 +22,17 @@ export default function Container() {
 			</div>
 
 			<div className={styles.projectGrid}>
-				<Link href='/' className={styles.projectCard20}>
-					<Image className={styles.logo} src={Logo20} alt='project 20' />
+				<Link href='/' className={styles.projectCard12}>
+					<Image className={styles.logo} src={Logo12} alt='project 12' />
 					<h3>*****</h3>
 					<p>coming soon ・₊✧</p>
 				</Link>
 
 				<Link
-					href='https://months-tap-da9.craft.me/moonpocket'
-					className={styles.projectCard17}
-				>
-					<Image className={styles.logo} src={Logo17} alt='project 17' />
-					<h3>moon pocket</h3>
-					<p>
-						A poetic connected device for tracking lunar and tidal cycles in
-						real time.
-					</p>
-				</Link>
-
-				<Link
-					href='https://scribble-pop.netlify.app/'
-					className={styles.projectCard16}
-				>
-					<Image className={styles.logo} src={Logo16} alt='project 16' />
-					<h3>scribble pop</h3>
-					<p>A hand held drawing tool for mobile and the web.</p>
-				</Link>
-
-				<Link
-					href='https://months-tap-da9.craft.me/glowmotion'
-					className={styles.projectCard15}
-				>
-					<Image className={styles.logo} src={Logo15} alt='project 15' />
-					<h3>glowmotion</h3>
-					<p>A gesture-controlled light sculpture in motion.</p>
-				</Link>
-
-				<Link
 					href='https://synthwave-chimes.glitch.me/'
-					className={styles.projectCard14}
+					className={styles.projectCard11}
 				>
-					<Image className={styles.logo} src={Logo14} alt='project 14' />
+					<Image className={styles.logo} src={Logo11} alt='project 11' />
 					<h3>synthwave chimes</h3>
 					<p>
 						A digital synth chime that blends shapes with interactive sound.
@@ -76,52 +40,23 @@ export default function Container() {
 				</Link>
 
 				<Link
-					href='https://www.figma.com/design/nqnNJpEGPfSWT6xAJEZOcH/BSOD-error-but-cute?node-id=0-1&t=AI1pm6CX26AQYtCb-1'
-					className={styles.projectCard13}
-				>
-					<Image className={styles.logo} src={Logo13} alt='project 13' />
-					<h3>BSOD but cute</h3>
-					<p>A blue screen of death but more positive and charming.</p>
-				</Link>
-
-				<Link
-					href='https://le-petit-journal.vercel.app/'
-					className={styles.projectCard12}
-				>
-					<Image className={styles.logo} src={Logo12} alt='project 12' />
-					<h3>le petit journal</h3>
-					<p>
-						A petit weekly journal to jot down, keep track or plan anything.
-					</p>
-				</Link>
-
-				<Link
 					href='https://www.figma.com/community/file/1282166884816539041/Kawaii-ML-Deck'
-					className={styles.projectCard11}
+					className={styles.projectCard10}
 				>
-					<Image className={styles.logo} src={Logo11} alt='project 11' />
+					<Image className={styles.logo} src={Logo10} alt='project 10' />
 					<h3>kawaii ML</h3>
 					<p>A card deck referencing the top 10 machine learning algorithms.</p>
 				</Link>
 
 				<Link
 					href='https://www.figma.com/community/file/1277066355478459322/Electrocute-Design-System'
-					className={styles.projectCard10}
+					className={styles.projectCard9}
 				>
-					<Image className={styles.logo} src={Logo10} alt='project 10' />
+					<Image className={styles.logo} src={Logo9} alt='project 9' />
 					<h3>electrocute UI</h3>
 					<p>
 						A mini design system in the making. <i>ongoing</i>
 					</p>
-				</Link>
-
-				<Link
-					href='https://the-write-mind.vercel.app/'
-					className={styles.projectCard9}
-				>
-					<Image className={styles.logo} src={Logo9} alt='project 9' />
-					<h3>write mind</h3>
-					<p>A space to free-write what&apos;s on your mind, no commitments.</p>
 				</Link>
 
 				<Link
@@ -212,5 +147,5 @@ export default function Container() {
 				</Link>
 			</div>
 		</div>
-	)
+	);
 }

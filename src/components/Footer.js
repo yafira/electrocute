@@ -1,7 +1,7 @@
-import styles from '../styles/Footer.module.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import Link from 'next/link'
+import styles from '../styles/Footer.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
 
 export default function Footer() {
 	return (
@@ -9,8 +9,8 @@ export default function Footer() {
 			<h3>
 				© 2023 made with{' '}
 				<FontAwesomeIcon icon={faHeart} style={{ color: '#B2A4D4' }} /> by
-				<Link href='https://bento.me/electrocute'> yafira (electrocute) </Link>
+				<Link href='https://bento.me/electrocute'> yafira </Link>
 			</h3>
 		</div>
-	)
+	);
 }
