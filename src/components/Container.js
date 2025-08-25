@@ -29,7 +29,7 @@ export default function Container() {
 				</Link>
 
 				<Link
-					href='https://synthwave-chimes.glitch.me/'
+					href='https://synthwave-chimes.netlify.app/'
 					className={styles.projectCard11}
 				>
 					<Image className={styles.logo} src={Logo11} alt='project 11' />
@@ -117,7 +117,7 @@ export default function Container() {
 				</Link>
 
 				<Link
-					href='https://sailor-moon-calculator.glitch.me/'
+					href='sailor-moon-calculator.netlify.app'
 					className={styles.projectCard3}
 				>
 					<Image className={styles.logo} src={Logo3} alt='project 3' />
