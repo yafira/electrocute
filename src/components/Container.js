@@ -9,7 +9,8 @@ import Logo8 from '../assets/led.png';
 import Logo9 from '../assets/ecuteui.png';
 import Logo10 from '../assets/kml.png';
 import Logo11 from '../assets/flower.png';
-import Logo12 from '../assets/iclay.png';
+import Logo12 from '../assets/ecute.png';
+import Logo13 from '../assets/iclay.png';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
@@ -22,10 +23,16 @@ export default function Container() {
 			</div>
 
 			<div className={styles.projectGrid}>
-				<Link href='/' className={styles.projectCard12}>
-					<Image className={styles.logo} src={Logo12} alt='project 12' />
+				<Link href='/' className={styles.projectCard13}>
+					<Image className={styles.logo} src={Logo13} alt='project 13' />
 					<h3>*****</h3>
 					<p>coming soon ・₊✧</p>
+				</Link>
+
+				<Link href='https://ecute.club/' className={styles.projectCard12}>
+					<Image className={styles.logo} src={Logo12} alt='project 12' />
+					<h3>ecute club</h3>
+					<p>A soft start guide to electronics.</p>
 				</Link>
 
 				<Link
