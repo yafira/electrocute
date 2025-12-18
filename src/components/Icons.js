@@ -33,15 +33,6 @@ export default function Icons() {
 					aria-hidden='true'
 				/>
 			</Link>
-			<Link href='https://electrocute.online/' title='electrocute-online'>
-				<Image
-					src={online}
-					alt='omg.lol'
-					width={25}
-					height={25}
-					aria-hidden='true'
-				/>
-			</Link>
 			<Link href='https://www.figma.com/@electrocute' title='figma'>
 				<Image
 					src={fig}
