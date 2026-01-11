@@ -1,28 +1,40 @@
 .Footer h3 {
-	font-family: 'Poppins', sans-serif;
-	font-weight: 200;
-	color: black;
-	height: 55px;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	position: fixed;
-	text-align: center;
-	padding-top: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  color: black;
+  height: 55px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  padding-top: 10px;
 }
 
 .Footer a {
-	color: black;
+  color: black;
 }
 
 .Footer a:hover {
-	color: rgb(172, 135, 245);
-	font-weight: 300;
+  color: rgb(172, 135, 245);
+  font-weight: 300;
+}
+
+.badge {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.badge img {
+  width: 380px;
+  max-width: 90%;
+  height: auto;
 }
 
 @media screen and (max-width: 750px) {
-	.Footer h3 {
-		position: relative;
-		font-size: 13px;
-	}
+  .Footer h3 {
+    position: relative;
+    font-size: 13px;
+  }
 }
