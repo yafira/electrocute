@@ -9,7 +9,7 @@ export default function Footer() {
       <h3>
         © 2025 made with{" "}
         <FontAwesomeIcon icon={faHeart} style={{ color: "#B2A4D4" }} /> by
-        <Link href="https://bento.me/electrocute"> yafira </Link>
+        <Link href="https://yafira.xyz"> yafira </Link>
       </h3>
       <div className={styles.badge}>
         <a
