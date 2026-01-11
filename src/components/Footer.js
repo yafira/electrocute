@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <div className={styles.Footer}>
       <h3>
-        © 2023 made with{" "}
+        © 2025 made with{" "}
         <FontAwesomeIcon icon={faHeart} style={{ color: "#B2A4D4" }} /> by
         <Link href="https://bento.me/electrocute"> yafira </Link>
       </h3>
@@ -18,7 +18,7 @@ export default function Footer() {
           rel="noopener noreferrer"
         >
           <img
-            src="https://internetphonebook.net/images/badges/this-website-is-in-the-internet-phone-book-paper.png"
+            src="https://internetphonebook.net/images/badges/hand-with-flower-border-radius.png"
             alt="this website is in the internet phone book"
           />
         </a>
