@@ -1,61 +1,61 @@
 .main {
-	background-color: #fbfcf5;
-	color: #000000;
-	user-select: none;
-	box-sizing: border-box;
-	scroll-behavior: smooth;
+  background-color: #fbfcf5;
+  color: #000000;
+  user-select: none;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 .container {
-	max-width: 900px;
-	margin: 0 auto;
-	padding: 0;
-	padding-bottom: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+  padding-bottom: 3rem;
 }
 
 .container a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 .container h3 {
-	color: #000000;
-	margin-bottom: 5px;
+  color: #000000;
+  margin-bottom: 5px;
 }
 
 .container p {
-	color: #000000;
-	font-size: 14px;
-	margin-top: 5px;
-	text-align: center;
-	padding-top: 30px;
+  color: #000000;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
+  padding-top: 30px;
 }
 
 .titleContainer {
-	text-align: center;
-	margin: 0px;
+  text-align: center;
+  margin: 0px;
 }
 
 .title {
-	color: #000000;
-	font-family: 'Cute Font', cursive;
-	font-size: 100px;
-	font-weight: bold;
-	margin: 20px 30px;
+  color: #000000;
+  font-family: "Cute Font", cursive;
+  font-size: 100px;
+  font-weight: bold;
+  margin: 20px 30px;
 }
 
 .logo {
-	height: 70px;
-	width: 70px;
-	display: inline-block;
-	vertical-align: middle;
+  height: 70px;
+  width: 70px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .projectGrid {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 20px;
-	padding: 10px;
-	text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 10px;
+  text-align: center;
 }
 
 .projectCard1,
@@ -70,9 +70,9 @@
 .projectCard10,
 .projectCard11,
 .projectCard12 {
-	padding: 10px;
-	text-align: center;
-	border: transparent 3px solid;
+  padding: 10px;
+  text-align: center;
+  border: transparent 3px solid;
 }
 
 /* img for project cards */
@@ -89,126 +89,126 @@
 .projectCard11 img,
 .projectCard12 img,
 .projectCard13 img {
-	max-width: 100%;
-	height: 90px;
-	width: 90px;
-	display: inline-block;
-	vertical-align: middle;
-	margin: 10px;
+  max-width: 100%;
+  height: 90px;
+  width: 90px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px;
 }
 
 .projectCard1 {
-	background-color: #f3faea;
+  background-color: #f3faea;
 }
 
 .projectCard1:hover {
-	background-color: #edfdda;
-	border-color: #d8f0ba;
+  background-color: #edfdda;
+  border-color: #d8f0ba;
 }
 
 .projectCard2 {
-	background-color: #fff3f8;
+  background-color: #fff3f8;
 }
 
 .projectCard2:hover {
-	background-color: #fae7ef;
-	border-color: #fecfe2;
+  background-color: #fae7ef;
+  border-color: #fecfe2;
 }
 
 .projectCard3 {
-	background-color: #fffee9;
+  background-color: #fffee9;
 }
 
 .projectCard3:hover {
-	background-color: #fcfade;
-	border-color: #f7f3cf;
+  background-color: #fcfade;
+  border-color: #f7f3cf;
 }
 
 .projectCard4 {
-	background-color: #f6fffe;
+  background-color: #f6fffe;
 }
 
 .projectCard4:hover {
-	background-color: #eafdfc;
-	border-color: #bdfef8;
+  background-color: #eafdfc;
+  border-color: #bdfef8;
 }
 
 .projectCard5 {
-	background-color: #faf6ff;
+  background-color: #faf6ff;
 }
 
 .projectCard5:hover {
-	background-color: #f3ebfd;
-	border-color: #d8c5fc;
+  background-color: #f3ebfd;
+  border-color: #d8c5fc;
 }
 
 .projectCard6 {
-	background-color: #faedff;
+  background-color: #faedff;
 }
 
 .projectCard6:hover {
-	background-color: #f8e5ff;
-	border-color: #edc5fc;
+  background-color: #f8e5ff;
+  border-color: #edc5fc;
 }
 
 .projectCard7 {
-	background-color: #fcf7ec;
+  background-color: #fcf7ec;
 }
 
 .projectCard7:hover {
-	background-color: #fcf3e1;
-	border-color: #f1dbcc;
+  background-color: #fcf3e1;
+  border-color: #f1dbcc;
 }
 
 .projectCard8 {
-	background-color: #f4f0ff;
+  background-color: #f4f0ff;
 }
 
 .projectCard8:hover {
-	background-color: #e8e1fa;
-	border-color: #d5c8fa;
+  background-color: #e8e1fa;
+  border-color: #d5c8fa;
 }
 
 .projectCard9 {
-	background-color: #f2f8ff;
+  background-color: #f2f8ff;
 }
 
 .projectCard9:hover {
-	background-color: #dae9fa;
-	border-color: #b4d4f9;
+  background-color: #dae9fa;
+  border-color: #b4d4f9;
 }
 
 .projectCard10 {
-	background-color: #ecfff9;
+  background-color: #ecfff9;
 }
 
 .projectCard10:hover {
-	background-color: #d9f9ef;
-	border-color: #94f1d3;
+  background-color: #d9f9ef;
+  border-color: #94f1d3;
 }
 
 .projectCard11 {
-	background-color: #f5e6fd;
+  background-color: #f5e6fd;
 }
 
 .projectCard11:hover {
-	background-color: #e9d4f4;
-	border-color: #e89cf1;
+  background-color: #e9d4f4;
+  border-color: #e89cf1;
 }
 
 .projectCard12 {
-	background-color: #e8e6ff;
+  background-color: #e8e6ff;
 }
 
 .projectCard12:hover {
-	background-color: #bdb8f1;
-	border-color: #9d96e7;
+  background-color: #bdb8f1;
+  border-color: #9d96e7;
 }
 
 .projectCard13 {
-	opacity: 40%;
-	background-color: #f3f4ef;
-	border: transparent 2px solid;
+  opacity: 40%;
+  background-color: #f3f4ef;
+  border: transparent 2px solid;
 }
 
 /* .projectCard13 {
@@ -262,31 +262,31 @@
 } */
 
 @media screen and (max-width: 750px) {
-	.projectGrid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		margin: 5px;
-		padding: 10px;
-		text-align: center;
-	}
+  .projectGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+  }
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 3) {
-	.projectGrid {
-		display: grid;
-		grid-template-columns: repeat(1, 1fr);
-		margin: 5px;
-		padding: 10px;
-		text-align: center;
-	}
+  .projectGrid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+  }
 }
 
 @media only screen and (-webkit-max-device-pixel-ratio: 2) {
-	.projectGrid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		margin: 5px;
-		padding: 10px;
-		text-align: center;
-	}
+  .projectGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+  }
 }
