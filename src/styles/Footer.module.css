@@ -27,7 +27,8 @@
 }
 
 .badge img {
-  width: 380px;
+  margin-bottom: 80px;
+  width: 150px;
   max-width: 90%;
   height: auto;
 }
