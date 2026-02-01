@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <div className={styles.Footer}>
       <h3>
-        © 2025 made with{" "}
+        © 2025 crafted with{" "}
         <FontAwesomeIcon icon={faHeart} style={{ color: "#B2A4D4" }} /> by
         <Link href="https://yafira.xyz"> yafira </Link>
       </h3>
