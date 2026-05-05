@@ -10,7 +10,9 @@ import Logo9 from "../assets/ecuteui.png";
 import Logo10 from "../assets/kml.png";
 import Logo11 from "../assets/flower.png";
 import Logo12 from "../assets/ecute.png";
-import Logo13 from "../assets/iclay.png";
+import Logo13 from "../assets/softlib.png";
+import Logo14 from "../assets/ttt.png";
+import Logo15 from "../assets/iclay.png";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
@@ -23,10 +25,31 @@ export default function Container() {
       </div>
 
       <div className={styles.projectGrid}>
-        <Link href="/" className={styles.projectCard13}>
-          <Image className={styles.logo} src={Logo13} alt="project 13" />
+        <Link href="/" className={styles.projectCard15}>
+          <Image className={styles.logo} src={Logo15} alt="project 15" />
           <h3>*****</h3>
           <p>coming soon ・₊✧</p>
+        </Link>
+
+        <Link href="https://tinytinker.tools" className={styles.projectCard14}>
+          <Image className={styles.logo} src={Logo14} alt="tinytinker.tools" />
+          <h3>tinytinker.tools</h3>
+          <p>An open source handmade web toolkit for makers & tinkerers</p>
+        </Link>
+        <Link
+          href="https://months-tap-da9.craft.me/soft-circuit-lib"
+          className={styles.projectCard13}
+        >
+          <Image
+            className={styles.logo}
+            src={Logo13}
+            alt="soft circuit library"
+          />
+          <h3>soft circuit library</h3>
+          <p>
+            A collection of card-sized soft circuits housed in an archival index
+            box. Repair is dated, annotated, and made part of the object.
+          </p>
         </Link>
 
         <Link href="https://ecute.club/" className={styles.projectCard12}>
