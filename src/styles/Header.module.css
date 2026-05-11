@@ -1,48 +1,58 @@
 .Header {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-family: 'Cute Font', cursive;
-	font-size: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Cute Font", cursive;
 }
 
 .Header a {
-	text-decoration: none;
-	color: #000000;
+  text-decoration: none;
+  color: #000000;
 }
 
 .Header h1 {
-	/* padding-top: 60px;
-	padding-bottom: 10px; */
-	margin: 10px;
-	text-align: center;
-	color: #c5caef;
+  margin: 10px;
+  text-align: center;
+  color: #c5caef;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.02em;
+  white-space: nowrap;
+  margin: 0;
+  color: #c5caef;
+}
+
+.flower {
+  width: 0.1em;
+  height: 0.1em;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: inline-block;
 }
 
 @media screen and (max-width: 750px) {
-	.Header {
-		padding: 10px;
-		margin: 20px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.Header h1 {
-		font-size: 60px;
-		padding-bottom: 0;
-	}
+  .Header {
+    padding: 0;
+    margin: 0;
+  }
+  .Header h1 {
+    font-size: 60px;
+    margin: 0;
+    padding-bottom: 0;
+  }
 }
 
 @media screen and (min-width: 768px) {
-	.Header {
-		padding: 0px;
-		margin: 0px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.Header h1 {
-		font-size: 200px;
-		padding-bottom: 0;
-	}
+  .Header {
+    padding: 0;
+    margin: 0;
+  }
+  .Header h1 {
+    font-size: 200px;
+    margin: 0;
+    padding-bottom: 0;
+  }
 }
