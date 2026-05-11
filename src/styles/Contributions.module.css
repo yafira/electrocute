@@ -1,0 +1,105 @@
+.contributions {
+  max-width: 1000px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.heading {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.heading h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  text-transform: lowercase;
+  text-align: left;
+}
+
+.count {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.intro {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 0 2.5rem 0;
+  text-align: left;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-self: start;
+  padding-bottom: 1.5rem;
+}
+
+.flipbook {
+  width: 100%;
+  height: 500px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.flipbook iframe {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+}
+
+.badge {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1.5rem 0;
+}
+
+.badge img {
+  max-width: 240px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.caption {
+  text-align: left;
+}
+
+.caption h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem 0;
+  text-transform: lowercase;
+  letter-spacing: 0.01em;
+}
+
+.caption p {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .flipbook {
+    height: 400px;
+  }
+
+  .badge img {
+    max-width: 200px;
+  }
+}
