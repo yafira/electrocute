@@ -12,7 +12,7 @@ import Logo11 from "../assets/flower.png";
 import Logo12 from "../assets/ecute.png";
 import Logo13 from "../assets/softlib.png";
 import Logo14 from "../assets/ttt.png";
-import Logo15 from "../assets/iclay.png";
+import Logo15 from "../assets/tsc.png";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
