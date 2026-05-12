@@ -25,10 +25,16 @@ export default function Container() {
       </div>
 
       <div className={styles.projectGrid}>
-        <Link href="/" className={styles.projectCard15}>
-          <Image className={styles.logo} src={Logo15} alt="project 15" />
-          <h3>*****</h3>
-          <p>coming soon ・₊✧</p>
+        <Link
+          href="https://months-tap-da9.craft.me/the-soft-computer"
+          className={styles.projectCard15}
+        >
+          <Image className={styles.logo} src={Logo15} alt="the soft computer" />
+          <h3>the soft computer</h3>
+          <p>
+            a textile computing object exploring alternative interfaces and calm
+            technology, rooted in the lineage of computation as craft.
+          </p>
         </Link>
 
         <Link href="https://tinytinker.tools" className={styles.projectCard14}>
