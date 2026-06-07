@@ -72,7 +72,8 @@
 .projectCard12,
 .projectCard13,
 .projectCard14,
-.projectCard15 {
+.projectCard15,
+.projectCard16 {
   padding: 10px;
   text-align: center;
   border: transparent 3px solid;
@@ -93,7 +94,8 @@
 .projectCard12 img,
 .projectCard13 img,
 .projectCard14 img,
-.projectCard15 img {
+.projectCard15 img,
+.projectCard16 img {
   max-width: 100%;
   height: 90px;
   width: 90px;
@@ -237,35 +239,25 @@
   border-color: #d6dbc3;
 }
 
-/*
-
 .projectCard16 {
+  background-color: #c0c1de;
+}
+
+.projectCard16:hover {
+  background-color: #b0b2df;
+  border-color: #8c90f3;
+}
+
+/*
+.projectCard17 {
   opacity: 40%;
   background-color: #f3f4ef;
   border: transparent 2px solid;
 }
 
-.projectCard16 {
-	background-color: #f9fee6;
-}
-
-.projectCard16:hover {
-	background-color: #f2fad8;
-	border-color: #e9fca2;
-}
-.projectCard17 {
-	background-color: #f1f3fe;
-	border: transparent 2px solid;
-}
 .projectCard17:hover {
 	background-color: #e3e5ef;
 	border-color: #a2aadb;
-}
-
-.projectCard20 {
-	opacity: 40%;
-	background-color: #f3f4ef;
-	border: transparent 2px solid;
 } */
 
 @media screen and (max-width: 750px) {
