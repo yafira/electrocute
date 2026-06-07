@@ -13,6 +13,7 @@ import Logo12 from "../assets/ecute.png";
 import Logo13 from "../assets/softlib.png";
 import Logo14 from "../assets/ttt.png";
 import Logo15 from "../assets/tsc.png";
+import Logo16 from "../assets/petalbyte.png";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
@@ -25,6 +26,18 @@ export default function Container() {
       </div>
 
       <div className={styles.projectGrid}>
+        <Link
+          href="https://months-tap-da9.craft.me/LhW3v00Ntsp99F"
+          className={styles.projectCard16}
+        >
+          <Image className={styles.logo} src={Logo16} alt="petalbyte" />
+          <h3>petalbyte</h3>
+          <p>
+            a portable USB drive as archive and interface, holding personal
+            corpora and poetic fragments generated from electronic text.
+          </p>
+        </Link>
+
         <Link href="https://thesoft.computer/" className={styles.projectCard15}>
           <Image className={styles.logo} src={Logo15} alt="the soft computer" />
           <h3>the soft computer</h3>
