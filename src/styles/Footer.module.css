@@ -1,13 +1,14 @@
+.Footer {
+  margin-top: auto;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
 .Footer h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 200;
   color: black;
-  height: 55px;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  position: fixed;
-  text-align: center;
+  margin: 0;
   padding-top: 10px;
 }
 
@@ -27,7 +28,6 @@
 }
 
 .badge img {
-  margin-bottom: 80px;
   width: 150px;
   max-width: 90%;
   height: auto;
@@ -35,7 +35,6 @@
 
 @media screen and (max-width: 750px) {
   .Footer h3 {
-    position: relative;
     font-size: 13px;
   }
 }
