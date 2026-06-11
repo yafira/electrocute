@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Icons from "@/components/Icons";
 import Header from "@/components/Header";
 import Contributions from "../components/Contributions";
 import Footer from "@/components/Footer";
@@ -14,7 +13,6 @@ export default function Home({ posts }) {
       </Head>
       <Header />
       <Container />
-      <Icons />
       <Contributions />
       <Footer />
     </div>

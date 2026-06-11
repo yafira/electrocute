@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.Contact {
+  width: 100%;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.card {
+  background: #c5caef;
+  padding: 2rem 2.25rem;
+}
+
+.card h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  overflow-wrap: break-word;
+}
+
+.card a,
+.card a:visited {
+  text-decoration: none !important;
+  color: inherit;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.card a:hover {
+  border-color: #000;
+}
+
+@media (max-width: 600px) {
+  .Contact {
+    padding: 1.25rem 1rem 3rem;
+  }
+
+  .card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .card h1 {
+    font-size: 1.35rem;
+  }
+}

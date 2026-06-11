@@ -10,11 +10,13 @@ import pinterest from "../assets/pin.png";
 import email from "../assets/email.png";
 import online from "../assets/globe.png";
 
-export default function Icons() {
+export default function Icons({ size = 25 }) {
+  const large = size * 1.2;
+
   return (
     <div className={styles.Icons}>
       <Link href="http://blog.electrocute.io/" title="blog" aria-label="blog">
-        <Image src={pen} alt="" width={25} height={25} aria-hidden="true" />
+        <Image src={pen} alt="" width={size} height={size} aria-hidden="true" />
       </Link>
       <Link
         href="https://electrocute.substack.com/"
@@ -24,41 +26,53 @@ export default function Icons() {
         <Image
           src={substack}
           alt=""
-          width={25}
-          height={25}
+          width={size}
+          height={size}
           aria-hidden="true"
         />
       </Link>
       <Link href="https://github.com/Yafira" title="github" aria-label="github">
-        <Image src={github} alt="" width={25} height={25} aria-hidden="true" />
+        <Image
+          src={github}
+          alt=""
+          width={size}
+          height={size}
+          aria-hidden="true"
+        />
       </Link>
       <Link
         href="https://www.instagram.com/electrocutelab/"
         title="instagram"
         aria-label="instagram"
       >
-        <Image src={ig} alt="" width={25} height={25} aria-hidden="true" />
+        <Image src={ig} alt="" width={size} height={size} aria-hidden="true" />
       </Link>
       <Link
         href="https://yafira.xyz/"
         title="electrocute-online"
         aria-label="personal website"
       >
-        <Image src={online} alt="" width={25} height={25} aria-hidden="true" />
+        <Image
+          src={online}
+          alt=""
+          width={size}
+          height={size}
+          aria-hidden="true"
+        />
       </Link>
       <Link
         href="https://www.figma.com/@electrocute"
         title="figma"
         aria-label="figma"
       >
-        <Image src={fig} alt="" width={25} height={25} aria-hidden="true" />
+        <Image src={fig} alt="" width={size} height={size} aria-hidden="true" />
       </Link>
       <Link href="https://www.are.na/yafira/" title="arena" aria-label="are.na">
         <Image
           src="https://goligorsky.neocities.org/logo-arena.svg"
           alt=""
-          width={30}
-          height={30}
+          width={large}
+          height={large}
           aria-hidden="true"
         />
       </Link>
@@ -70,17 +84,23 @@ export default function Icons() {
         <Image
           src={pinterest}
           alt=""
-          width={25}
-          height={25}
+          width={size}
+          height={size}
           aria-hidden="true"
         />
       </Link>
       <Link
-        href="mailto:electrocutelab@gmail.com"
+        href="mailto:electrocutelab@protonmail.com"
         title="email"
         aria-label="email"
       >
-        <Image src={email} alt="" width={30} height={30} aria-hidden="true" />
+        <Image
+          src={email}
+          alt=""
+          width={size * 1.2}
+          height={size * 1.2}
+          aria-hidden="true"
+        />
       </Link>
     </div>
   );

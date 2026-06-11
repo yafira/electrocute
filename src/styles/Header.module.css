@@ -1,5 +1,6 @@
 .Header {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: "Cute Font", cursive;
@@ -31,6 +32,26 @@
   object-fit: contain;
   flex-shrink: 0;
   display: inline-block;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.nav a {
+  font-size: 1.1rem;
+  padding: 0.35rem 1.1rem;
+  background: #c5caef;
+  border-radius: 999px;
+  color: #000000;
+  transition: background 0.15s ease;
+}
+
+.nav a:hover {
+  background: #f9e0ec;
 }
 
 @media screen and (max-width: 750px) {
