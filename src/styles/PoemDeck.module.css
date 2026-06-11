@@ -1,0 +1,293 @@
+.deck {
+  position: fixed;
+  top: max(18vh, 70px);
+  left: max(16px, calc(50% - 175px));
+  width: min(350px, calc(100vw - 32px));
+  background: #c5caef;
+  border: 3px solid #000;
+  border-radius: 30px 22px 34px 22px;
+  box-shadow:
+    8px 8px 0 rgba(0, 0, 0, 0.85),
+    0 18px 40px rgba(125, 115, 180, 0.35);
+  z-index: 100;
+  transition: background 0.35s ease;
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem;
+  background: #f9e0ec;
+  border-bottom: 3px solid #000;
+  border-radius: 27px 19px 0 0;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  transition: background 0.35s ease;
+}
+
+.titlebar:active {
+  cursor: grabbing;
+}
+
+.led {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #9df1c8;
+  border: 1.5px solid #000;
+  animation: ledblink 3.5s ease-in-out infinite;
+  transition: background 0.35s ease;
+}
+
+@keyframes ledblink {
+  0%,
+  92%,
+  100% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 0.35;
+  }
+}
+
+.title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  flex: 1;
+  transition: color 0.35s ease;
+}
+
+.close {
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 0.7rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.close:hover {
+  background: #fbf8d0;
+  transform: rotate(90deg);
+}
+
+.screen {
+  margin: 1rem 1rem 0.75rem;
+  background: #f4f3ec;
+  border: 3px solid #000;
+  border-radius: 14px 14px 18px 10px;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.1rem;
+  box-shadow: inset 2px 3px 0 rgba(0, 0, 0, 0.08);
+  transition: background 0.35s ease;
+}
+
+.line {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  text-align: center;
+  max-width: 24ch;
+  animation: inkIn 0.7s ease both;
+}
+
+@keyframes inkIn {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.1rem 0.4rem;
+}
+
+.dialCluster {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dial {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fbf8d0;
+  border: 2.5px solid #000;
+  position: relative;
+}
+
+.dial::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  width: 2px;
+  height: 7px;
+  background: #000;
+  transform: translateX(-50%) rotate(35deg);
+  transform-origin: bottom center;
+}
+
+.dialSmall {
+  width: 15px;
+  height: 15px;
+  background: #f9e0ec;
+}
+
+.dialSmall::after {
+  height: 5px;
+  transform: translateX(-50%) rotate(-60deg);
+}
+
+.key {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.45rem 1.2rem;
+  background: #fbf8d0;
+  border: 3px solid #000;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #000;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease,
+    background 0.35s ease,
+    color 0.35s ease;
+}
+
+.key:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 #000;
+}
+
+.key:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #000;
+}
+
+.sideCluster {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.modeSwitch {
+  width: 30px;
+  height: 13px;
+  border: 2px solid #000;
+  border-radius: 999px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 1px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.modeNub {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c5caef;
+  border: 1.5px solid #000;
+  margin-left: 1px;
+  transition:
+    margin-left 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background 0.2s ease;
+}
+
+.modeVoid {
+  background: #2b2733;
+}
+
+.modeVoid .modeNub {
+  margin-left: 15px;
+  background: #9d8fd6;
+}
+
+.grille {
+  display: grid;
+  grid-template-columns: repeat(3, 5px);
+  gap: 3px;
+}
+
+.grille span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.credit {
+  margin: 0;
+  padding: 0.45rem 1.1rem 0.85rem;
+  font-size: 0.68rem;
+  text-align: center;
+  opacity: 0.65;
+  transition: color 0.35s ease;
+}
+
+.credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---------- void mode ---------- */
+
+.void {
+  background: #38324a;
+}
+
+.void .titlebar {
+  background: #4a4060;
+}
+
+.void .title {
+  color: #e8e2f7;
+}
+
+.void .led {
+  background: #b18cf2;
+}
+
+.void .screen {
+  background: #1d1a26;
+  box-shadow: inset 2px 3px 0 rgba(0, 0, 0, 0.4);
+}
+
+.void .line {
+  color: #cfc6ee;
+}
+
+.void .key {
+  background: #2b2733;
+  color: #e8e2f7;
+}
+
+.void .credit {
+  color: #b7aed6;
+}

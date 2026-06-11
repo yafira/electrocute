@@ -175,3 +175,20 @@
   cursor: pointer;
   max-width: 100%;
 }
+
+.poetronics {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  color: #8f89b5;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.poetronics:hover {
+  border-color: #c5caef;
+}
