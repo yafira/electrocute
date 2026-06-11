@@ -34,15 +34,16 @@ export default function About() {
           </p>
           <p>
             I&apos;m happiest somewhere between a soldering iron and a blinking
-            cursor — art, design, science, technology, and writing have all
-            pulled at me since I was small. Hardware is where my curiosity runs
-            deepest: laying out a circuit, coaxing a microcontroller into doing
-            something it wasn&apos;t quite meant to do, then fabricating it a
-            soft body to live in. I gravitate toward slow, calm technology — I
-            like to call it poetronics: electronics with the sensibility of a
-            poem. I&apos;ve always had a heightened sense for detail, for
-            textures and colors and how things feel in your hands. I believe
-            machines can be tender.
+            cursor. I was a STEAM kid before the term existed — art and science
+            never felt like separate rooms to me. Software is where I started,
+            but lately hardware is where my curiosity runs deepest: laying out a
+            circuit, coaxing a microcontroller into doing something it
+            wasn&apos;t quite meant to do, then fabricating it a soft body to
+            live in. I like the middle of the two. I gravitate toward slow, calm
+            technology — I like to call it poetronics: electronics with the
+            sensibility of a poem. I&apos;ve always had a heightened sense for
+            detail, for textures and colors and how things feel in your hands. I
+            believe machines can be tender.
           </p>
         </section>
 
