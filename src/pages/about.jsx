@@ -51,13 +51,13 @@ export default function About() {
           <h2>the lab</h2>
           <p>
             Electrocute Lab is my independent practice and the home of this site
-            — and the name is a little confession. In person I&apos;m quiet,
-            calm, sometimes shy. Electrocute is my most vibrant self: the
-            current that runs underneath, finally given somewhere to go. The
-            name has been with me since 2015, but only in the past five years
-            did it become the work itself: soft circuits, playful hardware,
-            generative text, and small open-source tools, mixing technology with
-            craft traditions.
+            — and the name is a little spell. IRL I&apos;m quiet, calm,
+            sometimes shy. Electrocute is everything glowing underneath: the
+            brighter frequency I broadcast on, the static finally finding its
+            signal. The name has been with me since 2015, waiting like a seed —
+            and over the past five years it bloomed into the work itself: soft
+            circuits, playful hardware, generative text, and small open-source
+            tools, where technology learns manners from craft.
           </p>
           <p>
             Always learning — a new fabrication technique, an unfamiliar
