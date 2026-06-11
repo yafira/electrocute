@@ -21,6 +21,27 @@
   font-weight: 300;
 }
 
+.Footer svg {
+  animation: heartbeat 4s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%,
+  90%,
+  100% {
+    transform: scale(1);
+  }
+  93% {
+    transform: scale(1.18);
+  }
+  96% {
+    transform: scale(1);
+  }
+  98% {
+    transform: scale(1.12);
+  }
+}
+
 .badge {
   margin-top: 1rem;
   display: flex;
