@@ -1,10 +1,14 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PoemDeck from "@/components/PoemDeck";
 import styles from "@/styles/About.module.css";
 
 export default function About() {
+  const [deckOpen, setDeckOpen] = useState(false);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,6 +16,11 @@ export default function About() {
         <meta
           name="description"
           content="yafira is a design engineer and creative technologist building soft machines at electrocute lab in nyc."
+        />
+        <meta property="og:title" content="about — electrocute" />
+        <meta
+          property="og:description"
+          content="design engineer and creative technologist building soft machines in nyc."
         />
       </Head>
 
@@ -40,10 +49,16 @@ export default function About() {
             circuit, coaxing a microcontroller into doing something it
             wasn&apos;t quite meant to do, then fabricating it a soft body to
             live in. I like the middle of the two. I gravitate toward slow, calm
-            technology — I like to call it poetronics: electronics with the
-            sensibility of a poem. I&apos;ve always had a heightened sense for
-            detail, for textures and colors and how things feel in your hands. I
-            believe machines can be tender.
+            technology — I like to call it{" "}
+            <button
+              className={styles.poetronics}
+              onClick={() => setDeckOpen(true)}
+            >
+              poetronics
+            </button>
+            : electronics with the sensibility of a poem. I&apos;ve always had a
+            heightened sense for detail, for textures and colors and how things
+            feel in your hands. I believe machines can be tender.
           </p>
         </section>
 
@@ -121,6 +136,8 @@ export default function About() {
       </main>
 
       <Footer />
+
+      {deckOpen && <PoemDeck onClose={() => setDeckOpen(false)} />}
     </div>
   );
 }
