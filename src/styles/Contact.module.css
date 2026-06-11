@@ -14,6 +14,14 @@
 .card {
   background: #c5caef;
   padding: 2rem 2.25rem;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(125, 115, 180, 0.18);
 }
 
 .card h1 {
