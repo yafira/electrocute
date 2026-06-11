@@ -131,3 +131,47 @@
     line-height: 1.7;
   }
 }
+
+.lost {
+  text-align: center;
+  padding-top: 3rem;
+}
+
+.lost h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.bigFlower {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  animation: slowspin 14s linear infinite;
+}
+
+@keyframes slowspin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 2.5rem;
+}
+
+.lost h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.25rem;
+}
+
+.voidCanvas {
+  border-radius: 4px;
+  cursor: pointer;
+  max-width: 100%;
+}
