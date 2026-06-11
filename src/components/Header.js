@@ -11,6 +11,10 @@ export default function Header() {
           <span>io</span>
         </h1>
       </Link>
+      <nav className={styles.nav}>
+        <Link href="/about">about</Link>
+        <Link href="/contact">contact</Link>
+      </nav>
     </div>
   );
 }

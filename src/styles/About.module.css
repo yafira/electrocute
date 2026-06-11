@@ -1,0 +1,114 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.About {
+  width: 100%;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.intro {
+  padding: 0 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.intro h1 {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3em;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.flower {
+  width: 0.8em;
+  height: 0.8em;
+  object-fit: contain;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.flowerSmall {
+  width: 0.75em;
+  height: 0.75em;
+  object-fit: contain;
+  display: inline-block;
+  margin-left: 0.3em;
+  vertical-align: baseline;
+  flex-shrink: 0;
+}
+
+.About p {
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  overflow-wrap: break-word;
+}
+
+.About p:last-of-type {
+  margin-bottom: 0;
+}
+
+.card {
+  padding: 2rem 2.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.card h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.85rem;
+}
+
+.lavender {
+  background: #c5caef;
+}
+
+.cream {
+  background: #efefe9;
+}
+
+.butter {
+  background: #fbf8d0;
+}
+
+.About a,
+.About a:visited {
+  text-decoration: none !important;
+  color: inherit;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.About a:hover {
+  border-color: #c5caef;
+}
+
+@media (max-width: 600px) {
+  .About {
+    padding: 1.25rem 1rem 3rem;
+  }
+
+  .intro {
+    padding: 0 0.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .intro h1 {
+    font-size: 1.35rem;
+  }
+
+  .card {
+    padding: 1.5rem 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .About p {
+    line-height: 1.7;
+  }
+}

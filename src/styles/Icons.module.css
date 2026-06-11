@@ -1,27 +1,30 @@
 .Icons {
-	padding: 60px 0px;
-	display: flex;
-	justify-content: center;
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	transition: all 0.3s ease 0s;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
 }
 
 .Icons a,
 .Icons Image {
-	margin: 0 6px;
-	text-decoration: none;
+  margin: 0 6px;
+  text-decoration: none;
 }
 
 .Icons a:hover {
-	transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+
+@media (max-width: 600px) {
+  .Icons {
+    gap: 0.85rem;
+  }
 }
 
 @media screen and (max-width: 750px) {
-	.Icons {
-		position: relative;
-		padding-bottom: 0px;
-	}
+  .Icons {
+    position: relative;
+    padding-bottom: 0px;
+  }
 }
