@@ -229,6 +229,7 @@ export default function PoemDeck({ onClose }) {
   const [mode, setMode] = useState("soft");
   const [line, setLine] = useState(() => flatten("soft"));
   const [tick, setTick] = useState(0);
+  const [copied, setCopied] = useState(false);
   const dragControls = useDragControls();
 
   const generate = () => {
@@ -241,6 +242,92 @@ export default function PoemDeck({ onClose }) {
     setMode(next);
     setLine(flatten(next));
     setTick((t) => t + 1);
+  };
+
+  const copyPoem = async () => {
+    try {
+      await navigator.clipboard.writeText(line);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1200);
+    } catch {
+      /* clipboard unavailable — fail quietly */
+    }
+  };
+
+  const printReceipt = () => {
+    const W = 380;
+    const pad = 28;
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    // wrap the poem to fit
+    ctx.font = "16px Courier, monospace";
+    const words = line.split(" ");
+    const lines = [];
+    let cur = "";
+    for (const w of words) {
+      const test = cur ? `${cur} ${w}` : w;
+      if (ctx.measureText(test).width > W - pad * 2) {
+        lines.push(cur);
+        cur = w;
+      } else cur = test;
+    }
+    if (cur) lines.push(cur);
+
+    const lineH = 24;
+    const H = 210 + lines.length * lineH;
+    canvas.width = W * 2;
+    canvas.height = H * 2;
+    ctx.scale(2, 2);
+
+    // paper
+    ctx.fillStyle = "#f7f5ee";
+    ctx.fillRect(0, 0, W, H);
+
+    const dotted = (y) => {
+      ctx.strokeStyle = "#999";
+      ctx.setLineDash([3, 4]);
+      ctx.beginPath();
+      ctx.moveTo(pad, y);
+      ctx.lineTo(W - pad, y);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    };
+
+    ctx.fillStyle = "#1a1a1a";
+    ctx.textAlign = "center";
+
+    ctx.font = "bold 15px Courier, monospace";
+    ctx.fillText("poetronics://", W / 2, 44);
+    ctx.font = "11px Courier, monospace";
+    ctx.fillText("electrocute lab · pocket deck", W / 2, 62);
+    dotted(78);
+
+    ctx.font = "16px Courier, monospace";
+    lines.forEach((l, i) => {
+      ctx.fillText(l, W / 2, 112 + i * lineH);
+    });
+
+    const footY = 112 + lines.length * lineH + 14;
+    dotted(footY);
+    ctx.font = "11px Courier, monospace";
+    const stamp = new Date().toLocaleString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    });
+    ctx.fillText(`${stamp} · mode: ${mode}`, W / 2, footY + 24);
+    ctx.fillText("✿ keep what matters ✿", W / 2, footY + 44);
+    ctx.font = "10px Courier, monospace";
+    ctx.fillStyle = "#777";
+    ctx.fillText("no refunds on poems", W / 2, footY + 66);
+
+    const a = document.createElement("a");
+    a.download = `poetronics-${Date.now()}.png`;
+    a.href = canvas.toDataURL("image/png");
+    a.click();
   };
 
   useEffect(() => {
@@ -279,8 +366,14 @@ export default function PoemDeck({ onClose }) {
       </div>
 
       <div className={styles.screen}>
-        <p key={tick} className={styles.line} aria-live="polite">
-          {line}
+        <p
+          key={tick}
+          className={`${styles.line} ${copied ? styles.copied : ""}`}
+          aria-live="polite"
+          onClick={copyPoem}
+          title="click to copy"
+        >
+          {copied ? "saved to memory ✿" : line}
         </p>
       </div>
 
@@ -290,9 +383,19 @@ export default function PoemDeck({ onClose }) {
           <span className={`${styles.dial} ${styles.dialSmall}`} />
         </div>
 
-        <button className={styles.key} onClick={generate}>
-          brew ✿
-        </button>
+        <div className={styles.keyCluster}>
+          <button className={styles.key} onClick={generate}>
+            brew ✿
+          </button>
+          <button
+            className={`${styles.key} ${styles.printKey}`}
+            onClick={printReceipt}
+            aria-label="print poem as receipt"
+            title="print receipt"
+          >
+            ⎙
+          </button>
+        </div>
 
         <div className={styles.sideCluster}>
           <button
