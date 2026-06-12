@@ -230,7 +230,30 @@ export default function PoemDeck({ onClose }) {
   const [line, setLine] = useState(() => flatten("soft"));
   const [tick, setTick] = useState(0);
   const [copied, setCopied] = useState(false);
+  const [dialClicks, setDialClicks] = useState(0);
   const dragControls = useDragControls();
+
+  // the only fixed text the machine knows — dealt in order, one per ritual.
+  const FORTUNES = [
+    "you were always the current. the machines just gave you somewhere to go.",
+    "the softest things are the hardest to break.",
+    "save what matters. delete gently. boot again tomorrow.",
+    "somewhere, a machine you made is still humming your name.",
+    "the void is just a room with the lights off. knit it a lamp.",
+  ];
+  const [fortuneIndex, setFortuneIndex] = useState(0);
+
+  const turnDial = () => {
+    const n = dialClicks + 1;
+    if (n >= 4) {
+      setLine(FORTUNES[fortuneIndex % FORTUNES.length]);
+      setFortuneIndex((i) => i + 1);
+      setTick((t) => t + 1);
+      setDialClicks(0);
+    } else {
+      setDialClicks(n);
+    }
+  };
 
   const generate = () => {
     setLine(flatten(mode));
@@ -378,9 +401,17 @@ export default function PoemDeck({ onClose }) {
       </div>
 
       <div className={styles.controls}>
-        <div className={styles.dialCluster} aria-hidden="true">
-          <span className={styles.dial} />
-          <span className={`${styles.dial} ${styles.dialSmall}`} />
+        <div className={styles.dialCluster}>
+          <button
+            className={styles.dial}
+            onClick={turnDial}
+            aria-label="dial"
+            style={{ transform: `rotate(${dialClicks * 90}deg)` }}
+          />
+          <span
+            className={`${styles.dial} ${styles.dialSmall}`}
+            aria-hidden="true"
+          />
         </div>
 
         <div className={styles.keyCluster}>
