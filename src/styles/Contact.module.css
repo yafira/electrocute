@@ -33,8 +33,7 @@
 .card p {
   line-height: 1.75;
   margin-bottom: 1rem;
-  max-width: 35ch;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .card a,
@@ -66,6 +65,5 @@
   .card p {
     font-size: 0.95rem;
     line-height: 1.7;
-    max-width: 34ch;
   }
 }
