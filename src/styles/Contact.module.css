@@ -8,12 +8,12 @@
   width: 100%;
   max-width: 44rem;
   margin: 0 auto;
-  padding: 2rem 1.25rem 4rem;
+  padding: 2rem 1.5rem 4rem;
 }
 
 .card {
   background: #c5caef;
-  padding: 2rem 2.25rem;
+  padding: 2rem;
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
@@ -33,7 +33,8 @@
 .card p {
   line-height: 1.75;
   margin-bottom: 1rem;
-  overflow-wrap: break-word;
+  max-width: 35ch;
+  overflow-wrap: anywhere;
 }
 
 .card a,
@@ -51,14 +52,20 @@
 
 @media (max-width: 600px) {
   .Contact {
-    padding: 1.25rem 1rem 3rem;
+    padding: 1rem 1.25rem 2.5rem;
   }
 
   .card {
-    padding: 1.5rem 1.25rem;
+    padding: 1.5rem;
   }
 
   .card h1 {
     font-size: 1.35rem;
+  }
+
+  .card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 34ch;
   }
 }
