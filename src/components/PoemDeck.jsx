@@ -233,7 +233,6 @@ export default function PoemDeck({ onClose }) {
   const [dialClicks, setDialClicks] = useState(0);
   const dragControls = useDragControls();
 
-  // the only fixed text the machine knows — dealt in order, one per ritual.
   const FORTUNES = [
     "you were always the current. the machines just gave you somewhere to go.",
     "the softest things are the hardest to break.",
@@ -283,7 +282,6 @@ export default function PoemDeck({ onClose }) {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
 
-    // wrap the poem to fit
     ctx.font = "16px Courier, monospace";
     const words = line.split(" ");
     const lines = [];
@@ -303,7 +301,6 @@ export default function PoemDeck({ onClose }) {
     canvas.height = H * 2;
     ctx.scale(2, 2);
 
-    // paper
     ctx.fillStyle = "#f7f5ee";
     ctx.fillRect(0, 0, W, H);
 
