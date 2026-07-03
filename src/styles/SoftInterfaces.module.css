@@ -1,0 +1,372 @@
+@font-face {
+  font-family: "Departure Mono";
+  src: url("/fonts/DepartureMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.page {
+  --ink: #2b2140;
+  --paper: #f7f4fc;
+  --grid: #e3daf2;
+  --blush: #ffd4e0;
+  --sky: #cfe4ff;
+  --mint: #cdeedd;
+  --butter: #fff0b8;
+  --display: "Departure Mono", monospace;
+  --body: "IBM Plex Mono", monospace;
+
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: var(--body);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  padding: 4rem 1.5rem 8rem;
+}
+
+/* header */
+
+.header {
+  max-width: 60rem;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  margin: 0 0 1rem;
+}
+
+.title {
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 8vw, 5.5rem);
+  line-height: 1;
+  margin: 0 0 1.25rem;
+  text-transform: lowercase;
+}
+
+.tagline {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  line-height: 1.6;
+  max-width: 34rem;
+  margin: 0 auto 1rem;
+}
+
+.hint {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  margin: 0;
+  opacity: 0.7;
+}
+
+/* the wall */
+
+.wall {
+  max-width: 66rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 2.5rem 2rem;
+  padding: 1rem;
+}
+
+.swatch {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 7px 7px 0 var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: visible;
+  font-family: inherit;
+  color: inherit;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+/* stitched thread border */
+
+.swatch::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 2px dashed var(--ink);
+  border-radius: 8px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* collage scatter */
+
+.wall .swatch:nth-child(6n + 1) {
+  transform: rotate(-2.5deg);
+}
+.wall .swatch:nth-child(6n + 2) {
+  transform: rotate(1.5deg) translateY(10px);
+}
+.wall .swatch:nth-child(6n + 3) {
+  transform: rotate(-1deg) translateY(-6px);
+}
+.wall .swatch:nth-child(6n + 4) {
+  transform: rotate(2.5deg);
+}
+.wall .swatch:nth-child(6n + 5) {
+  transform: rotate(-1.75deg) translateY(12px);
+}
+.wall .swatch:nth-child(6n + 6) {
+  transform: rotate(1deg) translateY(-8px);
+}
+
+.wall .swatch:hover,
+.wall .swatch:focus-visible,
+.wall .swatchActive {
+  transform: rotate(0deg) translateY(-6px) scale(1.04);
+  box-shadow: 10px 12px 0 var(--ink);
+  z-index: 2;
+}
+
+.swatch:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 4px;
+}
+
+/* pin head */
+
+.pin {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 3px solid var(--paper);
+  box-shadow: 0 0 0 2px var(--ink);
+  z-index: 3;
+}
+
+/* swatch contents */
+
+.glyph {
+  font-family: var(--display);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  opacity: 0.85;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* name tag, revealed on hover and focus */
+
+.tag {
+  position: absolute;
+  left: 50%;
+  bottom: -1.1rem;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  white-space: nowrap;
+  max-width: 130%;
+  overflow: hidden;
+  font-size: 0.72rem;
+  opacity: 0;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.tagName {
+  font-family: var(--display);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tagYear {
+  opacity: 0.6;
+}
+
+.swatch:hover .tag,
+.swatch:focus-visible .tag,
+.swatchActive .tag {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* tints */
+
+.blush {
+  background-color: var(--blush);
+}
+.sky {
+  background-color: var(--sky);
+}
+.mint {
+  background-color: var(--mint);
+}
+.butter {
+  background-color: var(--butter);
+}
+
+/* museum label, docked bottom left */
+
+.label {
+  position: fixed;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  max-width: 26rem;
+  width: calc(100% - 2.5rem);
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 8px 8px 0 var(--ink);
+  display: flex;
+  overflow: hidden;
+  z-index: 10;
+  animation: labelIn 220ms ease;
+}
+
+@keyframes labelIn {
+  from {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.labelBar {
+  width: 14px;
+  flex-shrink: 0;
+  border-right: 3px solid var(--ink);
+}
+
+.labelBody {
+  padding: 1rem 1.1rem 1.1rem;
+  min-width: 0;
+}
+
+.labelHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.labelName {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  line-height: 1.25;
+  margin: 0 0 0.4rem;
+}
+
+.close {
+  background: none;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  width: 1.7rem;
+  height: 1.7rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.8rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
+
+.close:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.labelMeta {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+  margin: 0 0 0.6rem;
+}
+
+.labelBlurb {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0 0 0.6rem;
+}
+
+.labelLink {
+  font-family: var(--display);
+  font-size: 0.85rem;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* footer */
+
+.footer {
+  max-width: 60rem;
+  margin: 5rem auto 0;
+  text-align: center;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* small screens */
+
+@media (max-width: 560px) {
+  .page {
+    padding: 3rem 1rem 10rem;
+  }
+
+  .wall {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.25rem;
+  }
+
+  .label {
+    left: 0.75rem;
+    bottom: 0.75rem;
+    width: calc(100% - 1.5rem);
+  }
+}
+
+/* reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .swatch,
+  .tag {
+    transition: none;
+  }
+
+  .label {
+    animation: none;
+  }
+}

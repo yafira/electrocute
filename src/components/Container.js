@@ -1,19 +1,3 @@
-import Logo from "../assets/cutetech.png";
-import Logo2 from "../assets/snax.png";
-import Logo3 from "../assets/calc.png";
-import Logo4 from "../assets/cutefolder.png";
-import Logo5 from "../assets/bag.png";
-import Logo6 from "../assets/chub.png";
-import Logo7 from "../assets/dhub.png";
-import Logo8 from "../assets/led.png";
-import Logo9 from "../assets/ecuteui.png";
-import Logo10 from "../assets/kml.png";
-import Logo11 from "../assets/flower.png";
-import Logo12 from "../assets/ecute.png";
-import Logo13 from "../assets/softlib.png";
-import Logo14 from "../assets/ttt.png";
-import Logo15 from "../assets/tsc.png";
-import Logo16 from "../assets/petalbyte.png";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
@@ -26,11 +10,47 @@ export default function Container() {
       </div>
 
       <div className={styles.projectGrid}>
+        <Link href="/soft-interfaces" className={styles.projectCard18}>
+          <Image
+            className={styles.logo}
+            src="/assets/s_i.png"
+            alt="soft interfaces"
+            width={50}
+            height={50}
+          />
+          <h3>soft interfaces</h3>
+          <p>
+            a physical swatch wall of soft machines, textile circuits, and
+            tangible interfaces built at electrocute lab.
+          </p>
+        </Link>
+
+        <Link href="/hyperlinks" className={styles.projectCard17}>
+          <Image
+            className={styles.logo}
+            src="/assets/edex.png"
+            alt="electrodex"
+            width={50}
+            height={50}
+          />
+          <h3>electrodex</h3>
+          <p>
+            a directory of creative spaces, physical communities, and digital
+            niches in nyc & beyond.
+          </p>
+        </Link>
+
         <Link
           href="https://months-tap-da9.craft.me/LhW3v00Ntsp99F"
           className={styles.projectCard16}
         >
-          <Image className={styles.logo} src={Logo16} alt="petalbyte" />
+          <Image
+            className={styles.logo}
+            src="/assets/petalbyte.png"
+            alt="petalbyte"
+            width={50}
+            height={50}
+          />
           <h3>petalbyte</h3>
           <p>
             a portable USB drive as archive and interface, holding personal
@@ -39,7 +59,13 @@ export default function Container() {
         </Link>
 
         <Link href="https://thesoft.computer/" className={styles.projectCard15}>
-          <Image className={styles.logo} src={Logo15} alt="the soft computer" />
+          <Image
+            className={styles.logo}
+            src="/assets/sc.png"
+            alt="the soft computer"
+            width={50}
+            height={50}
+          />
           <h3>the soft computer</h3>
           <p>
             a textile computing object exploring alternative interfaces and calm
@@ -48,7 +74,13 @@ export default function Container() {
         </Link>
 
         <Link href="https://tinytinker.tools" className={styles.projectCard14}>
-          <Image className={styles.logo} src={Logo14} alt="tinytinker.tools" />
+          <Image
+            className={styles.logo}
+            src="/assets/ttt.png"
+            alt="tinytinker.tools"
+            width={50}
+            height={50}
+          />
           <h3>tinytinker.tools</h3>
           <p>An open source handmade web toolkit for makers & tinkerers</p>
         </Link>
@@ -58,8 +90,10 @@ export default function Container() {
         >
           <Image
             className={styles.logo}
-            src={Logo13}
+            src="/assets/softlib.png"
             alt="soft circuit library"
+            width={50}
+            height={50}
           />
           <h3>soft circuit library</h3>
           <p>
@@ -69,7 +103,13 @@ export default function Container() {
         </Link>
 
         <Link href="https://ecute.club/" className={styles.projectCard12}>
-          <Image className={styles.logo} src={Logo12} alt="project 12" />
+          <Image
+            className={styles.logo}
+            src="/assets/ecute.png"
+            alt="project 12"
+            width={50}
+            height={50}
+          />
           <h3>ecute club</h3>
           <p>A soft start guide to electronics.</p>
         </Link>
@@ -78,7 +118,13 @@ export default function Container() {
           href="https://synthwave-chimes.netlify.app/"
           className={styles.projectCard11}
         >
-          <Image className={styles.logo} src={Logo11} alt="project 11" />
+          <Image
+            className={styles.logo}
+            src="/assets/flower.png"
+            alt="project 11"
+            width={50}
+            height={50}
+          />
           <h3>synthwave chimes</h3>
           <p>
             A digital synth chime that blends shapes with interactive sound.
@@ -89,7 +135,13 @@ export default function Container() {
           href="https://www.figma.com/community/file/1282166884816539041/Kawaii-ML-Deck"
           className={styles.projectCard10}
         >
-          <Image className={styles.logo} src={Logo10} alt="project 10" />
+          <Image
+            className={styles.logo}
+            src="/assets/kml.png"
+            alt="project 10"
+            width={50}
+            height={50}
+          />
           <h3>kawaii ML</h3>
           <p>A card deck referencing the top 10 machine learning algorithms.</p>
         </Link>
@@ -98,7 +150,13 @@ export default function Container() {
           href="https://www.figma.com/community/file/1277066355478459322/Electrocute-Design-System"
           className={styles.projectCard9}
         >
-          <Image className={styles.logo} src={Logo9} alt="project 9" />
+          <Image
+            className={styles.logo}
+            src="/assets/ecuteui.png"
+            alt="project 9"
+            width={50}
+            height={50}
+          />
           <h3>electrocute UI</h3>
           <p>
             A mini design system in the making. <i>ongoing</i>
@@ -109,7 +167,13 @@ export default function Container() {
           href="https://www.craft.me/s/UPIseOWDQQ2AAx"
           className={styles.projectCard8}
         >
-          <Image className={styles.logo} src={Logo8} alt="project 8" />
+          <Image
+            className={styles.logo}
+            src="/assets/led.png"
+            alt="project 8"
+            width={50}
+            height={50}
+          />
           <h3>custom light LEDs</h3>
           <p>A tutorial on how to create custom LED lights with UV resin.</p>
         </Link>
@@ -118,7 +182,13 @@ export default function Container() {
           href="https://electrocute.gumroad.com/l/design-hub"
           className={styles.projectCard7}
         >
-          <Image className={styles.logo} src={Logo7} alt="project 7" />
+          <Image
+            className={styles.logo}
+            src="/assets/dhub.png"
+            alt="project 7"
+            width={50}
+            height={50}
+          />
           <h3>design hub</h3>
           <p>
             A Notion template to keep track of your progress on design learnings
@@ -130,7 +200,13 @@ export default function Container() {
           href="https://electrocute.gumroad.com/l/coding-hub"
           className={styles.projectCard6}
         >
-          <Image className={styles.logo} src={Logo6} alt="project 6" />
+          <Image
+            className={styles.logo}
+            src="/assets/chub.png"
+            alt="project 6"
+            width={50}
+            height={50}
+          />
           <h3>coding hub</h3>
           <p>
             A Notion template to keep track of your programming progress and all
@@ -142,7 +218,13 @@ export default function Container() {
           href="https://www.craft.do/s/n728rE3K9pjrQx"
           className={styles.projectCard5}
         >
-          <Image className={styles.logo} src={Logo5} alt="project 5" />
+          <Image
+            className={styles.logo}
+            src="/assets/bag.png"
+            alt="project 5"
+            width={50}
+            height={50}
+          />
           <h3>electrojute</h3>
           <p>
             A custom DIY jute tote bag with felt flowers and sewable Sakura
@@ -154,7 +236,13 @@ export default function Container() {
           href="https://electrocute.gumroad.com/l/cute-folder-pack"
           className={styles.projectCard4}
         >
-          <Image className={styles.logo} src={Logo4} alt="project 4" />
+          <Image
+            className={styles.logo}
+            src="/assets/cutefolder.png"
+            alt="project 4"
+            width={50}
+            height={50}
+          />
           <h3>cute folder icon pack</h3>
           <p>
             A cute folder icon pack in pastel, neutral, and monochrome shades,
@@ -166,7 +254,13 @@ export default function Container() {
           href="https://sailor-moon-calculator.netlify.app/"
           className={styles.projectCard3}
         >
-          <Image className={styles.logo} src={Logo3} alt="project 3" />
+          <Image
+            className={styles.logo}
+            src="/assets/calc.png"
+            alt="project 3"
+            width={50}
+            height={50}
+          />
           <h3>sailor moon calculator</h3>
           <p>
             A basic on-screen calculator inspired by one of the communicators
@@ -175,7 +269,13 @@ export default function Container() {
         </Link>
 
         <Link href="https://snax.blog" className={styles.projectCard2}>
-          <Image className={styles.logo} src={Logo2} alt="project 2" />
+          <Image
+            className={styles.logo}
+            src="/assets/snax.png"
+            alt="project 2"
+            width={50}
+            height={50}
+          />
           <h3>snax</h3>
           <p>
             A pokedex-like blog for sharing my own reviews and ratings on
@@ -184,7 +284,13 @@ export default function Container() {
         </Link>
 
         <Link href="https://cutetech.tools" className={styles.projectCard1}>
-          <Image className={styles.logo} src={Logo} alt="project 1" />
+          <Image
+            className={styles.logo}
+            src="/assets/cutetech.png"
+            alt="project 1"
+            width={50}
+            height={50}
+          />
           <h3>cute technologies</h3>
           <p>
             A digital catalog featuring a collection of cybertwee functional
