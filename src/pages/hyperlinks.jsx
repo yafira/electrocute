@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import s from "../styles/Hyperlinks.module.css";
 
-// directory data
 const CATS = [
   {
     id: "spaces",
@@ -62,7 +61,7 @@ const CATS = [
       },
       {
         n: "interface.click",
-        url: "https://www.interface.click/",
+        url: "https://www.tiat.place/",
         d: "SF and NYC creative tech events",
       },
       {
@@ -105,6 +104,11 @@ const CATS = [
         url: "https://manufactureny.org/",
         d: "Fashion and wearable tech fabrication hub",
       },
+      {
+        n: "Loisaida Center",
+        url: "https://loisaida.org/",
+        d: "Community arts center in the East Village",
+      },
     ],
   },
   {
@@ -135,7 +139,7 @@ const CATS = [
       },
       {
         n: "SancuComputer",
-        url: "https://www.instagram.com/sancucomputer/",
+        url: "https://sancu.computer/",
         d: "Community computer space",
       },
       {
@@ -257,7 +261,7 @@ const CATS = [
       },
       {
         n: "DEMO festival",
-        url: "https://www.newmuseum.org/",
+        url: "https://www.demofestival.org/",
         d: "Annual festival at the New Museum",
       },
       {
@@ -294,6 +298,11 @@ const CATS = [
         url: "https://www.instagram.com/creativecodeartnyc/",
         d: "Creative coding community",
       },
+      {
+        n: "RECESS",
+        url: "https://www.recessart.org/",
+        d: "Brooklyn art space for artist projects in public",
+      },
     ],
   },
   {
@@ -302,7 +311,12 @@ const CATS = [
     icon: "◇",
     ic: "icItp",
     items: [
-      { n: "ITP / IMA", url: "https://itp.nyu.edu/itp/", d: "The home base" },
+      {
+        n: "ITP / IMA",
+        url: "https://itp.nyu.edu/itp/",
+        d: "The home base",
+        b: "check",
+      },
       {
         n: "NYU Game Center",
         url: "https://gamecenter.nyu.edu/",
@@ -456,6 +470,18 @@ const CATS = [
         n: "Are.na",
         url: "https://www.are.na/",
         d: "Collaborative mood-boarding for the internet-conscious",
+        b: "online",
+      },
+      {
+        n: "sanctuary.computer",
+        url: "https://www.sanctuary.computer/",
+        d: "Creative technology studio and development shop",
+        b: "online",
+      },
+      {
+        n: "Astoria links",
+        url: "https://astoria.app/links/",
+        d: "Hyperlink directory for creative computing and local community projects",
         b: "online",
       },
     ],
@@ -838,7 +864,6 @@ const CATS = [
       },
     ],
   },
-
   {
     id: "print",
     label: "Print + zine",
@@ -918,32 +943,6 @@ const CATS = [
     ],
   },
   {
-    id: "check",
-    label: "To investigate",
-    icon: "?",
-    ic: "icCheck",
-    items: [
-      {
-        n: "sanctuary.computer",
-        url: "https://www.sanctuary.computer/",
-        b: "check",
-      },
-      { n: "Astoria links", url: "https://astoria.app/links/", b: "check" },
-      {
-        n: "Loisaida Center",
-        url: "https://loisaida.org/",
-        d: "Community arts center in the East Village",
-        b: "check",
-      },
-      {
-        n: "RECESS",
-        url: "https://www.recessart.org/",
-        d: "Brooklyn art space for artist projects in public",
-        b: "check",
-      },
-    ],
-  },
-  {
     id: "rip",
     label: "Graveyard",
     icon: "☽",
@@ -982,16 +981,14 @@ const BADGE_LABEL = {
   recurring: "recurring",
   online: "online",
   rip: "RIP",
-  check: "check this out",
+  check: "verified",
 };
 
-// component
 export default function Hyperlinks() {
   const [theme, setTheme] = useState("light");
   const [query, setQuery] = useState("");
   const [active, setActive] = useState("all");
 
-  // respect system preference on first load
   useEffect(() => {
     const saved = localStorage.getItem("electrodex-theme");
     if (saved) {
@@ -1010,7 +1007,6 @@ export default function Hyperlinks() {
     localStorage.setItem("electrodex-theme", next);
   };
 
-  // filter items
   const filtered = CATS.filter((cat) => active === "all" || active === cat.id)
     .map((cat) => {
       const seen = new Set();
@@ -1037,6 +1033,7 @@ export default function Hyperlinks() {
     rip: s.bRip,
     check: s.bCheck,
   };
+
   const iconClass = {
     icItp: s.icItp,
     icSpaces: s.icSpaces,
@@ -1049,13 +1046,10 @@ export default function Hyperlinks() {
     icOnline: s.icOnline,
     icGlobal: s.icGlobal,
     icMovement: s.icMovement,
-    icCheck: s.icCheck,
     icDev: s.icDev,
     icFab: s.icFab,
     icPrint: s.icPrint,
     icBio: s.icBio,
-    icKids: s.icKids,
-    icCanada: s.icCanada,
     icRip: s.icRip,
   };
 
@@ -1068,21 +1062,24 @@ export default function Hyperlinks() {
           content="A field guide to spaces, tools, and communities for creative technologists — NYC and beyond."
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght=300;400;500&display=swap"
           rel="stylesheet"
         />
-        {/* Departure Mono: download DepartureMono-Regular.woff2 from github.com/rektdeckard/departure-mono and place in /public/fonts/ */}
       </Head>
 
       <div className={s.page} data-theme={theme}>
-        {/* ── header ── */}
         <header className={s.header}>
           <button
             className={s.themeBtn}
             onClick={toggleTheme}
-            aria-label="Toggle dark mode"
+            aria-label="Toggle visual layout theme"
           >
-            {theme === "dark" ? "light mode" : "dark mode"}
+            {theme === "dark" ? (
+              <span className={s.btnIcon}>☼</span>
+            ) : (
+              <span className={s.btnIcon}>☾</span>
+            )}
+            {theme === "dark" ? "light" : "dark"}
           </button>
           <p className={s.eyebrow}>electrocute.io / hyperlinks</p>
           <h1 className={s.title}>electrodex</h1>
@@ -1092,7 +1089,6 @@ export default function Hyperlinks() {
           </p>
         </header>
 
-        {/* ── controls ── */}
         <div className={s.controls}>
           <div className={s.searchWrap}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -1125,7 +1121,6 @@ export default function Hyperlinks() {
         </div>
         <div className={s.metaBar}>{total > 0 ? `${total} spaces` : ""}</div>
 
-        {/* ── directory ── */}
         <main className={s.main}>
           {filtered.length === 0 ? (
             <div className={s.empty}>
@@ -1133,7 +1128,10 @@ export default function Hyperlinks() {
             </div>
           ) : (
             filtered.map((cat) => (
-              <div key={cat.id} className={s.section}>
+              <div
+                key={cat.id}
+                className={`${s.section} ${s[`sec-${cat.id}`] || ""}`}
+              >
                 <div className={s.secHeader}>
                   <div
                     className={`${s.secIcon} ${iconClass[cat.ic] || ""}`}
@@ -1147,25 +1145,27 @@ export default function Hyperlinks() {
                 <div className={s.grid}>
                   {cat.items.map((item) => (
                     <div key={item.n} className={s.card}>
-                      <div className={s.cardName}>
-                        {item.url ? (
-                          <a
-                            href={item.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {item.n}
-                          </a>
-                        ) : (
-                          item.n
-                        )}
+                      <div className={s.cardContent}>
+                        <div className={s.cardName}>
+                          {item.url ? (
+                            <a
+                              href={item.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {item.n}
+                            </a>
+                          ) : (
+                            item.n
+                          )}
+                        </div>
+                        {item.d && <p className={s.cardDesc}>{item.d}</p>}
                       </div>
-                      {item.d && <div className={s.cardDesc}>{item.d}</div>}
-                      {item.b && (
+                      {item.b && BADGE_LABEL[item.b] && (
                         <span
                           className={`${s.badge} ${badgeClass[item.b] || ""}`}
                         >
-                          {BADGE_LABEL[item.b] || item.b}
+                          {BADGE_LABEL[item.b]}
                         </span>
                       )}
                     </div>
@@ -1175,20 +1175,6 @@ export default function Hyperlinks() {
             ))
           )}
         </main>
-
-        <footer className={s.footer}>
-          <p>
-            maintained with love ♡ —{" "}
-            <a
-              href="https://itp.nyu.edu/itp/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              ITP/IMA
-            </a>{" "}
-            adjacent
-          </p>
-        </footer>
       </div>
     </>
   );

@@ -36,7 +36,7 @@ export default function Container() {
           <h3>electrodex</h3>
           <p>
             a directory of creative spaces, physical communities, and digital
-            niches in nyc & beyond.
+            niches in nyc & beyond. (WIP)
           </p>
         </Link>
 
