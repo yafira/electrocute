@@ -69,11 +69,6 @@ const CATS = [
         d: "Community coworking, Chinatown + Greenpoint",
       },
       {
-        n: "Side Quest",
-        url: "https://www.instagram.com/sidequestnyc/",
-        d: "Small coworking space",
-      },
-      {
         n: "LARPA (@larpa.mill)",
         url: "https://www.instagram.com/larpa.mill/",
         d: "",
@@ -99,9 +94,19 @@ const CATS = [
         d: "Global art and technology community, founded by SeoulArts and La MaMa",
       },
       {
+        n: "sanctuary.computer",
+        url: "https://www.sanctuary.computer/",
+        d: "Creative technology studio and development shop",
+      },
+      {
         n: "Loisaida Center",
         url: "https://loisaida.org/",
         d: "Community arts center in the East Village",
+      },
+      {
+        n: "Manufacture New York",
+        url: "https://manufactureny.org/",
+        d: "Fashion and wearable tech fabrication hub, closed; old domain is now spam",
       },
     ],
   },
@@ -131,8 +136,8 @@ const CATS = [
         d: "Brooklyn Army Terminal",
       },
       {
-        n: "SancuComputer",
-        url: "https://sancu.computer/",
+        n: "Sanctuary Computer",
+        url: "https://www.sanctuary.computer/",
         d: "Community computer space",
       },
       {
@@ -147,12 +152,12 @@ const CATS = [
       },
       {
         n: "Repair Café El Barrio",
-        url: "https://repaircafe.org/en/",
+        url: "https://www.repaircafeelbarrio.org/",
         d: "Community repair",
       },
       {
         n: "Brooklyn Repair Cafe",
-        url: "https://www.eventbrite.com/o/brooklyn-repair-cafe-14155737285",
+        url: "https://www.repaircafe.nyc/",
         d: "Community repair",
       },
       {
@@ -183,13 +188,8 @@ const CATS = [
         d: "Artist-run US residency for e-textile practitioners",
       },
       {
-        n: "eTextile Summer Camp",
-        url: "https://etextile-summercamp.org/",
-        d: "Annual gathering in France for the global e-textile community",
-      },
-      {
         n: "KOBAKANT",
-        url: "https://www.kobakant.at/DIY/",
+        url: "https://www.kobakant.at/",
         d: "Hannah Perner-Wilson and Mika Satomi's e-textile reference wiki",
       },
     ],
@@ -216,17 +216,17 @@ const CATS = [
       },
       {
         n: "ZeroSpace",
-        url: "https://www.instagram.com/zerospace.nyc/",
+        url: "https://www.zerospace.co/",
         d: "Comfy UI and Touch Designer meetups",
       },
       {
         n: "Critical Hit",
-        url: "https://www.instagram.com/criticalhitparty/",
+        url: "https://www.instagram.com/criticalhitnyc/",
         d: "Trans-centered gamer party",
       },
       {
         n: "Aci-d club",
-        url: "https://www.instagram.com/aci.d.club/",
+        url: "https://www.instagram.com/aci_d.club/",
         d: "Design group meetup",
       },
       {
@@ -266,6 +266,11 @@ const CATS = [
         url: "https://www.recessart.org/",
         d: "Brooklyn art space for artist projects in public",
       },
+      {
+        n: "Astoria Tech Meetup",
+        url: "https://astoria.app/",
+        d: "Volunteer-run tech meetup and community in Astoria, Queens",
+      },
     ],
   },
   {
@@ -294,11 +299,6 @@ const CATS = [
         url: "https://ccchbk.github.io/_CCCHBK/",
         d: "John-Henry Thompson's Brooklyn project",
       },
-      {
-        n: "eTextile Spring Break",
-        url: "https://etextilespringbreak.org/",
-        d: "Annual NY e-textile gathering",
-      },
     ],
   },
   {
@@ -307,18 +307,13 @@ const CATS = [
     tint: "#BFEBD8",
     items: [
       {
-        n: "XR Motion",
-        url: "https://www.instagram.com/xrmotion.nyc/",
-        d: "XR and motion arts community",
-      },
-      {
         n: "XR Guild",
         url: "https://xrguild.org/",
         d: "Extended reality practitioners",
       },
       {
         n: "CuteLab NYC",
-        url: "https://www.instagram.com/cutelabnyc/",
+        url: "https://www.instagram.com/cutelab_nyc/",
         d: "Audio and immersive events",
       },
     ],
@@ -338,31 +333,10 @@ const CATS = [
         url: "https://www.hope.net/",
         d: "Hackers On Planet Earth, annual NYC conference",
       },
-      { n: "DEF CON", url: "https://defcon.org/", d: "Annual, Las Vegas" },
-      {
-        n: "Black Hat",
-        url: "https://www.blackhat.com/",
-        d: "Annual, Las Vegas",
-      },
-      {
-        n: "Noisebridge",
-        url: "https://www.noisebridge.net/wiki",
-        d: "SF hackerspace, sister to NYC Resistor",
-      },
-      {
-        n: "c-base",
-        url: "https://www.c-base.org/",
-        d: "One of the world's first hackerspaces, crashed space station mythology, Berlin 1995",
-      },
       {
         n: "Metalab",
         url: "https://metalab.at/",
         d: "Influential Viennese hackerspace, helped inspire the US hackerspace movement",
-      },
-      {
-        n: "Hackspace Wiki",
-        url: "https://wiki.hackerspaces.org/",
-        d: "Global directory of hackerspaces",
       },
     ],
   },
@@ -416,16 +390,6 @@ const CATS = [
         url: "https://www.are.na/",
         d: "Collaborative mood-boarding for the internet-conscious",
       },
-      {
-        n: "sanctuary.computer",
-        url: "https://www.sanctuary.computer/",
-        d: "Creative technology studio and development shop",
-      },
-      {
-        n: "Astoria Tech Meetup",
-        url: "https://astoria.app/",
-        d: "Volunteer-run tech meetup and community in Astoria, Queens",
-      },
     ],
   },
   {
@@ -446,7 +410,7 @@ const CATS = [
       { n: "Buro Stedelijk", url: "https://burostedelijk.nl/", d: "Amsterdam" },
       {
         n: "REINCANTAMENTO",
-        url: "https://www.instagram.com/reincantamento/",
+        url: "https://reincantamento.xyz/",
         d: "Research + publishing, Berlin / Turin / Venice",
       },
       {
@@ -475,6 +439,16 @@ const CATS = [
         d: "Cleveland Heights, OH",
       },
       {
+        n: "c-base",
+        url: "https://www.c-base.org/",
+        d: "One of the world's first hackerspaces, crashed space station mythology, Berlin 1995",
+      },
+      {
+        n: "Noisebridge",
+        url: "https://www.noisebridge.net/wiki",
+        d: "SF hackerspace, sister to NYC Resistor",
+      },
+      {
         n: "Stochastic Labs",
         url: "https://stochasticlabs.org/",
         d: "Residencies, Berkeley",
@@ -490,8 +464,8 @@ const CATS = [
         d: "Meetups, Netherlands",
       },
       {
-        n: "Post Office Amsterdam",
-        url: "https://postoffice.amsterdam/",
+        n: "PostOffice Amsterdam",
+        url: "https://www.postoffice.nl/",
         d: "Co-working, Amsterdam",
       },
       {
@@ -516,7 +490,7 @@ const CATS = [
       },
       {
         n: "Feelers",
-        url: "https://www.instagram.com/feelers.sg/",
+        url: "https://www.instagram.com/feelers_feelers/",
         d: "Singapore",
       },
       {
@@ -533,11 +507,6 @@ const CATS = [
         n: "Fablab Network",
         url: "https://fabfoundation.org/",
         d: "Global network of fabrication labs",
-      },
-      {
-        n: "Thinking Machines",
-        url: "https://thinkingmachines.xyz/",
-        d: "Brussels, art and emerging tech",
       },
       {
         n: "Radio Snack",
@@ -613,7 +582,7 @@ const CATS = [
       },
       {
         n: "NYC Off Tech",
-        url: "https://www.instagram.com/nycofftech/",
+        url: "https://nycofftech.com/",
         d: "Unplugging from surveillance tech",
       },
       {
@@ -623,7 +592,7 @@ const CATS = [
       },
       {
         n: "Beta NYC",
-        url: "https://betanyc.org/",
+        url: "https://www.beta.nyc/",
         d: "Helping NYers access tech and information",
       },
     ],
@@ -782,26 +751,6 @@ const CATS = [
         url: "https://www.biobatartspace.com/",
         d: "Bioart space at the Brooklyn Army Terminal",
       },
-      {
-        n: "Biodesign Challenge",
-        url: "https://biodesignchallenge.org/",
-        d: "Annual competition for students designing with biology",
-      },
-      {
-        n: "iGEM",
-        url: "https://igem.org/",
-        d: "International Genetically Engineered Machine Foundation",
-      },
-      {
-        n: "DIYbio",
-        url: "https://diybio.org/",
-        d: "Global network of community biology labs",
-      },
-      {
-        n: "Fab City Foundation",
-        url: "https://fab.city/",
-        d: "Global initiative for locally productive cities",
-      },
     ],
   },
   {
@@ -850,11 +799,6 @@ const CATS = [
         d: "Radical library and community space in Bushwick",
       },
       {
-        n: "NY Art Book Fair",
-        url: "https://www.printedmatter.org/artbookfair",
-        d: "Annual international artists' book fair by Printed Matter",
-      },
-      {
         n: "Desert Island",
         url: "https://desertislandbrooklyn.com/",
         d: "Comics and zine shop in Williamsburg",
@@ -863,16 +807,6 @@ const CATS = [
         n: "Radix Media",
         url: "https://radixmedia.org/",
         d: "Worker-owned print shop and publisher in Brooklyn",
-      },
-      {
-        n: "Primary Information",
-        url: "https://primaryinformation.org/",
-        d: "Nonprofit publisher of artists' books and writings",
-      },
-      {
-        n: "Robert Blackburn Printmaking Workshop",
-        url: "https://www.efanyc.org/robert-blackburn-printmaking-workshop",
-        d: "Community printmaking studio and archive, Manhattan",
       },
     ],
   },
@@ -905,10 +839,6 @@ const CATS = [
         n: "Eyeo Festival",
         url: "https://eyeofestival.com/",
         d: "Creative coding festival in Minneapolis, 2011–2022, on indefinite hiatus",
-      },
-      {
-        n: "Manufacture New York",
-        d: "Fashion and wearable tech fabrication hub, closed; old domain is now spam",
       },
     ],
   },
