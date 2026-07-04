@@ -67,7 +67,7 @@ const PROJECTS = [
     blurb:
       "a collection of handmade card sized circuit boards housed in an archival index box, exhibited at temple university libraries. each card renders an electronic function through copper tape traces on craft foam. repairs are not hidden, they are dated, annotated, and made part of the surface. circuits that accumulate their history rather than conceal it.",
     link: null,
-    img: "../assets/soft-circuit-library.png",
+    img: "../assets/soft-circuit-lib.png",
     fit: "contain",
     wide: false,
   },
