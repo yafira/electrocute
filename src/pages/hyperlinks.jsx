@@ -36,7 +36,7 @@ const CATS = [
       },
       {
         n: "SVA Visible Futures Lab",
-        url: "https://www.vfl.sva.edu/",
+        url: "https://sva.edu/features/sva-visible-futures-lab",
         d: "Fabrication and emerging tech for artists",
       },
       {
@@ -60,9 +60,9 @@ const CATS = [
         d: "VC events and community programs",
       },
       {
-        n: "interface.click",
+        n: "tiat (This Is Art And Technology)",
         url: "https://www.tiat.place/",
-        d: "SF and NYC creative tech events",
+        d: "SF and NYC creative tech events and gallery space",
       },
       {
         n: "Index",
@@ -144,7 +144,7 @@ const CATS = [
       },
       {
         n: "Hex House",
-        url: "https://www.instagram.com/hex.house/",
+        url: "https://hexhouse.studio/",
         d: "Hosts Synth Library NYC",
       },
       {
@@ -182,20 +182,10 @@ const CATS = [
         b: "textile",
       },
       {
-        n: "Craftwork",
-        url: "https://www.instagram.com/craftworknyc/",
+        n: "Craftwork Collective",
+        url: "https://www.instagram.com/craftwork_collective/",
         d: "Textile-focused studio",
         b: "textile",
-      },
-      {
-        n: "Frog Farm",
-        url: "https://www.instagram.com/frogfarm_nyc/",
-        d: "Comics publisher, periodic events and markets",
-      },
-      {
-        n: "Lista Studios",
-        url: "https://www.instagram.com/lista.studios/",
-        d: "Artist studios",
       },
       {
         n: "Electronic Textile Camp",
@@ -227,37 +217,31 @@ const CATS = [
         n: "livecode.nyc",
         url: "https://livecode.nyc/",
         d: "Monthly events for live coders",
-        b: "recurring",
       },
       {
         n: "Word hack",
         url: "https://www.wonderville.nyc/",
-        d: "Monthly show at Wonderville",
-        b: "recurring",
+        d: "Monthly show at Wonderville exploring language and code",
       },
       {
         n: "DAT LAB NYC",
         url: "https://www.instagram.com/datlabnyc/",
         d: "Monthly Touch Designer meetup",
-        b: "recurring",
       },
       {
         n: "ZeroSpace",
         url: "https://www.instagram.com/zerospace.nyc/",
         d: "Comfy UI and Touch Designer meetups",
-        b: "recurring",
       },
       {
         n: "Critical Hit",
         url: "https://www.instagram.com/criticalhitparty/",
         d: "Trans-centered gamer party",
-        b: "recurring",
       },
       {
         n: "Aci-d club",
         url: "https://www.instagram.com/aci.d.club/",
         d: "Design group meetup",
-        b: "recurring",
       },
       {
         n: "DEMO festival",
@@ -268,7 +252,6 @@ const CATS = [
         n: "2600",
         url: "https://www.2600.com/",
         d: "Quarterly zine + monthly midtown meetings",
-        b: "recurring",
       },
     ],
   },
@@ -292,11 +275,6 @@ const CATS = [
         n: "Underground Art and Design",
         url: "https://www.instagram.com/uaad.art/",
         d: "Periodic events (@uaad.art)",
-      },
-      {
-        n: "Creative Code Art",
-        url: "https://www.instagram.com/creativecodeartnyc/",
-        d: "Creative coding community",
       },
       {
         n: "RECESS",
@@ -335,7 +313,7 @@ const CATS = [
       },
       {
         n: "Creative Computing Club House",
-        url: "https://itp.nyu.edu/itp/",
+        url: "https://ccchbk.github.io/_CCCHBK/",
         d: "John-Henry Thompson's Brooklyn project",
       },
       {
@@ -553,7 +531,11 @@ const CATS = [
         url: "https://postoffice.amsterdam/",
         d: "Co-working, Amsterdam",
       },
-      { n: "fidgetcamp", url: "https://fidgetcamp.com/", d: "SF ITP Camp" },
+      {
+        n: "fidgetcamp",
+        url: "https://fidgetcamp.com/",
+        d: "SF ITPCamp-esque",
+      },
       { n: "demos.club", url: "https://demos.club/", d: "Demos and chill" },
       {
         n: "DINACon",
@@ -569,6 +551,11 @@ const CATS = [
         n: "Feelers",
         url: "https://www.instagram.com/feelers.sg/",
         d: "Singapore",
+      },
+      {
+        n: "Iffy Books",
+        url: "https://iffybooks.net/",
+        d: "Bookshop and workshop space for hacking, free culture, and zines — Philadelphia",
       },
       {
         n: "Untitled Games Event",
@@ -656,7 +643,7 @@ const CATS = [
       {
         n: "Summer of Ludd",
         url: "https://summerofludd.com/",
-        d: "Tech worker organizing",
+        d: "Annual community festival in NYC dedicated to offline presence and anti-surveillance organizing",
       },
       {
         n: "DeFlock",
@@ -705,11 +692,6 @@ const CATS = [
         n: "OpenFrameworks",
         url: "https://openframeworks.cc/",
         d: "Open source C++ toolkit for creative coding",
-      },
-      {
-        n: "Arduino",
-        url: "https://www.arduino.cc/",
-        d: "Open source microcontroller platform",
       },
       {
         n: "Adafruit",
@@ -921,11 +903,6 @@ const CATS = [
         d: "Comics and zine shop in Williamsburg",
       },
       {
-        n: "Iffy Books",
-        url: "https://iffybooks.net/",
-        d: "Bookshop and workshop space for hacking, free culture, and zines — Philadelphia",
-      },
-      {
         n: "Radix Media",
         url: "https://radixmedia.org/",
         d: "Worker-owned print shop and publisher in Brooklyn",
@@ -937,7 +914,7 @@ const CATS = [
       },
       {
         n: "Robert Blackburn Printmaking Workshop",
-        url: "https://www.printingmuseum.org/",
+        url: "https://www.efanyc.org/robert-blackburn-printmaking-workshop",
         d: "Community printmaking studio and archive, Manhattan",
       },
     ],
@@ -1158,16 +1135,16 @@ export default function Hyperlinks() {
                           ) : (
                             item.n
                           )}
+                          {item.b && (
+                            <span
+                              className={`${s.badge} ${badgeClass[item.b] || ""}`}
+                            >
+                              {BADGE_LABEL[item.b]}
+                            </span>
+                          )}
                         </div>
                         {item.d && <p className={s.cardDesc}>{item.d}</p>}
                       </div>
-                      {item.b && BADGE_LABEL[item.b] && (
-                        <span
-                          className={`${s.badge} ${badgeClass[item.b] || ""}`}
-                        >
-                          {BADGE_LABEL[item.b]}
-                        </span>
-                      )}
                     </div>
                   ))}
                 </div>
