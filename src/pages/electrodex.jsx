@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Head from "next/head";
-import s from "../styles/Hyperlinks.module.css";
+import s from "../styles/Electrodex.module.css";
 
 const CATS = [
   {
     id: "spaces",
-    label: "Creative tech spaces",
-    icon: "✦",
-    ic: "icSpaces",
+    label: "creative tech spaces",
+    tint: "#F6CFE0",
     items: [
       {
         n: "School for Poetic Computation",
@@ -62,7 +61,7 @@ const CATS = [
       {
         n: "tiat (This Is Art And Technology)",
         url: "https://www.tiat.place/",
-        d: "SF and NYC creative tech events and gallery space",
+        d: "Creative tech gallery and salons, 151 Powell St, San Francisco",
       },
       {
         n: "Index",
@@ -100,11 +99,6 @@ const CATS = [
         d: "Global art and technology community, founded by SeoulArts and La MaMa",
       },
       {
-        n: "Manufacture New York",
-        url: "https://manufactureny.org/",
-        d: "Fashion and wearable tech fabrication hub",
-      },
-      {
         n: "Loisaida Center",
         url: "https://loisaida.org/",
         d: "Community arts center in the East Village",
@@ -113,9 +107,8 @@ const CATS = [
   },
   {
     id: "maker",
-    label: "Makerspaces",
-    icon: "⚙",
-    ic: "icMaker",
+    label: "makerspaces",
+    tint: "#BFDCF5",
     items: [
       {
         n: "NYC Resistor",
@@ -171,47 +164,40 @@ const CATS = [
   },
   {
     id: "textile",
-    label: "Textile + craft",
-    icon: "✂",
-    ic: "icTextile",
+    label: "textile + craft",
+    tint: "#BFEBD8",
     items: [
       {
         n: "Textile Arts Center",
         url: "https://textileartscenter.com/",
         d: "Classes, residency, community",
-        b: "textile",
       },
       {
         n: "Craftwork Collective",
         url: "https://www.instagram.com/craftwork_collective/",
         d: "Textile-focused studio",
-        b: "textile",
       },
       {
         n: "Electronic Textile Camp",
         url: "https://www.electronictextile.camp/",
         d: "Artist-run US residency for e-textile practitioners",
-        b: "textile",
       },
       {
         n: "eTextile Summer Camp",
         url: "https://etextile-summercamp.org/",
         d: "Annual gathering in France for the global e-textile community",
-        b: "textile",
       },
       {
         n: "KOBAKANT",
         url: "https://www.kobakant.at/DIY/",
         d: "Hannah Perner-Wilson and Mika Satomi's e-textile reference wiki",
-        b: "textile",
       },
     ],
   },
   {
     id: "events",
-    label: "Recurring events",
-    icon: "◎",
-    ic: "icEvents",
+    label: "recurring events",
+    tint: "#F7E8B5",
     items: [
       {
         n: "livecode.nyc",
@@ -246,7 +232,7 @@ const CATS = [
       {
         n: "DEMO festival",
         url: "https://www.demofestival.org/",
-        d: "Annual festival at the New Museum",
+        d: "NEW INC's annual art, design, and tech festival at the New Museum",
       },
       {
         n: "2600",
@@ -257,9 +243,8 @@ const CATS = [
   },
   {
     id: "community",
-    label: "Community + social",
-    icon: "♡",
-    ic: "icCommunity",
+    label: "community + social",
+    tint: "#F6CFE0",
     items: [
       {
         n: "Wonderville",
@@ -286,15 +271,9 @@ const CATS = [
   {
     id: "itp",
     label: "ITP-adjacent",
-    icon: "◇",
-    ic: "icItp",
+    tint: "#BFDCF5",
     items: [
-      {
-        n: "ITP / IMA",
-        url: "https://itp.nyu.edu/itp/",
-        d: "The home base",
-        b: "check",
-      },
+      { n: "ITP / IMA", url: "https://itp.nyu.edu/itp/", d: "The home base" },
       {
         n: "NYU Game Center",
         url: "https://gamecenter.nyu.edu/",
@@ -304,7 +283,6 @@ const CATS = [
         n: "Creative Coding NYC (CCNYC)",
         url: "https://ccnyc.space/",
         d: "Weekly meetup open to all",
-        b: "recurring",
       },
       {
         n: "src (@src__nyc)",
@@ -319,16 +297,14 @@ const CATS = [
       {
         n: "eTextile Spring Break",
         url: "https://etextilespringbreak.org/",
-        d: "Annual NYC e-textile gathering",
-        b: "recurring",
+        d: "Annual NY e-textile gathering",
       },
     ],
   },
   {
     id: "xr",
     label: "XR + immersive",
-    icon: "◈",
-    ic: "icXr",
+    tint: "#BFEBD8",
     items: [
       {
         n: "XR Motion",
@@ -349,12 +325,11 @@ const CATS = [
   },
   {
     id: "hacker",
-    label: "Hacker + infosec",
-    icon: "⊡",
-    ic: "icHacker",
+    label: "hacker + infosec",
+    tint: "#F7E8B5",
     items: [
       {
-        n: "NYC Resistor",
+        n: "NYC Resistor (craft nights)",
         url: "https://www.nycresistor.com/",
         d: "Hacker collective, open craft nights",
       },
@@ -393,33 +368,28 @@ const CATS = [
   },
   {
     id: "online",
-    label: "Online",
-    icon: "⌁",
-    ic: "icOnline",
+    label: "online",
+    tint: "#F6CFE0",
     items: [
       {
         n: "Neocities",
         url: "https://neocities.org/",
         d: "Modern Geocities revival",
-        b: "online",
       },
       {
         n: "Rhizome",
         url: "https://rhizome.org/",
         d: "New media art hub since 1996",
-        b: "online",
       },
       {
         n: "FELT Zine",
         url: "https://feltzine.us",
         d: "Online art and zine community",
-        b: "online",
       },
       {
         n: "Metalabel",
         url: "https://metalabel.com/",
         d: "Marketplace for creative works",
-        b: "online",
       },
       {
         n: "collabfund",
@@ -430,45 +400,38 @@ const CATS = [
         n: "HTML Energy",
         url: "https://html.energy/",
         d: "Laurel Schwulst and Elliott Cost's celebration of handwritten HTML",
-        b: "online",
       },
       {
         n: "Ultralight School",
         url: "https://ultralight.school/",
         d: "Laurel Schwulst's art and design learning initiative, NYC",
-        b: "online",
       },
       {
         n: "OpenProcessing",
         url: "https://openprocessing.org/",
         d: "Community for p5.js and Processing sketches",
-        b: "online",
       },
       {
         n: "Are.na",
         url: "https://www.are.na/",
         d: "Collaborative mood-boarding for the internet-conscious",
-        b: "online",
       },
       {
         n: "sanctuary.computer",
         url: "https://www.sanctuary.computer/",
         d: "Creative technology studio and development shop",
-        b: "online",
       },
       {
-        n: "Astoria links",
-        url: "https://astoria.app/links/",
-        d: "Hyperlink directory for creative computing and local community projects",
-        b: "online",
+        n: "Astoria Tech Meetup",
+        url: "https://astoria.app/",
+        d: "Volunteer-run tech meetup and community in Astoria, Queens",
       },
     ],
   },
   {
     id: "global",
-    label: "Outside NYC",
-    icon: "✈",
-    ic: "icGlobal",
+    label: "outside NYC",
+    tint: "#BFDCF5",
     items: [
       {
         n: "Ars Electronica",
@@ -476,7 +439,7 @@ const CATS = [
         d: "Annual festival + museum, Linz Austria",
       },
       {
-        n: "Chaos Communication Conference",
+        n: "Chaos Communication Congress",
         url: "https://www.ccc.de/en/",
         d: "Annual, Hamburg",
       },
@@ -519,7 +482,7 @@ const CATS = [
       {
         n: "Mad Sci SF",
         url: "https://www.madscisf.com/",
-        d: "ITP alumni space, SF",
+        d: "Co-op makerspace in NOPA, SF",
       },
       {
         n: "Creative Coding Utrecht",
@@ -536,7 +499,11 @@ const CATS = [
         url: "https://fidgetcamp.com/",
         d: "SF ITPCamp-esque",
       },
-      { n: "demos.club", url: "https://demos.club/", d: "Demos and chill" },
+      {
+        n: "demos.club",
+        url: "https://demos.club/",
+        d: "Demos & Chill, SF show-and-tell series",
+      },
       {
         n: "DINACon",
         url: "https://www.dinacon.org/",
@@ -555,7 +522,7 @@ const CATS = [
       {
         n: "Iffy Books",
         url: "https://iffybooks.net/",
-        d: "Bookshop and workshop space for hacking, free culture, and zines — Philadelphia",
+        d: "Bookshop and workshop space for hacking, free culture, and zines, Philadelphia",
       },
       {
         n: "Untitled Games Event",
@@ -568,14 +535,9 @@ const CATS = [
         d: "Global network of fabrication labs",
       },
       {
-        n: "Eyeo Festival",
-        url: "https://eyeofestival.com/",
-        d: "Annual gathering for creative coders, Minneapolis",
-      },
-      {
         n: "Thinking Machines",
         url: "https://thinkingmachines.xyz/",
-        d: "Brussels — art and emerging tech",
+        d: "Brussels, art and emerging tech",
       },
       {
         n: "Radio Snack",
@@ -600,7 +562,7 @@ const CATS = [
       {
         n: "OCAD University",
         url: "https://www.ocadu.ca/",
-        d: "Canada largest art and design university, Toronto",
+        d: "Canada's largest art and design university, Toronto",
       },
       {
         n: "Emily Carr University",
@@ -631,9 +593,8 @@ const CATS = [
   },
   {
     id: "movement",
-    label: "Social movements",
-    icon: "☆",
-    ic: "icMovement",
+    label: "social movements",
+    tint: "#BFEBD8",
     items: [
       {
         n: "S.T.O.P.",
@@ -648,7 +609,7 @@ const CATS = [
       {
         n: "DeFlock",
         url: "https://deflock.me/",
-        d: "License plate reader opt-out",
+        d: "Crowdsourced map of automated license plate readers",
       },
       {
         n: "NYC Off Tech",
@@ -669,9 +630,8 @@ const CATS = [
   },
   {
     id: "dev",
-    label: "Dev + open source",
-    icon: "⌘",
-    ic: "icDev",
+    label: "dev + open source",
+    tint: "#F7E8B5",
     items: [
       {
         n: "p5.js",
@@ -741,7 +701,7 @@ const CATS = [
       {
         n: "AYAB",
         url: "https://ayab-knitting.com/",
-        d: "All Yarns Are Beautiful — open source machine knitting",
+        d: "All Yarns Are Beautiful, open source machine knitting",
       },
       {
         n: "Tracery",
@@ -757,9 +717,8 @@ const CATS = [
   },
   {
     id: "fabrication",
-    label: "Fabrication + materials",
-    icon: "◭",
-    ic: "icFab",
+    label: "fabrication + materials",
+    tint: "#F6CFE0",
     items: [
       {
         n: "Powerhouse Arts",
@@ -769,7 +728,7 @@ const CATS = [
       {
         n: "UrbanGlass",
         url: "https://urbanglass.org/",
-        d: "17,000 sq ft glass studio in Brooklyn — blowing, neon, flameworking",
+        d: "17,000 sq ft glass studio in Brooklyn: blowing, neon, flameworking",
       },
       {
         n: "Brooklyn Glass",
@@ -777,7 +736,7 @@ const CATS = [
         d: "Artist-owned glass studio with hourly rentals and classes",
       },
       {
-        n: "MakerSpace NYC",
+        n: "MakerSpace NYC (fab)",
         url: "https://www.makerspace.nyc/",
         d: "Welding, blacksmithing, ceramics, CNC, waterjet at Brooklyn Army Terminal",
       },
@@ -789,7 +748,7 @@ const CATS = [
       {
         n: "Craftsman Ave",
         url: "https://craftsmanave.com/",
-        d: "Woodworking, metalworking, welding, knife making workshops in Brooklyn",
+        d: "Woodworking, metalworking, welding, knife making workshops in Industry City",
       },
       {
         n: "Gasworks NYC",
@@ -810,9 +769,8 @@ const CATS = [
   },
   {
     id: "bio",
-    label: "Bio + science",
-    icon: "⬡",
-    ic: "icBio",
+    label: "bio + science",
+    tint: "#BFEBD8",
     items: [
       {
         n: "Genspace",
@@ -848,14 +806,13 @@ const CATS = [
   },
   {
     id: "print",
-    label: "Print + zine",
-    icon: "⊞",
-    ic: "icPrint",
+    label: "print + zine",
+    tint: "#BFDCF5",
     items: [
       {
         n: "Printed Matter",
         url: "https://www.printedmatter.org/",
-        d: "NYC institution for artists' books and zines, Chelsea + East Village",
+        d: "NYC institution for artists' books and zines, Chelsea",
       },
       {
         n: "Secret Riso Club",
@@ -875,7 +832,7 @@ const CATS = [
       {
         n: "8-Ball Community",
         url: "https://8ballcommunity.club/",
-        d: "East Village zine community and archive",
+        d: "Zine library, radio, and public access TV, archive now in Chinatown",
       },
       {
         n: "Endless Editions",
@@ -884,7 +841,7 @@ const CATS = [
       },
       {
         n: "Quimby's Bookstore NYC",
-        url: "https://www.quimbys.com/",
+        url: "https://quimbysnyc.com/",
         d: "Independent zine and comics shop in Williamsburg",
       },
       {
@@ -921,47 +878,47 @@ const CATS = [
   },
   {
     id: "rip",
-    label: "Graveyard",
-    icon: "☽",
-    ic: "icRip",
+    label: "graveyard",
+    tint: "#DDD6E8",
     items: [
       {
         n: "Glitch",
         url: "https://glitch.com/",
-        d: "Browser-based coding, community hosting — shut down 2025",
-        b: "rip",
+        d: "Browser-based coding, community hosting, shut down 2025",
       },
       {
         n: "Babycastles",
         url: "https://babycastles.com/",
-        d: "NYC event space — Discord still lives",
-        b: "rip",
+        d: "NYC event space, Discord still lives",
       },
       {
         n: "Pulsewave",
         url: "https://www.pulsewave.org/",
         d: "Chiptune concerts at Babycastles, 2007–2017",
-        b: "rip",
       },
       {
         n: "Internet Yami-Ichi",
         url: "https://yami-ichi.biz/",
         d: "Internet craft market, 2012–2023",
-        b: "rip",
+      },
+      {
+        n: "Eyeo Festival",
+        url: "https://eyeofestival.com/",
+        d: "Creative coding festival in Minneapolis, 2011–2022, on indefinite hiatus",
+      },
+      {
+        n: "Manufacture New York",
+        d: "Fashion and wearable tech fabrication hub, closed; old domain is now spam",
       },
     ],
   },
 ];
 
-const BADGE_LABEL = {
-  textile: "textiles",
-  recurring: "recurring",
-  online: "online",
-  rip: "RIP",
-  check: "verified",
-};
+const hexAddr = (catIdx, i) =>
+  "0x" +
+  ((catIdx + 1) * 0x100 + i * 0x18).toString(16).toUpperCase().padStart(4, "0");
 
-export default function Hyperlinks() {
+export default function Electrodex() {
   const [theme, setTheme] = useState("light");
   const [query, setQuery] = useState("");
   const [active, setActive] = useState("all");
@@ -984,174 +941,196 @@ export default function Hyperlinks() {
     localStorage.setItem("electrodex-theme", next);
   };
 
-  const filtered = CATS.filter((cat) => active === "all" || active === cat.id)
-    .map((cat) => {
-      const seen = new Set();
-      const items = cat.items.filter((i) => {
-        if (seen.has(i.n)) return false;
-        seen.add(i.n);
-        const q = query.toLowerCase();
-        return (
-          !q ||
-          i.n.toLowerCase().includes(q) ||
-          (i.d || "").toLowerCase().includes(q)
-        );
-      });
-      return { ...cat, items };
-    })
-    .filter((cat) => cat.items.length > 0);
+  const filtered = useMemo(() => {
+    const q = query.toLowerCase();
+    return CATS.map((cat, catIdx) => ({ ...cat, catIdx }))
+      .filter((cat) => active === "all" || active === cat.id)
+      .map((cat) => {
+        const seen = new Set();
+        const items = cat.items.filter((i) => {
+          if (seen.has(i.n)) return false;
+          seen.add(i.n);
+          return (
+            !q ||
+            i.n.toLowerCase().includes(q) ||
+            (i.d || "").toLowerCase().includes(q)
+          );
+        });
+        return { ...cat, items };
+      })
+      .filter((cat) => cat.items.length > 0);
+  }, [query, active]);
 
-  const total = filtered.reduce((acc, cat) => acc + cat.items.length, 0);
-
-  const badgeClass = {
-    textile: s.bTextile,
-    recurring: s.bRecurring,
-    online: s.bOnline,
-    rip: s.bRip,
-    check: s.bCheck,
-  };
-
-  const iconClass = {
-    icItp: s.icItp,
-    icSpaces: s.icSpaces,
-    icMaker: s.icMaker,
-    icTextile: s.icTextile,
-    icEvents: s.icEvents,
-    icCommunity: s.icCommunity,
-    icXr: s.icXr,
-    icHacker: s.icHacker,
-    icOnline: s.icOnline,
-    icGlobal: s.icGlobal,
-    icMovement: s.icMovement,
-    icDev: s.icDev,
-    icFab: s.icFab,
-    icPrint: s.icPrint,
-    icBio: s.icBio,
-    icRip: s.icRip,
-  };
+  const total = filtered.reduce((acc, c) => acc + c.items.length, 0);
 
   return (
     <>
       <Head>
-        <title>electrodex — hyperlinks</title>
+        <title>electrodex</title>
         <meta
           name="description"
-          content="A field guide to spaces, tools, and communities for creative technologists — NYC and beyond."
+          content="electrodex: a singly linked list of spaces, tools, and communities for creative technologists — NYC and beyond."
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght=300;400;500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap"
           rel="stylesheet"
         />
       </Head>
 
       <div className={s.page} data-theme={theme}>
-        <header className={s.header}>
-          <button
-            className={s.themeBtn}
-            onClick={toggleTheme}
-            aria-label="Toggle visual layout theme"
-          >
-            {theme === "dark" ? (
-              <span className={s.btnIcon}>☼</span>
-            ) : (
-              <span className={s.btnIcon}>☾</span>
-            )}
-            {theme === "dark" ? "light" : "dark"}
-          </button>
-          <p className={s.eyebrow}>electrocute.io / hyperlinks</p>
-          <h1 className={s.title}>electrodex</h1>
-          <p className={s.tagline}>
-            a field guide to spaces, tools, and communities for creative
-            technologists — NYC and beyond.
-          </p>
-        </header>
+        <div className={s.wrap}>
+          <header className={s.header}>
+            <button
+              className={s.themeBtn}
+              onClick={toggleTheme}
+              aria-label="Toggle visual layout theme"
+            >
+              {theme === "dark" ? (
+                <span className={s.btnIcon}>☼</span>
+              ) : (
+                <span className={s.btnIcon}>☾</span>
+              )}
+              {theme === "dark" ? "light" : "dark"}
+            </button>
+            <p className={s.eyebrow}>electrocute.io / electrodex</p>
+            <h1 className={s.title}>
+              electrodex<span className={s.caret}>*</span>
+            </h1>
+            <p className={s.decl}>
+              <span className={s.kw}>struct</span> node {"{"}{" "}
+              <span className={s.str}>data</span>: a space for creative
+              technologists; <span className={s.str}>next</span>: →; {"}"}
+              <br />a singly linked list, NYC and beyond.
+            </p>
+          </header>
 
-        <div className={s.controls}>
-          <div className={s.searchWrap}>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-            <input
-              type="search"
-              className={s.searchInput}
-              placeholder="Search spaces…"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              autoComplete="off"
-            />
-          </div>
-          <div className={s.pills}>
-            {[
-              { id: "all", label: "all" },
-              ...CATS.map((c) => ({ id: c.id, label: c.label })),
-            ].map((f) => (
-              <button
-                key={f.id}
-                className={`${s.pill} ${active === f.id ? s.pillActive : ""}`}
-                onClick={() => setActive(f.id)}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-        </div>
-        <div className={s.metaBar}>{total > 0 ? `${total} spaces` : ""}</div>
-
-        <main className={s.main}>
-          {filtered.length === 0 ? (
-            <div className={s.empty}>
-              nothing found for &ldquo;{query}&rdquo; — yet ♡
+          <div className={s.controls}>
+            <div className={s.searchWrap}>
+              <span className={s.prompt}>⌖</span>
+              <input
+                type="search"
+                className={s.searchInput}
+                placeholder="traverse the list…"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                autoComplete="off"
+                aria-label="Search spaces"
+              />
             </div>
-          ) : (
-            filtered.map((cat) => (
-              <div
-                key={cat.id}
-                className={`${s.section} ${s[`sec-${cat.id}`] || ""}`}
-              >
-                <div className={s.secHeader}>
-                  <div
-                    className={`${s.secIcon} ${iconClass[cat.ic] || ""}`}
-                    aria-hidden="true"
+            <div className={s.pills}>
+              {[{ id: "all", label: "all", tint: "#7C5FD3" }, ...CATS].map(
+                (f) => (
+                  <button
+                    key={f.id}
+                    className={`${s.pill} ${active === f.id ? s.pillActive : ""}`}
+                    onClick={() => setActive(f.id)}
                   >
-                    {cat.icon}
+                    <span className={s.dot} style={{ background: f.tint }} />
+                    {f.label}
+                  </button>
+                ),
+              )}
+            </div>
+            <div className={s.metaBar}>
+              {total > 0 ? (
+                <>
+                  lists: <span className={s.num}>{filtered.length}</span> ·
+                  nodes: <span className={s.num}>{total}</span>
+                </>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+
+          <main>
+            {filtered.length === 0 ? (
+              <div className={s.empty}>
+                <span className={s.fn}>find(&ldquo;{query}&rdquo;)</span>{" "}
+                returned null — yet ♡
+              </div>
+            ) : (
+              filtered.map((cat) => (
+                <section key={cat.id} className={s.listSec}>
+                  <div className={s.listHead}>
+                    <span className={s.listName}>{cat.label}</span>
+                    <span className={s.listCount}>
+                      .length = {cat.items.length}
+                    </span>
                   </div>
-                  <span className={s.secLabel}>{cat.label}</span>
-                  <div className={s.secRule} />
-                </div>
-                <div className={s.grid}>
-                  {cat.items.map((item) => (
-                    <div key={item.n} className={s.card}>
-                      <div className={s.cardContent}>
-                        <div className={s.cardName}>
-                          {item.url ? (
-                            <a
-                              href={item.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {item.n}
-                            </a>
-                          ) : (
-                            item.n
-                          )}
-                          {item.b && (
-                            <span
-                              className={`${s.badge} ${badgeClass[item.b] || ""}`}
-                            >
-                              {BADGE_LABEL[item.b]}
-                            </span>
+
+                  <div className={s.headPtr}>
+                    <span className={s.headLbl}>head ●</span>
+                  </div>
+                  <div className={s.headStemRow}>
+                    <span className={s.stem} />
+                  </div>
+
+                  <div className={s.chain}>
+                    {cat.items.map((item, i) => {
+                      const isLast = i === cat.items.length - 1;
+                      const tintFaint = cat.tint + "33";
+                      return (
+                        <div className={s.nodeRow} key={item.n}>
+                          <div
+                            className={s.node}
+                            style={{
+                              "--nodeTint": cat.tint,
+                              "--nodeTintFaint": tintFaint,
+                            }}
+                          >
+                            <div className={s.dataCell}>
+                              <div className={s.addr}>
+                                {hexAddr(cat.catIdx, i)}
+                              </div>
+                              <div className={s.name}>
+                                {item.url ? (
+                                  <a
+                                    href={item.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    {item.n}
+                                  </a>
+                                ) : (
+                                  item.n
+                                )}
+                              </div>
+                              {item.d && <p className={s.desc}>{item.d}</p>}
+                            </div>
+                            <div className={s.nextCell}>
+                              <span className={s.nextLbl}>next</span>
+                              {isLast ? (
+                                <span className={`${s.nextVal} ${s.nextNull}`}>
+                                  ∅
+                                </span>
+                              ) : (
+                                <span className={s.nextVal}>
+                                  {hexAddr(cat.catIdx, i + 1)}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                          {!isLast && (
+                            <div className={s.link} aria-hidden="true">
+                              <span className={s.wire} />
+                              <span className={s.tip}>▼</span>
+                            </div>
                           )}
                         </div>
-                        {item.d && <p className={s.cardDesc}>{item.d}</p>}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))
-          )}
-        </main>
+                      );
+                    })}
+                  </div>
+
+                  <div className={s.nullChip}>
+                    <span>tail →</span>
+                    <span className={s.nullBox}>∅ null</span>
+                  </div>
+                </section>
+              ))
+            )}
+          </main>
+        </div>
       </div>
     </>
   );

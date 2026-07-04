@@ -25,7 +25,7 @@ export default function Container() {
           </p>
         </Link>
 
-        <Link href="/hyperlinks" className={styles.projectCard17}>
+        <Link href="/electrodex" className={styles.projectCard17}>
           <Image
             className={styles.logo}
             src="/assets/edex.png"
