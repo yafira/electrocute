@@ -82,7 +82,7 @@ export default function Container() {
             height={50}
           />
           <h3>tinytinker.tools</h3>
-          <p>An open source handmade web toolkit for makers & tinkerers</p>
+          <p>an open source handmade web toolkit for makers & tinkerers</p>
         </Link>
         <Link
           href="https://months-tap-da9.craft.me/soft-circuit-lib"
@@ -97,7 +97,7 @@ export default function Container() {
           />
           <h3>soft circuit library</h3>
           <p>
-            A collection of card-sized soft circuits housed in an archival index
+            a collection of card-sized soft circuits housed in an archival index
             box. Repair is dated, annotated, and made part of the object.
           </p>
         </Link>
@@ -111,7 +111,7 @@ export default function Container() {
             height={50}
           />
           <h3>ecute club</h3>
-          <p>A soft start guide to electronics.</p>
+          <p>a soft start guide to electronics.</p>
         </Link>
 
         <Link
@@ -127,7 +127,7 @@ export default function Container() {
           />
           <h3>synthwave chimes</h3>
           <p>
-            A digital synth chime that blends shapes with interactive sound.
+            a digital synth chime that blends shapes with interactive sound.
           </p>
         </Link>
 
@@ -143,7 +143,7 @@ export default function Container() {
             height={50}
           />
           <h3>kawaii ML</h3>
-          <p>A card deck referencing the top 10 machine learning algorithms.</p>
+          <p>a card deck referencing the top 10 machine learning algorithms.</p>
         </Link>
 
         <Link
@@ -159,7 +159,7 @@ export default function Container() {
           />
           <h3>electrocute UI</h3>
           <p>
-            A mini design system in the making. <i>ongoing</i>
+            a mini design system in the making. <i>ongoing</i>
           </p>
         </Link>
 
@@ -175,7 +175,7 @@ export default function Container() {
             height={50}
           />
           <h3>custom light LEDs</h3>
-          <p>A tutorial on how to create custom LED lights with UV resin.</p>
+          <p>a tutorial on how to create custom LED lights with UV resin.</p>
         </Link>
 
         <Link
@@ -191,7 +191,7 @@ export default function Container() {
           />
           <h3>design hub</h3>
           <p>
-            A Notion template to keep track of your progress on design learnings
+            a Notion template to keep track of your progress on design learnings
             and all around journey.
           </p>
         </Link>
@@ -209,7 +209,7 @@ export default function Container() {
           />
           <h3>coding hub</h3>
           <p>
-            A Notion template to keep track of your programming progress and all
+            a Notion template to keep track of your programming progress and all
             around coding journey.
           </p>
         </Link>
@@ -227,7 +227,7 @@ export default function Container() {
           />
           <h3>electrojute</h3>
           <p>
-            A custom DIY jute tote bag with felt flowers and sewable Sakura
+            a custom DIY jute tote bag with felt flowers and sewable Sakura
             lilac LEDs sown with conductive thread.
           </p>
         </Link>
@@ -245,7 +245,7 @@ export default function Container() {
           />
           <h3>cute folder icon pack</h3>
           <p>
-            A cute folder icon pack in pastel, neutral, and monochrome shades,
+            a cute folder icon pack in pastel, neutral, and monochrome shades,
             named after macaron flavors and other delicacies.
           </p>
         </Link>
@@ -263,7 +263,7 @@ export default function Container() {
           />
           <h3>sailor moon calculator</h3>
           <p>
-            A basic on-screen calculator inspired by one of the communicators
+            a basic on-screen calculator inspired by one of the communicators
             used in Sailor Moon.
           </p>
         </Link>
@@ -278,7 +278,7 @@ export default function Container() {
           />
           <h3>snax</h3>
           <p>
-            A pokedex-like blog for sharing my own reviews and ratings on
+            a pokedex-like blog for sharing my own reviews and ratings on
             vegan/plant-based snacks and bevs. Also a peanut-free zone.
           </p>
         </Link>
@@ -293,7 +293,7 @@ export default function Container() {
           />
           <h3>cute technologies</h3>
           <p>
-            A digital catalog featuring a collection of cybertwee functional
+            a digital catalog featuring a collection of cybertwee functional
             tools and resources to make your computing .env cuter.
           </p>
         </Link>
