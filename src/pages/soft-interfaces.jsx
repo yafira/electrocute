@@ -233,6 +233,17 @@ export default function SoftInterfaces() {
 
         <footer className={styles.footer}>
           <p>stitched together by electrocute lab {"\u2661"}</p>
+          <p className={styles.colophon}>
+            using the typeface{" "}
+            <a
+              href="https://www.soft-type.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              soft type
+            </a>{" "}
+            by sarah cadigan-fried
+          </p>
           <a
             href="https://instagram.com/softinterfaces"
             target="_blank"
