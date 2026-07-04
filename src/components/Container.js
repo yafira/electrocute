@@ -20,7 +20,7 @@ export default function Container() {
           />
           <h3>soft interfaces</h3>
           <p>
-            a physical swatch wall of soft machines, textile circuits, and
+            a craft collective of soft machines, textile circuits, and
             tangible interfaces built at electrocute lab.
           </p>
         </Link>
