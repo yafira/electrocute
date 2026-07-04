@@ -108,11 +108,37 @@ const CATS = [
         url: "https://manufactureny.org/",
         d: "Fashion and wearable tech fabrication hub, closed; old domain is now spam",
       },
+      { n: "ITP / IMA", url: "https://itp.nyu.edu/itp/", d: "The home base" },
+      {
+        n: "NYU Game Center",
+        url: "https://gamecenter.nyu.edu/",
+        d: "Games, play, and interactive media",
+      },
+      {
+        n: "Creative Coding NYC (CCNYC)",
+        url: "https://ccnyc.space/",
+        d: "Weekly meetup open to all",
+      },
+      {
+        n: "src (@src__nyc)",
+        url: "https://www.instagram.com/src__nyc/",
+        d: "Small group of ITP alumni",
+      },
+      {
+        n: "Creative Computing Club House",
+        url: "https://ccchbk.github.io/_CCCHBK/",
+        d: "John-Henry Thompson's Brooklyn project",
+      },
+      {
+        n: "XR Guild",
+        url: "https://xrguild.org/",
+        d: "Extended reality practitioners",
+      },
     ],
   },
   {
-    id: "maker",
-    label: "makerspaces",
+    id: "make",
+    label: "make + fabricate",
     tint: "#BFDCF5",
     items: [
       {
@@ -133,7 +159,7 @@ const CATS = [
       {
         n: "MakerSpace NYC",
         url: "https://makerspace.nyc/",
-        d: "Brooklyn Army Terminal",
+        d: "Welding, blacksmithing, ceramics, CNC, waterjet at Brooklyn Army Terminal",
       },
       {
         n: "Sanctuary Computer",
@@ -165,6 +191,56 @@ const CATS = [
         url: "https://brooklynspark.org/",
         d: "Volunteer-run makerspace in Bushwick",
       },
+      {
+        n: "Powerhouse Arts",
+        url: "https://powerhousearts.org/",
+        d: "Ceramics, print, metalwork, and public art fab in Gowanus",
+      },
+      {
+        n: "UrbanGlass",
+        url: "https://urbanglass.org/",
+        d: "17,000 sq ft glass studio in Brooklyn: blowing, neon, flameworking",
+      },
+      {
+        n: "Brooklyn Glass",
+        url: "https://brooklynglass.com/",
+        d: "Artist-owned glass studio with hourly rentals and classes",
+      },
+      {
+        n: "Brooklyn Metal Works",
+        url: "https://www.bkmetalworks.com/",
+        d: "Jewelry and metalsmithing classes and studio access",
+      },
+      {
+        n: "Craftsman Ave",
+        url: "https://craftsmanave.com/",
+        d: "Woodworking, metalworking, welding, knife making workshops in Industry City",
+      },
+      {
+        n: "Gasworks NYC",
+        url: "https://gasworksnyc.com/",
+        d: "Community clay studio with 24/7 membership, South Slope",
+      },
+      {
+        n: "Sculpture Space NYC",
+        url: "https://www.sculpturespacenyc.com/",
+        d: "Ceramics studio, residency, and gallery",
+      },
+      {
+        n: "Brooklyn Clay Industries",
+        url: "https://www.brooklynclayindustries.com/",
+        d: "Pottery studio and classes at the Brooklyn Navy Yard",
+      },
+      {
+        n: "Genspace",
+        url: "https://www.genspace.org/",
+        d: "World's first community biology lab, Sunset Park Brooklyn",
+      },
+      {
+        n: "BioBAT Art Space",
+        url: "https://www.biobatartspace.com/",
+        d: "Bioart space at the Brooklyn Army Terminal",
+      },
     ],
   },
   {
@@ -192,22 +268,84 @@ const CATS = [
         url: "https://www.kobakant.at/",
         d: "Hannah Perner-Wilson and Mika Satomi's e-textile reference wiki",
       },
+      {
+        n: "AYAB",
+        url: "https://ayab-knitting.com/",
+        d: "All Yarns Are Beautiful, open source machine knitting",
+      },
     ],
   },
   {
-    id: "events",
-    label: "recurring events",
+    id: "audio",
+    label: "audio + sound",
     tint: "#F7E8B5",
     items: [
+      {
+        n: "Synth Library NYC",
+        url: "https://hexhouse.studio/",
+        d: "Community synth library hosted at Hex House",
+      },
+      {
+        n: "Harvestworks",
+        url: "https://www.harvestworks.org/",
+        d: "Digital media arts center with deep roots in sound art",
+      },
+      {
+        n: "CuteLab NYC",
+        url: "https://www.instagram.com/cutelab_nyc/",
+        d: "Audio and immersive events",
+      },
       {
         n: "livecode.nyc",
         url: "https://livecode.nyc/",
         d: "Monthly events for live coders",
       },
       {
+        n: "Hydra",
+        url: "https://hydra.ojack.xyz/",
+        d: "Browser-based live coding video synth by Olivia Jack",
+      },
+      {
+        n: "TidalCycles",
+        url: "https://tidalcycles.org/",
+        d: "Live coding environment for music and patterns",
+      },
+      {
+        n: "Sonic Pi",
+        url: "https://sonic-pi.net/",
+        d: "Code-based music creation for all",
+      },
+      {
+        n: "Pure Data",
+        url: "https://puredata.info/",
+        d: "Open source visual programming for audio and more",
+      },
+      {
+        n: "Max/MSP",
+        url: "https://cycling74.com/",
+        d: "Visual programming for music, audio, and media",
+      },
+      {
+        n: "Tone.js",
+        url: "https://tonejs.github.io/",
+        d: "Web audio framework for interactive music",
+      },
+    ],
+  },
+  {
+    id: "events",
+    label: "events + gatherings",
+    tint: "#F8D5BE",
+    items: [
+      {
         n: "Word hack",
         url: "https://www.wonderville.nyc/",
         d: "Monthly show at Wonderville exploring language and code",
+      },
+      {
+        n: "Wonderville",
+        url: "https://www.wonderville.nyc/",
+        d: "Indie arcade bar and event space",
       },
       {
         n: "DAT LAB NYC",
@@ -239,17 +377,15 @@ const CATS = [
         url: "https://www.2600.com/",
         d: "Quarterly zine + monthly midtown meetings",
       },
-    ],
-  },
-  {
-    id: "community",
-    label: "community + social",
-    tint: "#F6CFE0",
-    items: [
       {
-        n: "Wonderville",
-        url: "https://www.wonderville.nyc/",
-        d: "Indie arcade bar and event space",
+        n: "HOPE",
+        url: "https://www.hope.net/",
+        d: "Hackers On Planet Earth, annual NYC conference",
+      },
+      {
+        n: "NYC Resistor (craft nights)",
+        url: "https://www.nycresistor.com/",
+        d: "Hacker collective, open craft nights",
       },
       {
         n: "Ridgewood Commons",
@@ -274,76 +410,9 @@ const CATS = [
     ],
   },
   {
-    id: "itp",
-    label: "ITP-adjacent",
-    tint: "#BFDCF5",
-    items: [
-      { n: "ITP / IMA", url: "https://itp.nyu.edu/itp/", d: "The home base" },
-      {
-        n: "NYU Game Center",
-        url: "https://gamecenter.nyu.edu/",
-        d: "Games, play, and interactive media",
-      },
-      {
-        n: "Creative Coding NYC (CCNYC)",
-        url: "https://ccnyc.space/",
-        d: "Weekly meetup open to all",
-      },
-      {
-        n: "src (@src__nyc)",
-        url: "https://www.instagram.com/src__nyc/",
-        d: "Small group of ITP alumni",
-      },
-      {
-        n: "Creative Computing Club House",
-        url: "https://ccchbk.github.io/_CCCHBK/",
-        d: "John-Henry Thompson's Brooklyn project",
-      },
-    ],
-  },
-  {
-    id: "xr",
-    label: "XR + immersive",
-    tint: "#BFEBD8",
-    items: [
-      {
-        n: "XR Guild",
-        url: "https://xrguild.org/",
-        d: "Extended reality practitioners",
-      },
-      {
-        n: "CuteLab NYC",
-        url: "https://www.instagram.com/cutelab_nyc/",
-        d: "Audio and immersive events",
-      },
-    ],
-  },
-  {
-    id: "hacker",
-    label: "hacker + infosec",
-    tint: "#F7E8B5",
-    items: [
-      {
-        n: "NYC Resistor (craft nights)",
-        url: "https://www.nycresistor.com/",
-        d: "Hacker collective, open craft nights",
-      },
-      {
-        n: "HOPE",
-        url: "https://www.hope.net/",
-        d: "Hackers On Planet Earth, annual NYC conference",
-      },
-      {
-        n: "Metalab",
-        url: "https://metalab.at/",
-        d: "Influential Viennese hackerspace, helped inspire the US hackerspace movement",
-      },
-    ],
-  },
-  {
     id: "online",
-    label: "online",
-    tint: "#F6CFE0",
+    label: "online + open source",
+    tint: "#D8C7F4",
     items: [
       {
         n: "Neocities",
@@ -390,12 +459,151 @@ const CATS = [
         url: "https://www.are.na/",
         d: "Collaborative mood-boarding for the internet-conscious",
       },
+      {
+        n: "p5.js",
+        url: "https://p5js.org/",
+        d: "Creative coding library for the web",
+      },
+      {
+        n: "ml5.js",
+        url: "https://ml5js.org/",
+        d: "Friendly machine learning for the web",
+      },
+      {
+        n: "Processing Foundation",
+        url: "https://processingfoundation.org/",
+        d: "Stewards of Processing and p5.js",
+      },
+      {
+        n: "OpenFrameworks",
+        url: "https://openframeworks.cc/",
+        d: "Open source C++ toolkit for creative coding",
+      },
+      {
+        n: "Adafruit",
+        url: "https://www.adafruit.com/",
+        d: "Open source hardware, tutorials, and community",
+      },
+      {
+        n: "SparkFun",
+        url: "https://www.sparkfun.com/",
+        d: "Electronics and maker education",
+      },
+      {
+        n: "OSHWA",
+        url: "https://www.oshwa.org/",
+        d: "Open Source Hardware Association",
+      },
+      {
+        n: "Observable",
+        url: "https://observablehq.com/",
+        d: "Notebooks for data visualization and creative code",
+      },
+      {
+        n: "Tracery",
+        url: "https://tracery.io/",
+        d: "Generative text grammar tool by Kate Compton",
+      },
+    ],
+  },
+  {
+    id: "print",
+    label: "print + zine",
+    tint: "#C2EAEA",
+    items: [
+      {
+        n: "Printed Matter",
+        url: "https://www.printedmatter.org/",
+        d: "NYC institution for artists' books and zines, Chelsea",
+      },
+      {
+        n: "Secret Riso Club",
+        url: "https://secretrisoclub.com/",
+        d: "Risograph printing studio and community",
+      },
+      {
+        n: "SVA RisoLAB",
+        url: "https://risolab.sva.edu/",
+        d: "Risograph educational facility with classes and open studio",
+      },
+      {
+        n: "Interference Archive",
+        url: "https://interferencearchive.org/",
+        d: "Community archive of cultural materials from social movements",
+      },
+      {
+        n: "8-Ball Community",
+        url: "https://8ballcommunity.club/",
+        d: "Zine library, radio, and public access TV, archive now in Chinatown",
+      },
+      {
+        n: "Endless Editions",
+        url: "https://www.endlesseditions.com/",
+        d: "Publishing and curatorial initiative + Brooklyn Art Book Fair",
+      },
+      {
+        n: "Quimby's Bookstore NYC",
+        url: "https://quimbysnyc.com/",
+        d: "Independent zine and comics shop in Williamsburg",
+      },
+      {
+        n: "Wendy's Subway",
+        url: "https://wendyssubway.com/",
+        d: "Radical library and community space in Bushwick",
+      },
+      {
+        n: "Desert Island",
+        url: "https://desertislandbrooklyn.com/",
+        d: "Comics and zine shop in Williamsburg",
+      },
+      {
+        n: "Radix Media",
+        url: "https://radixmedia.org/",
+        d: "Worker-owned print shop and publisher in Brooklyn",
+      },
+    ],
+  },
+  {
+    id: "movement",
+    label: "social movements",
+    tint: "#D9EDB9",
+    items: [
+      {
+        n: "S.T.O.P.",
+        url: "https://www.stopspying.org/",
+        d: "Surveillance Technology Oversight Project",
+      },
+      {
+        n: "Summer of Ludd",
+        url: "https://summerofludd.com/",
+        d: "Annual community festival in NYC dedicated to offline presence and anti-surveillance organizing",
+      },
+      {
+        n: "DeFlock",
+        url: "https://deflock.me/",
+        d: "Crowdsourced map of automated license plate readers",
+      },
+      {
+        n: "NYC Off Tech",
+        url: "https://nycofftech.com/",
+        d: "Unplugging from surveillance tech",
+      },
+      {
+        n: "Tech Workers Coalition",
+        url: "https://techworkerscoalition.org/",
+        d: "Unionizing tech workers",
+      },
+      {
+        n: "Beta NYC",
+        url: "https://www.beta.nyc/",
+        d: "Helping NYers access tech and information",
+      },
     ],
   },
   {
     id: "global",
     label: "outside NYC",
-    tint: "#BFDCF5",
+    tint: "#F5C4C4",
     items: [
       {
         n: "Ars Electronica",
@@ -442,6 +650,11 @@ const CATS = [
         n: "c-base",
         url: "https://www.c-base.org/",
         d: "One of the world's first hackerspaces, crashed space station mythology, Berlin 1995",
+      },
+      {
+        n: "Metalab",
+        url: "https://metalab.at/",
+        d: "Influential Viennese hackerspace, helped inspire the US hackerspace movement",
       },
       {
         n: "Noisebridge",
@@ -561,256 +774,6 @@ const CATS = [
     ],
   },
   {
-    id: "movement",
-    label: "social movements",
-    tint: "#BFEBD8",
-    items: [
-      {
-        n: "S.T.O.P.",
-        url: "https://www.stopspying.org/",
-        d: "Surveillance Technology Oversight Project",
-      },
-      {
-        n: "Summer of Ludd",
-        url: "https://summerofludd.com/",
-        d: "Annual community festival in NYC dedicated to offline presence and anti-surveillance organizing",
-      },
-      {
-        n: "DeFlock",
-        url: "https://deflock.me/",
-        d: "Crowdsourced map of automated license plate readers",
-      },
-      {
-        n: "NYC Off Tech",
-        url: "https://nycofftech.com/",
-        d: "Unplugging from surveillance tech",
-      },
-      {
-        n: "Tech Workers Coalition",
-        url: "https://techworkerscoalition.org/",
-        d: "Unionizing tech workers",
-      },
-      {
-        n: "Beta NYC",
-        url: "https://www.beta.nyc/",
-        d: "Helping NYers access tech and information",
-      },
-    ],
-  },
-  {
-    id: "dev",
-    label: "dev + open source",
-    tint: "#F7E8B5",
-    items: [
-      {
-        n: "p5.js",
-        url: "https://p5js.org/",
-        d: "Creative coding library for the web",
-      },
-      {
-        n: "ml5.js",
-        url: "https://ml5js.org/",
-        d: "Friendly machine learning for the web",
-      },
-      {
-        n: "Processing Foundation",
-        url: "https://processingfoundation.org/",
-        d: "Stewards of Processing and p5.js",
-      },
-      {
-        n: "OpenFrameworks",
-        url: "https://openframeworks.cc/",
-        d: "Open source C++ toolkit for creative coding",
-      },
-      {
-        n: "Adafruit",
-        url: "https://www.adafruit.com/",
-        d: "Open source hardware, tutorials, and community",
-      },
-      {
-        n: "SparkFun",
-        url: "https://www.sparkfun.com/",
-        d: "Electronics and maker education",
-      },
-      {
-        n: "OSHWA",
-        url: "https://www.oshwa.org/",
-        d: "Open Source Hardware Association",
-      },
-      {
-        n: "Observable",
-        url: "https://observablehq.com/",
-        d: "Notebooks for data visualization and creative code",
-      },
-      {
-        n: "Hydra",
-        url: "https://hydra.ojack.xyz/",
-        d: "Browser-based live coding video synth by Olivia Jack",
-      },
-      {
-        n: "TidalCycles",
-        url: "https://tidalcycles.org/",
-        d: "Live coding environment for music and patterns",
-      },
-      {
-        n: "Sonic Pi",
-        url: "https://sonic-pi.net/",
-        d: "Code-based music creation for all",
-      },
-      {
-        n: "Pure Data",
-        url: "https://puredata.info/",
-        d: "Open source visual programming for audio and more",
-      },
-      {
-        n: "Max/MSP",
-        url: "https://cycling74.com/",
-        d: "Visual programming for music, audio, and media",
-      },
-      {
-        n: "AYAB",
-        url: "https://ayab-knitting.com/",
-        d: "All Yarns Are Beautiful, open source machine knitting",
-      },
-      {
-        n: "Tracery",
-        url: "https://tracery.io/",
-        d: "Generative text grammar tool by Kate Compton",
-      },
-      {
-        n: "Tone.js",
-        url: "https://tonejs.github.io/",
-        d: "Web audio framework for interactive music",
-      },
-    ],
-  },
-  {
-    id: "fabrication",
-    label: "fabrication + materials",
-    tint: "#F6CFE0",
-    items: [
-      {
-        n: "Powerhouse Arts",
-        url: "https://powerhousearts.org/",
-        d: "Ceramics, print, metalwork, and public art fab in Gowanus",
-      },
-      {
-        n: "UrbanGlass",
-        url: "https://urbanglass.org/",
-        d: "17,000 sq ft glass studio in Brooklyn: blowing, neon, flameworking",
-      },
-      {
-        n: "Brooklyn Glass",
-        url: "https://brooklynglass.com/",
-        d: "Artist-owned glass studio with hourly rentals and classes",
-      },
-      {
-        n: "MakerSpace NYC (fab)",
-        url: "https://www.makerspace.nyc/",
-        d: "Welding, blacksmithing, ceramics, CNC, waterjet at Brooklyn Army Terminal",
-      },
-      {
-        n: "Brooklyn Metal Works",
-        url: "https://www.bkmetalworks.com/",
-        d: "Jewelry and metalsmithing classes and studio access",
-      },
-      {
-        n: "Craftsman Ave",
-        url: "https://craftsmanave.com/",
-        d: "Woodworking, metalworking, welding, knife making workshops in Industry City",
-      },
-      {
-        n: "Gasworks NYC",
-        url: "https://gasworksnyc.com/",
-        d: "Community clay studio with 24/7 membership, South Slope",
-      },
-      {
-        n: "Sculpture Space NYC",
-        url: "https://www.sculpturespacenyc.com/",
-        d: "Ceramics studio, residency, and gallery",
-      },
-      {
-        n: "Brooklyn Clay Industries",
-        url: "https://www.brooklynclayindustries.com/",
-        d: "Pottery studio and classes at the Brooklyn Navy Yard",
-      },
-    ],
-  },
-  {
-    id: "bio",
-    label: "bio + science",
-    tint: "#BFEBD8",
-    items: [
-      {
-        n: "Genspace",
-        url: "https://www.genspace.org/",
-        d: "World's first community biology lab, Sunset Park Brooklyn",
-      },
-      {
-        n: "BioBAT Art Space",
-        url: "https://www.biobatartspace.com/",
-        d: "Bioart space at the Brooklyn Army Terminal",
-      },
-    ],
-  },
-  {
-    id: "print",
-    label: "print + zine",
-    tint: "#BFDCF5",
-    items: [
-      {
-        n: "Printed Matter",
-        url: "https://www.printedmatter.org/",
-        d: "NYC institution for artists' books and zines, Chelsea",
-      },
-      {
-        n: "Secret Riso Club",
-        url: "https://secretrisoclub.com/",
-        d: "Risograph printing studio and community",
-      },
-      {
-        n: "SVA RisoLAB",
-        url: "https://risolab.sva.edu/",
-        d: "Risograph educational facility with classes and open studio",
-      },
-      {
-        n: "Interference Archive",
-        url: "https://interferencearchive.org/",
-        d: "Community archive of cultural materials from social movements",
-      },
-      {
-        n: "8-Ball Community",
-        url: "https://8ballcommunity.club/",
-        d: "Zine library, radio, and public access TV, archive now in Chinatown",
-      },
-      {
-        n: "Endless Editions",
-        url: "https://www.endlesseditions.com/",
-        d: "Publishing and curatorial initiative + Brooklyn Art Book Fair",
-      },
-      {
-        n: "Quimby's Bookstore NYC",
-        url: "https://quimbysnyc.com/",
-        d: "Independent zine and comics shop in Williamsburg",
-      },
-      {
-        n: "Wendy's Subway",
-        url: "https://wendyssubway.com/",
-        d: "Radical library and community space in Bushwick",
-      },
-      {
-        n: "Desert Island",
-        url: "https://desertislandbrooklyn.com/",
-        d: "Comics and zine shop in Williamsburg",
-      },
-      {
-        n: "Radix Media",
-        url: "https://radixmedia.org/",
-        d: "Worker-owned print shop and publisher in Brooklyn",
-      },
-    ],
-  },
-  {
     id: "rip",
     label: "graveyard",
     tint: "#DDD6E8",
@@ -893,6 +856,9 @@ export default function Electrodex() {
 
   const total = filtered.reduce((acc, c) => acc + c.items.length, 0);
 
+  // chain view on the main page, grid view when a single section is selected
+  const isChain = active === "all";
+
   return (
     <>
       <Head>
@@ -902,7 +868,7 @@ export default function Electrodex() {
           content="electrodex: a singly linked list of spaces, tools, and communities for creative technologists — NYC and beyond."
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Pixelify+Sans:wght@700&display=swap"
           rel="stylesheet"
         />
       </Head>
@@ -913,19 +879,21 @@ export default function Electrodex() {
             <button
               className={s.themeBtn}
               onClick={toggleTheme}
-              aria-label="Toggle visual layout theme"
+              aria-label={
+                theme === "dark"
+                  ? "Switch to light mode"
+                  : "Switch to dark mode"
+              }
             >
-              {theme === "dark" ? (
-                <span className={s.btnIcon}>☼</span>
-              ) : (
-                <span className={s.btnIcon}>☾</span>
-              )}
-              {theme === "dark" ? "light" : "dark"}
+              <span className={s.btnIcon} aria-hidden="true">
+                {theme === "dark" ? "☼" : "☾"}
+              </span>
             </button>
-            <p className={s.eyebrow}>electrocute.io / electrodex</p>
+            <p className={s.eyebrow}>electrocute lab / electrodex</p>
             <h1 className={s.title}>
               electrodex<span className={s.caret}>*</span>
             </h1>
+            <div className={s.bus} aria-hidden="true" />
             <p className={s.decl}>
               <span className={s.kw}>struct</span> node {"{"}{" "}
               <span className={s.str}>data</span>: a space for creative
@@ -953,6 +921,7 @@ export default function Electrodex() {
                   <button
                     key={f.id}
                     className={`${s.pill} ${active === f.id ? s.pillActive : ""}`}
+                    style={{ "--pillTint": f.tint }}
                     onClick={() => setActive(f.id)}
                   >
                     <span className={s.dot} style={{ background: f.tint }} />
@@ -989,19 +958,21 @@ export default function Electrodex() {
                     </span>
                   </div>
 
-                  <div className={s.headPtr}>
-                    <span className={s.headLbl}>head ●</span>
-                  </div>
-                  <div className={s.headStemRow}>
-                    <span className={s.stem} />
-                  </div>
+                  {isChain && (
+                    <div className={s.headPtr}>
+                      <span className={s.headLbl}>head</span>
+                      <span className={s.headArrow} aria-hidden="true">
+                        ↓
+                      </span>
+                    </div>
+                  )}
 
-                  <div className={s.chain}>
+                  <div className={isChain ? s.chain : s.grid}>
                     {cat.items.map((item, i) => {
                       const isLast = i === cat.items.length - 1;
                       const tintFaint = cat.tint + "33";
                       return (
-                        <div className={s.nodeRow} key={item.n}>
+                        <div style={{ display: "contents" }} key={item.n}>
                           <div
                             className={s.node}
                             style={{
@@ -1010,9 +981,11 @@ export default function Electrodex() {
                             }}
                           >
                             <div className={s.dataCell}>
-                              <div className={s.addr}>
-                                {hexAddr(cat.catIdx, i)}
-                              </div>
+                              {isChain && (
+                                <div className={s.addr}>
+                                  {hexAddr(cat.catIdx, i)}
+                                </div>
+                              )}
                               <div className={s.name}>
                                 {item.url ? (
                                   <a
@@ -1028,33 +1001,34 @@ export default function Electrodex() {
                               </div>
                               {item.d && <p className={s.desc}>{item.d}</p>}
                             </div>
-                            <div className={s.nextCell}>
-                              <span className={s.nextLbl}>next</span>
-                              {isLast ? (
-                                <span className={`${s.nextVal} ${s.nextNull}`}>
-                                  ∅
-                                </span>
-                              ) : (
-                                <span className={s.nextVal}>
-                                  {hexAddr(cat.catIdx, i + 1)}
-                                </span>
-                              )}
-                            </div>
+                            {isChain && (
+                              <div className={s.nextCell}>
+                                <span className={s.nextLbl}>next</span>
+                                {isLast ? (
+                                  <span
+                                    className={`${s.nextVal} ${s.nextNull}`}
+                                  >
+                                    ∅
+                                  </span>
+                                ) : (
+                                  <span className={s.nextVal}>
+                                    {hexAddr(cat.catIdx, i + 1)}
+                                  </span>
+                                )}
+                              </div>
+                            )}
                           </div>
-                          {!isLast && (
+                          {isChain && (
                             <div className={s.link} aria-hidden="true">
+                              <span className={s.wireDot} />
                               <span className={s.wire} />
-                              <span className={s.tip}>▼</span>
+                              <span className={s.tip}>▶</span>
                             </div>
                           )}
                         </div>
                       );
                     })}
-                  </div>
-
-                  <div className={s.nullChip}>
-                    <span>tail →</span>
-                    <span className={s.nullBox}>∅ null</span>
+                    {isChain && <span className={s.nullBox}>NULL ∅</span>}
                   </div>
                 </section>
               ))
