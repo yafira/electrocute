@@ -8,7 +8,6 @@
   --butter: #fff0b8;
   --pin-color: #2bb2af;
 
-  /* Updated font-family pairing variable */
   --display: "Jacquard 24", system-ui, sans-serif;
   --body: "IBM Plex Mono", monospace;
 
@@ -41,11 +40,7 @@
 .title {
   color: rgb(185, 169, 222);
   font-family: var(--display);
-  font-size: clamp(
-    4rem,
-    12vw,
-    8rem
-  ); /* Slightly bumped scaling to maximize the blackletter detailing */
+  font-size: clamp(4rem, 12vw, 8rem);
   line-height: 0.9;
   margin: 0 0 1.5rem;
   text-transform: lowercase;
@@ -346,7 +341,23 @@
 }
 
 .footer p {
-  margin: 0;
+  margin: 0 0 0.75rem;
+}
+
+.instagramLink {
+  color: var(--ink);
+  font-size: 1.35rem;
+  display: inline-block;
+  text-decoration: none;
+  transition:
+    transform 150ms ease,
+    opacity 150ms ease;
+  opacity: 0.75;
+}
+
+.instagramLink:hover {
+  transform: scale(1.15);
+  opacity: 1;
 }
 
 /* small screens */
