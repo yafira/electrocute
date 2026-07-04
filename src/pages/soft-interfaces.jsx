@@ -142,9 +142,12 @@ export default function SoftInterfaces() {
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        {/* Swapped out Jersey 10 Charted to cleanly import Jacquard 24 instead */}
         <link
           href="https://fonts.googleapis.com/css2?family=Jacquard+24&family=Yarndings+20+Charted&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
           rel="stylesheet"
         />
       </Head>
@@ -230,6 +233,15 @@ export default function SoftInterfaces() {
 
         <footer className={styles.footer}>
           <p>stitched together by electrocute lab {"\u2661"}</p>
+          <a
+            href="https://instagram.com/softinterfaces"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.instagramLink}
+            aria-label="Follow soft interfaces on Instagram"
+          >
+            <i className="fa-brands fa-instagram"></i>
+          </a>
         </footer>
       </main>
     </>
