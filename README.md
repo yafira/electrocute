@@ -8,10 +8,11 @@ electrocute is where i document my creative endeavors, experiments, craft, and c
 
 ## what lives here
 
-- **soft interfaces** — a portfolio of projects rendered as pastel swatch cards pinned to a graph paper wall
+- **[soft interfaces](https://electrocute.io/soft-interfaces)** — a portfolio of projects rendered as pastel swatch cards pinned to a graph paper wall
 - **[electrodex](https://electrocute.io/electrodex)** — a community directory of creative tech spaces, makerspaces, and textile/craft communities, styled as a singly linked list (hex memory addresses, pointer wires and all)
 - **poemdeck** — a little generative poetry gadget powered by tracery grammars
 - **about + contact** — who i am and how to reach me
+- and much more!
 
 ## built with
 
