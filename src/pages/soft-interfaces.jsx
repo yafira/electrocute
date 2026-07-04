@@ -6,8 +6,7 @@ const PROJECTS = [
   {
     id: "soft-computer",
     name: "the soft computer",
-    // year: "2026",
-    glyph: "\u2318",
+    glyph: "A",
     tint: "blush",
     materials:
       "machine knit wool cotton, felt, conductive thread, e ink, raspberry pi 5",
@@ -21,8 +20,7 @@ const PROJECTS = [
   {
     id: "soft-computer-mini",
     name: "soft computer mini",
-    // year: "2026",
-    glyph: "\u25C7",
+    glyph: "B",
     tint: "sky",
     materials:
       "feather rp2040, 5.83 inch e ink, felt keyboard, machine knit draw bar",
@@ -36,8 +34,7 @@ const PROJECTS = [
   {
     id: "pocket-oracle-of-time",
     name: "pocket oracle of time",
-    // year: "2026",
-    glyph: "\u29D7",
+    glyph: "C",
     tint: "butter",
     materials: "real time clock, e ink display, exposed electronics",
     blurb:
@@ -50,8 +47,7 @@ const PROJECTS = [
   {
     id: "puffcast",
     name: "puffcast",
-    // year: "2026",
-    glyph: "\u2601",
+    glyph: "D",
     tint: "mint",
     materials:
       "layered craft foam, arduino nano 33 iot, protoboard, two potentiometers, buttons",
@@ -65,8 +61,7 @@ const PROJECTS = [
   {
     id: "soft-circuit-library",
     name: "soft circuit library",
-    // year: "2026",
-    glyph: "\u29C9",
+    glyph: "E",
     tint: "blush",
     materials: "copper tape, craft foam, coin cells, archival index box",
     blurb:
@@ -79,8 +74,7 @@ const PROJECTS = [
   {
     id: "soft-circuit-boards",
     name: "soft circuit boards",
-    // year: "2026",
-    glyph: "\u2317",
+    glyph: "F",
     tint: "butter",
     materials: "copper tape, craft foam, conductive thread, no soldering",
     blurb:
@@ -93,8 +87,7 @@ const PROJECTS = [
   {
     id: "tiny-soft-buttons",
     name: "tiny soft buttons",
-    // year: "2026",
-    glyph: "\u25C9",
+    glyph: "G",
     tint: "sky",
     materials: "felt, fabric, conductive materials",
     blurb:
@@ -107,8 +100,7 @@ const PROJECTS = [
   {
     id: "bio-lume",
     name: "bio-lume",
-    // year: "2026",
-    glyph: "\u{1F702}",
+    glyph: "H",
     tint: "mint",
     materials: "agar agar, arduino nano 33 iot, adafruit neopixel jewel",
     blurb:
@@ -121,7 +113,7 @@ const PROJECTS = [
 ];
 
 const TAGLINE =
-  "interfaces you can hold, wear, fold, and squish. a wall of soft machines from electrocute lab.";
+  "interfaces you can hold, wear, fold, and squish. a collective of soft machines from electrocute lab.";
 
 export default function SoftInterfaces() {
   const [selected, setSelected] = useState(null);
@@ -144,11 +136,21 @@ export default function SoftInterfaces() {
           name="description"
           content="a swatch wall of soft machines, textile circuits, and tangible interfaces from electrocute lab"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        {/* Swapped out Jersey 10 Charted to cleanly import Jacquard 24 instead */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Jacquard+24&family=Yarndings+20+Charted&display=swap"
+          rel="stylesheet"
+        />
       </Head>
 
       <main className={styles.page}>
         <header className={styles.header}>
-          <p className={styles.eyebrow}>electrocute.io / soft interfaces</p>
           <h1 className={styles.title}>soft interfaces</h1>
           <p className={styles.tagline}>{TAGLINE}</p>
         </header>
