@@ -1,9 +1,57 @@
-# electrocute io 🌸 ⚡️
+# electrocute.io 🌸 ⚡️
 
-### A digital space for exploring the intersection between art and tech
+### a digital space at the intersection of art, design and engineering
 
-<body>
-    <p>As a software engineer with a soft spot for art and design, I am passionate about bringing both the technical and creative aspects of digital products to life; by developing and designing experiences that translate digital creations into physical inventions. My goal is to help bridge the gap between design and engineering. <br>
-      <br>
- <samp>‘Electrocute’ is something I’ve been meaning to work on for the longest but finally decided to just do it! I realized that I needed a space where I can document my creative endeavors, craft, interests, cool findings, experiments, DIYs etc., a place where I can show a bit of me and hoping that it can be of use to you. I am hoping it can spark inspiration, growth, and all around magic!. ϟ</samp></p>
-  </body>
+hi, i'm yafira. i'm a design engineer and creative technologist, and this is the home of my independent practice, [electrocute lab](https://www.instagram.com/electrocutelab/). i build soft circuits, web tools, and what i like to call poetronics: electronics made with the sensibility of a poem.
+
+electrocute is where i document my creative endeavors, experiments, craft, and cool findings. it's a place to show a bit of me, and hopefully spark some inspiration, growth, and all around magic ϟ
+
+## what lives here
+
+- **soft interfaces** — a portfolio of projects rendered as pastel swatch cards pinned to a graph paper wall
+- **[electrodex](https://electrocute.io/electrodex)** — a community directory of creative tech spaces, makerspaces, and textile/craft communities, styled as a singly linked list (hex memory addresses, pointer wires and all)
+- **poemdeck** — a little generative poetry gadget powered by tracery grammars
+- **about + contact** — who i am and how to reach me
+
+## built with
+
+- [next.js](https://nextjs.org/) + react
+- vanilla css (no framework, just vibes)
+- [framer motion](https://www.framer.com/motion/) for micro-interactions
+- [tracery](https://github.com/galaxykate/tracery) for generative text
+- font awesome for icons
+- deployed on [vercel](https://vercel.com/)
+
+## running locally
+
+```bash
+# clone the repo
+git clone https://github.com/yafira/electrocute.git
+cd electrocute
+
+# install dependencies
+npm install
+
+# start the dev server
+npm run dev
+```
+
+then open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## project structure
+
+```
+electrocute/
+├── public/     # static assets (images, fonts, favicons)
+├── src/        # pages, components, and styles
+└── ...
+```
+
+## find me elsewhere
+
+- website: [electrocute.io](https://electrocute.io)
+- instagram: [@electrocutelab](https://instagram.com/electrocutelab)
+
+---
+
+crafted with care (soft shell, live wire) ✿
