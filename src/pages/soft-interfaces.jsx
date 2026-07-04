@@ -104,7 +104,7 @@ const PROJECTS = [
     tint: "mint",
     materials: "agar agar, arduino nano 33 iot, adafruit neopixel jewel",
     blurb:
-      "a temporary bio e-candle made for tom igoe's light and interactivity class. an addressable led candle coded to behave like a real flame, warm white, low brightness, slow breathing, randomized flicker, and long pauses of stillness. the neopixels are treated as a single light source, with diffusion doing most of the work. she is temporary because the candle body is cast from agar agar, which diffuses light beautifully but cracks and will eventually collapse. instead of fixing that, the material is allowed to fail as part of the candle's lifecycle.",
+      "a temporary bio e-candle; addressable led candle coded to behave like a real flame, warm white, low brightness, slow breathing, randomized flicker, and long pauses of stillness. the neopixels are treated as a single light source, with diffusion doing most of the work. she is temporary because the candle body is cast from agar agar, which diffuses light beautifully but cracks and will eventually collapse. instead of fixing that, the material is allowed to fail as part of the candle's lifecycle.",
     link: null,
     img: "../assets/bio-lume.png",
     fit: "contain",
