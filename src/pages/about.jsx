@@ -57,7 +57,7 @@ export default function About() {
               poetronics
             </button>
             : electronics with the sensibility of a poem. I&apos;ve always had a
-            heightened sense for detail, for textures and colors and how things
+            heightened sense for detail, materials, texture and how things
             feel in your hands. I believe machines can be tender.
           </p>
         </section>
