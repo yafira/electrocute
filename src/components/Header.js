@@ -36,6 +36,7 @@ export default function Header() {
       </Link>
       <nav className={styles.nav}>
         <Link href="/about">about</Link>
+        <a href="https://blog.electrocute.io">blog</a>
         <Link href="/contact">contact</Link>
       </nav>
 
