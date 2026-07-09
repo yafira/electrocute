@@ -10,6 +10,20 @@ export default function Container() {
       </div>
 
       <div className={styles.projectGrid}>
+        <Link href="https://ui.electrocute.io" className={styles.projectCard9}>
+          <Image
+            className={styles.logo}
+            src="/assets/ecuteui.png"
+            alt="project 9"
+            width={50}
+            height={50}
+          />
+          <h3>electrocute-ui</h3>
+          <p>
+            a design system for Electrocute Lab. <i>published on npm</i>
+          </p>
+        </Link>
+
         <Link href="/soft-interfaces" className={styles.projectCard18}>
           <Image
             className={styles.logo}
@@ -20,8 +34,8 @@ export default function Container() {
           />
           <h3>soft interfaces</h3>
           <p>
-            a craft collective of soft machines, textile circuits, and
-            tangible interfaces built at electrocute lab.
+            a craft collective of soft machines, textile circuits, and tangible
+            interfaces built at electrocute lab.
           </p>
         </Link>
 
@@ -35,8 +49,8 @@ export default function Container() {
           />
           <h3>electrodex</h3>
           <p>
-            a linked list of creative spaces, communities, and digital niches
-            in nyc & beyond. (WIP)
+            a linked list of creative spaces, communities, and digital niches in
+            nyc & beyond. (WIP)
           </p>
         </Link>
 
@@ -144,23 +158,6 @@ export default function Container() {
           />
           <h3>kawaii ML</h3>
           <p>a card deck referencing the top 10 machine learning algorithms.</p>
-        </Link>
-
-        <Link
-          href="https://www.figma.com/community/file/1277066355478459322/Electrocute-Design-System"
-          className={styles.projectCard9}
-        >
-          <Image
-            className={styles.logo}
-            src="/assets/ecuteui.png"
-            alt="project 9"
-            width={50}
-            height={50}
-          />
-          <h3>electrocute UI</h3>
-          <p>
-            a mini design system in the making. <i>ongoing</i>
-          </p>
         </Link>
 
         <Link
