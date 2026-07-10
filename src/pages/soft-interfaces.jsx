@@ -157,6 +157,9 @@ export default function SoftInterfaces() {
 
       <main className={styles.page}>
         <header className={styles.header}>
+          <a className={styles.eyebrow} href="https://electrocute.io">
+            {"\u2190"} electrocute.io
+          </a>
           <h1 className={styles.title}>soft interfaces</h1>
           <p className={styles.tagline}>{TAGLINE}</p>
         </header>
@@ -250,7 +253,10 @@ export default function SoftInterfaces() {
         )}
 
         <footer className={styles.footer}>
-          <p>stitched together by electrocute lab {"\u2661"}</p>
+          <p>
+            stitched together by{" "}
+            <a href="https://electrocute.io">electrocute lab</a> {"\u2661"}
+          </p>
           <p className={styles.colophon}>
             using the typeface{" "}
             <a

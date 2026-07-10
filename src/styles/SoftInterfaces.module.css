@@ -32,10 +32,21 @@
 }
 
 .eyebrow {
+  display: inline-block;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   margin: 0 0 1rem;
-  opacity: 0.8;
+  opacity: 0.7;
+  color: var(--ink);
+  text-decoration: none;
+  transition: opacity 150ms ease;
+}
+
+.eyebrow:hover,
+.eyebrow:focus-visible {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .title {
