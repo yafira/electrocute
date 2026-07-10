@@ -8,7 +8,8 @@
   --butter: #fff0b8;
   --pin-color: #2bb2af;
 
-  --display: "Jacquard 24", system-ui, sans-serif;
+  --display: "Jersey 25", system-ui, sans-serif;
+  --display-title: "Jacquard 24", system-ui, sans-serif;
   --body: "IBM Plex Mono", monospace;
 
   min-height: 100vh;
@@ -39,7 +40,7 @@
 
 .title {
   color: rgb(185, 169, 222);
-  font-family: var(--display);
+  font-family: var(--display-title);
   font-size: clamp(4rem, 12vw, 8rem);
   line-height: 0.9;
   margin: 0 0 1.5rem;
@@ -201,10 +202,11 @@
 
 .tagName {
   font-family: var(--display);
-  font-size: 1.1rem;
-  line-height: 0.8;
+  font-size: 1.2rem;
+  line-height: 0.9;
   overflow: hidden;
   text-overflow: ellipsis;
+  image-rendering: pixelated;
 }
 
 .tagYear {
@@ -282,9 +284,10 @@
 
 .labelName {
   font-family: var(--display);
-  font-size: 1.6rem;
-  line-height: 0.8;
+  font-size: 1.7rem;
+  line-height: 1.1;
   margin: 0 0 0.5rem;
+  image-rendering: pixelated;
 }
 
 .close {
@@ -323,11 +326,18 @@
 
 .labelLink {
   font-family: var(--display);
-  font-size: 1.1rem;
-  line-height: 0.8;
+  font-size: 1.25rem;
+  line-height: 1;
   color: var(--ink);
   text-decoration: underline;
   text-underline-offset: 3px;
+  image-rendering: pixelated;
+}
+
+.labelLinks {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 /* footer */
