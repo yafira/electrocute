@@ -79,7 +79,10 @@ const PROJECTS = [
     materials: "copper tape, craft foam, conductive thread, no soldering",
     blurb:
       "printed circuit boards, but by hand. copper tape traces on craft foam stand in for etched copper on fiberglass, so the board becomes something you can cut, bend, and mend. an ongoing studio practice that also became a hands on workshop at itp camp, where anyone can trace their own board and light something up.",
-    link: "https://blog.electrocute.io/posts/soft-circuit-boards/",
+    links: {
+      recap: "https://blog.electrocute.io/posts/soft-circuit-boards/",
+      deck: "/assets/scb-workshop-deck.pdf",
+    },
     img: "../assets/soft-circuit-boards.png",
     fit: "contain",
     wide: false,
@@ -143,7 +146,7 @@ export default function SoftInterfaces() {
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Jacquard+24&family=Yarndings+20+Charted&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Jacquard+24&family=Jersey+25&family=Yarndings+20+Charted&display=swap"
           rel="stylesheet"
         />
         <link
@@ -226,6 +229,21 @@ export default function SoftInterfaces() {
                 >
                   visit {"\u2197"}
                 </a>
+              )}
+              {active.links && (
+                <div className={styles.labelLinks}>
+                  {Object.entries(active.links).map(([label, href]) => (
+                    <a
+                      key={label}
+                      className={styles.labelLink}
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {label} {"\u2197"}
+                    </a>
+                  ))}
+                </div>
               )}
             </div>
           </aside>
