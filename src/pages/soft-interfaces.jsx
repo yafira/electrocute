@@ -52,7 +52,7 @@ const PROJECTS = [
     materials:
       "layered craft foam, arduino nano 33 iot, protoboard, two potentiometers, buttons",
     blurb:
-      "a handmade philips hue controller built from layered craft foam, inspired by the chunky foam novelty phones of the 80s and 90s. not entirely soft, there is a soldered protoboard, an arduino nano 33 iot, two potentiometers, and buttons living inside, but the outside has that tactile, almost toy like quality, the kind of thing you want to pick up and hold. it controls brightness, color temperature, and seven lighting scenes at home and at itp, tested in room 404, yes like the not found error, automatically detecting which environment it is in and adapting accordingly. very handmade, very intentional. soft on the outside, hard on the inside. \u00BFpor qu\u00E9 no los dos?",
+      "a handmade philips hue controller built from layered craft foam, inspired by the chunky foam novelty phones of the 80s and 90s. not entirely soft, there is a soldered protoboard, an arduino nano 33 iot, two potentiometers, and buttons living inside, but the outside has that tactile, almost toy like quality, the kind of thing you want to pick up and hold. it controls brightness, color temperature, and seven lighting scenes at home and at itp, tested in room 404, yes like the not found error, automatically detecting which environment it is in and adapting accordingly. very handmade, very intentional. soft on the outside, hard on the inside. ¿por qué no los dos?",
     link: null,
     img: "../assets/puffcast.png",
     fit: "contain",
@@ -79,7 +79,7 @@ const PROJECTS = [
     materials: "copper tape, craft foam, conductive thread, no soldering",
     blurb:
       "printed circuit boards, but by hand. copper tape traces on craft foam stand in for etched copper on fiberglass, so the board becomes something you can cut, bend, and mend. an ongoing studio practice that also became a hands on workshop at itp camp, where anyone can trace their own board and light something up.",
-    link: null,
+    link: "https://blog.electrocute.io/posts/soft-circuit-boards/",
     img: "../assets/soft-circuit-boards.png",
     fit: "contain",
     wide: false,
