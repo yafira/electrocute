@@ -58,7 +58,11 @@
   text-align: center;
 }
 
-/* Card layout configurations  */
+/* Card layout configurations — colors now set per-card via CSS custom
+   properties (--bg / --hover-bg / --hover-border) below, consumed by
+   these two shared rules. To recolor any card, edit its one-line
+   custom-property block instead of duplicating background/hover/border
+   declarations. */
 .projectCard1,
 .projectCard2,
 .projectCard3,
@@ -80,6 +84,32 @@
   padding: 10px;
   text-align: center;
   border: transparent 3px solid;
+  background-color: var(--bg);
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.projectCard1:hover,
+.projectCard2:hover,
+.projectCard3:hover,
+.projectCard4:hover,
+.projectCard5:hover,
+.projectCard6:hover,
+.projectCard7:hover,
+.projectCard8:hover,
+.projectCard9:hover,
+.projectCard10:hover,
+.projectCard11:hover,
+.projectCard12:hover,
+.projectCard13:hover,
+.projectCard14:hover,
+.projectCard15:hover,
+.projectCard16:hover,
+.projectCard17:hover,
+.projectCard18:hover {
+  background-color: var(--hover-bg);
+  border-color: var(--hover-border);
 }
 
 /* Image scaling inside project cards grouped together including card 17 */
@@ -109,194 +139,135 @@
   margin: 10px;
 }
 
+/* Per-card colors. */
 .projectCard1 {
-  background-color: #f3faea;
-}
-
-.projectCard1:hover {
-  background-color: #edfdda;
-  border-color: #d8f0ba;
+  --bg: #f3faea;
+  --hover-bg: #edfdda;
+  --hover-border: #d8f0ba;
 }
 
 .projectCard2 {
-  background-color: #fff3f8;
-}
-
-.projectCard2:hover {
-  background-color: #fae7ef;
-  border-color: #fecfe2;
+  --bg: #fff3f8;
+  --hover-bg: #fae7ef;
+  --hover-border: #fecfe2;
 }
 
 .projectCard3 {
-  background-color: #fffee9;
-}
-
-.projectCard3:hover {
-  background-color: #fcfade;
-  border-color: #f7f3cf;
+  --bg: #fffee9;
+  --hover-bg: #fcfade;
+  --hover-border: #f7f3cf;
 }
 
 .projectCard4 {
-  background-color: #f6fffe;
-}
-
-.projectCard4:hover {
-  background-color: #eafdfc;
-  border-color: #bdfef8;
+  --bg: #f6fffe;
+  --hover-bg: #eafdfc;
+  --hover-border: #bdfef8;
 }
 
 .projectCard5 {
-  background-color: #faf6ff;
-}
-
-.projectCard5:hover {
-  background-color: #f3ebfd;
-  border-color: #d8c5fc;
+  --bg: #faf6ff;
+  --hover-bg: #f3ebfd;
+  --hover-border: #d8c5fc;
 }
 
 .projectCard6 {
-  background-color: #faedff;
-}
-
-.projectCard6:hover {
-  background-color: #f8e5ff;
-  border-color: #edc5fc;
+  --bg: #f2f8ff;
+  --hover-bg: #dae9fa;
+  --hover-border: #b4d4f9;
 }
 
 .projectCard7 {
-  background-color: #fcf7ec;
-}
-
-.projectCard7:hover {
-  background-color: #fcf3e1;
-  border-color: #f1dbcc;
+  --bg: #fcf7ec;
+  --hover-bg: #fcf3e1;
+  --hover-border: #f1dbcc;
 }
 
 .projectCard8 {
-  background-color: #f4f0ff;
-}
-
-.projectCard8:hover {
-  background-color: #e8e1fa;
-  border-color: #d5c8fa;
+  --bg: #f4f0ff;
+  --hover-bg: #e8e1fa;
+  --hover-border: #d5c8fa;
 }
 
 .projectCard9 {
-  background-color: #f2f8ff;
-}
-
-.projectCard9:hover {
-  background-color: #dae9fa;
-  border-color: #b4d4f9;
+  --bg: #fdf1f9;
+  --hover-bg: #f2b9e0;
+  --hover-border: #e88fc9;
 }
 
 .projectCard10 {
-  background-color: #ecfff9;
-}
-
-.projectCard10:hover {
-  background-color: #d9f9ef;
-  border-color: #94f1d3;
+  --bg: #ecfff9;
+  --hover-bg: #d9f9ef;
+  --hover-border: #94f1d3;
 }
 
 .projectCard11 {
-  background-color: #f5e6fd;
-}
-
-.projectCard11:hover {
-  background-color: #e9d4f4;
-  border-color: #e89cf1;
+  --bg: #f5e6fd;
+  --hover-bg: #e9d4f4;
+  --hover-border: #e89cf1;
 }
 
 .projectCard12 {
-  background-color: #e8e6ff;
-}
-
-.projectCard12:hover {
-  background-color: #bdb8f1;
-  border-color: #9d96e7;
+  --bg: #e8e6ff;
+  --hover-bg: #bdb8f1;
+  --hover-border: #9d96e7;
 }
 
 .projectCard13 {
-  background-color: #fff4e8;
-}
-
-.projectCard13:hover {
-  background-color: #fbecdd;
-  border-color: #e7c29d;
+  --bg: #fff4e8;
+  --hover-bg: #fbecdd;
+  --hover-border: #e7c29d;
 }
 
 .projectCard14 {
-  background-color: #ffffd8;
-}
-
-.projectCard14:hover {
-  background-color: #fbfbc8;
-  border-color: #fafac9;
+  --bg: #ffffd8;
+  --hover-bg: #fbfbc8;
+  --hover-border: #fafac9;
 }
 
 .projectCard15 {
-  background-color: #f3f4ef;
-}
-
-.projectCard15:hover {
-  background-color: #e1e3d9;
-  border-color: #d6dbc3;
+  --bg: #f3f4ef;
+  --hover-bg: #e1e3d9;
+  --hover-border: #d6dbc3;
 }
 
 .projectCard16 {
-  background-color: #c0c1de;
-}
-
-.projectCard16:hover {
-  background-color: #b0b2df;
-  border-color: #8c90f3;
+  --bg: #c0c1de;
+  --hover-bg: #b0b2df;
+  --hover-border: #8c90f3;
 }
 
 .projectCard17 {
-  background-color: #ebfaf2;
-}
-
-.projectCard17:hover {
-  background-color: #dbf7e6;
-  border-color: #bbf0cf;
+  --bg: #ebfaf2;
+  --hover-bg: #dbf7e6;
+  --hover-border: #bbf0cf;
 }
 
 .projectCard18 {
-  background-color: #f5f7f8;
+  --bg: #f5f7f8;
+  --hover-bg: #e9ecef;
+  --hover-border: #dadfe5;
 }
 
-.projectCard18:hover {
-  background-color: #e9ecef;
-  border-color: #dadfe5;
-}
+/* Responsive layout — width-based breakpoints.
+   The previous version keyed this off (-webkit-min/max-device-pixel-ratio),
+   which controls pixel density, not viewport width. That meant any 3x
+   pixel-ratio device (many modern phones and laptops, regardless of actual
+   screen width) got forced into a single column, and any <=2x device got
+   forced into three columns — both unrelated to how much actual space was
+   available. Replaced with real width breakpoints below. */
 
 @media screen and (max-width: 750px) {
   .projectGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     margin: 5px;
     padding: 10px;
-    text-align: center;
   }
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+@media screen and (max-width: 480px) {
   .projectGrid {
-    display: grid;
     grid-template-columns: repeat(1, 1fr);
     margin: 5px;
     padding: 10px;
-    text-align: center;
-  }
-}
-
-@media only screen and (-webkit-max-device-pixel-ratio: 2) {
-  .projectGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin: 5px;
-    padding: 10px;
-    text-align: center;
   }
 }
