@@ -22,13 +22,6 @@ export default function Contact() {
         <section className={styles.card}>
           <h1>send a signal</h1>
           <p>
-            the fastest way to reach me is email:{" "}
-            <Link href="mailto:electrocutelab@protonmail.com">
-              electrocutelab@protonmail.com
-            </Link>
-            .
-          </p>
-          <p>
             i&apos;m currently looking for design engineering and creative
             technology roles — the sweet spot where design and code meet,
             ideally with hardware in the mix. i light up at embedded electronics
@@ -39,7 +32,14 @@ export default function Contact() {
             beyond roles, i&apos;m always happy to talk soft machines, swap
             notes on a build, or explore a collaboration.
           </p>
-          <p>broadcasting from my corners of the web:</p>
+          <p>
+            the best way to reach me is email:{" "}
+            <Link href="mailto:electrocutelab@protonmail.com">
+              electrocutelab@protonmail.com
+            </Link>
+            .
+          </p>
+          <p> but also broadcasting from these corners of the web:</p>
           <Icons size={38} />
         </section>
       </main>
