@@ -1,299 +1,47 @@
+// the project index box: every project is a small index card
+// pulled from src/data/projects.js. hover a card and it lifts
+// slightly out of the box, running stitch showing along its edge.
+
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import Link from "next/link";
+import styles from "../styles/Home.module.css";
+import projects from "../data/projects";
 
 export default function Container() {
   return (
     <div className={styles.container}>
-      <div className={styles.titleContainer}>
-        <h1 className={styles.title}></h1>
-      </div>
-
       <div className={styles.projectGrid}>
-        <Link href="https://ui.electrocute.io" className={styles.projectCard9}>
-          <Image
-            className={styles.logo}
-            src="/assets/ecuteui.png"
-            alt="project 9"
-            width={50}
-            height={50}
-          />
-          <h3>electrocute-ui</h3>
-          <p>
-            a design system for Electrocute Lab. <i>published on npm</i>
-          </p>
-        </Link>
-
-        <Link href="/soft-interfaces" className={styles.projectCard18}>
-          <Image
-            className={styles.logo}
-            src="/assets/s_i.png"
-            alt="soft interfaces"
-            width={50}
-            height={50}
-          />
-          <h3>soft interfaces</h3>
-          <p>
-            a craft collective of soft machines, textile circuits, and tangible
-            interfaces built at electrocute lab.
-          </p>
-        </Link>
-
-        <Link href="/electrodex" className={styles.projectCard17}>
-          <Image
-            className={styles.logo}
-            src="/assets/edex.png"
-            alt="electrodex"
-            width={50}
-            height={50}
-          />
-          <h3>electrodex</h3>
-          <p>
-            a linked list of creative spaces, communities, and digital niches in
-            nyc & beyond. (WIP)
-          </p>
-        </Link>
-
-        <Link
-          href="https://months-tap-da9.craft.me/LhW3v00Ntsp99F"
-          className={styles.projectCard16}
-        >
-          <Image
-            className={styles.logo}
-            src="/assets/petalbyte.png"
-            alt="petalbyte"
-            width={50}
-            height={50}
-          />
-          <h3>petalbyte</h3>
-          <p>
-            a portable USB drive as archive and interface, holding personal
-            corpora and poetic fragments generated from electronic text.
-          </p>
-        </Link>
-
-        <Link href="https://thesoft.computer/" className={styles.projectCard15}>
-          <Image
-            className={styles.logo}
-            src="/assets/sc.png"
-            alt="the soft computer"
-            width={50}
-            height={50}
-          />
-          <h3>the soft computer</h3>
-          <p>
-            a textile computing object exploring alternative interfaces and calm
-            technology, rooted in the lineage of computation as craft.
-          </p>
-        </Link>
-
-        <Link href="https://tinytinker.tools" className={styles.projectCard14}>
-          <Image
-            className={styles.logo}
-            src="/assets/ttt.png"
-            alt="tinytinker.tools"
-            width={50}
-            height={50}
-          />
-          <h3>tinytinker.tools</h3>
-          <p>an open source handmade web toolkit for makers & tinkerers</p>
-        </Link>
-        <Link
-          href="https://months-tap-da9.craft.me/soft-circuit-lib"
-          className={styles.projectCard13}
-        >
-          <Image
-            className={styles.logo}
-            src="/assets/softlib.png"
-            alt="soft circuit library"
-            width={50}
-            height={50}
-          />
-          <h3>soft circuit library</h3>
-          <p>
-            a collection of card-sized soft circuits housed in an archival index
-            box. Repair is dated, annotated, and made part of the object.
-          </p>
-        </Link>
-
-        <Link href="https://ecute.club/" className={styles.projectCard12}>
-          <Image
-            className={styles.logo}
-            src="/assets/ecute.png"
-            alt="project 12"
-            width={50}
-            height={50}
-          />
-          <h3>ecute club</h3>
-          <p>a soft start guide to electronics.</p>
-        </Link>
-
-        <Link
-          href="https://synthwave-chimes.netlify.app/"
-          className={styles.projectCard11}
-        >
-          <Image
-            className={styles.logo}
-            src="/assets/flower.png"
-            alt="project 11"
-            width={50}
-            height={50}
-          />
-          <h3>synthwave chimes</h3>
-          <p>
-            a digital synth chime that blends shapes with interactive sound.
-          </p>
-        </Link>
-
-        <Link
-          href="https://www.figma.com/community/file/1282166884816539041/Kawaii-ML-Deck"
-          className={styles.projectCard10}
-        >
-          <Image
-            className={styles.logo}
-            src="/assets/kml.png"
-            alt="project 10"
-            width={50}
-            height={50}
-          />
-          <h3>kawaii ML</h3>
-          <p>a card deck referencing the top 10 machine learning algorithms.</p>
-        </Link>
-
-        <Link
-          href="https://www.craft.me/s/UPIseOWDQQ2AAx"
-          className={styles.projectCard8}
-        >
-          <Image
-            className={styles.logo}
-            src="/assets/led.png"
-            alt="project 8"
-            width={50}
-            height={50}
-          />
-          <h3>custom light LEDs</h3>
-          <p>a tutorial on how to create custom LED lights with UV resin.</p>
-        </Link>
-
-        <Link
-          href="https://electrocute.gumroad.com/l/design-hub"
-          className={styles.projectCard7}
-        >
-          <Image
-            className={styles.logo}
-            src="/assets/dhub.png"
-            alt="project 7"
-            width={50}
-            height={50}
-          />
-          <h3>design hub</h3>
-          <p>
-            a Notion template to keep track of your progress on design learnings
-            and all around journey.
-          </p>
-        </Link>
-
-        <Link
-          href="https://electrocute.gumroad.com/l/coding-hub"
-          className={styles.projectCard6}
-        >
-          <Image
-            className={styles.logo}
-            src="/assets/chub.png"
-            alt="project 6"
-            width={50}
-            height={50}
-          />
-          <h3>coding hub</h3>
-          <p>
-            a Notion template to keep track of your programming progress and all
-            around coding journey.
-          </p>
-        </Link>
-
-        <Link
-          href="https://www.craft.do/s/n728rE3K9pjrQx"
-          className={styles.projectCard5}
-        >
-          <Image
-            className={styles.logo}
-            src="/assets/bag.png"
-            alt="project 5"
-            width={50}
-            height={50}
-          />
-          <h3>electrojute</h3>
-          <p>
-            a custom DIY jute tote bag with felt flowers and sewable Sakura
-            lilac LEDs sown with conductive thread.
-          </p>
-        </Link>
-
-        <Link
-          href="https://electrocute.gumroad.com/l/cute-folder-pack"
-          className={styles.projectCard4}
-        >
-          <Image
-            className={styles.logo}
-            src="/assets/cutefolder.png"
-            alt="project 4"
-            width={50}
-            height={50}
-          />
-          <h3>cute folder icon pack</h3>
-          <p>
-            a cute folder icon pack in pastel, neutral, and monochrome shades,
-            named after macaron flavors and other delicacies.
-          </p>
-        </Link>
-
-        <Link
-          href="https://sailor-moon-calculator.netlify.app/"
-          className={styles.projectCard3}
-        >
-          <Image
-            className={styles.logo}
-            src="/assets/calc.png"
-            alt="project 3"
-            width={50}
-            height={50}
-          />
-          <h3>sailor moon calculator</h3>
-          <p>
-            a basic on-screen calculator inspired by one of the communicators
-            used in Sailor Moon.
-          </p>
-        </Link>
-
-        <Link href="https://snax.blog" className={styles.projectCard2}>
-          <Image
-            className={styles.logo}
-            src="/assets/snax.png"
-            alt="project 2"
-            width={50}
-            height={50}
-          />
-          <h3>snax</h3>
-          <p>
-            a pokedex-like blog for sharing my own reviews and ratings on
-            vegan/plant-based snacks and bevs. Also a peanut-free zone.
-          </p>
-        </Link>
-
-        <Link href="https://cutetech.tools" className={styles.projectCard1}>
-          <Image
-            className={styles.logo}
-            src="/assets/cutetech.png"
-            alt="project 1"
-            width={50}
-            height={50}
-          />
-          <h3>cute technologies</h3>
-          <p>
-            a digital catalog featuring a collection of cybertwee functional
-            tools and resources to make your computing .env cuter.
-          </p>
-        </Link>
+        {projects.map((project, i) => {
+          const external = project.href.startsWith("http");
+          return (
+            <Link
+              key={project.slug}
+              href={project.href}
+              className={styles.card}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
+              style={{
+                "--bg": project.tint,
+                "--hover-bg": project.hoverBg,
+                "--hover-border": project.hoverBorder,
+                "--tilt": `${(i % 3) - 1}deg`,
+              }}
+            >
+              <span className={styles.cardTop}>
+                <Image
+                  className={styles.logo}
+                  src={project.icon}
+                  alt=""
+                  width={44}
+                  height={44}
+                />
+                <h3>{project.title}</h3>
+              </span>
+              <span className={styles.rule} aria-hidden="true" />
+              <p>{project.blurb}</p>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

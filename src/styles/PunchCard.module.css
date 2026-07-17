@@ -1,0 +1,140 @@
+.punchcard {
+  max-width: 900px;
+  margin: 3rem auto 1rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.punchcard h2 {
+  font-family: "Cute Font", cursive;
+  font-size: 44px;
+  font-weight: 400;
+  margin: 0 0 0.25rem;
+  color: #000000;
+}
+
+.intro {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 14px;
+  color: #000000;
+  margin: 0 auto 1.5rem;
+  max-width: 460px;
+}
+
+.machine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.card {
+  width: min(440px, 92vw);
+  height: auto;
+  filter: drop-shadow(0 4px 10px rgba(74, 68, 83, 0.12));
+  overflow: visible;
+}
+
+.cardLabel {
+  font-family: "Courier New", ui-monospace, monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  fill: #a99f83;
+}
+
+.fabric {
+  width: min(400px, 88vw);
+  height: auto;
+}
+
+/* the freshly punched hole pops */
+.newHole {
+  animation: holePop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes holePop {
+  0% {
+    scale: 0.3;
+  }
+  60% {
+    scale: 1.5;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+/* the chad: the little paper dot that falls out of the punch */
+.chad {
+  animation: chadFall 1.2s ease-in forwards;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes chadFall {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(70px) rotate(260deg) translateX(8px);
+  }
+}
+
+/* the newest stitch knits in */
+.newStitchV {
+  animation: knitIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes knitIn {
+  0% {
+    opacity: 0;
+    scale: 0.2;
+  }
+  60% {
+    scale: 1.4;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.status {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 13px;
+  color: #000000;
+  margin: 0.9rem 0 1rem;
+}
+
+.punchButton {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: #000000;
+  background: #f4f0ff;
+  border: 2px dashed #d5c8fa;
+  border-radius: 999px;
+  padding: 0.5rem 1.4rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.punchButton:hover:not(:disabled) {
+  background: #e8e1fa;
+  transform: translateY(-2px);
+}
+
+.punchButton:disabled {
+  background: #fbfcf5;
+  border-color: #e4e4e4;
+  color: #8a8a8a;
+  cursor: default;
+}

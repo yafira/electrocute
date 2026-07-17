@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Icons from "@/components/Icons";
 import Footer from "@/components/Footer";
+import Receipt from "@/components/Receipt";
 import styles from "@/styles/Contact.module.css";
 
 export default function Contact() {
@@ -42,6 +43,8 @@ export default function Contact() {
           <p> but also broadcasting from these corners of the web:</p>
           <Icons size={38} />
         </section>
+
+        <Receipt />
       </main>
 
       <Footer />

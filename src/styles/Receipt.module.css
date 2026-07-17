@@ -1,0 +1,175 @@
+.wrap {
+  max-width: 420px;
+  margin: 2.5rem auto 1rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.wrap h2 {
+  font-family: "Cute Font", cursive;
+  font-size: 40px;
+  font-weight: 400;
+  margin: 0 0 0.25rem;
+  color: #000000;
+}
+
+.hint {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 13px;
+  color: #000000;
+  margin: 0 0 1.25rem;
+}
+
+.printer {
+  position: relative;
+}
+
+/* the printer slot the paper feeds from */
+.slot {
+  height: 14px;
+  border-radius: 8px;
+  background: #c5caef;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.14);
+  position: relative;
+  z-index: 2;
+}
+
+.paper {
+  position: relative;
+  z-index: 1;
+  margin: 0 14px;
+  padding: 1rem 1rem 1.5rem;
+  max-height: 330px;
+  overflow-y: auto;
+  background: repeating-linear-gradient(
+    #fffdf7,
+    #fffdf7 26px,
+    #fdfaf0 27px
+  );
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  font-family: "Courier New", ui-monospace, monospace;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #33303d;
+}
+
+.receiptHeader,
+.receiptFooter {
+  text-align: center;
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.receiptFooter {
+  margin: 0.9rem 0 0;
+}
+
+.line {
+  margin: 0 0 0.7rem;
+  word-wrap: break-word;
+}
+
+.meta {
+  display: block;
+  font-size: 10.5px;
+  color: #8f8a9e;
+  letter-spacing: 0.05em;
+}
+
+.fresh {
+  animation: printIn 0.7s ease-out;
+}
+
+@keyframes printIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* zigzag tear at the bottom of the paper */
+.tear {
+  height: 10px;
+  margin: 0 14px;
+  background: linear-gradient(-45deg, transparent 7px, #fffdf7 0) 0 0 / 14px
+      10px repeat-x,
+    linear-gradient(45deg, transparent 7px, #fffdf7 0) 7px 0 / 14px 10px
+      repeat-x;
+}
+
+.form {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input,
+.textarea {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: #000000;
+  background: #ffffff;
+  border: 2px dashed #c5caef;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  resize: none;
+  transition: border-color 0.15s ease;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: #b78bd6;
+}
+
+.formFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.counter {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 11px;
+  color: #9a93b8;
+}
+
+.print {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: #000000;
+  background: #fff3f8;
+  border: 2px dashed #fecfe2;
+  border-radius: 999px;
+  padding: 0.4rem 1.2rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.print:hover:not(:disabled) {
+  background: #fae7ef;
+  transform: translateY(-2px);
+}
+
+.print:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.signedNote {
+  margin-top: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 13px;
+  color: #000000;
+}

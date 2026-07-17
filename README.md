@@ -56,3 +56,28 @@ electrocute/
 ---
 
 crafted with care (soft shell, live wire) ✿
+
+## little tools & interactions
+
+the site now has a few small toys, in the spirit of a living space:
+
+- **index cards** · the project grid is data-driven (`src/data/projects.js`) and each project is a small index card that lifts out of the box on hover, running stitch showing along its edge
+- **felt button** (footer, every page) · squishes, hums a soft two-note tone, and counts every press across all visitors
+- **communal punch card** (homepage) · a 24-stitch knitting machine card (in honor of the KH-930). every visitor punches one hole in carriage order, bottom row first, and the fabric below knits itself live: punched holes become contrast stitches. finished cards are counted
+- **guest receipt** (contact) · leave a note and it prints onto a thermal receipt, newest at the bottom
+- **soft potentiometer** (bottom left, homepage) · slides the page through paper → blush → butter → matcha → wisteria → evening
+- **soft circuit** (under the nav) · a sewable coin cell, switch, and LED joined by conductive thread. close the switch and the running stitches become the current: the dashes flow around the loop and the LED glows. the site remembers if you left the light on
+- **stitch borders** · `<StitchBox>` is a reusable wrapper that sews a dashed border around anything when it scrolls into view
+
+### shared state
+
+the felt counter, punch card, and receipt share state through three tiny api
+routes (`/api/press`, `/api/punch`, `/api/notes`) backed by upstash redis.
+copy `.env.example` to `.env.local` (or add the two vars in vercel) to turn
+sharing on. without them, everything still works using per-device
+localStorage, so nothing breaks in dev or preview deploys.
+
+guestbook housekeeping: notes are lightly sanitized, capped at 140
+characters, one per visitor per device, and the list is trimmed to the
+last 200. to remove a note, edit the `electrocute:notes` list in the
+upstash console.
