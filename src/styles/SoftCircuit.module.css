@@ -1,0 +1,99 @@
+.holder {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem auto 1.25rem;
+}
+
+.circuit {
+  width: min(380px, 90vw);
+  height: auto;
+  overflow: visible;
+}
+
+/* conductive thread: the running stitch that doubles as the wire */
+.thread {
+  fill: none;
+  stroke: #c5caef;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 6 7;
+  transition: stroke 0.4s ease;
+}
+
+/* when the switch closes, the stitches become the current */
+.flowing {
+  stroke: #b2a4d4;
+  animation: flow 0.9s linear infinite;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -13; /* one dash+gap per cycle: a steady current */
+  }
+}
+
+.switchModule {
+  cursor: pointer;
+  outline: none;
+}
+
+.switchModule:focus-visible rect:nth-of-type(2) {
+  stroke: #b78bd6;
+}
+
+/* the lever pivots open and closed around its left pin */
+.lever {
+  transform-origin: 177px 38px;
+  transform: rotate(-34deg);
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.closed {
+  transform: rotate(0deg);
+}
+
+/* while open, a gentle wiggle every so often: psst, close me */
+.inviting {
+  animation: invite 6s ease-in-out infinite;
+}
+
+@keyframes invite {
+  0%,
+  90%,
+  100% {
+    transform: rotate(-34deg);
+  }
+  93% {
+    transform: rotate(-26deg);
+  }
+  96% {
+    transform: rotate(-36deg);
+  }
+}
+
+.ledOff {
+  fill: #d8ccf0;
+  transition: fill 0.3s ease;
+}
+
+.ledOn {
+  fill: #b2a4d4;
+  transition: fill 0.3s ease;
+}
+
+.glow {
+  animation: breathe 2.6s ease-in-out infinite;
+  transform-origin: 320px 52px;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}

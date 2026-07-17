@@ -31,7 +31,7 @@ export default function Header() {
             className={styles.flower}
             onClick={rain}
           />
-          <span>io</span>
+          <span>lab</span>
         </h1>
       </Link>
       <nav className={styles.nav}>
