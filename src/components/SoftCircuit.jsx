@@ -1,14 +1,190 @@
-// a tiny sewable circuit under the nav: coin cell, switch, and a
-// sewable LED module joined by conductive thread (running stitch,
-// naturally). close the switch and the stitches become the current:
-// the dashes flow around the loop and the LED glows. the site
-// remembers if you left the light on.
+// a tiny sewable circuit that the nav lives inside of: coin cell,
+// then the about/blog/contact pills (sewn onto the board same as
+// any other component), then a switch, then a sewable LED — all
+// joined by conductive thread. close the switch and the stitches
+// become the current: the thread flows around the loop, the pills
+// catch a faint glow, and the LED lights.
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { playFeltTone } from "@/lib/feltTone";
+import headerStyles from "../styles/Header.module.css";
 import styles from "../styles/SoftCircuit.module.css";
 
 const LOCAL_KEY = "electrocute:circuit";
+
+function CoinCell() {
+  return (
+    <svg className={styles.cellSvg} viewBox="0 0 48 48" aria-hidden="true">
+      <circle
+        cx="24"
+        cy="24"
+        r="19"
+        fill="#efece6"
+        stroke="#c3b9b9"
+        strokeWidth="2"
+      />
+      <circle
+        cx="24"
+        cy="24"
+        r="12.5"
+        fill="#e5e2dc"
+        stroke="#d5d0c6"
+        strokeWidth="1"
+      />
+      <text x="24" y="28" textAnchor="middle" className={styles.moduleLabel}>
+        3v
+      </text>
+      <circle
+        cx="41"
+        cy="18"
+        r="2.6"
+        fill="#fbfcf5"
+        stroke="#c3b9b9"
+        strokeWidth="1.4"
+      />
+      <circle
+        cx="37"
+        cy="35"
+        r="2.6"
+        fill="#fbfcf5"
+        stroke="#c3b9b9"
+        strokeWidth="1.4"
+      />
+    </svg>
+  );
+}
+
+function Switch({ on, ready, onToggle, onKeyDown }) {
+  return (
+    <svg
+      className={styles.switchSvg}
+      viewBox="0 0 76 48"
+      role="switch"
+      aria-checked={on}
+      aria-label={
+        on
+          ? "switch closed, LED on. open the switch"
+          : "switch open. close the switch to light the LED"
+      }
+      tabIndex={0}
+      onClick={onToggle}
+      onKeyDown={onKeyDown}
+    >
+      <rect x="0" y="10" width="76" height="28" fill="transparent" />
+      <rect
+        x="8"
+        y="12"
+        width="60"
+        height="24"
+        rx="12"
+        fill="#fffee9"
+        stroke="#f1dbcc"
+        strokeWidth="2"
+      />
+      <circle
+        cx="15"
+        cy="24"
+        r="2.6"
+        fill="#fbfcf5"
+        stroke="#e7c29d"
+        strokeWidth="1.4"
+      />
+      <circle
+        cx="61"
+        cy="24"
+        r="2.6"
+        fill="#fbfcf5"
+        stroke="#e7c29d"
+        strokeWidth="1.4"
+      />
+      <circle cx="25" cy="24" r="3.2" fill="#a99f83" />
+      <circle cx="51" cy="24" r="3.2" fill="#a99f83" />
+      <g
+        className={`${styles.lever} ${on ? styles.closed : ""} ${
+          ready && !on ? styles.inviting : ""
+        }`}
+      >
+        <line
+          x1="25"
+          y1="24"
+          x2="51"
+          y2="24"
+          stroke="#8b8271"
+          strokeWidth="3.5"
+          strokeLinecap="round"
+        />
+        <circle
+          cx="51"
+          cy="24"
+          r="4.2"
+          fill="#e7c29d"
+          stroke="#d9ab7f"
+          strokeWidth="1.5"
+        />
+      </g>
+    </svg>
+  );
+}
+
+function Led({ on }) {
+  return (
+    <svg className={styles.ledSvg} viewBox="0 0 48 48" aria-hidden="true">
+      <defs>
+        <radialGradient id="ledGlowCompact" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#cdbdf0" stopOpacity="0.85" />
+          <stop offset="60%" stopColor="#cdbdf0" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="#cdbdf0" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      {on && (
+        <circle
+          cx="24"
+          cy="24"
+          r="21"
+          fill="url(#ledGlowCompact)"
+          className={styles.glow}
+        />
+      )}
+      <circle
+        cx="24"
+        cy="24"
+        r="15"
+        fill="#f4f0ff"
+        stroke="#d5c8fa"
+        strokeWidth="2"
+      />
+      <circle
+        cx="24"
+        cy="24"
+        r="6.5"
+        className={on ? styles.ledOn : styles.ledOff}
+      />
+      <circle
+        cx="10"
+        cy="17"
+        r="2.6"
+        fill="#fbfcf5"
+        stroke="#d5c8fa"
+        strokeWidth="1.4"
+      />
+      <circle
+        cx="26"
+        cy="40"
+        r="2.6"
+        fill="#fbfcf5"
+        stroke="#d5c8fa"
+        strokeWidth="1.4"
+      />
+      <text x="3" y="13" className={styles.polarity}>
+        +
+      </text>
+      <text x="33" y="44" className={styles.polarity}>
+        −
+      </text>
+    </svg>
+  );
+}
 
 export default function SoftCircuit() {
   const [on, setOn] = useState(false);
@@ -36,110 +212,22 @@ export default function SoftCircuit() {
   };
 
   return (
-    <div className={styles.holder}>
-      <svg
-        className={styles.circuit}
-        viewBox="0 0 380 104"
-        role="img"
-        aria-label="a sewable circuit: coin cell, switch, and LED joined by conductive thread"
+    <div className={styles.board}>
+      <CoinCell />
+      <span className={`${styles.thread} ${on ? styles.flowing : ""}`} />
+
+      <nav
+        className={`${headerStyles.nav} ${styles.sewnNav} ${on ? styles.lit : ""}`}
       >
-        <defs>
-          <radialGradient id="ledGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#cdbdf0" stopOpacity="0.85" />
-            <stop offset="60%" stopColor="#cdbdf0" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#cdbdf0" stopOpacity="0" />
-          </radialGradient>
-        </defs>
+        <Link href="/about">about</Link>
+        <a href="https://blog.electrocute.io/">blog</a>
+        <Link href="/contact">contact</Link>
+      </nav>
 
-        {/* ── conductive thread (running stitch = the current) ── */}
-        <path
-          className={`${styles.thread} ${on ? styles.flowing : ""}`}
-          d="M 68 44 C 105 32, 140 34, 166 38"
-        />
-        <path
-          className={`${styles.thread} ${on ? styles.flowing : ""}`}
-          d="M 214 38 C 245 34, 285 38, 306 46"
-        />
-        <path
-          className={`${styles.thread} ${on ? styles.flowing : ""}`}
-          d="M 322 66 C 290 92, 105 92, 62 64"
-        />
-
-        {/* ── coin cell module ── */}
-        <g>
-          <circle cx="48" cy="52" r="19" fill="#efece6" stroke="#c3b9b9" strokeWidth="2" />
-          <circle cx="48" cy="52" r="12.5" fill="#e5e2dc" stroke="#d5d0c6" strokeWidth="1" />
-          <text x="48" y="56" textAnchor="middle" className={styles.moduleLabel}>
-            3v
-          </text>
-          {/* sew holes */}
-          <circle cx="65" cy="46" r="2.6" fill="#fbfcf5" stroke="#c3b9b9" strokeWidth="1.4" />
-          <circle cx="61" cy="63" r="2.6" fill="#fbfcf5" stroke="#c3b9b9" strokeWidth="1.4" />
-        </g>
-
-        {/* ── switch module (click me) ── */}
-        <g
-          className={styles.switchModule}
-          role="switch"
-          aria-checked={on}
-          aria-label={on ? "switch closed, LED on. open the switch" : "switch open. close the switch to light the LED"}
-          tabIndex={0}
-          onClick={toggle}
-          onKeyDown={onKeyDown}
-        >
-          {/* generous invisible tap target */}
-          <rect x="152" y="10" width="76" height="56" fill="transparent" />
-          <rect
-            x="160"
-            y="26"
-            width="60"
-            height="24"
-            rx="12"
-            fill="#fffee9"
-            stroke="#f1dbcc"
-            strokeWidth="2"
-          />
-          {/* sew holes */}
-          <circle cx="167" cy="38" r="2.6" fill="#fbfcf5" stroke="#e7c29d" strokeWidth="1.4" />
-          <circle cx="213" cy="38" r="2.6" fill="#fbfcf5" stroke="#e7c29d" strokeWidth="1.4" />
-          {/* pivot, contact, lever */}
-          <circle cx="177" cy="38" r="3.2" fill="#a99f83" />
-          <circle cx="203" cy="38" r="3.2" fill="#a99f83" />
-          <g
-            className={`${styles.lever} ${on ? styles.closed : ""} ${
-              ready && !on ? styles.inviting : ""
-            }`}
-          >
-            <line
-              x1="177"
-              y1="38"
-              x2="203"
-              y2="38"
-              stroke="#8b8271"
-              strokeWidth="3.5"
-              strokeLinecap="round"
-            />
-            <circle cx="203" cy="38" r="4.2" fill="#e7c29d" stroke="#d9ab7f" strokeWidth="1.5" />
-          </g>
-        </g>
-
-        {/* ── sewable LED module ── */}
-        <g>
-          {on && <circle cx="320" cy="52" r="26" fill="url(#ledGlow)" className={styles.glow} />}
-          <circle cx="320" cy="52" r="15" fill="#f4f0ff" stroke="#d5c8fa" strokeWidth="2" />
-          <circle
-            cx="320"
-            cy="52"
-            r="6.5"
-            className={on ? styles.ledOn : styles.ledOff}
-          />
-          {/* sew holes marked + and − */}
-          <circle cx="306" cy="45" r="2.6" fill="#fbfcf5" stroke="#d5c8fa" strokeWidth="1.4" />
-          <circle cx="322" cy="68" r="2.6" fill="#fbfcf5" stroke="#d5c8fa" strokeWidth="1.4" />
-          <text x="299" y="41" className={styles.polarity}>+</text>
-          <text x="329" y="72" className={styles.polarity}>−</text>
-        </g>
-      </svg>
+      <span className={`${styles.thread} ${on ? styles.flowing : ""}`} />
+      <Switch on={on} ready={ready} onToggle={toggle} onKeyDown={onKeyDown} />
+      <span className={`${styles.thread} ${on ? styles.flowing : ""}`} />
+      <Led on={on} />
     </div>
   );
 }

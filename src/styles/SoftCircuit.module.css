@@ -1,50 +1,53 @@
-.holder {
+.board {
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin: 0.5rem auto 1.25rem;
+  flex-wrap: wrap;
+  gap: 0;
+  max-width: 620px;
+  margin: 0.5rem auto 1.5rem;
+  padding: 0 1rem;
 }
 
-.circuit {
-  width: min(380px, 90vw);
-  height: auto;
+/* ── the coin cell / switch / LED modules ── */
+
+.cellSvg,
+.switchSvg,
+.ledSvg {
+  flex-shrink: 0;
   overflow: visible;
 }
 
-/* conductive thread: the running stitch that doubles as the wire */
-.thread {
-  fill: none;
-  stroke: #c5caef;
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-dasharray: 6 7;
-  transition: stroke 0.4s ease;
+.cellSvg,
+.ledSvg {
+  width: 40px;
+  height: 40px;
 }
 
-/* when the switch closes, the stitches become the current */
-.flowing {
-  stroke: #b2a4d4;
-  animation: flow 0.9s linear infinite;
-}
-
-@keyframes flow {
-  to {
-    stroke-dashoffset: -13; /* one dash+gap per cycle: a steady current */
-  }
-}
-
-.switchModule {
+.switchSvg {
+  width: 64px;
+  height: 40px;
   cursor: pointer;
   outline: none;
 }
 
-.switchModule:focus-visible rect:nth-of-type(2) {
-  stroke: #b78bd6;
+.moduleLabel {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  fill: #857b7b;
+  text-anchor: middle;
+}
+
+.polarity {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  fill: #a99fc7;
 }
 
 /* the lever pivots open and closed around its left pin */
 .lever {
-  transform-origin: 177px 38px;
-  transform: rotate(-34deg);
+  transform-origin: 25px 24px;
+  transform: rotate(-30deg);
   transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -61,13 +64,13 @@
   0%,
   90%,
   100% {
-    transform: rotate(-34deg);
+    transform: rotate(-30deg);
   }
   93% {
-    transform: rotate(-26deg);
+    transform: rotate(-22deg);
   }
   96% {
-    transform: rotate(-36deg);
+    transform: rotate(-32deg);
   }
 }
 
@@ -83,7 +86,7 @@
 
 .glow {
   animation: breathe 2.6s ease-in-out infinite;
-  transform-origin: 320px 52px;
+  transform-origin: 24px 24px;
 }
 
 @keyframes breathe {
@@ -94,6 +97,82 @@
   }
   50% {
     opacity: 1;
-    transform: scale(1.12);
+    transform: scale(1.1);
+  }
+}
+
+/* ── conductive thread, sewn between every component ── */
+
+.thread {
+  flex: 1 1 20px;
+  min-width: 14px;
+  height: 3px;
+  margin: 0 2px;
+  background-image: repeating-linear-gradient(
+    to right,
+    #c5caef 0,
+    #c5caef 6px,
+    transparent 6px,
+    transparent 13px
+  );
+  background-size: 13px 3px;
+  transition: background-image 0.4s ease;
+}
+
+.flowing {
+  background-image: repeating-linear-gradient(
+    to right,
+    #b2a4d4 0,
+    #b2a4d4 6px,
+    transparent 6px,
+    transparent 13px
+  );
+  animation: flow 0.9s linear infinite;
+}
+
+@keyframes flow {
+  to {
+    background-position: -13px 0;
+  }
+}
+
+/* ── the nav pills, sewn onto the board like any other component ── */
+
+.sewnNav {
+  margin: 0 4px;
+  flex-wrap: wrap;
+  transition: filter 0.4s ease;
+}
+
+.sewnNav a {
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.4s ease;
+}
+
+/* the pills catch a faint glow once the circuit is closed */
+.lit a {
+  box-shadow:
+    0 0 0 2px rgba(178, 164, 212, 0.35),
+    0 0 10px rgba(178, 164, 212, 0.45);
+}
+
+@media screen and (max-width: 640px) {
+  .board {
+    gap: 4px;
+  }
+  .thread {
+    flex-basis: 12px;
+    min-width: 10px;
+  }
+  .cellSvg,
+  .ledSvg {
+    width: 32px;
+    height: 32px;
+  }
+  .switchSvg {
+    width: 52px;
+    height: 32px;
   }
 }
