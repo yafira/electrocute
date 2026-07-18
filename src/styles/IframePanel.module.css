@@ -1,0 +1,237 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.window {
+  position: fixed;
+  z-index: 201;
+  pointer-events: all;
+  display: flex;
+  flex-direction: column;
+  background: #fffdf7;
+  border: 2px dashed #d5c8fa;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    0 10px 30px rgba(181, 160, 217, 0.22),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+  animation: windowPop 0.18s cubic-bezier(0.32, 0.72, 0, 1);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  width: 780px;
+  height: 580px;
+}
+
+.window[style*="left:"] {
+  transform: none;
+}
+
+@keyframes windowPop {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translate(-50%, -30%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate(-50%, -30%);
+  }
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  height: 38px;
+  background: #f4f0ff;
+  border-bottom: 2px dashed #d5c8fa;
+  cursor: grab;
+  user-select: none;
+  flex-shrink: 0;
+}
+.titleBar:active {
+  cursor: grabbing;
+}
+
+.titleBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.closeBtn {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: none;
+  background: #fecfe2;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+  flex-shrink: 0;
+}
+.closeBtn:hover {
+  background: #f2b9e0;
+}
+
+.closeDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.15s ease;
+}
+.closeBtn:hover .closeDot {
+  background: #a8608f;
+}
+
+.windowTitle {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  font-family: "IBM Plex Mono", monospace;
+  color: #8a8296;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.externalBtn {
+  font-size: 11px;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #000000;
+  text-decoration: none;
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 2px dashed #b7dcae;
+  background: #f3faea;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+  cursor: pointer;
+  line-height: 1;
+  white-space: nowrap;
+}
+.externalBtn:hover {
+  background: #edfdda;
+  border-color: #94d982;
+  transform: translateY(-1px);
+}
+
+.body {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  pointer-events: all;
+  background: #ffffff;
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-family: "IBM Plex Mono", monospace;
+  color: #b7abcf;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.dots {
+  animation: blink 1.2s step-start infinite;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 0.2;
+  }
+  66% {
+    opacity: 0.6;
+  }
+}
+
+.blocked {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #fffdf7;
+}
+.blocked p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 13px;
+  color: #000000;
+  margin: 0;
+}
+.blockedLink {
+  font-size: 12px;
+  font-family: "IBM Plex Mono", monospace;
+  color: #000000;
+  border: 2px dashed #d5c8fa;
+  border-radius: 999px;
+  padding: 6px 16px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+.blockedLink:hover {
+  background: #f4f0ff;
+}
+
+@media (max-width: 640px) {
+  .backdrop {
+    pointer-events: all;
+    background: rgba(74, 68, 83, 0.28);
+  }
+  .window {
+    top: auto !important;
+    left: 0 !important;
+    bottom: 0;
+    width: 100% !important;
+    height: 88vh !important;
+    border-radius: 18px 18px 0 0;
+    transform: none !important;
+    animation: sheetUp 0.22s cubic-bezier(0.32, 0.72, 0, 1);
+    box-shadow: 0 -6px 24px rgba(181, 160, 217, 0.25);
+  }
+  @keyframes sheetUp {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  .titleBar {
+    cursor: default;
+  }
+}

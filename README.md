@@ -64,7 +64,7 @@ the site now has a few small toys, in the spirit of a living space:
 - **index cards** · the project grid is data-driven (`src/data/projects.js`) and each project is a small index card that lifts out of the box on hover, running stitch showing along its edge
 - **felt button** (footer, every page) · squishes, hums a soft two-note tone, and counts every press across all visitors
 - **communal punch card** (homepage) · a 24-stitch knitting machine card (in honor of the KH-930). every visitor punches one hole in carriage order, bottom row first, and the fabric below knits itself live: punched holes become contrast stitches. finished cards are counted
-- **guest receipt** (contact) · leave a note and it prints onto a thermal receipt, newest at the bottom
+- **guest receipt** (contact) · leave a note and it prints onto a thermal receipt, newest at the bottom. every note stays on the paper, so the receipt grows longer as visitors sign it (up to the last 200)
 - **soft potentiometer** (bottom left, homepage) · slides the page through paper → blush → butter → matcha → wisteria → evening
 - **soft circuit** (under the nav) · a sewable coin cell, switch, and LED joined by conductive thread. close the switch and the running stitches become the current: the dashes flow around the loop and the LED glows. the site remembers if you left the light on
 - **stitch borders** · `<StitchBox>` is a reusable wrapper that sews a dashed border around anything when it scrolls into view

@@ -40,8 +40,6 @@
   z-index: 1;
   margin: 0 14px;
   padding: 1rem 1rem 1.5rem;
-  max-height: 330px;
-  overflow-y: auto;
   background: repeating-linear-gradient(
     #fffdf7,
     #fffdf7 26px,
