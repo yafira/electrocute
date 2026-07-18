@@ -34,11 +34,6 @@ export default function Header() {
           <span>lab</span>
         </h1>
       </Link>
-      <nav className={styles.nav}>
-        <Link href="/about">about</Link>
-        <a href="https://blog.electrocute.io/">blog</a>
-        <Link href="/contact">contact</Link>
-      </nav>
 
       {petals.map((p) => (
         <img
