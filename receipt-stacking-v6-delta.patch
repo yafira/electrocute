@@ -1,0 +1,74 @@
+diff --git a/README.md b/README.md
+index 8639f82..8b70119 100644
+--- a/README.md
++++ b/README.md
+@@ -64,7 +64,7 @@ the site now has a few small toys, in the spirit of a living space:
+ - **index cards** · the project grid is data-driven (`src/data/projects.js`) and each project is a small index card that lifts out of the box on hover, running stitch showing along its edge
+ - **felt button** (footer, every page) · squishes, hums a soft two-note tone, and counts every press across all visitors
+ - **communal punch card** (homepage) · a 24-stitch knitting machine card (in honor of the KH-930). every visitor punches one hole in carriage order, bottom row first, and the fabric below knits itself live: punched holes become contrast stitches. finished cards are counted
+-- **guest receipt** (contact) · leave a note and it prints onto a thermal receipt, newest at the bottom
++- **guest receipt** (contact) · leave a note and it prints onto a thermal receipt, newest at the bottom. every note stays on the paper, so the receipt grows longer as visitors sign it (up to the last 200)
+ - **soft potentiometer** (bottom left, homepage) · slides the page through paper → blush → butter → matcha → wisteria → evening
+ - **soft circuit** (under the nav) · a sewable coin cell, switch, and LED joined by conductive thread. close the switch and the running stitches become the current: the dashes flow around the loop and the LED glows. the site remembers if you left the light on
+ - **stitch borders** · `<StitchBox>` is a reusable wrapper that sews a dashed border around anything when it scrolls into view
+diff --git a/src/components/Receipt.jsx b/src/components/Receipt.jsx
+index 9896529..373c438 100644
+--- a/src/components/Receipt.jsx
++++ b/src/components/Receipt.jsx
+@@ -89,14 +89,14 @@ export default function Receipt() {
+     setNote("");
+     setName("");
+     setBusy(false);
+-    // scroll the paper so the fresh print is visible
++    // bring the fresh print into view at the bottom of the paper
+     requestAnimationFrame(() => {
+       if (paperRef.current)
+-        paperRef.current.scrollTop = paperRef.current.scrollHeight;
++        paperRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+     });
+   };
+ 
+-  const shown = (notes || []).slice(-12);
++  const shown = notes || [];
+ 
+   return (
+     <section className={styles.wrap}>
+@@ -112,6 +112,12 @@ export default function Receipt() {
+           <p className={styles.receiptHeader}>
+             ✿ electrocute lab ✿<br />
+             visitor log · nyc & the web
++            {shown.length > 0 && (
++              <>
++                <br />
++                notes printed: {shown.length}
++              </>
++            )}
+             <br />
+             ································
+           </p>
+diff --git a/src/pages/api/notes.js b/src/pages/api/notes.js
+index 8bbb335..e3bc091 100644
+--- a/src/pages/api/notes.js
++++ b/src/pages/api/notes.js
+@@ -20,7 +20,7 @@ function clean(value, max) {
+ }
+ 
+ async function readNotes() {
+-  const raw = (await redis("LRANGE", KEY, "-30", "-1")) || [];
++  const raw = (await redis("LRANGE", KEY, "-200", "-1")) || [];
+   return raw
+     .map((item) => {
+       try {
+diff --git a/src/styles/Receipt.module.css b/src/styles/Receipt.module.css
+index c9ce954..7545312 100644
+--- a/src/styles/Receipt.module.css
++++ b/src/styles/Receipt.module.css
+@@ -40,8 +40,6 @@
+   z-index: 1;
+   margin: 0 14px;
+   padding: 1rem 1rem 1.5rem;
+-  max-height: 330px;
+-  overflow-y: auto;
+   background: repeating-linear-gradient(
+     #fffdf7,
+     #fffdf7 26px,

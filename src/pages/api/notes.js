@@ -20,7 +20,7 @@ function clean(value, max) {
 }
 
 async function readNotes() {
-  const raw = (await redis("LRANGE", KEY, "-30", "-1")) || [];
+  const raw = (await redis("LRANGE", KEY, "-200", "-1")) || [];
   return raw
     .map((item) => {
       try {

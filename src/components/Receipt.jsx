@@ -89,14 +89,14 @@ export default function Receipt() {
     setNote("");
     setName("");
     setBusy(false);
-    // scroll the paper so the fresh print is visible
+    // bring the fresh print into view at the bottom of the paper
     requestAnimationFrame(() => {
       if (paperRef.current)
-        paperRef.current.scrollTop = paperRef.current.scrollHeight;
+        paperRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
     });
   };
 
-  const shown = (notes || []).slice(-12);
+  const shown = notes || [];
 
   return (
     <section className={styles.wrap}>
@@ -112,6 +112,12 @@ export default function Receipt() {
           <p className={styles.receiptHeader}>
             ✿ electrocute lab ✿<br />
             visitor log · nyc & the web
+            {shown.length > 0 && (
+              <>
+                <br />
+                notes printed: {shown.length}
+              </>
+            )}
             <br />
             ································
           </p>
