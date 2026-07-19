@@ -1,0 +1,65 @@
+.decor {
+  max-width: 900px;
+  margin: 1.5rem auto;
+  padding: 10px 1.5rem 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  animation: reveal 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.item {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: default;
+  opacity: 0.88;
+  transform: translateY(var(--y, 0px)) rotate(var(--rot, 0deg));
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.2s ease,
+    filter 0.25s ease;
+}
+
+button.item {
+  cursor: pointer;
+}
+
+button.item:hover {
+  opacity: 1;
+  transform: translateY(calc(var(--y, 0px) - 6px)) rotate(var(--rot, 0deg))
+    scale(1.06);
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.13));
+}
+
+.photo {
+  width: var(--w, 120px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  pointer-events: none;
+  user-select: none;
+}
+
+@media screen and (max-width: 640px) {
+  .decor {
+    gap: 16px;
+  }
+  .photo {
+    width: calc(var(--w, 120px) * 0.75);
+  }
+}

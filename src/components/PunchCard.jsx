@@ -69,8 +69,7 @@ export default function PunchCard() {
         }
       })
       .catch(() => {
-        if (alive)
-          setCount(Number(localStorage.getItem(LOCAL_COUNT_KEY)) || 0);
+        if (alive) setCount(Number(localStorage.getItem(LOCAL_COUNT_KEY)) || 0);
       });
     return () => {
       alive = false;
@@ -112,7 +111,7 @@ export default function PunchCard() {
     if (punched === 0) return -1;
     const lastHole = HOLES[punched - 1];
     return CELLS.findIndex(
-      (cell) => cell.row === lastHole.row && cell.col === lastHole.col
+      (cell) => cell.row === lastHole.row && cell.col === lastHole.col,
     );
   }, [punched]);
 
@@ -141,8 +140,8 @@ export default function PunchCard() {
     <section className={styles.punchcard}>
       <h2>the communal punch card</h2>
       <p className={styles.intro}>
-        every visitor punches one hole, carriage order, bottom row
-        first. below, the machine knits what we&apos;ve punched so far.
+        every visitor punches one hole, carriage order, bottom row first. below,
+        the machine knits what we&apos;ve punched so far.
       </p>
 
       <div className={styles.machine}>
@@ -160,11 +159,7 @@ export default function PunchCard() {
             stroke="#e6dcc0"
             strokeWidth="1.5"
           />
-          <text
-            x={edge}
-            y={17}
-            className={styles.cardLabel}
-          >
+          <text x={edge} y={17} className={styles.cardLabel}>
             electrocute lab · 24 st · card no.{cardsDone + 1}
           </text>
 
@@ -199,15 +194,7 @@ export default function PunchCard() {
               newest.col === cellDef.col;
             if (!cellDef.hole) {
               // plain positions: the faintest tick, like the card's grid
-              return (
-                <circle
-                  key={key}
-                  cx={cx}
-                  cy={cy}
-                  r="1"
-                  fill="#e6dcc0"
-                />
-              );
+              return <circle key={key} cx={cx} cy={cy} r="1" fill="#e6dcc0" />;
             }
             return (
               <g key={key}>
@@ -260,9 +247,7 @@ export default function PunchCard() {
           {CELLS.map((cellDef, i) => {
             if (i > carriage) return null;
             const key = `st-${cellDef.row}-${cellDef.col}`;
-            const isContrast = punchedSet.has(
-              `${cellDef.row}-${cellDef.col}`
-            );
+            const isContrast = punchedSet.has(`${cellDef.row}-${cellDef.col}`);
             const x = 8 + cellDef.col * st + st / 2;
             const y = 8 + cellDef.row * st + st / 2;
             const arm = st * 0.32;
@@ -273,10 +258,7 @@ export default function PunchCard() {
               newest.row === cellDef.row &&
               newest.col === cellDef.col;
             return (
-              <g
-                key={key}
-                className={isNewest ? styles.newStitchV : undefined}
-              >
+              <g key={key} className={isNewest ? styles.newStitchV : undefined}>
                 {/* a little knit V */}
                 <line
                   x1={x - arm}
@@ -308,12 +290,11 @@ export default function PunchCard() {
         ) : (
           <>
             {punched} of {CARD_SIZE} holes punched
-            {shared ? " by visitors" : " on this device"} · row {knitRow} of{" "}
-            {ROWS} on the machine
+            {" by visitors"} · row {knitRow} of {ROWS} on the machine
             {cardsDone > 0 && (
               <>
                 {" "}
-                · {cardsDone} {cardsDone === 1 ? "card" : "cards"} knit ✿
+                · {cardsDone} {cardsDone === 1 ? "card" : "cards"} knit
               </>
             )}
           </>
@@ -326,7 +307,7 @@ export default function PunchCard() {
         onClick={punch}
         disabled={hasPunched || count === null || busy}
       >
-        {hasPunched ? "you've punched your hole ✿" : "punch your hole"}
+        {hasPunched ? "you've punched your hole" : "punch your hole"}
       </button>
     </section>
   );

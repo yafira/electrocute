@@ -46,8 +46,11 @@ function sample(v) {
 
 function applyAmbience(v) {
   const { color } = sample(v);
-  document.body.style.transition = "background-color 0.4s ease";
-  document.body.style.backgroundColor = color;
+  // set as a custom property (a normal stylesheet value) rather than
+  // an inline background-color — an inline style always wins over
+  // any CSS rule regardless of specificity, which meant this used to
+  // silently override void mode's black background on every mount.
+  document.documentElement.style.setProperty("--ambience-bg", color);
   // the last stretch of the dial pulls dusk over everything
   const dusk = Math.max(0, (v - 0.88) / 0.12);
   document.documentElement.style.setProperty("--dusk", dusk.toFixed(3));

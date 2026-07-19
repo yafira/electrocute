@@ -63,6 +63,22 @@
   transform: translateY(-2px);
 }
 
+:global(.stitch-pulse) .nav a {
+  animation: navStitchFlash 0.9s ease;
+}
+
+@keyframes navStitchFlash {
+  0% {
+    box-shadow: 0 0 0 rgba(178, 164, 212, 0);
+  }
+  35% {
+    box-shadow: 0 0 10px rgba(178, 164, 212, 0.65);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(178, 164, 212, 0);
+  }
+}
+
 @media screen and (max-width: 750px) {
   .Header {
     padding: 0;

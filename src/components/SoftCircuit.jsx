@@ -1,17 +1,19 @@
 // a tiny sewable circuit that the nav lives inside of: coin cell,
 // then the about/blog/contact pills (sewn onto the board same as
-// any other component), then a switch, then a sewable LED — all
-// joined by conductive thread. close the switch and the stitches
-// become the current: the thread flows around the loop, the pills
-// catch a faint glow, and the LED lights.
+// any other component), then a switch, a sewable LED, and a small
+// continuity tester made of five cross-stitches. close the switch
+// and the thread flows, the LED lights, and the stitches test the
+// connection one at a time — like touching a probe along a real
+// conductive-thread trace, confirming the circuit all the way
+// through.
+//
+// the on/off state lives one level up (see index.js) so the page
+// can react to it too — closing this switch also pulses a brief
+// "stitch" flash across the site's other dashed borders.
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import { playFeltTone } from "@/lib/feltTone";
 import headerStyles from "../styles/Header.module.css";
 import styles from "../styles/SoftCircuit.module.css";
-
-const LOCAL_KEY = "electrocute:circuit";
 
 function CoinCell() {
   return (
@@ -186,28 +188,11 @@ function Led({ on }) {
   );
 }
 
-export default function SoftCircuit() {
-  const [on, setOn] = useState(false);
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    setOn(localStorage.getItem(LOCAL_KEY) === "on");
-    setReady(true);
-  }, []);
-
-  const toggle = () => {
-    setOn((current) => {
-      const next = !current;
-      localStorage.setItem(LOCAL_KEY, next ? "on" : "off");
-      playFeltTone(next ? 640 : 320);
-      return next;
-    });
-  };
-
+export default function SoftCircuit({ on, ready, onToggle }) {
   const onKeyDown = (event) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      toggle();
+      onToggle();
     }
   };
 
@@ -216,18 +201,17 @@ export default function SoftCircuit() {
       <CoinCell />
       <span className={`${styles.thread} ${on ? styles.flowing : ""}`} />
 
-      <nav
-        className={`${headerStyles.nav} ${styles.sewnNav} ${on ? styles.lit : ""}`}
-      >
+      <nav className={`${headerStyles.nav} ${styles.sewnNav}`}>
         <Link href="/about">about</Link>
         <a href="https://blog.electrocute.io/">blog</a>
         <Link href="/contact">contact</Link>
       </nav>
 
       <span className={`${styles.thread} ${on ? styles.flowing : ""}`} />
-      <Switch on={on} ready={ready} onToggle={toggle} onKeyDown={onKeyDown} />
+      <Switch on={on} ready={ready} onToggle={onToggle} onKeyDown={onKeyDown} />
       <span className={`${styles.thread} ${on ? styles.flowing : ""}`} />
       <Led on={on} />
+      <span className={`${styles.thread} ${on ? styles.flowing : ""}`} />
     </div>
   );
 }

@@ -21,8 +21,26 @@
   margin: 0 0 1.25rem;
 }
 
+.printerFrame {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 44px 12px;
+}
+
+/* the flower outline, sized to comfortably hold the printer inside
+   its center — a frame, not an icon */
+.printerBloom {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .printer {
   position: relative;
+  z-index: 1;
+  width: 100%;
 }
 
 /* the printer slot the paper feeds from */
@@ -40,11 +58,7 @@
   z-index: 1;
   margin: 0 14px;
   padding: 1rem 1rem 1.5rem;
-  background: repeating-linear-gradient(
-    #fffdf7,
-    #fffdf7 26px,
-    #fdfaf0 27px
-  );
+  background: repeating-linear-gradient(#fffdf7, #fffdf7 26px, #fdfaf0 27px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
   text-align: left;
   font-family: "Courier New", ui-monospace, monospace;
@@ -95,8 +109,8 @@
 .tear {
   height: 10px;
   margin: 0 14px;
-  background: linear-gradient(-45deg, transparent 7px, #fffdf7 0) 0 0 / 14px
-      10px repeat-x,
+  background:
+    linear-gradient(-45deg, transparent 7px, #fffdf7 0) 0 0 / 14px 10px repeat-x,
     linear-gradient(45deg, transparent 7px, #fffdf7 0) 7px 0 / 14px 10px
       repeat-x;
 }
@@ -151,7 +165,9 @@
   border-radius: 999px;
   padding: 0.4rem 1.2rem;
   cursor: pointer;
-  transition: background 0.15s ease, transform 0.15s ease;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
 }
 
 .print:hover:not(:disabled) {

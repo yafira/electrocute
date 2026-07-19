@@ -13,6 +13,10 @@
   color: #000000;
 }
 
+:global(.voidworld) .punchcard h2 {
+  color: #e8e2fb;
+}
+
 .intro {
   font-family: "Poppins", sans-serif;
   font-weight: 200;
@@ -20,6 +24,10 @@
   color: #000000;
   margin: 0 auto 1.5rem;
   max-width: 460px;
+}
+
+:global(.voidworld) .intro {
+  color: #d9d3ef;
 }
 
 .machine {
@@ -114,6 +122,10 @@
   margin: 0.9rem 0 1rem;
 }
 
+:global(.voidworld) .status {
+  color: #d9d3ef;
+}
+
 .punchButton {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
@@ -124,7 +136,9 @@
   border-radius: 999px;
   padding: 0.5rem 1.4rem;
   cursor: pointer;
-  transition: background 0.15s ease, transform 0.15s ease;
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
 }
 
 .punchButton:hover:not(:disabled) {
