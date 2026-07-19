@@ -21,6 +21,15 @@
   font-weight: 300;
 }
 
+:global(.voidworld) .Footer h3,
+:global(.voidworld) .Footer a {
+  color: #d9d3ef;
+}
+
+:global(.voidworld) .Footer a:hover {
+  color: rgb(200, 174, 250);
+}
+
 .Footer svg {
   animation: heartbeat 4s ease-in-out infinite;
 }

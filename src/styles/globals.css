@@ -15,11 +15,12 @@
 html,
 body {
   max-width: 100vw;
-  background-color: #ffffff;
+  background-color: var(--ambience-bg, #ffffff);
   color: #000000;
   font-family: "Space Grotesk", sans-serif;
   overflow-x: hidden;
   max-width: 100%;
+  transition: background-color 0.4s ease;
 }
 
 html {
@@ -53,35 +54,5 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-}
-
-html.voidworld {
-  filter: invert(1) hue-rotate(180deg);
-  background: #000;
-}
-
-.voidCaption {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  opacity: 0;
-  z-index: 200;
-  animation: voidcaption 5s ease both;
-  pointer-events: none;
-}
-
-@keyframes voidcaption {
-  0%,
-  100% {
-    opacity: 0;
-  }
-  12%,
-  80% {
-    opacity: 0.8;
   }
 }

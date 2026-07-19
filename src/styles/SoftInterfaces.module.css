@@ -23,6 +23,16 @@
   padding: 4rem 1.5rem 8rem;
 }
 
+:global(.voidworld) .page {
+  --ink: #e8e2fb;
+  --paper: #05030a;
+  --grid: #1c1730;
+  --blush: #ff9fc4;
+  --sky: #8fd6ff;
+  --mint: #8bf0c4;
+  --butter: #ffe38a;
+}
+
 /* header */
 
 .header {

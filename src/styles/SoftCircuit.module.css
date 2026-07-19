@@ -44,6 +44,47 @@
   fill: #a99fc7;
 }
 
+/* ── the continuity tester: five stitches testing the connection ── */
+
+.stitchSvg {
+  width: 62px;
+  height: 20px;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.stitch line {
+  stroke: #d9d3ef;
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition: stroke 0.2s ease;
+}
+
+.stitchOn line {
+  stroke: #b2a4d4;
+  animation: stitchLand 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: var(--stitch-delay, 0s);
+}
+
+@keyframes stitchLand {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.4);
+  }
+  70% {
+    transform: scale(1.25);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.stitchOn {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
 /* the lever pivots open and closed around its left pin */
 .lever {
   transform-origin: 25px 24px;
@@ -81,6 +122,7 @@
 
 .ledOn {
   fill: #b2a4d4;
+  filter: drop-shadow(0 0 6px #b2a4d4);
   transition: fill 0.3s ease;
 }
 
@@ -128,6 +170,7 @@
     transparent 13px
   );
   animation: flow 0.9s linear infinite;
+  box-shadow: 0 0 6px 1px rgba(178, 164, 212, 0.8);
 }
 
 @keyframes flow {
@@ -151,13 +194,6 @@
     box-shadow 0.4s ease;
 }
 
-/* the pills catch a faint glow once the circuit is closed */
-.lit a {
-  box-shadow:
-    0 0 0 2px rgba(178, 164, 212, 0.35),
-    0 0 10px rgba(178, 164, 212, 0.45);
-}
-
 @media screen and (max-width: 640px) {
   .board {
     gap: 4px;
@@ -174,5 +210,9 @@
   .switchSvg {
     width: 52px;
     height: 32px;
+  }
+  .stitchSvg {
+    width: 48px;
+    height: 16px;
   }
 }

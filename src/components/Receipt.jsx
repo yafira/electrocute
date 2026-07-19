@@ -4,6 +4,7 @@
 // this device only.
 
 import { useEffect, useRef, useState } from "react";
+import { BloomOutline } from "electrocute-ui";
 import styles from "../styles/Receipt.module.css";
 
 const LOCAL_NOTES_KEY = "electrocute:receipt:notes";
@@ -100,17 +101,25 @@ export default function Receipt() {
 
   return (
     <section className={styles.wrap}>
-      <h2>guest receipt</h2>
+      <h2>
+        guest receipt{" "}
+        <BloomOutline
+          size="sm"
+          color="#f2b9e0"
+          style={{ width: "12px", height: "12px" }}
+        />
+      </h2>
       <p className={styles.hint}>
         leave a little note and it prints below. one per visitor, 140
-        characters, be kind ✿
+        characters.
       </p>
 
       <div className={styles.printer}>
         <div className={styles.slot} aria-hidden="true" />
         <div className={styles.paper} ref={paperRef}>
           <p className={styles.receiptHeader}>
-            ✿ electrocute lab ✿<br />
+            electrocute lab
+            <br />
             visitor log · nyc & the web
             {shown.length > 0 && (
               <>
@@ -145,14 +154,14 @@ export default function Receipt() {
             <br />
             thank you for visiting
             <br />
-            {shared ? "come back soon ✿" : "(saved on this device only)"}
+            come back soon
           </p>
         </div>
         <div className={styles.tear} aria-hidden="true" />
       </div>
 
       {signed ? (
-        <p className={styles.signedNote}>your note is on the receipt ✿</p>
+        <p className={styles.signedNote}>your note is on the receipt</p>
       ) : (
         <div className={styles.form}>
           <input

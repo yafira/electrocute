@@ -4,139 +4,867 @@
   user-select: none;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  overflow-x: clip;
+  min-height: 100vh; /* Ensures full-screen background coverage */
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
 }
 
 .container {
-  max-width: 960px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 0;
-  padding-bottom: 2rem;
+  padding: 0 32px;
+  padding-bottom: 6rem;
 }
 
 .container a {
   text-decoration: none;
 }
 
-.titleContainer {
-  text-align: center;
-  margin: 0px;
+/* the collage
+   one shared canvas where BOTH cards and photos are freely
+   placed. every piece is centered on its (x, y) from the data
+   file, tilted with rot, and stacked with z. cards default to
+   z 10 so photos (z 4–6) tuck behind card edges, while a photo
+   given z > 10 (like the soft computer) rides on top. */
+
+.collage {
+  position: relative;
+  height: 1280px;
+  /* bleeds a little wider than the .container column and centers
+     on the viewport — tuned so pieces sit close but never collide */
+  width: min(1240px, calc(100vw - 48px));
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.title {
-  color: #000000;
-  font-family: "Cute Font", cursive;
-  font-size: 100px;
-  font-weight: bold;
-  margin: 20px 30px;
+/* wrapper that positions a card on the canvas; the .card inside
+   keeps all its own hover behavior. width comes from the shape. */
+.cardSpot {
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  z-index: var(--z, 10);
+  transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* the index box */
-
-.projectGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  padding: 10px 14px;
+.cardSpot:hover {
+  z-index: 40;
+  transform: translate(-50%, -50%) rotate(0deg);
 }
 
+/* cards on the canvas get their tilt from the wrapper instead,
+   and hug their content instead of stretching to a fixed height */
+.cardSpot .card {
+  --tilt: 0deg;
+  min-height: 0;
+}
+
+/* card shapes
+   wide   → big index card, the workhorse
+   sticky → squarer note with tighter corners
+   pill   → soft and very rounded */
+
+.spotWide {
+  width: 380px;
+}
+.spotWide .card {
+  border-radius: 18px;
+}
+
+.spotSticky {
+  width: 280px;
+}
+.spotSticky .card {
+  border-radius: 10px;
+}
+
+.spotPill {
+  width: 340px;
+}
+.spotPill .card {
+  border-radius: 34px;
+  padding: 20px 24px;
+}
+
+/* Original Small Index Cards */
 .card {
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  width: 100%; /* add */
-  padding: 10px 12px 12px;
+  width: 100%;
+  min-height: 154px;
+  padding: 18px;
   background-color: var(--bg);
-  border: 2px dashed transparent;
-  border-radius: 6px;
+  border: 1.5px solid transparent;
+  border-radius: 16px;
   text-align: left;
-  font: inherit; /* add */
-  color: inherit; /* add */
-  cursor: pointer; /* add */
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  box-sizing: border-box;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.01),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.01);
+
+  transform: rotate(var(--tilt, 0deg));
+
   transition:
-    background-color 0.18s ease,
-    border-color 0.18s ease,
-    transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.18s ease;
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.3s ease;
+}
+
+.resourcesGrid .card {
+  min-height: 140px;
+  padding: 16px;
 }
 
 .card:hover {
   background-color: var(--hover-bg);
-  border-color: var(--hover-border); /* the running stitch appears */
-  transform: translateY(-5px) rotate(var(--tilt, 0deg));
-  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.07);
+  border-color: var(--hover-border);
+  transform: translateY(-8px) scale(1.04) rotate(0deg);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.04);
+  z-index: 20;
 }
 
 .cardTop {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .card h3 {
   color: #000000;
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: 600;
   margin: 0;
   line-height: 1.25;
 }
 
-/* the ruled header line, like the red rule on an index card */
+.resourcesGrid .card h3 {
+  font-size: 14px;
+}
+
 .rule {
   display: block;
   height: 0;
-  border-bottom: 1.5px solid rgba(0, 0, 0, 0.12);
-  margin: 8px 0 7px;
+  border-bottom: 1.5px dashed rgba(0, 0, 0, 0.08);
+  margin: 10px 0 8px;
 }
 
+/* Description text line clamping */
 .card p {
-  color: #000000;
-  font-size: 12px;
-  line-height: 1.45;
+  color: #333333;
+  font-size: 13px;
+  line-height: 1.55;
   margin: 0;
   text-align: left;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  transition: -webkit-line-clamp 0.2s ease;
+  transition: -webkit-line-clamp 0.25s ease;
 }
 
-/* the full description unfolds when you pick the card up */
+.resourcesGrid .card p {
+  font-size: 12px;
+  -webkit-line-clamp: 3;
+}
+
 .card:hover p {
-  -webkit-line-clamp: 8;
+  -webkit-line-clamp: 6;
 }
 
 .logo {
-  height: 44px;
-  width: 44px;
+  height: 26px;
+  width: 26px;
   flex-shrink: 0;
   display: inline-block;
-  vertical-align: middle;
+  object-fit: contain;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* ── responsive ────────────────────────────────────────────── */
+.card:hover .logo {
+  transform: scale(1.15) rotate(-5deg);
+}
 
-@media screen and (max-width: 900px) {
-  .projectGrid {
-    grid-template-columns: repeat(3, 1fr);
+/* photos on the canvas */
+
+.photoItem {
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  width: var(--w, 170px);
+  z-index: var(--z, 5);
+  display: block;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+  animation: cozyFloat 4.5s ease-in-out infinite alternate;
+  animation-delay: var(--float-delay, 0s);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.photoItem:hover {
+  animation-play-state: paused;
+  transform: translate(-50%, -50%) translateY(-10px) scale(1.15) rotate(0deg);
+  z-index: 40;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.05))
+    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.03));
+  transition: filter 0.3s ease;
+  pointer-events: none;
+  user-select: none;
+}
+
+.photoItem:hover .photo {
+  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.08))
+    drop-shadow(0 8px 16px rgba(0, 0, 0, 0.04));
+}
+
+/* little museum-label caption that appears on photo hover */
+.photoLabel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.55);
+  text-transform: lowercase;
+  background: #fffdf7;
+  border: 1.5px dashed rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
+  padding: 3px 10px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.photoItem:hover .photoLabel {
+  opacity: 1;
+}
+
+@keyframes cozyFloat {
+  0% {
+    transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+  }
+  100% {
+    transform: translate(calc(-50% + 3px), calc(-50% + 7px))
+      rotate(calc(var(--rot, 0deg) + 1.5deg));
   }
 }
 
-@media screen and (max-width: 700px) {
-  .projectGrid {
+@media (prefers-reduced-motion: reduce) {
+  .photoItem,
+  .stitchLine,
+  .termCursor,
+  .scopeSvg {
+    animation: none;
+  }
+}
+
+/* night mode
+   toggled by the mode switch doodad, which sets `ecute-dark`
+   on <body>. cards keep their pastel identity as tinted
+   borders and hover washes on a deep plum ground. */
+
+:global(body.ecute-dark) .main {
+  background-color: #211f2e;
+  color: #ece9f7;
+}
+
+:global(body.ecute-dark) .card {
+  background-color: #2b2839;
+  border-color: color-mix(in srgb, var(--hover-border) 45%, transparent);
+}
+
+:global(body.ecute-dark) .card h3 {
+  color: #f2effc;
+}
+
+:global(body.ecute-dark) .card p {
+  color: #bfb9d6;
+}
+
+:global(body.ecute-dark) .rule {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+:global(body.ecute-dark) .card:hover {
+  background-color: color-mix(in srgb, var(--hover-bg) 22%, #2b2839);
+  border-color: var(--hover-border);
+}
+
+:global(body.ecute-dark) .dividerLine {
+  border-bottom-color: rgba(255, 255, 255, 0.14);
+}
+
+:global(body.ecute-dark) .dividerText {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+:global(body.ecute-dark) .photoLabel {
+  background: #2b2839;
+  color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+:global(body.ecute-dark) .cardPhotoReveal {
+  background: #2b2839;
+}
+
+:global(body.ecute-dark) .cardPhotoLabel {
+  color: #f2effc;
+}
+
+:global(body.ecute-dark) .termChip {
+  background: #2b2839;
+  color: rgba(255, 255, 255, 0.65);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+:global(body.ecute-dark) .ledDot {
+  background: #3a3650;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+:global(body.ecute-dark) .ledOn {
+  background: #f2b9e0;
+  border-color: #e88fc9;
+}
+
+:global(body.ecute-dark) .switchTrack {
+  background: #3a3650;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+:global(body.ecute-dark) .switchOn {
+  background: #35544a;
+  border-color: #94f1d3;
+}
+
+:global(body.ecute-dark) .switchLabel {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+:global(body.ecute-dark) .knob {
+  background: #3a3650;
+  border-color: #9d96e7;
+}
+
+:global(body.ecute-dark) .resistor {
+  background: #3a3650;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+:global(body.ecute-dark) .stitchLine {
+  stroke: rgba(255, 255, 255, 0.28);
+}
+
+/* resources grid (unchanged) */
+
+.resourcesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+/* Visual Section Divider */
+.sectionDivider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 5.5rem 0 2.5rem;
+  width: 100%;
+}
+
+.dividerLine {
+  flex-grow: 1;
+  height: 0;
+  border-bottom: 2px dashed rgba(0, 0, 0, 0.08);
+}
+
+.dividerText {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.35);
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+}
+
+/* Card Photo Reveal Layer */
+.cardPhotoReveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px;
+  background: #fffdf7;
+  opacity: 0;
+  transform: scale(0.96);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  pointer-events: none;
+}
+
+.card:hover .cardPhotoReveal {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cardPhoto {
+  max-width: 100%;
+  max-height: 78%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.08));
+}
+
+.cardPhotoLabel {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  color: #000000;
+  text-transform: lowercase;
+}
+
+/* circuit doodads: cute techy microinteractions living in
+   the collage's empty pockets. all decorative, all clickable,
+   sitting at z 3 so they stay beneath cards and photos. */
+
+.doodad {
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  z-index: 3;
+  display: block;
+  border: none;
+  background: transparent;
+  padding: 6px; /* a little extra tap area */
+  margin: 0;
+  cursor: pointer;
+  transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.doodad:hover {
+  transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(1.12);
+}
+
+/* led — toggles a blush glow */
+.ledDot {
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #f6e9f1;
+  border: 1.5px dashed rgba(0, 0, 0, 0.15);
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    border 0.25s ease;
+}
+
+.ledOn {
+  background: #f2b9e0;
+  border: 1.5px solid #e88fc9;
+  box-shadow: 0 0 18px 5px rgba(242, 185, 224, 0.75);
+}
+
+/* slide switch — thumb slides, track goes matcha */
+.switchTrack {
+  display: block;
+  position: relative;
+  width: 56px;
+  height: 26px;
+  border-radius: 999px;
+  background: #eceff1;
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+  transition: background 0.25s ease;
+}
+
+.switchOn {
+  background: #dbf7e6;
+  border-color: #bbf0cf;
+}
+
+.switchThumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.switchOn .switchThumb {
+  transform: translateX(29px);
+}
+
+/* potentiometer knob — each click turns it another 45° */
+.knob {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e8e6ff;
+  border: 1.5px solid #bdb8f1;
+}
+
+.knobFace {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.knobFace::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  width: 3px;
+  height: 12px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: #9d96e7;
+}
+
+/* resistor — click cycles the band colors */
+.resistor {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 64px;
+  height: 20px;
+  border-radius: 10px;
+  background: #fbecdd;
+  border: 1.5px solid #e7c29d;
+}
+
+.resistor::before,
+.resistor::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 1.5px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.resistor::before {
+  right: 100%;
+}
+
+.resistor::after {
+  left: 100%;
+}
+
+.resistorBand {
+  display: block;
+  width: 5px;
+  height: 14px;
+  border-radius: 2px;
+  transition: background 0.3s ease;
+}
+
+/* tiny terminal chip — blinking cursor, click cycles messages */
+.termChip {
+  display: inline-flex;
+  align-items: center;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.55);
+  text-transform: lowercase;
+  background: #fffdf7;
+  border: 1.5px dashed rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  padding: 6px 10px;
+  white-space: nowrap;
+}
+
+.termCursor {
+  display: inline-block;
+  width: 6px;
+  height: 11px;
+  margin-left: 4px;
+  background: #9d96e7;
+  animation: termBlink 1.1s steps(1) infinite;
+}
+
+@keyframes termBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* running stitch — the dashes march on hover */
+.stitchLine {
+  stroke: rgba(0, 0, 0, 0.2);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+  animation: stitchMarch 1s linear infinite;
+  animation-play-state: paused;
+}
+
+.doodad:hover .stitchLine {
+  animation-play-state: running;
+}
+
+@keyframes stitchMarch {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+/* tiny label under the mode switch */
+.switchLabel {
+  display: block;
+  margin-top: 5px;
+  text-align: center;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  color: rgba(0, 0, 0, 0.4);
+  text-transform: lowercase;
+}
+
+/* oscilloscope — a little screen with a scrolling wave;
+   click cycles sine → square → triangle */
+.scope {
+  display: block;
+  position: relative;
+  width: 88px;
+  height: 50px;
+  border-radius: 10px;
+  background: #232130;
+  border: 1.5px solid #9d96e7;
+  overflow: hidden;
+}
+
+.scopeSvg {
+  display: block;
+  animation: scopeScroll 1.6s linear infinite;
+}
+
+.scopeWave {
+  fill: none;
+  stroke: #94f1d3;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 3px rgba(148, 241, 211, 0.8));
+}
+
+@keyframes scopeScroll {
+  to {
+    transform: translateX(-44px);
+  }
+}
+
+/* Responsive Structural Adjustments
+   the hand-placed composition needs width; below 960px the
+   collage collapses back into normal flow: a 2-col rhythm of
+   cards and photos interleaved in DOM order. */
+@media screen and (max-width: 960px) {
+  .collage {
+    height: auto;
+    width: 100%;
+    left: 0;
+    transform: none;
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    margin: 5px;
-    padding: 10px;
+    gap: 28px 20px;
+    align-items: center;
+  }
+  .cardSpot,
+  .photoItem {
+    position: static;
+    transform: rotate(var(--rot, 0deg));
+    animation: none;
+    width: 100%;
+  }
+  .doodad {
+    display: none; /* decorative only — skip them in the stacked layout */
+  }
+  .spotWide,
+  .spotSticky,
+  .spotPill {
+    width: 100%;
+  }
+  .photoItem {
+    justify-self: center;
+    max-width: 220px;
+  }
+  .cardSpot:hover {
+    transform: rotate(0deg);
+  }
+  .photoItem:hover {
+    transform: scale(1.06) rotate(0deg);
+  }
+  .photoLabel {
+    display: none;
+  }
+  .resourcesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 20px;
   }
 }
 
-@media screen and (max-width: 440px) {
-  .projectGrid {
-    grid-template-columns: repeat(1, 1fr);
-    margin: 5px;
-    padding: 10px;
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 0 16px;
   }
+  .collage {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .resourcesGrid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 20px;
+  }
+  .card {
+    height: auto;
+    min-height: 130px;
+    transform: none !important;
+  }
+  .photoItem {
+    max-width: 200px;
+  }
+}
 
-  .card p {
-    -webkit-line-clamp: 4;
+/* Upgraded Large Oscilloscope Custom Dimensions */
+.scopeDoodadLarge {
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  z-index: 3;
+  display: block;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.scopeDoodadLarge:hover {
+  transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(1.05);
+}
+
+.scopeLarge {
+  display: block;
+  position: relative;
+  width: 144px; /* Noticeably scaled up from original width */
+  height: 74px;
+  border-radius: 14px;
+  background: #1c1a26;
+  border: 2px solid #9d96e7;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.scopeSvgLarge {
+  display: block;
+  animation: scopeScrollLarge 1.3s linear infinite;
+}
+
+.scopeWaveLarge {
+  fill: none;
+  stroke: #94f1d3;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 4px rgba(148, 241, 211, 0.9));
+}
+
+@keyframes scopeScrollLarge {
+  to {
+    transform: translateX(-72px);
   }
+}
+
+/* Micro Cute Toggle Switch Elements */
+.miniToggleDoodad {
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  z-index: 4;
+  display: block;
+  border: none;
+  background: transparent;
+  padding: 4px;
+  margin: 0;
+  cursor: pointer;
+  transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+  transition: transform 0.2s ease;
+}
+
+.miniToggleDoodad:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+.miniSwitchTrack {
+  display: block;
+  position: relative;
+  width: 32px; /* Dainty micro footprint */
+  height: 16px;
+  border-radius: 999px;
+  background: #e4e7e9;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.miniSwitchOn {
+  background: #decffc;
+  border-color: #beb0eb;
+}
+
+.miniSwitchThumb {
+  position: absolute;
+  top: 1.5px;
+  left: 2px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+}
+
+.miniSwitchOn .miniSwitchThumb {
+  transform: translateX(15px);
 }
