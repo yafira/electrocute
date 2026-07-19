@@ -13,6 +13,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@upstash/redis": "^1.38.0",
     "electrocute-ui": "^0.3.6",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
