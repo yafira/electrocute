@@ -4,6 +4,7 @@
 // this device only.
 
 import { useEffect, useRef, useState } from "react";
+import { BloomOutline } from "electrocute-ui";
 import styles from "../styles/Receipt.module.css";
 
 const LOCAL_NOTES_KEY = "electrocute:receipt:notes";
@@ -67,7 +68,6 @@ export default function Receipt() {
         const data = await res.json();
         if (Array.isArray(data.notes)) setNotes(data.notes);
       } catch {
-        // note lost in the mail; let them try again
         setBusy(false);
         return;
       }
@@ -89,7 +89,6 @@ export default function Receipt() {
     setNote("");
     setName("");
     setBusy(false);
-    // bring the fresh print into view at the bottom of the paper
     requestAnimationFrame(() => {
       if (paperRef.current)
         paperRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -100,7 +99,26 @@ export default function Receipt() {
 
   return (
     <section className={styles.wrap}>
-      <h2>guest receipt </h2>
+      <h2
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "10px",
+        }}
+      >
+        guest receipt
+        <BloomOutline
+          size="sm"
+          color="#f28abf"
+          style={{
+            width: "22px",
+            height: "22px",
+            display: "inline-block",
+            flexShrink: 0,
+          }}
+        />
+      </h2>
       <p className={styles.hint}>
         leave a little note and it prints below. one per visitor, 140
         characters.
