@@ -4,7 +4,6 @@
 // this device only.
 
 import { useEffect, useRef, useState } from "react";
-import { BloomOutline } from "electrocute-ui";
 import styles from "../styles/Receipt.module.css";
 
 const LOCAL_NOTES_KEY = "electrocute:receipt:notes";
@@ -101,14 +100,7 @@ export default function Receipt() {
 
   return (
     <section className={styles.wrap}>
-      <h2>
-        guest receipt{" "}
-        <BloomOutline
-          size="sm"
-          color="#f2b9e0"
-          style={{ width: "12px", height: "12px" }}
-        />
-      </h2>
+      <h2>guest receipt </h2>
       <p className={styles.hint}>
         leave a little note and it prints below. one per visitor, 140
         characters.
