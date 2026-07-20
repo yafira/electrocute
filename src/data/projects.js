@@ -230,14 +230,14 @@ export const photoItems = [
     title: "custom light LEDs",
     image: "/assets/craft/custom-leds.jpg",
     href: "https://www.craft.me/s/UPIseOWDQQ2AAx",
-    pos: { x: "9%", y: "81%", w: 165, rot: 4, z: 4, delay: 1.5 },
+    pos: { x: "9%", y: "91%", w: 165, rot: 4, z: 4, delay: 1.5 },
   },
   {
     slug: "electrojute",
     title: "electrojute",
     image: "/assets/craft/electrojute.png",
     href: "https://www.craft.do/s/n728rE3K9pjrQx",
-    pos: { x: "90%", y: "74%", w: 175, rot: -3, z: 6, delay: 0.3 },
+    pos: { x: "90%", y: "88%", w: 175, rot: -3, z: 6, delay: 0.3 },
   },
 ];
 
