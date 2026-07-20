@@ -11,7 +11,7 @@ const COLLAGE_ORDER = [
   { type: "card", slug: "soft-interfaces" },
   { type: "photo", slug: "the-soft-computer" },
   { type: "photo", slug: "ribbon-logic" },
-  { type: "card", slug: "electrodex" },
+  { type: "card", slug: "kawaii-ml" },
   { type: "photo", slug: "moonpocket" },
   { type: "card", slug: "soft-circuit-library" },
   { type: "card", slug: "synthwave-chimes" },
