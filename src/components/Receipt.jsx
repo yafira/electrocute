@@ -130,7 +130,7 @@ export default function Receipt() {
           <p className={styles.receiptHeader}>
             electrocute lab
             <br />
-            visitor log · nyc & the web
+            visitor log · world wide web
             {shown.length > 0 && (
               <>
                 <br />

@@ -81,6 +81,16 @@ function playSynthSound(type) {
       gain.gain.setValueAtTime(0.001, t);
       gain.gain.exponentialRampToValueAtTime(0.025, t + 0.01);
       gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
+    } else if (type === "chip") {
+      osc.type = "square";
+      osc.frequency.setValueAtTime(220, t);
+      osc.frequency.setValueAtTime(330, t + 0.04);
+      osc.frequency.setValueAtTime(440, t + 0.08);
+      filter.type = "lowpass";
+      filter.frequency.value = 2500;
+      gain.gain.setValueAtTime(0.001, t);
+      gain.gain.exponentialRampToValueAtTime(0.03, t + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.14);
     }
 
     osc.connect(filter);
@@ -381,6 +391,184 @@ function ScopeDoodad({ x, y, rot, isPowered, scale = 1, isMobile }) {
   );
 }
 
+// a little wandering 555 chip-bug — hops between spots in its bounds,
+// pauses to look around when it arrives, and leaves a little sparkle
+// trail while walking. clicking startles it: it beeps and skitters
+// to a new spot immediately.
+function ChipDoodad({ boundsX = [12, 86], boundsY = [84, 95], isMobile }) {
+  const [pos, setPos] = useState({
+    x: (boundsX[0] + boundsX[1]) / 2,
+    y: (boundsY[0] + boundsY[1]) / 2,
+  });
+  const [facing, setFacing] = useState(1); // 1 = facing right, -1 = facing left
+  const [walking, setWalking] = useState(false);
+  const [startled, setStartled] = useState(false);
+  const [looking, setLooking] = useState(false);
+  const [sparkles, setSparkles] = useState([]);
+
+  const dropSparkle = (x, y) => {
+    const id = Math.random().toString(36).slice(2);
+    setSparkles((prev) => [...prev, { id, x, y }].slice(-6));
+    setTimeout(() => {
+      setSparkles((prev) => prev.filter((s) => s.id !== id));
+    }, 900);
+  };
+
+  const wander = () => {
+    setPos((prev) => {
+      const x = boundsX[0] + Math.random() * (boundsX[1] - boundsX[0]);
+      const y = boundsY[0] + Math.random() * (boundsY[1] - boundsY[0]);
+      setFacing(x < prev.x ? -1 : 1);
+
+      // drop a couple of sparkles along the way for a little trail
+      dropSparkle(prev.x, prev.y);
+      setTimeout(() => dropSparkle((prev.x + x) / 2, (prev.y + y) / 2), 400);
+
+      return { x, y };
+    });
+    setWalking(true);
+    setLooking(false);
+    // walk duration is longer now so the hop cycle has room to play
+    setTimeout(() => {
+      setWalking(false);
+      // little "look around" pause after arriving, most of the time
+      if (Math.random() < 0.7) {
+        setLooking(true);
+        setTimeout(() => setLooking(false), 1100);
+      }
+    }, 3000);
+  };
+
+  useEffect(() => {
+    if (isMobile) return;
+    let cancelled = false;
+    const timeoutRef = { current: null };
+    const tick = () => {
+      if (cancelled) return;
+      wander();
+      // longer, more varied pauses between wanders
+      const delay = 5000 + Math.random() * 4000;
+      timeoutRef.current = setTimeout(tick, delay);
+    };
+    timeoutRef.current = setTimeout(tick, 1800);
+    return () => {
+      cancelled = true;
+      clearTimeout(timeoutRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobile]);
+
+  if (isMobile) return null;
+
+  const handleClick = () => {
+    playSynthSound("chip");
+    setStartled(true);
+    wander();
+    setTimeout(() => setStartled(false), 500);
+  };
+
+  return (
+    <>
+      {sparkles.map((s) => (
+        <span
+          key={s.id}
+          className={styles.chipSparkle}
+          style={{
+            position: "absolute",
+            left: `${s.x}%`,
+            top: `${s.y}%`,
+            zIndex: 49,
+          }}
+          aria-hidden="true"
+        />
+      ))}
+
+      <button
+        type="button"
+        className={styles.chipDoodad}
+        onClick={handleClick}
+        aria-label="a small wandering 555 timer chip"
+        style={{
+          position: "absolute",
+          left: `${pos.x}%`,
+          top: `${pos.y}%`,
+          transform: `translate(-50%, -50%) scaleX(${facing}) ${
+            startled ? "rotate(-8deg) scale(1.15)" : ""
+          }`,
+          transition:
+            "left 3s cubic-bezier(0.65, -0.15, 0.35, 1.15), top 3s cubic-bezier(0.65, -0.15, 0.35, 1.15), transform 0.25s ease",
+          zIndex: 50,
+        }}
+      >
+        <span
+          className={`${styles.chipBody} ${walking ? styles.chipWalking : ""} ${
+            looking ? styles.chipLooking : ""
+          }`}
+        >
+          <svg
+            viewBox="0 0 100 60"
+            width="58"
+            height="35"
+            className={styles.chipSvg}
+          >
+            {/* legs, top side */}
+            <g className={styles.chipLegsTop}>
+              <rect x="22.5" y="1" width="4" height="15" />
+              <rect x="39.5" y="1" width="4" height="15" />
+              <rect x="56.5" y="1" width="4" height="15" />
+              <rect x="73.5" y="1" width="4" height="15" />
+            </g>
+            {/* legs, bottom side */}
+            <g className={styles.chipLegsBottom}>
+              <rect x="22.5" y="44" width="4" height="15" />
+              <rect x="39.5" y="44" width="4" height="15" />
+              <rect x="56.5" y="44" width="4" height="15" />
+              <rect x="73.5" y="44" width="4" height="15" />
+            </g>
+
+            {/* chip body — flat rectangular block */}
+            <rect
+              x="16"
+              y="16"
+              width="68"
+              height="28"
+              rx="3"
+              className={styles.chipFront}
+            />
+
+            {/* flower */}
+            <g className={styles.chipFlowerBig} transform="translate(33,30)">
+              <circle cx="0" cy="-4" r="3.4" />
+              <circle cx="4.2" cy="-1.3" r="3.4" />
+              <circle cx="2.6" cy="3.8" r="3.4" />
+              <circle cx="-2.6" cy="3.8" r="3.4" />
+              <circle cx="-4.2" cy="-1.3" r="3.4" />
+              <circle
+                cx="0"
+                cy="0"
+                r="2.1"
+                className={styles.chipFlowerCenter}
+              />
+            </g>
+            <g className={styles.chipFlowerSmall} transform="translate(50,33)">
+              <circle cx="0" cy="-2.2" r="1.8" />
+              <circle cx="2.2" cy="-0.7" r="1.8" />
+              <circle cx="1.3" cy="1.9" r="1.8" />
+              <circle cx="-1.3" cy="1.9" r="1.8" />
+              <circle cx="-2.2" cy="-0.7" r="1.8" />
+            </g>
+
+            {/* subtle 555 print */}
+            <text x="66" y="36" className={styles.chip555}>
+              555
+            </text>
+          </svg>
+        </span>
+      </button>
+    </>
+  );
+}
+
 export default function Container() {
   const [open, setOpen] = useState(null);
   const [isCircuitOn, setIsCircuitOn] = useState(true);
@@ -548,6 +736,7 @@ export default function Container() {
               scale={scopeScale}
               isMobile={false}
             />
+            <ChipDoodad isMobile={false} />
           </>
         )}
       </div>
