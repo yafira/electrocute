@@ -13,6 +13,27 @@ export function isEmbeddable(url) {
   }
 }
 
+export function isMobileViewport() {
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 640px)").matches
+  );
+}
+
+// shared click handler for every project card / photo / preview that
+// opens an external link. opens the floating window (full-screen on
+// mobile) — except sites that refuse to be framed, which skip the
+// dead-end "can't be embedded" panel on mobile and go straight to a
+// new tab. must be called directly from the click handler so
+// window.open stays inside the user gesture (popup blockers).
+export function openProject(href, title, setOpen) {
+  if (!isEmbeddable(href) && isMobileViewport()) {
+    window.open(href, "_blank", "noopener,noreferrer");
+  } else {
+    setOpen({ href, title });
+  }
+}
+
 export default function IframePanel({ url, title, onClose }) {
   const loadingRef = useRef(null);
   const windowRef = useRef(null);
@@ -70,6 +91,7 @@ export default function IframePanel({ url, title, onClose }) {
   };
 
   const onTitleBarTouchStart = (e) => {
+    if (isMobileViewport()) return; // full-screen on mobile, nothing to drag
     const touch = e.touches[0];
     const rect = windowRef.current.getBoundingClientRect();
     dragState.current = {
@@ -105,9 +127,10 @@ export default function IframePanel({ url, title, onClose }) {
     if (loadingRef.current) loadingRef.current.style.opacity = "0";
   };
 
-  const windowStyle = pos
-    ? { left: pos.x, top: pos.y, width: pos.w, height: pos.h }
-    : {};
+  const windowStyle =
+    pos && !isMobileViewport()
+      ? { left: pos.x, top: pos.y, width: pos.w, height: pos.h }
+      : {};
 
   return (
     <div
@@ -141,8 +164,12 @@ export default function IframePanel({ url, title, onClose }) {
             title="open in new tab"
             onMouseDown={(e) => e.stopPropagation()}
           >
-            ↗
+            open&nbsp;↗
           </a>
+        </div>
+
+        <div className={styles.urlBar}>
+          <span className={styles.urlText}>{url}</span>
         </div>
 
         <div className={styles.body}>

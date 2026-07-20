@@ -95,7 +95,8 @@
 
 .windowTitle {
   flex: 1;
-  text-align: center;
+  text-align: left;
+  padding-left: 4px;
   font-size: 12px;
   font-family: "IBM Plex Mono", monospace;
   color: #8a8296;
@@ -205,33 +206,54 @@
   background: #f4f0ff;
 }
 
+.urlBar {
+  display: flex;
+  align-items: center;
+  padding: 6px 14px;
+  background: #fffdf7;
+  border-bottom: 2px dashed #d5c8fa;
+  flex-shrink: 0;
+}
+
+.urlText {
+  font-size: 11px;
+  font-family: "IBM Plex Mono", monospace;
+  color: #8a8296;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media (max-width: 640px) {
   .backdrop {
     pointer-events: all;
-    background: rgba(74, 68, 83, 0.28);
+    background: rgba(74, 68, 83, 0.35);
   }
   .window {
-    top: auto !important;
-    left: 0 !important;
-    bottom: 0;
-    width: 100% !important;
-    height: 88vh !important;
-    border-radius: 18px 18px 0 0;
-    transform: none !important;
-    animation: sheetUp 0.22s cubic-bezier(0.32, 0.72, 0, 1);
-    box-shadow: 0 -6px 24px rgba(181, 160, 217, 0.25);
+    top: 50% !important;
+    left: 14px !important;
+    right: 14px;
+    bottom: auto;
+    width: auto !important;
+    height: 56vh !important;
+    height: 56dvh !important;
+    max-height: 520px;
+    transform: translateY(-50%) !important;
+    border-radius: 14px;
+    animation: windowPopMobile 0.2s cubic-bezier(0.32, 0.72, 0, 1);
   }
-  @keyframes sheetUp {
+  @keyframes windowPopMobile {
     from {
-      transform: translateY(30px);
       opacity: 0;
+      transform: translateY(calc(-50% + 14px)) scale(0.98);
     }
     to {
-      transform: translateY(0);
       opacity: 1;
+      transform: translateY(-50%) scale(1);
     }
   }
   .titleBar {
     cursor: default;
+    height: 42px;
   }
 }
