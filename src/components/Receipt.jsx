@@ -119,9 +119,7 @@ export default function Receipt() {
           }}
         />
       </h2>
-      <p className={styles.hint}>
-        leave a little note and it prints below. one per visitor.
-      </p>
+      <p className={styles.hint}>leave a little note and it prints below.</p>
 
       <div className={styles.printer}>
         <div className={styles.slot} aria-hidden="true" />
@@ -142,7 +140,7 @@ export default function Receipt() {
           {notes === null && <p className={styles.line}>warming up printer…</p>}
           {notes !== null && shown.length === 0 && (
             <p className={styles.line}>
-              no notes yet. yours could be the first.
+              no notes yet. yours could be the first!
             </p>
           )}
           {shown.map((n, i) => (
@@ -161,16 +159,16 @@ export default function Receipt() {
           <p className={styles.receiptFooter}>
             ································
             <br />
-            thank you for visiting
+            thank you for visiting!
             <br />
-            come back soon
+            °•. ✿ come back soon ✿ .•°
           </p>
         </div>
         <div className={styles.tear} aria-hidden="true" />
       </div>
 
       {signed ? (
-        <p className={styles.signedNote}>your note is on the receipt</p>
+        <p className={styles.signedNote}>your note is on the receipt ♡</p>
       ) : (
         <div className={styles.form}>
           <input
