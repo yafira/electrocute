@@ -26,10 +26,10 @@ const TYPEFACES = [
 ];
 
 const COLOR_CODE = [
-  { name: "blush", hex: "#fecfe2", role: "power" },
-  { name: "matcha", hex: "#d9efce", role: "input" },
-  { name: "wisteria", hex: "#e3d9fb", role: "output" },
-  { name: "butter", hex: "#faf0c8", role: "wires" },
+  { name: "blush", hex: "#fecfe2" },
+  { name: "matcha", hex: "#d9efce" },
+  { name: "wisteria", hex: "#e3d9fb" },
+  { name: "butter", hex: "#faf0c8" },
 ];
 
 export default function Colophon() {
@@ -55,12 +55,11 @@ export default function Colophon() {
           <span className={styles.eyebrow}>bill of materials</span>
           <h1>colophon</h1>
           <p>
-            in bookmaking, a colophon is the little note at the end that says
-            how the thing was made — the type, the paper, the press. i&apos;m
-            yafira, and this is that note for my corner of the internet.
-            everything below is real: real dependencies, real hex values, real
-            stitches. i built it by hand, the same way i build everything else i
-            make.
+            a colophon is the note at the end of a book that tells you how it
+            was made. this is mine. a small record of the tools, materials,
+            colors, typefaces, and technologies behind my work and this little
+            corner of the internet. consider it the recipe for everything
+            stitched together here.
           </p>
         </section>
 
