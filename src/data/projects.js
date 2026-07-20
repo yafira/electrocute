@@ -34,7 +34,7 @@ const projects = [
     hoverBg: "#e9ecef",
     hoverBorder: "#dadfe5",
     shape: "wide",
-    pos: { x: "72%", y: "9%", rot: 1, z: 10 },
+    pos: { x: "72%", y: "12%", rot: 1, z: 10 },
   },
   {
     slug: "electrodex",
@@ -107,6 +107,16 @@ const projects = [
 // own grid below the collage.
 export const resources = [
   {
+    slug: "tinytinker-tools",
+    title: "tinytinker.tools",
+    href: "https://tinytinker.tools",
+    icon: "/assets/ttt.png",
+    blurb: "an open source handmade web toolkit for makers & tinkerers",
+    tint: "#ffffd8",
+    hoverBg: "#fbfbc8",
+    hoverBorder: "#fafac9",
+  },
+  {
     slug: "ecute-club",
     title: "ecute club",
     href: "https://ecute.club/",
@@ -160,16 +170,6 @@ export const resources = [
     hoverBorder: "#bdfef8",
   },
   {
-    slug: "tinytinker-tools",
-    title: "tinytinker.tools",
-    href: "https://tinytinker.tools",
-    icon: "/assets/ttt.png",
-    blurb: "an open source handmade web toolkit for makers & tinkerers",
-    tint: "#ffffd8",
-    hoverBg: "#fbfbc8",
-    hoverBorder: "#fafac9",
-  },
-  {
     slug: "cute-technologies",
     title: "cute technologies",
     href: "https://cutetech.tools",
@@ -195,7 +195,7 @@ export const photoItems = [
     title: "the soft computer",
     image: "/assets/craft/the-soft-computer.png",
     href: "https://thesoft.computer/",
-    pos: { x: "88%", y: "24%", w: 215, rot: 3, z: 12, delay: 0.6 },
+    pos: { x: "88%", y: "28%", w: 215, rot: 3, z: 12, delay: 0.6 },
   },
   {
     slug: "ribbon-logic",
