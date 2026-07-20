@@ -379,6 +379,19 @@
   stroke: rgba(255, 255, 255, 0.28);
 }
 
+:global(body.ecute-dark) .breadboardBody {
+  fill: #2b2839;
+  stroke: rgba(255, 255, 255, 0.25);
+}
+
+:global(body.ecute-dark) .channel {
+  fill: rgba(255, 255, 255, 0.07);
+}
+
+:global(body.ecute-dark) .hole {
+  fill: #6a6480;
+}
+
 /* resources grid (unchanged) */
 
 .resourcesGrid {
@@ -718,10 +731,12 @@
   }
   .doodad,
   .miniToggleDoodad,
-  .scopeDoodadLarge {
+  .scopeDoodadLarge,
+  .breadboardDoodad {
     display: none; /* decorative only, skip them in the stacked layout.
-       the toggle + large scope have their own classes, so they're
-       listed explicitly or they leak through and float over cards */
+       the toggle + large scope + breadboard have their own classes,
+       so they're listed explicitly or they leak through and float
+       over cards */
   }
   .spotWide,
   .spotSticky,
@@ -1064,19 +1079,17 @@
   }
 }
 
-/* --- mini breadboard --- */
+/* mini breadboard 
+   portrait board with two terminal strips and a vertical center
+   channel. the led + push button live inside the same svg, so
+   everything moves together and nothing floats off the board. */
 
-/* .breadboardDoodad {
+.breadboardDoodad {
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
   line-height: 0;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.breadboardDoodad:hover {
-  transform: rotate(0deg) scale(1.06) !important;
 }
 
 .breadboardSvg {
@@ -1089,16 +1102,6 @@
   fill: #fdfcf6;
   stroke: #2c2440;
   stroke-width: 1.5;
-}
-
-.railRed {
-  stroke: #e88a8a;
-  stroke-width: 1.2;
-}
-
-.railBlue {
-  stroke: #9bb8e8;
-  stroke-width: 1.2;
 }
 
 .channel {
@@ -1122,15 +1125,14 @@
   cursor: pointer;
 }
 
+/* push button — no transform on hover so it stays perfectly
+   still. the cap just brightens as the hover affordance. */
 .pushButtonGroup {
   cursor: pointer;
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: transform 0.15s ease;
 }
 
-.pushButtonGroup:hover {
-  transform: scale(1.05) translate(-0.75px, -0.7px);
+.pushButtonGroup:hover .pushButtonCap {
+  filter: brightness(1.15);
 }
 
 .pushButtonHousing {
@@ -1155,10 +1157,49 @@
   stroke-width: 1;
   transition:
     r 0.1s ease,
-    fill 0.1s ease;
+    fill 0.1s ease,
+    filter 0.15s ease;
 }
 
 .pushButtonCapPressed {
   r: 7.5;
   fill: #55555c;
-} */
+}
+
+/* led seated on the breadboard */
+.bbLedLeg {
+  fill: #b7b7c6;
+}
+
+.bbLedRim {
+  fill: #ffd9ef;
+  stroke: #e6a8ce;
+  stroke-width: 1;
+}
+
+.bbLedDome {
+  fill: #f2b9e0;
+  stroke: #e6a8ce;
+  stroke-width: 1.5;
+  opacity: 0.55;
+  transition:
+    opacity 0.15s ease,
+    fill 0.15s ease,
+    filter 0.15s ease;
+}
+
+.bbLedDomeOn {
+  opacity: 1;
+  fill: #ff9ad5;
+  filter: drop-shadow(0 0 5px rgba(255, 154, 213, 0.9));
+}
+
+.bbLedGlow {
+  fill: #ff9ad5;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.bbLedGlowOn {
+  opacity: 0.28;
+}

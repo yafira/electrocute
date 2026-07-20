@@ -129,25 +129,6 @@ function doodadStyle(x, y, rot = 0, isMobile = false) {
   };
 }
 
-function LedDoodad({ x, y, rot, isMobile }) {
-  const [on, setOn] = useState(false);
-  return (
-    <button
-      type="button"
-      className={styles.doodad}
-      style={doodadStyle(x, y, rot, isMobile)}
-      onClick={() => {
-        playSynthSound("led");
-        setOn(!on);
-      }}
-      aria-pressed={on}
-      aria-label="decorative led"
-    >
-      <span className={`${styles.ledDot} ${on ? styles.ledOn : ""}`} />
-    </button>
-  );
-}
-
 function ToggleDoodad({ x, y, rot, active, onToggle, isMobile }) {
   const activeTrackStyle = active
     ? { background: "#decffc", borderColor: "#beb0eb" }
@@ -569,11 +550,267 @@ function ChipDoodad({ boundsX = [12, 86], boundsY = [84, 95], isMobile }) {
   );
 }
 
+// portrait mini breadboard — narrow like the real thing, with the led
+// seated in the left terminal strip and a tactile button straddling
+// the center channel. pressing the button toggles the led on/off.
+function BreadboardDoodad({
+  x = "76%",
+  y = "-10%",
+  rot = -4,
+  isMobile,
+  ledOn,
+  onButtonPress,
+}) {
+  const [litHole, setLitHole] = useState(null);
+  const [pressAnim, setPressAnim] = useState(false);
+
+  if (isMobile) return null;
+
+  // portrait layout: two 4-column terminal strips with a vertical
+  // center channel between them, like a real mini breadboard
+  const LEFT_COLS = [10, 19, 28, 37];
+  const RIGHT_COLS = [59, 68, 77, 86];
+  const ROWS = 14;
+  const rowY = (r) => 14 + r * 13;
+
+  const handleBoardClick = () => {
+    playSynthSound("led");
+    const side = Math.random() < 0.5 ? "L" : "R";
+    const col = Math.floor(Math.random() * 4);
+    const row = Math.floor(Math.random() * ROWS);
+    setLitHole(`${side}-${col}-${row}`);
+    setTimeout(() => setLitHole(null), 700);
+  };
+
+  const handleButtonClick = (e) => {
+    e.stopPropagation();
+    playSynthSound("terminal");
+    setPressAnim(true);
+    setTimeout(() => setPressAnim(false), 150);
+    if (onButtonPress) onButtonPress();
+  };
+
+  return (
+    <div
+      className={styles.breadboardDoodad}
+      style={{
+        position: "absolute",
+        left: x,
+        top: y,
+        transform: `rotate(${rot}deg)`,
+        zIndex: 3,
+      }}
+    >
+      <svg
+        width="96"
+        height="200"
+        viewBox="0 0 96 200"
+        className={styles.breadboardSvg}
+        shapeRendering="geometricPrecision"
+      >
+        {/* board — clicking anywhere on it (except the button) lights a random hole */}
+        <g
+          className={styles.boardClickable}
+          onClick={handleBoardClick}
+          aria-label="decorative mini breadboard"
+        >
+          <rect
+            x="2"
+            y="2"
+            width="92"
+            height="196"
+            rx="6"
+            className={styles.breadboardBody}
+          />
+
+          {/* vertical center channel */}
+          <rect
+            x="42"
+            y="8"
+            width="12"
+            height="184"
+            className={styles.channel}
+          />
+
+          {LEFT_COLS.map((cx, c) =>
+            Array.from({ length: ROWS }).map((_, r) => {
+              const key = `L-${c}-${r}`;
+              return (
+                <circle
+                  key={key}
+                  cx={cx}
+                  cy={rowY(r)}
+                  r="1.4"
+                  className={`${styles.hole} ${litHole === key ? styles.holeLit : ""}`}
+                />
+              );
+            }),
+          )}
+
+          {RIGHT_COLS.map((cx, c) =>
+            Array.from({ length: ROWS }).map((_, r) => {
+              const key = `R-${c}-${r}`;
+              return (
+                <circle
+                  key={key}
+                  cx={cx}
+                  cy={rowY(r)}
+                  r="1.4"
+                  className={`${styles.hole} ${litHole === key ? styles.holeLit : ""}`}
+                />
+              );
+            }),
+          )}
+        </g>
+
+        {/* led — legs seated in two holes on the left strip */}
+        <g aria-hidden="true" pointerEvents="none">
+          <circle
+            cx="23.5"
+            cy="12"
+            r="14"
+            className={`${styles.bbLedGlow} ${ledOn ? styles.bbLedGlowOn : ""}`}
+          />
+          <rect
+            x="18.3"
+            y="20"
+            width="1.4"
+            height="7.5"
+            className={styles.bbLedLeg}
+          />
+          <rect
+            x="27.3"
+            y="20"
+            width="1.4"
+            height="7.5"
+            className={styles.bbLedLeg}
+          />
+          <rect
+            x="16"
+            y="17.5"
+            width="15"
+            height="4"
+            rx="2"
+            className={styles.bbLedRim}
+          />
+          <circle
+            cx="23.5"
+            cy="12.5"
+            r="7"
+            className={`${styles.bbLedDome} ${ledOn ? styles.bbLedDomeOn : ""}`}
+          />
+        </g>
+
+        {/* push button — straddles the center channel like a real tactile
+            switch. coordinates are baked in (no transform attribute) so
+            css hover transforms can't move it */}
+        <g
+          className={styles.pushButtonGroup}
+          onClick={handleButtonClick}
+          aria-label="push button that toggles the led"
+        >
+          {/* side pins */}
+          <rect
+            x="26"
+            y="98"
+            width="8"
+            height="2.6"
+            className={styles.pushButtonPin}
+          />
+          <rect
+            x="26"
+            y="113"
+            width="8"
+            height="2.6"
+            className={styles.pushButtonPin}
+          />
+          <rect
+            x="62"
+            y="98"
+            width="8"
+            height="2.6"
+            className={styles.pushButtonPin}
+          />
+          <rect
+            x="62"
+            y="113"
+            width="8"
+            height="2.6"
+            className={styles.pushButtonPin}
+          />
+
+          {/* black housing */}
+          <rect
+            x="34"
+            y="92"
+            width="28"
+            height="30"
+            rx="3"
+            className={styles.pushButtonHousing}
+          />
+
+          {/* corner rivets */}
+          <circle cx="39" cy="97" r="1.6" className={styles.pushButtonRivet} />
+          <circle cx="57" cy="97" r="1.6" className={styles.pushButtonRivet} />
+          <circle cx="39" cy="117" r="1.6" className={styles.pushButtonRivet} />
+          <circle cx="57" cy="117" r="1.6" className={styles.pushButtonRivet} />
+
+          {/* raised cap */}
+          <circle
+            cx="48"
+            cy="107"
+            r="8.5"
+            className={`${styles.pushButtonCap} ${
+              pressAnim ? styles.pushButtonCapPressed : ""
+            }`}
+          />
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+// standalone led doodad — still used in the mobile interactive bench.
+// it manages its own on/off state when no `on`/`onToggle` props are
+// passed (which also fixes the crash the mobile bench had before,
+// where clicking called an undefined onToggle).
+function LedDoodad({ x, y, rot, isMobile, on, onToggle }) {
+  const [selfOn, setSelfOn] = useState(false);
+  const isOn = typeof on === "boolean" ? on : selfOn;
+
+  return (
+    <button
+      type="button"
+      className={styles.doodad}
+      style={doodadStyle(x, y, rot, isMobile)}
+      onClick={() => {
+        playSynthSound("led");
+        if (onToggle) {
+          onToggle();
+        } else {
+          setSelfOn((v) => !v);
+        }
+      }}
+      aria-pressed={isOn}
+      aria-label="decorative led"
+    >
+      <span className={`${styles.ledDot} ${isOn ? styles.ledOn : ""}`} />
+    </button>
+  );
+}
+
 export default function Container() {
   const [open, setOpen] = useState(null);
   const [isCircuitOn, setIsCircuitOn] = useState(true);
   const [scopeScale, setScopeScale] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
+
+  // the breadboard's led — toggled by the breadboard's push button
+  const [ledOn, setLedOn] = useState(false);
+
+  const handleBreadboardButtonPress = () => {
+    setLedOn((prev) => !prev);
+  };
 
   useEffect(() => {
     function handleResize() {
@@ -708,7 +945,6 @@ export default function Container() {
         {!isMobile && (
           <>
             <StitchDoodad x="54%" y="5%" rot={-8} isMobile={false} />
-            <LedDoodad x="23%" y="21%" rot={0} isMobile={false} />
             {/* Centered Knob & Toggle perfectly under the 63% horizontal coordinate of the screen */}
             <KnobDoodad
               x="61%"
@@ -737,6 +973,14 @@ export default function Container() {
               isMobile={false}
             />
             <ChipDoodad isMobile={false} />
+            <BreadboardDoodad
+              x="76%"
+              y="-10%"
+              rot={-4}
+              isMobile={false}
+              ledOn={ledOn}
+              onButtonPress={handleBreadboardButtonPress}
+            />
           </>
         )}
       </div>
