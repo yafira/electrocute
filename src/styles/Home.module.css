@@ -238,6 +238,33 @@
     drop-shadow(0 8px 16px rgba(0, 0, 0, 0.04));
 }
 
+/* electrojute-style hover crossfade — two stacked images that
+   swap opacity on hover, giving the "turning on" effect */
+.photoBase {
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.35s ease;
+}
+
+.photoHoverImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.35s ease;
+}
+
+.photoItem:hover .photoBase {
+  opacity: 0;
+}
+
+.photoItem:hover .photoHoverImg {
+  opacity: 1;
+}
+
 /* little museum-label caption that appears on photo hover */
 .photoLabel {
   position: absolute;

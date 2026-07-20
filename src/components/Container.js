@@ -932,9 +932,22 @@ export default function Container() {
               <img
                 src={p.image}
                 alt={p.title}
-                className={styles.photo}
+                className={
+                  p.hoverImage
+                    ? `${styles.photo} ${styles.photoBase}`
+                    : styles.photo
+                }
                 loading="lazy"
               />
+              {p.hoverImage && (
+                <img
+                  src={p.hoverImage}
+                  alt=""
+                  aria-hidden="true"
+                  className={`${styles.photo} ${styles.photoHoverImg}`}
+                  loading="lazy"
+                />
+              )}
               <span className={styles.photoLabel} aria-hidden="true">
                 {p.title}
               </span>
