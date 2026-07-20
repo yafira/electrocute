@@ -40,7 +40,7 @@ const PROJECTS = [
     blurb:
       "what if time was held instead of chased? a small handheld timekeeping device that treats time as something soft and emotional rather than rigid and mechanical. it quietly keeps precise time while reflective messages surface throughout the day, small pauses in the rhythm of everyday life. no buttons, nothing asked of the hand. every fifteen minutes the time briefly reveals itself, then recedes. the exposed circuitry is intentional, a reminder that timekeeping, like care, is something made, held, and maintained.",
     link: null,
-    img: "../assets/pocket-oracle-of-time.png",
+    img: "../assets/craft/pocket-oracle-of-time.png",
     fit: "contain",
     wide: false,
   },
@@ -54,7 +54,7 @@ const PROJECTS = [
     blurb:
       "a handmade philips hue controller built from layered craft foam, inspired by the chunky foam novelty phones of the 80s and 90s. not entirely soft, there is a soldered protoboard, an arduino nano 33 iot, two potentiometers, and buttons living inside, but the outside has that tactile, almost toy like quality, the kind of thing you want to pick up and hold. it controls brightness, color temperature, and seven lighting scenes at home and at itp, tested in room 404, yes like the not found error, automatically detecting which environment it is in and adapting accordingly. very handmade, very intentional. soft on the outside, hard on the inside. ¿por qué no los dos?",
     link: null,
-    img: "../assets/puffcast.png",
+    img: "../assets/craft/puffcast.png",
     fit: "contain",
     wide: false,
   },
