@@ -68,3 +68,32 @@
     font-size: 13px;
   }
 }
+
+.footerIcons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.footerIcons a {
+  display: inline-flex;
+  opacity: 0.65;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.footerIcons a:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.footerIcons img {
+  display: block;
+}
+
+:global(.voidworld) .footerIcons a {
+  filter: invert(0.85);
+}

@@ -56,9 +56,11 @@ export default function Colophon() {
           <h1>colophon</h1>
           <p>
             in bookmaking, a colophon is the little note at the end that says
-            how the thing was made — the type, the paper, the press. this is
-            that, for a website. everything below is real: real dependencies,
-            real hex values, real stitches.
+            how the thing was made — the type, the paper, the press. i&apos;m
+            yafira, and this is that note for my corner of the internet.
+            everything below is real: real dependencies, real hex values, real
+            stitches. i built it by hand, the same way i build everything else i
+            make.
           </p>
         </section>
 
@@ -89,9 +91,9 @@ export default function Colophon() {
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>the color code</h2>
           <p className={styles.sectionNote}>
-            the same function color code used across electrocute lab&apos;s soft
-            circuits — if you&apos;ve seen the electric craft kit, these are the
-            petals.
+            the same function color code i use across all my soft circuit work —
+            power, input, output, wires. once you learn it, you&apos;ll start
+            seeing it everywhere on this site, not just here.
           </p>
           <ul className={styles.swatches}>
             {COLOR_CODE.map((c) => (
@@ -115,17 +117,18 @@ export default function Colophon() {
           <h2 className={styles.sectionTitle}>construction notes</h2>
           <p>
             the dashed borders everywhere are running stitches — the most basic
-            stitch in sewing, the first one anyone learns. the homepage collage
-            is hand-placed, every card and photo positioned by eye the way
-            you&apos;d pin pieces to a corkboard. the little bench doodads (the
-            knob, the toggle, the oscilloscope) make their sounds with the web
-            audio api, synthesized live — no audio files.
+            stitch in sewing, the first one anyone learns, and the one i keep
+            coming back to. the homepage collage is hand-placed, every card and
+            photo positioned by eye, the way i&apos;d pin pieces to a corkboard
+            above my desk. the little circuit in the nav makes its sound with
+            the web audio api, synthesized live — no audio file, just math that
+            sounds like electronics.
           </p>
           <p>
             animations respect{" "}
-            <code className={styles.mono}>prefers-reduced-motion</code>. the
-            site is built and maintained by one person in new york city, which
-            is also why the commit messages are in lowercase.
+            <code className={styles.mono}>prefers-reduced-motion</code>. i build
+            and maintain this whole thing myself, in new york city, which is
+            also why the commit messages are in lowercase.
           </p>
         </section>
 
@@ -133,10 +136,10 @@ export default function Colophon() {
           <h2 className={styles.sectionTitle}>provenance</h2>
           <p>
             electrocute lab has been running since 2021, with roots going back
-            to 2015. this site is its front porch: a place to document soft
+            to 2015. this site is my front porch: where i document soft
             electronics, e-textiles, physical computing, and generative text —
             the practice i call poetronics. soft on the outside, technically
-            rigorous underneath.
+            rigorous underneath. same as me.
           </p>
         </section>
       </main>
