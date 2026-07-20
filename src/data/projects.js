@@ -222,14 +222,14 @@ export const photoItems = [
     slug: "puffcast",
     title: "puffcast",
     image: "/assets/craft/puffcast.png",
-    href: "https://months-tap-da9.craft.me/cIaDWsryPp9LdS",
+    href: "https://months-tap-da9.craft.me/puffcast",
     pos: { x: "70%", y: "79%", w: 285, rot: -5, z: 6, delay: 2.4 },
   },
   {
     slug: "custom-light-leds",
     title: "custom light LEDs",
     image: "/assets/craft/custom-leds.jpg",
-    href: "https://www.craft.me/s/UPIseOWDQQ2AAx",
+    href: "https://months-tap-da9.craft.me/led-lights",
     pos: { x: "9%", y: "91%", w: 165, rot: 4, z: 4, delay: 1.5 },
   },
   {
@@ -237,7 +237,7 @@ export const photoItems = [
     title: "electrojute",
     image: "/assets/craft/electrojute_off.png",
     hoverImage: "/assets/craft/electrojute_on.png",
-    href: "https://www.craft.do/s/n728rE3K9pjrQx",
+    href: "https://www.craft.do/s/electrojute",
     pos: { x: "90%", y: "88%", w: 175, rot: -3, z: 6, delay: 0.3 },
   },
 ];
