@@ -128,7 +128,6 @@ export default function Colophon() {
             site is built and maintained by hand, with an unreasonable amount of
             attention paid to tiny details.
           </p>{" "}
-          why the commit messages are in lowercase.
         </section>
 
         <section className={styles.section}>
