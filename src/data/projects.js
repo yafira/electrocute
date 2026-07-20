@@ -37,17 +37,16 @@ const projects = [
     pos: { x: "72%", y: "12%", rot: 1, z: 10 },
   },
   {
-    slug: "electrodex",
-    title: "electrodex",
-    href: "/electrodex",
-    icon: "/assets/edex.png",
-    blurb:
-      "a linked list of creative spaces, communities, and digital niches in nyc & beyond. (WIP)",
-    tint: "#ebfaf2",
-    hoverBg: "#dbf7e6",
-    hoverBorder: "#bbf0cf",
+    slug: "kawaii-ml",
+    title: "kawaii ML",
+    href: "https://www.figma.com/community/file/1282166884816539041/Kawaii-ML-Deck",
+    icon: "/assets/kml.png",
+    blurb: "a card deck referencing the top 10 machine learning algorithms.",
+    tint: "#ecfff9",
+    hoverBg: "#d9f9ef",
+    hoverBorder: "#94f1d3",
     shape: "pill",
-    pos: { x: "34%", y: "32%", rot: 0.8, z: 10 },
+    pos: { x: "36%", y: "30%", rot: -4, z: 10 },
   },
   {
     slug: "soft-circuit-library",
@@ -98,7 +97,7 @@ const projects = [
     hoverBg: "#fae7ef",
     hoverBorder: "#fecfe2",
     shape: "wide",
-    pos: { x: "36%", y: "80%", rot: 1, z: 10 },
+    pos: { x: "36%", y: "85%", rot: 4, z: 10 },
   },
 ];
 
@@ -127,14 +126,15 @@ export const resources = [
     hoverBorder: "#9d96e7",
   },
   {
-    slug: "kawaii-ml",
-    title: "kawaii ML",
-    href: "https://www.figma.com/community/file/1282166884816539041/Kawaii-ML-Deck",
-    icon: "/assets/kml.png",
-    blurb: "a card deck referencing the top 10 machine learning algorithms.",
-    tint: "#ecfff9",
-    hoverBg: "#d9f9ef",
-    hoverBorder: "#94f1d3",
+    slug: "electrodex",
+    title: "electrodex",
+    href: "/electrodex",
+    icon: "/assets/edex.png",
+    blurb:
+      "a linked list of creative spaces, communities, and digital niches in nyc & beyond. (WIP)",
+    tint: "#ebfaf2",
+    hoverBg: "#dbf7e6",
+    hoverBorder: "#bbf0cf",
   },
   {
     slug: "design-hub",
@@ -223,7 +223,7 @@ export const photoItems = [
     title: "puffcast",
     image: "/assets/craft/puffcast.png",
     href: "https://months-tap-da9.craft.me/cIaDWsryPp9LdS",
-    pos: { x: "70%", y: "79%", w: 185, rot: -5, z: 6, delay: 2.4 },
+    pos: { x: "70%", y: "79%", w: 285, rot: -5, z: 6, delay: 2.4 },
   },
   {
     slug: "custom-light-leds",
