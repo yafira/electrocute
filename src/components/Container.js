@@ -520,7 +520,7 @@ export default function Container() {
         {!isMobile && (
           <>
             <StitchDoodad x="54%" y="5%" rot={-8} isMobile={false} />
-            <LedDoodad x="8%" y="21%" rot={0} isMobile={false} />
+            <LedDoodad x="23%" y="21%" rot={0} isMobile={false} />
             {/* Centered Knob & Toggle perfectly under the 63% horizontal coordinate of the screen */}
             <KnobDoodad
               x="61%"
