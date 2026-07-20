@@ -120,8 +120,7 @@ export default function Receipt() {
         />
       </h2>
       <p className={styles.hint}>
-        leave a little note and it prints below. one per visitor, 140
-        characters.
+        leave a little note and it prints below. one per visitor.
       </p>
 
       <div className={styles.printer}>
