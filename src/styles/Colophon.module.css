@@ -1,0 +1,188 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.colophon {
+  width: min(720px, calc(100vw - 48px));
+  margin: 0 auto;
+  padding: 48px 0 96px;
+  flex: 1;
+}
+
+.intro {
+  margin-bottom: 56px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9d96e7;
+  border: 2px dashed #d5c8fa;
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 16px;
+}
+
+.intro h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 400;
+  font-size: clamp(34px, 6vw, 46px);
+  margin: 0 0 14px;
+  color: #2b2733;
+}
+
+.intro p,
+.section p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #2b2733;
+  margin: 0 0 14px;
+}
+
+.section {
+  margin-bottom: 52px;
+}
+
+.sectionTitle {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2b2733;
+  margin: 0 0 6px;
+  padding-bottom: 10px;
+  border-bottom: 2px dashed #d5c8fa;
+}
+
+.sectionNote {
+  margin-top: 10px;
+}
+
+/* spec sheet — dt/dd rows like a garment care label */
+.specList {
+  margin: 0;
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px dashed #e6ddfa;
+}
+
+.specRow:last-child {
+  border-bottom: none;
+}
+
+.specRow dt {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  color: #8a8296;
+}
+
+.specRow dd {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 14px;
+  color: #2b2733;
+  margin: 0;
+}
+
+/* felt swatch chips with a ring snap in the corner */
+.swatches {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 0;
+  margin: 22px 0 0;
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+
+.swatchChip {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--swatch);
+  border-radius: 14px;
+  border: 2px dashed rgba(43, 39, 51, 0.25);
+  margin-bottom: 6px;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.swatch:hover .swatchChip {
+  transform: rotate(-2deg) translateY(-3px);
+}
+
+.swatchSnap {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(43, 39, 51, 0.45);
+  background: #fffdf7;
+}
+
+.swatchName {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+  color: #2b2733;
+}
+
+.swatchRole {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  color: #9d96e7;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.swatchHex {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  color: #8a8296;
+}
+
+.mono {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.9em;
+  background: #f4f0ff;
+  border-radius: 6px;
+  padding: 1px 6px;
+}
+
+@media (max-width: 640px) {
+  .colophon {
+    padding-top: 28px;
+  }
+  .specRow {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+  .swatches {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swatch:hover .swatchChip {
+    transform: none;
+  }
+}

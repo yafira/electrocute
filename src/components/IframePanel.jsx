@@ -22,7 +22,7 @@ export function isMobileViewport() {
 
 // shared click handler for every project card / photo / preview that
 // opens an external link. opens the floating window (full-screen on
-// mobile) — except sites that refuse to be framed, which skip the
+// mobile), except sites that refuse to be framed, which skip the
 // dead-end "can't be embedded" panel on mobile and go straight to a
 // new tab. must be called directly from the click handler so
 // window.open stays inside the user gesture (popup blockers).
