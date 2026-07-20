@@ -694,10 +694,11 @@
 }
 
 /* Responsive Structural Adjustments
-   the hand-placed composition needs width; below 960px the
+   the hand-placed composition needs width; below 1024px the
    collage collapses back into normal flow: a 2-col rhythm of
-   cards and photos interleaved in DOM order. */
-@media screen and (max-width: 960px) {
+   cards and photos interleaved in DOM order. matches the js
+   isMobile check in Container.js — keep the two in sync. */
+@media screen and (max-width: 1023px) {
   .collage {
     height: auto;
     width: 100%;
@@ -715,8 +716,12 @@
     animation: none;
     width: 100%;
   }
-  .doodad {
-    display: none; /* decorative only — skip them in the stacked layout */
+  .doodad,
+  .miniToggleDoodad,
+  .scopeDoodadLarge {
+    display: none; /* decorative only — skip them in the stacked layout.
+       the toggle + large scope have their own classes, so they're
+       listed explicitly or they leak through and float over cards */
   }
   .spotWide,
   .spotSticky,
@@ -726,6 +731,15 @@
   .photoItem {
     justify-self: center;
     max-width: 220px;
+  }
+  /* tall portrait photos were setting each grid row's height,
+     leaving the short cards adrift in huge vertical gaps —
+     cap the photo height so rows stay compact */
+  .photoItem .photo {
+    max-height: 280px;
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
   }
   .cardSpot:hover {
     transform: rotate(0deg);
@@ -762,6 +776,9 @@
   }
   .photoItem {
     max-width: 200px;
+  }
+  .photoItem .photo {
+    max-height: 240px;
   }
 }
 

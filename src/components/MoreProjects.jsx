@@ -8,7 +8,6 @@
 // to sit without overlapping cards.
 
 import { useState } from "react";
-import craftProjects from "../data/craftProjects";
 import IframePanel from "./IframePanel";
 import styles from "../styles/MoreProjects.module.css";
 

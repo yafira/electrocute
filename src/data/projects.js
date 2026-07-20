@@ -188,7 +188,7 @@ export const photoItems = [
     title: "petalbyte",
     image: "/assets/craft/petalbyte.png",
     href: "https://months-tap-da9.craft.me/petalbyte",
-    pos: { x: "36%", y: "7%", w: 180, rot: -6, z: 6, delay: 0 },
+    pos: { x: "38%", y: "13%", w: 180, rot: -6, z: 6, delay: 0 },
   },
   {
     slug: "the-soft-computer",
@@ -209,14 +209,14 @@ export const photoItems = [
     title: "moonpocket",
     image: "/assets/craft/moonpocket.png",
     href: "https://months-tap-da9.craft.me/moonpocket",
-    pos: { x: "27%", y: "49%", w: 195, rot: 2, z: 6, delay: 0.9 },
+    pos: { x: "20%", y: "49%", w: 195, rot: 2, z: 6, delay: 0.9 },
   },
   {
     slug: "pocket-oracle-of-time",
     title: "pocket oracle of time",
     image: "/assets/craft/pocket-oracle-of-time.png",
     href: "https://months-tap-da9.craft.me/oracle",
-    pos: { x: "40%", y: "64%", w: 160, rot: 5, z: 6, delay: 1.2 },
+    pos: { x: "43%", y: "64%", w: 160, rot: 5, z: 6, delay: 1.2 },
   },
   {
     slug: "puffcast",

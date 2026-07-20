@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import projects, { photoItems, resources } from "../data/projects";
-import IframePanel from "./IframePanel";
+import IframePanel, { openProject } from "./IframePanel";
 
 const COLLAGE_ORDER = [
   { type: "card", slug: "electrocute-ui" },
@@ -389,7 +389,10 @@ export default function Container() {
 
   useEffect(() => {
     function handleResize() {
-      setIsMobile(window.innerWidth < 768);
+      // matches the css breakpoint where the collage collapses to a grid
+      // (Home.module.css) so the absolutely-positioned doodads never
+      // render on top of the stacked layout
+      setIsMobile(window.innerWidth < 1024);
     }
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -439,7 +442,7 @@ export default function Container() {
           type="button"
           className={styles.card}
           style={cardStyle}
-          onClick={() => setOpen({ href: project.href, title: project.title })}
+          onClick={() => openProject(project.href, project.title, setOpen)}
         >
           {cardContent}
         </button>
@@ -490,7 +493,7 @@ export default function Container() {
               key={`photo-${p.slug}`}
               type="button"
               className={styles.photoItem}
-              onClick={() => setOpen({ href: p.href, title: p.title })}
+              onClick={() => openProject(p.href, p.title, setOpen)}
               title={p.title}
               style={{
                 "--x": customX,
