@@ -113,32 +113,31 @@ export default function Colophon() {
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>construction notes</h2>
+          <h2 className={styles.sectionTitle}>assembly notes</h2>
           <p>
-            the dashed borders everywhere are running stitches — the most basic
-            stitch in sewing, the first one anyone learns, and the one i keep
-            coming back to. the homepage collage is hand-placed, every card and
-            photo positioned by eye, the way i&apos;d pin pieces to a corkboard
-            above my desk. the little circuit in the nav makes its sound with
-            the web audio api, synthesized live — no audio file, just math that
-            sounds like electronics.
+            the dashed borders are inspired by running stitches — one of the
+            first stitches most people learn in sewing. the homepage collage is
+            hand-placed; every card and photo is positioned individually, more
+            like arranging a corkboard than assembling a grid. the little
+            circuit in the navigation generates its sound with the web audio api
+            in real time — no audio files, just synthesized waveforms.
           </p>
           <p>
             animations respect{" "}
-            <code className={styles.mono}>prefers-reduced-motion</code>. i build
-            and maintain this whole thing myself, in new york city, which is
-            also why the commit messages are in lowercase.
-          </p>
+            <code className={styles.mono}>prefers-reduced-motion</code>. this
+            site is built and maintained by hand, with an unreasonable amount of
+            attention paid to tiny details.
+          </p>{" "}
+          why the commit messages are in lowercase.
         </section>
 
         <section className={styles.section}>
           <h2 className={styles.sectionTitle}>provenance</h2>
           <p>
             electrocute lab has been running since 2021, with roots going back
-            to 2015. this site is my front porch: where i document soft
-            electronics, e-textiles, physical computing, and generative text —
-            the practice i call poetronics. soft on the outside, technically
-            rigorous underneath. same as me.
+            to 2015. this site documents my work across soft electronics,
+            e-textiles, physical computing, web development, and generative text
+            — the overlap i like to call poetronics.
           </p>
         </section>
       </main>
