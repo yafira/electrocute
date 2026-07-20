@@ -37,6 +37,19 @@ const projects = [
     pos: { x: "72%", y: "12%", rot: 1, z: 10 },
   },
   {
+    slug: "neural-nectar",
+    title: "neural nectar",
+    href: "https://neural-nectar.vercel.app", // ← swap in your actual deployed URL
+    icon: "/assets/nn.png",
+    blurb:
+      "a series of soft, small machine learning experiments made with ml5.js and p5.js — mood mirrors, pose trails, and other gentle intelligence.",
+    tint: "#FBF6F3",
+    hoverBg: "#f1dacc",
+    hoverBorder: "#f5c5a7",
+    shape: "wide",
+    pos: { x: "75%", y: "64%", rot: 3, z: 10 },
+  },
+  {
     slug: "kawaii-ml",
     title: "kawaii ML",
     href: "https://www.figma.com/community/file/1282166884816539041/Kawaii-ML-Deck",
@@ -84,7 +97,7 @@ const projects = [
     hoverBg: "#fcfade",
     hoverBorder: "#f7f3cf",
     shape: "pill",
-    pos: { x: "72%", y: "63%", rot: -0.8, z: 10 },
+    pos: { x: "72%", y: "79%", rot: -0.8, z: 10 },
   },
   {
     slug: "snax",
@@ -223,7 +236,7 @@ export const photoItems = [
     title: "puffcast",
     image: "/assets/craft/puffcast.png",
     href: "https://months-tap-da9.craft.me/puffcast",
-    pos: { x: "70%", y: "79%", w: 285, rot: -5, z: 6, delay: 2.4 },
+    pos: { x: "70%", y: "94%", w: 285, rot: -5, z: 6, delay: 2.4 },
   },
   {
     slug: "custom-light-leds",
@@ -238,7 +251,7 @@ export const photoItems = [
     image: "/assets/craft/electrojute_off.png",
     hoverImage: "/assets/craft/electrojute_on.png",
     href: "https://www.craft.do/s/electrojute",
-    pos: { x: "90%", y: "88%", w: 175, rot: -3, z: 6, delay: 0.3 },
+    pos: { x: "90%", y: "93%", w: 175, rot: -3, z: 6, delay: 0.3 },
   },
 ];
 
