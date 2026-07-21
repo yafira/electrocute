@@ -20,6 +20,7 @@ const COLLAGE_ORDER = [
   { type: "card", slug: "sailor-moon-calculator" },
   { type: "photo", slug: "puffcast" },
   { type: "photo", slug: "custom-light-leds" },
+  { type: "photo", slug: "tendertronic" }, // ← new
   { type: "card", slug: "snax" },
   { type: "photo", slug: "electrojute" },
 ];

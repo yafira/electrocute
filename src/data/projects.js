@@ -110,7 +110,7 @@ const projects = [
     hoverBg: "#fae7ef",
     hoverBorder: "#fecfe2",
     shape: "wide",
-    pos: { x: "36%", y: "85%", rot: 4, z: 10 },
+    pos: { x: "38%", y: "95%", rot: 4, z: 10 },
   },
 ];
 
@@ -230,6 +230,14 @@ export const photoItems = [
     image: "/assets/craft/pocket-oracle-of-time.png",
     href: "https://months-tap-da9.craft.me/oracle",
     pos: { x: "43%", y: "64%", w: 160, rot: 5, z: 6, delay: 1.2 },
+  },
+  {
+    slug: "tendertronic",
+    title: "tendertronic",
+    image: "/assets/craft/tendertronic1.png",
+    hoverImage: "/assets/craft/tendertronic2.png",
+    href: "https://months-tap-da9.craft.me/tendertronic",
+    pos: { x: "36%", y: "82%", w: 200, rot: -10, z: 6, delay: 2.1 },
   },
   {
     slug: "puffcast",
