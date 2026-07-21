@@ -1,9 +1,13 @@
-// the communal punch card: a 24-stitch knitting machine card
-// (in honor of the KH-930) that visitors punch together, one hole
-// each. holes are punched in carriage order, bottom row first, and
-// the fabric below knits itself live: every punched hole becomes a
-// contrast stitch in the swatch. finished cards are counted.
-// shared via /api/punch, per-device fallback without a backend.
+// the communal punch card. every visitor punches one hole; holes fill
+// the card in carriage order and the fabric below knits itself as
+// they land. shared via /api/punch, falls back to per-device
+// localStorage if there's no backend.
+//
+// cards cycle through several motifs instead of repeating the same
+// one forever. motifs don't need matching hole counts — the whole
+// punch history is treated as one continuous sequence across however
+// many patterns are listed, so adding, removing, or reordering motifs
+// never renumbers or erases anyone's already-punched progress.
 
 import { useEffect, useMemo, useState } from "react";
 import styles from "../styles/PunchCard.module.css";
@@ -11,41 +15,121 @@ import styles from "../styles/PunchCard.module.css";
 const LOCAL_COUNT_KEY = "electrocute:punchcard:local-count";
 const PUNCHED_KEY = "electrocute:punchcard:punched";
 
-// the motif, 24 stitches wide: three little flowers on stems,
-// a seed row beneath. '#' = punched hole = contrast stitch.
-const MOTIF = [
-  "........................",
-  "...##......##......##...",
-  "..####....####....####..",
-  "..####....####....####..",
-  "...##......##......##...",
-  ".....#......#......#....",
-  ".....#......#......#....",
-  "....##.....##.....##....",
-  ".....#......#......#....",
-  "........................",
-  "#..#..#..#..#..#..#..#..",
-  "........................",
+const COLS = 24;
+
+const MOTIFS = [
+  {
+    name: "three flowers",
+    rows: [
+      "........................",
+      "...##......##......##...",
+      "..####....####....####..",
+      "..####....####....####..",
+      "...##......##......##...",
+      ".....#......#......#....",
+      ".....#......#......#....",
+      "....##.....##.....##....",
+      ".....#......#......#....",
+      "........................",
+      "#..#..#..#..#..#..#..#..",
+      "........................",
+    ],
+  },
+  {
+    name: "one heart",
+    rows: [
+      ".........##..##.........",
+      "........########........",
+      "........########........",
+      "........########........",
+      ".........######.........",
+      "..........####..........",
+      "...........##...........",
+      "........................",
+      "#..#..#..#..#..#..#..#..",
+    ],
+  },
+  {
+    name: "one smiley",
+    rows: [
+      ".........#####..........",
+      "........#.....#.........",
+      ".......#..#.#..#........",
+      ".......#.......#........",
+      ".......#.#...#.#........",
+      ".......#..###..#........",
+      "........#.....#.........",
+      ".........#####..........",
+      "........................",
+      "#..#..#..#..#..#..#..#..",
+    ],
+  },
+  {
+    name: "one star",
+    rows: [
+      "...........#............",
+      "...........#............",
+      ".........#####..........",
+      ".........#####..........",
+      ".......#########........",
+      "........#######.........",
+      ".........#####..........",
+      "........##...##.........",
+      ".......##.....##........",
+      "........................",
+      "#..#..#..#..#..#..#..#..",
+    ],
+  },
 ];
 
-const COLS = 24;
-const ROWS = MOTIF.length;
-
-// cells in carriage order: bottom row first, left to right —
-// the way the card feeds through the machine as the fabric grows.
-function buildCells() {
+// carriage order for one motif: bottom row first, left to right —
+// the way the card feeds through the machine as fabric grows.
+function buildMotifData(rows) {
+  const numRows = rows.length;
   const cells = [];
-  for (let r = ROWS - 1; r >= 0; r--) {
+  for (let r = numRows - 1; r >= 0; r--) {
     for (let c = 0; c < COLS; c++) {
-      cells.push({ row: r, col: c, hole: MOTIF[r][c] === "#" });
+      cells.push({ row: r, col: c, hole: rows[r][c] === "#" });
     }
   }
-  return cells;
+  const holes = cells.filter((cell) => cell.hole);
+  return { cells, holes, numRows, holeCount: holes.length };
 }
 
-const CELLS = buildCells();
-const HOLES = CELLS.filter((cell) => cell.hole);
-const CARD_SIZE = HOLES.length;
+const MOTIF_DATA = MOTIFS.map((m) => buildMotifData(m.rows));
+const CYCLE_HOLE_COUNTS = MOTIF_DATA.map((d) => d.holeCount);
+const CYCLE_TOTAL = CYCLE_HOLE_COUNTS.reduce((a, b) => a + b, 0);
+
+// given the all-time punch total, resolves which motif is currently
+// being filled, how far into it, and how many motif-cards have been
+// completed overall (cycling back to the first motif when the list
+// runs out).
+function resolvePosition(total) {
+  if (!total || total <= 0) {
+    return { motifIndex: 0, punchedInMotif: 0, cardsDone: 0 };
+  }
+  const idx0 = total - 1;
+  const cyclesCompleted = Math.floor(idx0 / CYCLE_TOTAL);
+  const posInCycle = idx0 % CYCLE_TOTAL;
+
+  let running = 0;
+  let motifIndex = 0;
+  let posInMotif = 0;
+  for (let i = 0; i < MOTIF_DATA.length; i++) {
+    if (posInCycle < running + CYCLE_HOLE_COUNTS[i]) {
+      motifIndex = i;
+      posInMotif = posInCycle - running;
+      break;
+    }
+    running += CYCLE_HOLE_COUNTS[i];
+  }
+
+  return {
+    motifIndex,
+    punchedInMotif: posInMotif + 1,
+    cardsDone: cyclesCompleted * MOTIF_DATA.length + motifIndex,
+  };
+}
 
 export default function PunchCard() {
   const [count, setCount] = useState(null);
@@ -102,36 +186,40 @@ export default function PunchCard() {
   };
 
   const total = count || 0;
-  const punched = total === 0 ? 0 : ((total - 1) % CARD_SIZE) + 1;
-  const cardsDone = total === 0 ? 0 : Math.floor((total - 1) / CARD_SIZE);
+  const { motifIndex, punchedInMotif, cardsDone } = resolvePosition(total);
+  const motif = MOTIFS[motifIndex];
+  const data = MOTIF_DATA[motifIndex];
+  const {
+    cells: CELLS,
+    holes: HOLES,
+    numRows: ROWS,
+    holeCount: CARD_SIZE,
+  } = data;
+  const punched = punchedInMotif;
 
-  // where the carriage has knit to: the cell index of the most
-  // recently punched hole. everything up to it is decided fabric.
   const carriage = useMemo(() => {
     if (punched === 0) return -1;
     const lastHole = HOLES[punched - 1];
     return CELLS.findIndex(
       (cell) => cell.row === lastHole.row && cell.col === lastHole.col,
     );
-  }, [punched]);
+  }, [punched, CELLS, HOLES]);
 
   const punchedSet = useMemo(() => {
     const set = new Set();
     HOLES.slice(0, punched).forEach((h) => set.add(`${h.row}-${h.col}`));
     return set;
-  }, [punched]);
+  }, [punched, HOLES]);
 
   const knitRow = carriage < 0 ? 0 : Math.floor(carriage / COLS) + 1;
   const newest = punched > 0 ? HOLES[punched - 1] : null;
 
-  // ── card geometry ──
   const cell = 15;
-  const edge = 22; // sprocket margins
+  const edge = 22;
   const headH = 26;
   const cardW = COLS * cell + edge * 2;
   const cardH = ROWS * cell + headH + 14;
 
-  // ── fabric geometry ──
   const st = 14;
   const fabW = COLS * st + 16;
   const fabH = ROWS * st + 16;
@@ -141,18 +229,17 @@ export default function PunchCard() {
       <h2>the communal punch card</h2>
       <p className={styles.intro}>
         every visitor punches one hole, carriage order, bottom row first. below,
-        the machine knits what we&apos;ve punched so far.
+        the machine knits what we&apos;ve punched so far — the pattern changes
+        with every new card.
       </p>
 
       <div className={styles.machine}>
-        {/* ── the card ── */}
         <svg
           className={styles.card}
           viewBox={`0 0 ${cardW} ${cardH}`}
           role="img"
-          aria-label={`communal punch card, ${punched} of ${CARD_SIZE} holes punched`}
+          aria-label={`${motif.name} punch card, ${punched} of ${CARD_SIZE} holes punched`}
         >
-          {/* manila card with a clipped corner */}
           <path
             d={`M 14 0 H ${cardW - 26} L ${cardW} 26 V ${cardH - 8} Q ${cardW} ${cardH} ${cardW - 8} ${cardH} H 8 Q 0 ${cardH} 0 ${cardH - 8} V 14 Q 0 0 14 0 Z`}
             fill="#f7f1df"
@@ -160,10 +247,9 @@ export default function PunchCard() {
             strokeWidth="1.5"
           />
           <text x={edge} y={17} className={styles.cardLabel}>
-            electrocute lab · 24 st · card no.{cardsDone + 1}
+            electrocute lab · 24 st · {motif.name} · card no.{cardsDone + 1}
           </text>
 
-          {/* sprocket holes down both edges */}
           {Array.from({ length: ROWS }, (_, r) => (
             <g key={`sp${r}`}>
               <circle
@@ -181,7 +267,6 @@ export default function PunchCard() {
             </g>
           ))}
 
-          {/* the pattern grid */}
           {CELLS.map((cellDef) => {
             const cx = edge + cellDef.col * cell + cell / 2;
             const cy = headH + cellDef.row * cell + cell / 2;
@@ -193,12 +278,10 @@ export default function PunchCard() {
               newest.row === cellDef.row &&
               newest.col === cellDef.col;
             if (!cellDef.hole) {
-              // plain positions: the faintest tick, like the card's grid
               return <circle key={key} cx={cx} cy={cy} r="1" fill="#e6dcc0" />;
             }
             return (
               <g key={key}>
-                {/* the hole position: dotted ring until punched */}
                 <circle
                   cx={cx}
                   cy={cy}
@@ -209,7 +292,6 @@ export default function PunchCard() {
                   strokeDasharray={isPunched ? "none" : "2 2"}
                   className={isNewest ? styles.newHole : undefined}
                 />
-                {/* the falling chad */}
                 {isNewest && (
                   <circle
                     cx={cx}
@@ -226,7 +308,6 @@ export default function PunchCard() {
           })}
         </svg>
 
-        {/* ── the knit preview ── */}
         <svg
           className={styles.fabric}
           viewBox={`0 0 ${fabW} ${fabH}`}
@@ -259,7 +340,6 @@ export default function PunchCard() {
               newest.col === cellDef.col;
             return (
               <g key={key} className={isNewest ? styles.newStitchV : undefined}>
-                {/* a little knit V */}
                 <line
                   x1={x - arm}
                   y1={y - arm}
