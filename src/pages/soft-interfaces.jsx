@@ -42,6 +42,7 @@ const PROJECTS = [
     link: null,
     img: "../assets/craft/pocket-oracle-of-time.png",
     fit: "contain",
+    inset: true,
     wide: false,
   },
   {
@@ -56,6 +57,7 @@ const PROJECTS = [
     link: null,
     img: "../assets/craft/puffcast.png",
     fit: "contain",
+    inset: true,
     wide: false,
   },
   {
