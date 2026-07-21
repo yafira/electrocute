@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import projects, { photoItems, resources } from "../data/projects";
 import IframePanel, { openProject } from "./IframePanel";
+import PoetronicsCard from "./PoetronicsCard";
 
 const COLLAGE_ORDER = [
   { type: "card", slug: "electrocute-ui" },
@@ -14,6 +15,7 @@ const COLLAGE_ORDER = [
   { type: "card", slug: "neural-nectar" },
   { type: "card", slug: "kawaii-ml" },
   { type: "photo", slug: "moonpocket" },
+  { type: "card", slug: "poetronics" }, // ← new
   { type: "card", slug: "soft-circuit-library" },
   { type: "card", slug: "synthwave-chimes" },
   { type: "photo", slug: "pocket-oracle-of-time" },
@@ -903,7 +905,11 @@ export default function Container() {
                   "--z": project.pos.z,
                 }}
               >
-                {renderCard(project, 1)}
+                {project.slug === "poetronics" ? (
+                  <PoetronicsCard project={project} index={1} />
+                ) : (
+                  renderCard(project, 1)
+                )}
               </div>
             );
           }
@@ -929,6 +935,7 @@ export default function Container() {
                 "--rot": `${p.pos.rot}deg`,
                 "--z": p.pos.z,
                 "--float-delay": `${p.pos.delay}s`,
+                "--label-offset": `${p.pos.labelOffset ?? 0}px`,
               }}
             >
               <img

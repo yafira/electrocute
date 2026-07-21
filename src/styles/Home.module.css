@@ -265,10 +265,14 @@
   opacity: 1;
 }
 
-/* little museum-label caption that appears on photo hover */
+/* little museum-label caption that appears on photo hover.
+   --label-offset lets an individual photo (via its pos.labelOffset
+   in data/projects.js) pull the label closer when the source image
+   has extra transparent space below the object. defaults to 0px
+   so every other photo is unaffected. */
 .photoLabel {
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + 6px + var(--label-offset, 0px));
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
