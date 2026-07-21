@@ -313,7 +313,7 @@
 }
 
 /* night mode
-   toggled by the mode switch doodad, which sets `ecute-dark`
+   toggled by the mode switch trinket, which sets `ecute-dark`
    on <body>. cards keep their pastel identity as tinted
    borders and hover washes on a deep plum ground. */
 
@@ -498,11 +498,11 @@
   text-transform: lowercase;
 }
 
-/* circuit doodads: cute techy microinteractions living in
+/* circuit trinkets: cute techy microinteractions living in
    the collage's empty pockets. all decorative, all clickable,
    sitting at z 3 so they stay beneath cards and photos. */
 
-.doodad {
+.trinket {
   position: absolute;
   left: var(--x, 50%);
   top: var(--y, 50%);
@@ -517,7 +517,7 @@
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.doodad:hover {
+.trinket:hover {
   transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(1.12);
 }
 
@@ -684,7 +684,7 @@
   animation-play-state: paused;
 }
 
-.doodad:hover .stitchLine {
+.trinket:hover .stitchLine {
   animation-play-state: running;
 }
 
@@ -760,10 +760,10 @@
     animation: none;
     width: 100%;
   }
-  .doodad,
-  .miniToggleDoodad,
-  .scopeDoodadLarge,
-  .breadboardDoodad {
+  .trinket,
+  .miniToggleTrinket,
+  .scopeTrinketLarge,
+  .breadboardTrinket {
     display: none; /* decorative only, skip them in the stacked layout.
        the toggle + large scope + breadboard have their own classes,
        so they're listed explicitly or they leak through and float
@@ -829,7 +829,7 @@
 }
 
 /* Upgraded Large Oscilloscope Custom Dimensions */
-.scopeDoodadLarge {
+.scopeTrinketLarge {
   position: absolute;
   left: var(--x, 50%);
   top: var(--y, 50%);
@@ -844,7 +844,7 @@
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.scopeDoodadLarge:hover {
+.scopeTrinketLarge:hover {
   transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(1.05);
 }
 
@@ -879,7 +879,7 @@
 }
 
 /* Micro Cute Toggle Switch Elements */
-.miniToggleDoodad {
+.miniToggleTrinket {
   position: absolute;
   left: var(--x, 50%);
   top: var(--y, 50%);
@@ -894,7 +894,7 @@
   transition: transform 0.2s ease;
 }
 
-.miniToggleDoodad:hover {
+.miniToggleTrinket:hover {
   transform: translate(-50%, -50%) scale(1.15);
 }
 
@@ -934,7 +934,7 @@
 
 /* --- 555 bug --- */
 
-.chipDoodad {
+.chipTrinket {
   background: none;
   border: none;
   padding: 0;
@@ -1115,7 +1115,7 @@
    channel. the led + push button live inside the same svg, so
    everything moves together and nothing floats off the board. */
 
-.breadboardDoodad {
+.breadboardTrinket {
   background: none;
   border: none;
   padding: 0;
