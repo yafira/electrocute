@@ -84,7 +84,7 @@ const projects = [
     hoverBg: "#fbecdd",
     hoverBorder: "#e7c29d",
     shape: "wide",
-    pos: { x: "66%", y: "46%", rot: -1.2, z: 10 },
+    pos: { x: "63%", y: "45%", rot: -1.2, z: 10 },
   },
   {
     slug: "synthwave-chimes",
@@ -234,14 +234,14 @@ export const photoItems = [
     title: "moonpocket",
     image: "/assets/craft/moonpocket.png",
     href: "https://months-tap-da9.craft.me/moonpocket",
-    pos: { x: "17%", y: "49%", w: 195, rot: 2, z: 6, delay: 0.9 },
+    pos: { x: "15%", y: "47%", w: 195, rot: 2, z: 6, delay: 0.9 },
   },
   {
     slug: "pocket-oracle-of-time",
     title: "pocket oracle of time",
     image: "/assets/craft/pocket-oracle-of-time.png",
     href: "https://months-tap-da9.craft.me/oracle",
-    pos: { x: "44%", y: "78%", w: 160, rot: 5, z: 6, delay: 1.2 },
+    pos: { x: "42%", y: "78%", w: 160, rot: 5, z: 6, delay: 1.2 },
   },
   {
     slug: "tendertronic",
