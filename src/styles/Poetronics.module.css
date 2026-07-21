@@ -130,8 +130,10 @@
   position: relative;
   z-index: 2;
   max-width: 76rem;
+  width: 100%;
   margin: 0 auto;
   height: 1650px;
+  transform: translateX(-90px); /* Shifts the whole cluster further left */
 }
 
 .card {
@@ -225,6 +227,186 @@
 .card:hover .cardTitle,
 .card:focus-visible .cardTitle {
   opacity: 0.9;
+}
+
+.trinket {
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+  z-index: 8;
+  background: none;
+  border: none;
+  padding: 4px;
+  margin: 0;
+  cursor: pointer;
+  transition: transform 200ms ease;
+}
+
+.trinket:hover {
+  transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(1.12);
+}
+
+.tinyBug {
+  display: inline-block;
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 6px rgba(203, 184, 242, 0.4));
+  animation: bugWiggle 3s ease-in-out infinite;
+}
+
+@keyframes bugWiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
+.ledDot {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(203, 184, 242, 0.3);
+  border: 2px solid var(--wisteria);
+  box-shadow: 0 0 8px 2px rgba(203, 184, 242, 0.35);
+  transition:
+    background 200ms ease,
+    box-shadow 200ms ease,
+    border-color 200ms ease;
+}
+
+.ledOn {
+  background: var(--butter);
+  border-color: var(--butter);
+  box-shadow: 0 0 14px 4px rgba(255, 243, 194, 0.6);
+}
+
+.starToggle {
+  display: inline-block;
+  font-size: 1.3rem;
+  color: var(--wisteria);
+  text-shadow: 0 0 8px rgba(203, 184, 242, 0.5);
+  transition:
+    color 200ms ease,
+    text-shadow 200ms ease;
+}
+
+.starFilled {
+  color: var(--butter);
+  text-shadow: 0 0 14px rgba(255, 243, 194, 0.7);
+}
+
+.stitchTrinket {
+  cursor: default;
+}
+
+.stitchLine {
+  stroke: rgba(203, 184, 242, 0.35);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+  animation: stitchMarch 1s linear infinite;
+  animation-play-state: paused;
+}
+
+.stitchTrinket:hover .stitchLine {
+  animation-play-state: running;
+  stroke: var(--wisteria);
+}
+
+@keyframes stitchMarch {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+.sparkGlyph {
+  display: inline-block;
+  font-size: 1.2rem;
+  color: var(--butter);
+  text-shadow: 0 0 10px rgba(255, 243, 194, 0.6);
+  transition: transform 150ms ease;
+}
+
+.trinket:active .sparkGlyph {
+  transform: scale(1.3);
+}
+
+.floatingSnippet {
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+  font-family: var(--body);
+  font-size: 0.7rem;
+  color: var(--wisteria);
+  opacity: 0.6;
+  background: rgba(21, 15, 40, 0.55);
+  border: 1px solid rgba(203, 184, 242, 0.25);
+  border-radius: 6px;
+  padding: 3px 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.quill {
+  display: inline-block;
+  font-size: 1.4rem;
+  filter: drop-shadow(0 0 6px rgba(203, 184, 242, 0.4));
+  animation: quillDrift 5s ease-in-out infinite;
+}
+
+@keyframes quillDrift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(-8deg);
+  }
+}
+
+.hourglass {
+  display: inline-block;
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 6px rgba(203, 184, 242, 0.4));
+  animation: hourglassTurn 7s ease-in-out infinite;
+}
+
+@keyframes hourglassTurn {
+  0%,
+  40% {
+    transform: rotate(0deg);
+  }
+  50%,
+  90% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.thoughtTrail {
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+  font-family: var(--display);
+  font-size: 0.85rem;
+  color: var(--wisteria);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+  text-shadow: 0 0 8px rgba(203, 184, 242, 0.4);
+  animation: trailFade 6s ease-in-out infinite;
+}
+
+@keyframes trailFade {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 .label {
@@ -416,6 +598,7 @@
     flex-direction: column;
     align-items: center;
     gap: 2.5rem;
+    transform: none; /* Resets desktop shift on mobile */
   }
 
   .card {
@@ -434,6 +617,12 @@
 
   .cardTitle {
     opacity: 0.9;
+  }
+
+  .trinket,
+  .floatingSnippet,
+  .thoughtTrail {
+    display: none;
   }
 
   .label {

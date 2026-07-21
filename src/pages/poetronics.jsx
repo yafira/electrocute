@@ -13,7 +13,7 @@ const items = [
     href: "https://months-tap-da9.craft.me/petalbyte",
     blurb:
       "a flower-shaped USB drive that archives personal writing and grows new fragments from it.",
-    pos: { x: "20%", y: "10%", w: 260, rot: -6, delay: 0 },
+    pos: { x: "12%", y: "42%", w: 260, rot: -6, delay: 0 }, // Swapped here
     corpus: {
       openers: ["the archive", "a saved draft", "the flower"],
       closers: [
@@ -48,7 +48,7 @@ const items = [
     hoverImage: "/assets/craft/ribbon-logic.gif",
     href: "https://months-tap-da9.craft.me/ribbon-logic",
     blurb: "reasoning stitched into a length of ribbon, one loop at a time.",
-    pos: { x: "12%", y: "42%", w: 270, rot: -4, delay: 1.8 },
+    pos: { x: "20%", y: "10%", w: 270, rot: -4, delay: 1.8 }, // Swapped here
     corpus: {
       openers: ["a ribbon", "the loop", "a single thread"],
       closers: [
@@ -260,6 +260,23 @@ function TextEngine() {
   );
 }
 
+const SPARK_GLYPHS = ["✦", "✧", "⋆"];
+
+function SparkTrinket() {
+  const [i, setI] = useState(0);
+  return (
+    <button
+      type="button"
+      className={styles.trinket}
+      style={{ left: "44%", top: "16%", "--rot": "8deg" }}
+      aria-label="cycle spark"
+      onClick={() => setI((prev) => (prev + 1) % SPARK_GLYPHS.length)}
+    >
+      <span className={styles.sparkGlyph}>{SPARK_GLYPHS[i]}</span>
+    </button>
+  );
+}
+
 export default function Poetronics() {
   const [stars, setStars] = useState([]);
   const [hoveredSlug, setHoveredSlug] = useState(null); // for tendertronic image swap only
@@ -360,6 +377,72 @@ export default function Poetronics() {
             </span>
           </a>
         ))}
+
+        <div
+          className={styles.trinket}
+          style={{ left: "58%", top: "22%", "--rot": "15deg" }}
+        >
+          <span className={styles.tinyBug}>🪲</span>
+        </div>
+        <button
+          type="button"
+          className={styles.trinket}
+          style={{ left: "32%", top: "54%", "--rot": "-8deg" }}
+          aria-label="toggle led"
+          onClick={(e) =>
+            e.currentTarget.querySelector("span").classList.toggle(styles.ledOn)
+          }
+        >
+          <span className={styles.ledDot} />
+        </button>
+        <div
+          className={styles.floatingSnippet}
+          style={{ left: "72%", top: "36%", "--rot": "4deg" }}
+        >
+          <span>[thread // active]</span>
+        </div>
+        <button
+          type="button"
+          className={styles.trinket}
+          style={{ left: "14%", top: "30%", "--rot": "-5deg" }}
+          aria-label="toggle star"
+          onClick={(e) =>
+            e.currentTarget
+              .querySelector("span")
+              .classList.toggle(styles.starFilled)
+          }
+        >
+          <span className={styles.starToggle}>✧</span>
+        </button>
+        <div
+          className={`${styles.trinket} ${styles.stitchTrinket}`}
+          style={{ left: "64%", top: "68%", "--rot": "-3deg" }}
+          aria-hidden="true"
+        >
+          <svg width="70" height="10" viewBox="0 0 70 10">
+            <line x1="2" y1="5" x2="68" y2="5" className={styles.stitchLine} />
+          </svg>
+        </div>
+        <SparkTrinket />
+
+        <div
+          className={styles.trinket}
+          style={{ left: "90%", top: "80%", "--rot": "10deg" }}
+        >
+          <span className={styles.quill}>🪶</span>
+        </div>
+        <div
+          className={styles.trinket}
+          style={{ left: "8%", top: "62%", "--rot": "-6deg" }}
+        >
+          <span className={styles.hourglass}>⏳</span>
+        </div>
+        <div
+          className={styles.thoughtTrail}
+          style={{ left: "50%", top: "89%", "--rot": "2deg" }}
+        >
+          hush...
+        </div>
       </div>
 
       <div className={`${styles.label} ${active ? styles.show : ""}`}>
