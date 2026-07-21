@@ -9,6 +9,7 @@ const items = [
     slug: "petalbyte",
     title: "petalbyte",
     image: "/assets/craft/petalbyte.png",
+    hoverImage: "/assets/craft/petalbyte2.png",
     href: "https://months-tap-da9.craft.me/petalbyte",
     blurb:
       "a flower-shaped USB drive that archives personal writing and grows new fragments from it.",
@@ -26,6 +27,7 @@ const items = [
     slug: "the-soft-computer",
     title: "the soft computer",
     image: "/assets/craft/the-soft-computer.png",
+    hoverImage: "/assets/craft/the-soft-computer2.png",
     href: "https://thesoft.computer/",
     blurb:
       "a textile computing object exploring calm technology and anti-optimization.",
@@ -43,6 +45,7 @@ const items = [
     slug: "ribbon-logic",
     title: "ribbon logic",
     image: "/assets/craft/ribbon-logic.png",
+    hoverImage: "/assets/craft/ribbon-logic.gif",
     href: "https://months-tap-da9.craft.me/ribbon-logic",
     blurb: "reasoning stitched into a length of ribbon, one loop at a time.",
     pos: { x: "12%", y: "42%", w: 270, rot: -4, delay: 1.8 },
@@ -59,6 +62,7 @@ const items = [
     slug: "moonpocket",
     title: "moonpocket",
     image: "/assets/craft/moonpocket.png",
+    hoverImage: "/assets/craft/moonpocket2.png",
     href: "https://months-tap-da9.craft.me/moonpocket",
     blurb:
       "a small pocket that keeps a sliver of moonlight, and a circuit, close.",
@@ -76,6 +80,7 @@ const items = [
     slug: "pocket-oracle-of-time",
     title: "pocket oracle of time",
     image: "/assets/craft/pocket-oracle-of-time.png",
+    hoverImage: "/assets/craft/pocket-oracle-of-time2.png",
     href: "https://months-tap-da9.craft.me/oracle",
     blurb:
       "a small e-ink oracle that offers a quiet poem instead of the time — no button, no rush.",
