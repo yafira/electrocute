@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import styles from "../styles/Poetronics.module.css";
 
 const items = [
@@ -302,9 +303,9 @@ export default function Poetronics() {
       </div>
 
       <header className={styles.header}>
-        <a className={styles.eyebrow} href="/">
+        <Link className={styles.eyebrow} href="/">
           ← back to electrocute lab
-        </a>
+        </Link>
         <h1 className={styles.title}>poetronics</h1>
         <p className={styles.tagline}>
           soft machines under a borrowed moon — circuits that write, stitch, and
