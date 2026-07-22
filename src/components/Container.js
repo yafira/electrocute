@@ -26,14 +26,15 @@ const COLLAGE_ORDER = [
   { type: "card", slug: "neural-nectar" },
   { type: "card", slug: "kawaii-ml" },
   { type: "photo", slug: "moonpocket" },
-  { type: "card", slug: "poetronics" }, // ← new
+  { type: "card", slug: "soft-components" },
+  { type: "card", slug: "poetronics" },
   { type: "card", slug: "soft-circuit-library" },
   { type: "card", slug: "synthwave-chimes" },
   { type: "photo", slug: "pocket-oracle-of-time" },
   { type: "card", slug: "sailor-moon-calculator" },
   { type: "photo", slug: "puffcast" },
   { type: "photo", slug: "custom-light-leds" },
-  { type: "photo", slug: "tendertronic" }, // ← new
+  { type: "photo", slug: "tendertronic" },
   { type: "card", slug: "snax" },
   { type: "photo", slug: "electrojute" },
 ];
@@ -157,9 +158,6 @@ export default function Container() {
           const p = PHOTOS_BY_SLUG[entry.slug];
           if (!p) return null;
 
-          const customX =
-            !isMobile && p.slug === "moonpocket" ? "24%" : p.pos.x;
-
           return (
             <button
               key={`photo-${p.slug}`}
@@ -168,7 +166,7 @@ export default function Container() {
               onClick={() => openProject(p.href, p.title, setOpen)}
               title={p.title}
               style={{
-                "--x": customX,
+                "--x": p.pos.x,
                 "--y": p.pos.y,
                 "--w": `${p.pos.w}px`,
                 "--rot": `${p.pos.rot}deg`,
