@@ -59,7 +59,7 @@ const projects = [
     hoverBg: "#e3d6fb",
     hoverBorder: "#cbb8f2",
     shape: "sticky",
-    pos: { x: "44%", y: "60%", rot: -3, z: 10 },
+    pos: { x: "44%", y: "61%", rot: -3, z: 10 },
   },
   {
     slug: "kawaii-ml",
@@ -74,6 +74,19 @@ const projects = [
     pos: { x: "36%", y: "30%", rot: -4, z: 10 },
   },
   {
+    slug: "soft-components",
+    title: "soft components",
+    href: "https://soft-components.vercel.app",
+    icon: "/assets/soft-components.png",
+    blurb:
+      "an interactive reference library for soft electronics — felt buttons, fabric sensors, and the physics behind each one, live in the browser.",
+    tint: "#E8E1FD",
+    hoverBg: "#faf6ff",
+    hoverBorder: "#cdc1ee",
+    shape: "wide",
+    pos: { x: "14%", y: "48%", rot: -1.5, z: 10 },
+  },
+  {
     slug: "soft-circuit-library",
     title: "soft circuit library",
     href: "https://months-tap-da9.craft.me/soft-circuit-lib",
@@ -84,7 +97,7 @@ const projects = [
     hoverBg: "#fbecdd",
     hoverBorder: "#e7c29d",
     shape: "wide",
-    pos: { x: "63%", y: "45%", rot: -1.2, z: 10 },
+    pos: { x: "75%", y: "45%", rot: -1.2, z: 10 },
   },
   {
     slug: "synthwave-chimes",
@@ -122,7 +135,7 @@ const projects = [
     hoverBg: "#fae7ef",
     hoverBorder: "#fecfe2",
     shape: "wide",
-    pos: { x: "38%", y: "95%", rot: 4, z: 10 },
+    pos: { x: "38%", y: "94%", rot: 4, z: 10 },
   },
 ];
 
@@ -234,7 +247,7 @@ export const photoItems = [
     title: "moonpocket",
     image: "/assets/craft/moonpocket.png",
     href: "https://months-tap-da9.craft.me/moonpocket",
-    pos: { x: "15%", y: "47%", w: 195, rot: 2, z: 6, delay: 0.9 },
+    pos: { x: "45%", y: "44%", w: 195, rot: 1, z: 6, delay: 0.9 },
   },
   {
     slug: "pocket-oracle-of-time",
