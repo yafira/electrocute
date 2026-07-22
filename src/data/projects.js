@@ -84,7 +84,7 @@ const projects = [
     hoverBg: "#faf6ff",
     hoverBorder: "#cdc1ee",
     shape: "wide",
-    pos: { x: "14%", y: "48%", rot: -1.5, z: 10 },
+    pos: { x: "17%", y: "48%", rot: -1.5, z: 10 },
   },
   {
     slug: "soft-circuit-library",
