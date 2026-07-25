@@ -175,6 +175,17 @@ export const resources = [
     hoverBorder: "#bbf0cf",
   },
   {
+    slug: "cute-technologies",
+    title: "cute technologies",
+    href: "https://cutetech.tools",
+    icon: "/assets/cutetech.png",
+    blurb:
+      "a digital catalog featuring a collection of cybertwee functional tools and resources to make your computing .env cuter.",
+    tint: "#f3faea",
+    hoverBg: "#edfdda",
+    hoverBorder: "#d8f0ba",
+  },
+  {
     slug: "design-hub",
     title: "design hub",
     href: "https://electrocute.gumroad.com/l/design-hub",
@@ -206,17 +217,6 @@ export const resources = [
     tint: "#f6fffe",
     hoverBg: "#eafdfc",
     hoverBorder: "#bdfef8",
-  },
-  {
-    slug: "cute-technologies",
-    title: "cute technologies",
-    href: "https://cutetech.tools",
-    icon: "/assets/cutetech.png",
-    blurb:
-      "a digital catalog featuring a collection of cybertwee functional tools and resources to make your computing .env cuter.",
-    tint: "#f3faea",
-    hoverBg: "#edfdda",
-    hoverBorder: "#d8f0ba",
   },
 ];
 
