@@ -89,7 +89,7 @@
   padding: 20px 24px;
 }
 
-/* Original Small Index Cards */
+/* index cards */
 .card {
   position: relative;
   overflow: hidden;
@@ -157,7 +157,7 @@
   margin: 10px 0 8px;
 }
 
-/* Description text line clamping */
+/* card description text */
 .card p {
   color: #333333;
   font-size: 13px;
@@ -423,7 +423,7 @@
   fill: #6a6480;
 }
 
-/* resources grid (unchanged) */
+/* resources grid */
 
 .resourcesGrid {
   display: grid;
@@ -433,7 +433,7 @@
   margin-top: 20px;
 }
 
-/* Visual Section Divider */
+/* divider between the collage and the resources grid */
 .sectionDivider {
   display: flex;
   align-items: center;
@@ -458,7 +458,7 @@
   letter-spacing: 0.5px;
 }
 
-/* Card Photo Reveal Layer */
+/* photo layer that scales and fades in over a card on hover */
 .cardPhotoReveal {
   position: absolute;
   inset: 0;
@@ -737,7 +737,7 @@
   }
 }
 
-/* Responsive Structural Adjustments
+/* responsive structural adjustments
    the hand-placed composition needs width; below 1024px the
    collage collapses back into normal flow: a 2-col rhythm of
    cards and photos interleaved in DOM order. matches the js
@@ -828,7 +828,7 @@
   }
 }
 
-/* Upgraded Large Oscilloscope Custom Dimensions */
+/* large oscilloscope trinket */
 .scopeTrinketLarge {
   position: absolute;
   left: var(--x, 50%);
@@ -851,7 +851,7 @@
 .scopeLarge {
   display: block;
   position: relative;
-  width: 144px; /* Noticeably scaled up from original width */
+  width: 144px;
   height: 74px;
   border-radius: 14px;
   background: #1c1a26;
@@ -878,7 +878,7 @@
   }
 }
 
-/* Micro Cute Toggle Switch Elements */
+/* mini toggle switch trinket */
 .miniToggleTrinket {
   position: absolute;
   left: var(--x, 50%);
@@ -932,7 +932,7 @@
   transform: translateX(15px);
 }
 
-/* --- 555 bug --- */
+/* 555 bug */
 
 .chipTrinket {
   background: none;
