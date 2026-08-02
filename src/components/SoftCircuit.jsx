@@ -11,9 +11,11 @@
 // can react to it too — closing this switch also pulses a brief
 // "stitch" flash across the site's other dashed borders.
 
+import { useEffect } from "react";
 import Link from "next/link";
 import headerStyles from "../styles/Header.module.css";
 import styles from "../styles/SoftCircuit.module.css";
+import { startCircuitBuzz, stopCircuitBuzz } from "../lib/circuitBuzz";
 
 function CoinCell() {
   return (
@@ -195,6 +197,16 @@ export default function SoftCircuit({ on, ready, onToggle }) {
       onToggle();
     }
   };
+
+  useEffect(() => {
+    if (!ready) return;
+    if (on) {
+      startCircuitBuzz();
+    } else {
+      stopCircuitBuzz();
+    }
+    return () => stopCircuitBuzz();
+  }, [on, ready]);
 
   return (
     <div className={styles.board}>
