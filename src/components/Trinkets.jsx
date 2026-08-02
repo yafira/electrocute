@@ -3,70 +3,206 @@ import styles from "../styles/Home.module.css";
 
 let audioCtx = null;
 
+function getCtx() {
+  audioCtx =
+    audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+  if (audioCtx.state === "suspended") audioCtx.resume();
+  return audioCtx;
+}
+
+// one little note, the building block every trinket voice is made of.
+// short and plucky, detuned in pitch rather than volume so a whole
+// scene of notes still sounds handmade instead of sequenced.
+function pluck(
+  ctx,
+  start,
+  {
+    freq,
+    to = freq,
+    dur = 0.1,
+    peak = 0.05,
+    type = "sine",
+    filterType = "lowpass",
+    filterFreq = 3000,
+    filterQ = 1,
+  },
+) {
+  const t = ctx.currentTime + start;
+  const osc = ctx.createOscillator();
+  const filter = ctx.createBiquadFilter();
+  const gain = ctx.createGain();
+
+  osc.type = type;
+  osc.frequency.setValueAtTime(freq, t);
+  if (to !== freq) osc.frequency.exponentialRampToValueAtTime(to, t + dur);
+
+  filter.type = filterType;
+  filter.frequency.value = filterFreq;
+  filter.Q.value = filterQ;
+
+  gain.gain.setValueAtTime(0.0001, t);
+  gain.gain.exponentialRampToValueAtTime(peak, t + Math.min(0.012, dur * 0.25));
+  gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+
+  osc.connect(filter);
+  filter.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start(t);
+  osc.stop(t + dur + 0.02);
+}
+
 export function playSynthSound(type) {
   try {
-    audioCtx =
-      audioCtx || new (window.AudioContext || window.webkitAudioContext)();
-    const t = audioCtx.currentTime;
-
-    const osc = audioCtx.createOscillator();
-    const filter = audioCtx.createBiquadFilter();
-    const gain = audioCtx.createGain();
+    const ctx = getCtx();
 
     if (type === "led") {
-      osc.type = "sine";
-      osc.frequency.setValueAtTime(880, t);
-      osc.frequency.exponentialRampToValueAtTime(300, t + 0.05);
-      filter.type = "lowpass";
-      filter.frequency.value = 2000;
-      gain.gain.setValueAtTime(0.001, t);
-      gain.gain.exponentialRampToValueAtTime(0.04, t + 0.005);
-      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.06);
+      // a firefly blinking on: two quick notes hopping upward
+      pluck(ctx, 0, {
+        freq: 660,
+        to: 880,
+        dur: 0.08,
+        peak: 0.05,
+        type: "sine",
+        filterFreq: 4000,
+      });
+      pluck(ctx, 0.05, {
+        freq: 990,
+        to: 1318.51,
+        dur: 0.14,
+        peak: 0.035,
+        type: "sine",
+        filterFreq: 5000,
+      });
     } else if (type === "knob") {
-      osc.type = "triangle";
-      osc.frequency.setValueAtTime(120, t);
-      osc.frequency.setValueAtTime(40, t + 0.01);
-      filter.type = "bandpass";
-      filter.frequency.value = 400;
-      filter.Q.value = 3;
-      gain.gain.setValueAtTime(0.001, t);
-      gain.gain.linearRampToValueAtTime(0.18, t + 0.002);
-      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.02);
+      // a little musical ratchet: a click with a bright tick riding on top
+      pluck(ctx, 0, {
+        freq: 220,
+        to: 160,
+        dur: 0.05,
+        peak: 0.1,
+        type: "triangle",
+        filterType: "bandpass",
+        filterFreq: 500,
+        filterQ: 4,
+      });
+      pluck(ctx, 0.015, {
+        freq: 1046.5,
+        dur: 0.03,
+        peak: 0.02,
+        type: "square",
+        filterFreq: 3500,
+      });
     } else if (type === "resistor") {
-      osc.type = "triangle";
-      osc.frequency.setValueAtTime(180, t);
-      osc.frequency.linearRampToValueAtTime(140, t + 0.08);
-      filter.type = "highpass";
-      filter.frequency.value = 800;
-      gain.gain.setValueAtTime(0.001, t);
-      gain.gain.linearRampToValueAtTime(0.03, t + 0.02);
-      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.08);
+      // a sparkly little arpeggio, like a new color chip landing in place
+      [523.25, 659.25, 783.99].forEach((f, i) => {
+        pluck(ctx, i * 0.04, {
+          freq: f,
+          to: f * 1.02,
+          dur: 0.1,
+          peak: 0.032,
+          type: "triangle",
+          filterType: "highpass",
+          filterFreq: 500,
+        });
+      });
     } else if (type === "terminal") {
-      osc.type = "square";
-      osc.frequency.setValueAtTime(587.33, t);
-      osc.frequency.setValueAtTime(880, t + 0.03);
-      filter.type = "lowpass";
-      filter.frequency.value = 1500;
-      gain.gain.setValueAtTime(0.001, t);
-      gain.gain.exponentialRampToValueAtTime(0.025, t + 0.01);
-      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.12);
+      // a soft two-blip chirp, like a message arriving on the wire
+      pluck(ctx, 0, {
+        freq: 740,
+        to: 880,
+        dur: 0.05,
+        peak: 0.03,
+        type: "square",
+        filterFreq: 2200,
+      });
+      pluck(ctx, 0.07, {
+        freq: 990,
+        dur: 0.09,
+        peak: 0.024,
+        type: "square",
+        filterFreq: 1800,
+      });
     } else if (type === "chip") {
-      osc.type = "square";
-      osc.frequency.setValueAtTime(220, t);
-      osc.frequency.setValueAtTime(330, t + 0.04);
-      osc.frequency.setValueAtTime(440, t + 0.08);
-      filter.type = "lowpass";
-      filter.frequency.value = 2500;
-      gain.gain.setValueAtTime(0.001, t);
-      gain.gain.exponentialRampToValueAtTime(0.03, t + 0.01);
-      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.14);
+      // the chip-bug getting startled: a quick warble up, then a skitter down
+      pluck(ctx, 0, {
+        freq: 280,
+        to: 900,
+        dur: 0.05,
+        peak: 0.035,
+        type: "square",
+        filterFreq: 2600,
+      });
+      pluck(ctx, 0.05, {
+        freq: 780,
+        to: 180,
+        dur: 0.09,
+        peak: 0.028,
+        type: "square",
+        filterFreq: 2000,
+      });
+    } else if (type === "toggle-on") {
+      // a satisfying clunk, then a little chime as the circuit wakes up
+      pluck(ctx, 0, {
+        freq: 90,
+        to: 130,
+        dur: 0.06,
+        peak: 0.12,
+        type: "square",
+        filterFreq: 500,
+        filterQ: 2,
+      });
+      pluck(ctx, 0.03, {
+        freq: 523.25,
+        dur: 0.1,
+        peak: 0.03,
+        type: "sine",
+        filterFreq: 3000,
+      });
+      pluck(ctx, 0.08, {
+        freq: 783.99,
+        dur: 0.16,
+        peak: 0.024,
+        type: "sine",
+        filterFreq: 3500,
+      });
+    } else if (type === "toggle-off") {
+      // the same clunk, settling downward instead of chiming up
+      pluck(ctx, 0, {
+        freq: 100,
+        to: 60,
+        dur: 0.07,
+        peak: 0.12,
+        type: "square",
+        filterFreq: 500,
+        filterQ: 2,
+      });
+      pluck(ctx, 0.03, {
+        freq: 392,
+        to: 262,
+        dur: 0.14,
+        peak: 0.026,
+        type: "sine",
+        filterFreq: 2000,
+      });
+    } else if (type === "scope") {
+      // flipping to a new waveform: a quick curious little sweep
+      pluck(ctx, 0, {
+        freq: 420,
+        to: 1100,
+        dur: 0.11,
+        peak: 0.03,
+        type: "sine",
+        filterFreq: 4200,
+      });
+      pluck(ctx, 0.09, {
+        freq: 1100,
+        to: 700,
+        dur: 0.06,
+        peak: 0.018,
+        type: "sine",
+        filterFreq: 4200,
+      });
     }
-
-    osc.connect(filter);
-    filter.connect(gain);
-    gain.connect(audioCtx.destination);
-    osc.start(t);
-    osc.stop(t + 0.15);
   } catch (e) {}
 }
 
@@ -119,7 +255,10 @@ export function ToggleTrinket({ x, y, rot, active, onToggle, isMobile }) {
       type="button"
       className={styles.miniToggleTrinket}
       style={styleSetting}
-      onClick={onToggle}
+      onClick={() => {
+        playSynthSound(active ? "toggle-off" : "toggle-on");
+        if (onToggle) onToggle();
+      }}
       aria-pressed={active}
       aria-label="oscilloscope power switch"
     >
@@ -249,6 +388,7 @@ export function ScopeTrinket({ x, y, rot, isPowered, scale = 1, isMobile }) {
   const totalModes = 5;
 
   const handleScopeClick = () => {
+    playSynthSound("scope");
     setMode((prev) => (prev + 1) % totalModes);
   };
 

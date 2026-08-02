@@ -32,6 +32,22 @@ export function playFeltTone(baseFreq) {
       osc.start(now);
       osc.stop(now + 0.3);
     });
+
+    // a tiny grace note just ahead of the main tone, like a little
+    // intake of breath before the press settles in
+    const graceGain = audioCtx.createGain();
+    graceGain.gain.setValueAtTime(0.0001, now);
+    graceGain.gain.exponentialRampToValueAtTime(0.035, now + 0.006);
+    graceGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.05);
+    graceGain.connect(audioCtx.destination);
+
+    const grace = audioCtx.createOscillator();
+    grace.type = "sine";
+    grace.frequency.setValueAtTime(base * 2.2, now);
+    grace.frequency.exponentialRampToValueAtTime(base * 1.9, now + 0.05);
+    grace.connect(graceGain);
+    grace.start(now);
+    grace.stop(now + 0.06);
   } catch {
     // audio is a garnish; never let it break a button
   }
