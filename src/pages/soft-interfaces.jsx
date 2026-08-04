@@ -118,7 +118,7 @@ const PROJECTS = [
 ];
 
 const TAGLINE =
-  "interfaces you can hold, wear, fold, and squish. a collective of soft machines from electrocute lab.";
+  "interfaces you can hold, wear, fold, and squish. a collective of soft electronics from electrocute lab.";
 
 export default function SoftInterfaces() {
   const [selected, setSelected] = useState(null);
