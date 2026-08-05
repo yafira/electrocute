@@ -114,9 +114,11 @@ export default function About() {
           <p>
             These days I&apos;m building experimental electronics, interactive
             objects, tiny playful things, and web tools, and writing about the
-            process as I go. Away from the screen: fiddling with my knitting
-            machine, playing chess, experimenting in the kitchen, and finding
-            joy in small, lovely things — beautiful stationery, a perfectly
+            process as I go. When I'm not making: taking long walks, soaking 
+            in nature, fiddling with my knitting machine, playing chess, experimenting 
+            in the kitchen, and finding joy in small, lovely things — hunting for rare 
+            trinkets, lingering in thoughtfully designed cafés, discovering stationery 
+            finds, appreciating well-crafted tools, and noticing the details in a perfectly 
             designed snack wrapper.
           </p>
           <p>
