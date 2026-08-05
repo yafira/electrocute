@@ -429,3 +429,72 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* small screens — directory collapses to a horizontal scrolling strip
+   above the grid instead of a sticky side column, since a tall
+   vertical list stacked above the grid eats too much of a small
+   screen's height */
+
+@media (max-width: 860px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .directory {
+    position: static;
+    flex: none;
+    width: 100%;
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .directoryList {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .directoryItem {
+    width: auto;
+    flex-shrink: 0;
+    border-bottom: none;
+    border-right: 1px solid var(--line);
+    white-space: nowrap;
+  }
+
+  .directoryTitle {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 560px) {
+  .page {
+    padding: 3rem 1rem 5rem;
+  }
+
+  .lightboxBackdrop {
+    padding: 1rem;
+  }
+
+  .lightboxClose {
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .lightboxCaption {
+    left: 0.75rem;
+    bottom: 0.75rem;
+  }
+
+  .thumbs {
+    bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
