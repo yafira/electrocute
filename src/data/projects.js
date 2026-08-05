@@ -34,7 +34,20 @@ const projects = [
     hoverBg: "#e9ecef",
     hoverBorder: "#dadfe5",
     shape: "wide",
-    pos: { x: "72%", y: "12%", rot: 1, z: 10 },
+    pos: { x: "62%", y: "12%", rot: 1, z: 10 },
+  },
+  {
+    slug: "computer-art",
+    title: "computer art",
+    href: "/computer-art",
+    icon: "/assets/computer-art-icon.svg",
+    blurb:
+      "generative sketches and plotter prints — p5.js studies from electrocute lab.",
+    tint: "#eef4ff",
+    hoverBg: "#dbe8ff",
+    hoverBorder: "#b8d0f7",
+    shape: "sticky",
+    pos: { x: "77%", y: "34%", rot: 2, z: 10 },
   },
   {
     slug: "neural-nectar",
@@ -71,7 +84,7 @@ const projects = [
     hoverBg: "#d9f9ef",
     hoverBorder: "#94f1d3",
     shape: "pill",
-    pos: { x: "36%", y: "30%", rot: -4, z: 10 },
+    pos: { x: "32%", y: "30%", rot: -4, z: 10 },
   },
   {
     slug: "soft-components",
@@ -97,7 +110,7 @@ const projects = [
     hoverBg: "#fbecdd",
     hoverBorder: "#e7c29d",
     shape: "wide",
-    pos: { x: "75%", y: "45%", rot: -1.2, z: 10 },
+    pos: { x: "75%", y: "48%", rot: -1.2, z: 10 },
   },
   {
     slug: "synthwave-chimes",
@@ -122,7 +135,7 @@ const projects = [
     hoverBg: "#fcfade",
     hoverBorder: "#f7f3cf",
     shape: "pill",
-    pos: { x: "72%", y: "79%", rot: -0.8, z: 10 },
+    pos: { x: "68%", y: "78%", rot: -0.8, z: 10 },
   },
   {
     slug: "snax",
@@ -226,14 +239,14 @@ export const photoItems = [
     title: "petalbyte",
     image: "/assets/craft/petalbyte.png",
     href: "https://months-tap-da9.craft.me/petalbyte",
-    pos: { x: "38%", y: "13%", w: 180, rot: -6, z: 6, delay: 0 },
+    pos: { x: "34%", y: "13%", w: 180, rot: -6, z: 6, delay: 0 },
   },
   {
     slug: "the-soft-computer",
     title: "the soft computer",
     image: "/assets/craft/the-soft-computer.png",
     href: "https://thesoft.computer/",
-    pos: { x: "88%", y: "28%", w: 215, rot: 3, z: 12, delay: 0.6 },
+    pos: { x: "88%", y: "17%", w: 215, rot: 3, z: 12, delay: 0.6 },
   },
   {
     slug: "ribbon-logic",

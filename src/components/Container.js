@@ -28,6 +28,7 @@ const COLLAGE_ORDER = [
   { type: "photo", slug: "moonpocket" },
   { type: "card", slug: "soft-components" },
   { type: "card", slug: "poetronics" },
+  { type: "card", slug: "computer-art" },
   { type: "card", slug: "soft-circuit-library" },
   { type: "card", slug: "synthwave-chimes" },
   { type: "photo", slug: "pocket-oracle-of-time" },
@@ -205,25 +206,25 @@ export default function Container() {
           <>
             <StitchTrinket x="54%" y="5%" rot={-8} isMobile={false} />
             <KnobTrinket
-              x="61%"
-              y="33%"
+              x="54%"
+              y="31%"
               rot={0}
               onTurn={handleKnobTurn}
               isMobile={false}
             />
             <ToggleTrinket
-              x="65%"
-              y="33%"
+              x="59%"
+              y="31%"
               rot={0}
               active={isCircuitOn}
               onToggle={() => setIsCircuitOn(!isCircuitOn)}
               isMobile={false}
             />
 
-            <TermTrinket x="8%" y="79%" rot={-2} isMobile={false} />
-            <ResistorTrinket x="93%" y="57%" rot={6} isMobile={false} />
+            <TermTrinket x="8%" y="74%" rot={-2} isMobile={false} />
+            <ResistorTrinket x="90%" y="78%" rot={6} isMobile={false} />
             <ScopeTrinket
-              x="63%"
+              x="56%"
               y="23%"
               rot={-1}
               isPowered={isCircuitOn}
