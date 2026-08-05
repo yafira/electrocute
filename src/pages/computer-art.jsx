@@ -7,7 +7,10 @@ const TAGLINE =
   "generative sketches from electrocute lab — mostly p5.js, some sent to a plotter.";
 
 function resolveEmbedUrl(piece) {
-  return piece.embedPath || `https://editor.p5js.org/electrocute/full/${piece.sketchId}`;
+  return (
+    piece.embedPath ||
+    `https://editor.p5js.org/electrocute/full/${piece.sketchId}`
+  );
 }
 
 // one grid tile. self-hosted live sketches lazy-load an actual iframe
@@ -77,7 +80,9 @@ function Tile({ piece, onExpand }) {
           )
         ) : (
           <span className={styles.livePlaceholder}>
-            <span className={styles.livePlaceholderLabel}>view sketch {"\u2197"}</span>
+            <span className={styles.livePlaceholderLabel}>
+              view sketch {"\u2197"}
+            </span>
           </span>
         )}
       </button>
@@ -143,13 +148,16 @@ function Lightbox({ piece, onClose }) {
         type="button"
         className={styles.lightboxClose}
         onClick={onClose}
-        aria-label="close"
+        aria-label="close and return to computer art"
       >
-        {"\u2715"}
+        <span aria-hidden="true">{"\u2715"}</span>
+        <span>close</span>
       </button>
 
       <div
-        className={isStatic ? styles.lightboxImageBox : styles.lightboxSketchBox}
+        className={
+          isStatic ? styles.lightboxImageBox : styles.lightboxSketchBox
+        }
         onClick={(e) => e.stopPropagation()}
       >
         {isStatic ? (
@@ -197,6 +205,32 @@ function Lightbox({ piece, onClose }) {
 export default function ComputerArt() {
   const [activePiece, setActivePiece] = useState(null);
 
+  // opening the viewer pushes a history entry (or replaces it, if
+  // switching straight from one piece to another) so the browser's
+  // back button closes the viewer instead of navigating away from the
+  // page entirely. closing it — via the X, backdrop, or Escape — pops
+  // that entry back off so history stays clean either way.
+  const openPiece = (piece) => {
+    if (typeof window !== "undefined") {
+      const method = activePiece ? "replaceState" : "pushState";
+      window.history[method]({ lightbox: true }, "", `#${piece.slug}`);
+    }
+    setActivePiece(piece);
+  };
+
+  const closePiece = () => {
+    setActivePiece(null);
+    if (typeof window !== "undefined" && window.location.hash) {
+      window.history.back();
+    }
+  };
+
+  useEffect(() => {
+    const onPopState = () => setActivePiece(null);
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
   return (
     <>
       <Head>
@@ -227,11 +261,11 @@ export default function ComputerArt() {
         </header>
 
         <div className={styles.layout}>
-          <Directory onExpand={setActivePiece} />
+          <Directory onExpand={openPiece} />
 
           <section className={styles.grid} aria-label="generative art grid">
             {computerArt.map((piece) => (
-              <Tile key={piece.slug} piece={piece} onExpand={setActivePiece} />
+              <Tile key={piece.slug} piece={piece} onExpand={openPiece} />
             ))}
           </section>
         </div>
@@ -241,9 +275,7 @@ export default function ComputerArt() {
         </footer>
       </main>
 
-      {activePiece && (
-        <Lightbox piece={activePiece} onClose={() => setActivePiece(null)} />
-      )}
+      {activePiece && <Lightbox piece={activePiece} onClose={closePiece} />}
     </>
   );
 }

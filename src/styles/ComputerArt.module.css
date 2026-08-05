@@ -284,16 +284,20 @@
   position: fixed;
   top: 1.5rem;
   right: 1.5rem;
-  background: none;
+  background: #0a0908;
   border: 1px solid var(--line);
+  border-radius: 999px;
   color: var(--ink);
-  width: 2.2rem;
-  height: 2.2rem;
+  padding: 0.5rem 0.9rem;
   cursor: pointer;
-  font-size: 0.9rem;
-  display: grid;
-  place-items: center;
+  font-family: var(--body);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
   z-index: 51;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .lightboxClose:hover {
@@ -404,32 +408,6 @@
   color: var(--ink);
 }
 
-/* small screens — directory collapses to a horizontal strip above the
-   grid instead of a sticky side column */
-
-@media (max-width: 860px) {
-  .layout {
-    flex-direction: column;
-  }
-
-  .directory {
-    position: static;
-    flex: none;
-    width: 100%;
-    max-height: 12rem;
-  }
-}
-
-@media (max-width: 560px) {
-  .page {
-    padding: 3rem 1rem 5rem;
-  }
-
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 /* small screens — directory collapses to a horizontal scrolling strip
    above the grid instead of a sticky side column, since a tall
    vertical list stacked above the grid eats too much of a small
@@ -479,8 +457,8 @@
   .lightboxClose {
     top: 0.75rem;
     right: 0.75rem;
-    width: 2rem;
-    height: 2rem;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.72rem;
   }
 
   .lightboxCaption {
