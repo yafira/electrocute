@@ -3,8 +3,7 @@ import Head from "next/head";
 import computerArt from "../data/computerArt";
 import styles from "../styles/ComputerArt.module.css";
 
-const TAGLINE =
-  "generative sketches from electrocute lab — mostly p5.js, some sent to a plotter.";
+const TAGLINE = "tiny algorithms doodling on their own.";
 
 function resolveEmbedUrl(piece) {
   return (
@@ -13,13 +12,6 @@ function resolveEmbedUrl(piece) {
   );
 }
 
-// one grid tile. self-hosted live sketches lazy-load an actual iframe
-// preview once scrolled into view — the canvas-scaling fix in each
-// sketch's own index.html means this can finally render at a real
-// size instead of cropping. pieces not yet converted (still only a
-// p5-editor sketchId) show a plain placeholder instead of embedding
-// the editor's toolbar chrome inline. static/plotter pieces show
-// their photo. click any tile for the fullscreen viewer.
 function Tile({ piece, onExpand }) {
   const frameRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
@@ -97,8 +89,6 @@ function Tile({ piece, onExpand }) {
   );
 }
 
-// sticky sidebar — a plain directory of every piece by name. clicking
-// one opens it directly in the fullscreen viewer.
 function Directory({ onExpand }) {
   return (
     <nav className={styles.directory} aria-label="piece directory">
@@ -121,9 +111,6 @@ function Directory({ onExpand }) {
   );
 }
 
-// fullscreen viewer — dark backdrop, the piece large and centered, a
-// close button, nothing else. no title bar, no drag handle, no url
-// bar; a takeover view rather than a floating window.
 function Lightbox({ piece, onClose }) {
   const [activeImage, setActiveImage] = useState(0);
 
@@ -146,12 +133,13 @@ function Lightbox({ piece, onClose }) {
     >
       <button
         type="button"
-        className={styles.lightboxClose}
         onClick={onClose}
-        aria-label="close and return to computer art"
+        className={styles.winCloseBtn}
+        aria-label="close"
       >
-        <span aria-hidden="true">{"\u2715"}</span>
-        <span>close</span>
+        <span className={styles.winCloseX} aria-hidden="true">
+          ×
+        </span>
       </button>
 
       <div
@@ -205,11 +193,6 @@ function Lightbox({ piece, onClose }) {
 export default function ComputerArt() {
   const [activePiece, setActivePiece] = useState(null);
 
-  // opening the viewer pushes a history entry (or replaces it, if
-  // switching straight from one piece to another) so the browser's
-  // back button closes the viewer instead of navigating away from the
-  // page entirely. closing it — via the X, backdrop, or Escape — pops
-  // that entry back off so history stays clean either way.
   const openPiece = (piece) => {
     if (typeof window !== "undefined") {
       const method = activePiece ? "replaceState" : "pushState";
@@ -220,8 +203,8 @@ export default function ComputerArt() {
 
   const closePiece = () => {
     setActivePiece(null);
-    if (typeof window !== "undefined" && window.location.hash) {
-      window.history.back();
+    if (typeof window !== "undefined") {
+      window.history.replaceState(null, "", window.location.pathname);
     }
   };
 
