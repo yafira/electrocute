@@ -50,7 +50,7 @@ const computerArt = [
   },
   {
     slug: "crt-tv-with-glitch",
-    title: "crt tv with glitch",
+    title: "technical difficulties",
     index: "04",
     tint: "blush",
     kind: "live",
@@ -60,11 +60,11 @@ const computerArt = [
   },
   {
     slug: "sailor-moon-esque",
-    title: "sailor moon esque",
+    title: "sailor moon city",
     index: "05",
     tint: "sky",
     kind: "live",
-    embedPath: "/sketches/sailor-moon-esque/index.html",
+    embedPath: "/sketches/sailor-moon-city/index.html",
     sketchId: "vO7Of7eFc",
     tags: ["p5.js"],
   },
