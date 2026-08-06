@@ -9,6 +9,7 @@ electrocute is where i document my creative endeavors, experiments, craft, and c
 ## what lives here
 
 - **[soft interfaces](https://electrocute.io/soft-interfaces)** — a portfolio of projects rendered as pastel swatch cards pinned to a graph paper wall
+- **[computer art](https://electrocute.io/computer-art)** — a dark, directory-indexed gallery of generative p5.js sketches and plotter prints; click any piece to view it full screen
 - **[electrodex](https://electrocute.io/electrodex)** — a community directory of creative tech spaces, makerspaces, and textile/craft communities, styled as a singly linked list (hex memory addresses, pointer wires and all)
 - **poemdeck** — a little generative poetry gadget powered by tracery grammars
 - **about + contact** — who i am and how to reach me
@@ -23,30 +24,6 @@ electrocute is where i document my creative endeavors, experiments, craft, and c
 - font awesome for icons
 - deployed on [vercel](https://vercel.com/)
 
-## running locally
-
-```bash
-# clone the repo
-git clone https://github.com/yafira/electrocute.git
-cd electrocute
-
-# install dependencies
-npm install
-
-# start the dev server
-npm run dev
-```
-
-then open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## project structure
-
-```
-electrocute/
-├── public/     # static assets (images, fonts, favicons)
-├── src/        # pages, components, and styles
-└── ...
-```
 
 ## find me elsewhere
 
@@ -57,7 +34,7 @@ electrocute/
 
 crafted with care (soft shell, live wire) ✿
 
-## little tools & interactions
+## tiny tools & interactions
 
 the site now has a few small toys, in the spirit of a living space:
 
@@ -68,6 +45,7 @@ the site now has a few small toys, in the spirit of a living space:
 - **soft potentiometer** (bottom left, homepage) · slides the page through paper → blush → butter → matcha → wisteria → evening
 - **soft circuit** (under the nav) · a sewable coin cell, switch, and LED joined by conductive thread. close the switch and the running stitches become the current: the dashes flow around the loop and the LED glows. the site remembers if you left the light on
 - **stitch borders** · `<StitchBox>` is a reusable wrapper that sews a dashed border around anything when it scrolls into view
+- **self-hosted sketch gallery** (`/computer-art`) · each generative piece lives as its own tiny static bundle under `public/sketches/`, not embedded from the p5 editor, so there's no editor chrome and the canvas always scales to fit
 
 ### shared state
 
