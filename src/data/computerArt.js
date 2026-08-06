@@ -110,7 +110,7 @@ const computerArt = [
   },
   {
     slug: "plotter-drawing-10print",
-    title: "plotter drawing — 10 print",
+    title: "core memory plotter drawings",
     index: "10",
     tint: "butter",
     kind: "static",
