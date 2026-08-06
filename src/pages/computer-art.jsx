@@ -135,9 +135,7 @@ function FeaturedPortrait({ piece }) {
           sandbox="allow-scripts allow-same-origin"
         />
       </div>
-      <p className={styles.featuredCaption}>
-        hi, it&apos;s me — click to change my face
-      </p>
+      <p className={styles.featuredCaption}>click to change my face!</p>
     </div>
   );
 }
