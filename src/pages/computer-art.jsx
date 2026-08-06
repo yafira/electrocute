@@ -272,11 +272,6 @@ function Lightbox({ piece, onClose }) {
 export default function ComputerArt() {
   const [activePiece, setActivePiece] = useState(null);
 
-  // opening the viewer pushes a history entry (or replaces it, if
-  // switching straight from one piece to another) so the browser's
-  // back button closes the viewer instead of navigating away from the
-  // page entirely. closing it — via the X, backdrop, or Escape — pops
-  // that entry back off so history stays clean either way.
   const openPiece = (piece) => {
     if (typeof window !== "undefined") {
       const method = activePiece ? "replaceState" : "pushState";
@@ -287,8 +282,9 @@ export default function ComputerArt() {
 
   const closePiece = () => {
     setActivePiece(null);
-    if (typeof window !== "undefined" && window.location.hash) {
-      window.history.back();
+    if (typeof window !== "undefined") {
+      // Cleanly clear the hash without triggering a full page history back navigation
+      window.history.replaceState(null, "", window.location.pathname);
     }
   };
 
