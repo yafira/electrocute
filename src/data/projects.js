@@ -41,8 +41,7 @@ const projects = [
     title: "computer art",
     href: "/computer-art",
     icon: "/assets/computer-art-icon.svg",
-    blurb:
-      "generative sketches and plotter prints — p5.js studies from electrocute lab.",
+    blurb: "tiny algorithms doodling on their own.",
     tint: "#eef4ff",
     hoverBg: "#dbe8ff",
     hoverBorder: "#b8d0f7",
