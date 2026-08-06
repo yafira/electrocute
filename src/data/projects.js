@@ -296,7 +296,7 @@ export const photoItems = [
     title: "electrojute",
     image: "/assets/craft/electrojute_off.png",
     hoverImage: "/assets/craft/electrojute_on.png",
-    href: "https://www.craft.do/s/electrojute",
+    href: "https://months-tap-da9.craft.me/electrojute",
     pos: { x: "90%", y: "93%", w: 175, rot: -3, z: 6, delay: 0.3 },
   },
 ];
