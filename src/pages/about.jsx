@@ -57,8 +57,8 @@ export default function About() {
               poetronics
             </button>
             : electronics with the sensibility of a poem. I&apos;ve always had a
-            heightened sense for detail, materials, texture and how things
-            feel in your hands. I believe machines can be tender.
+            heightened sense for detail, materials, texture and how things feel
+            in your hands. I believe machines can be tender.
           </p>
         </section>
 
@@ -114,12 +114,12 @@ export default function About() {
           <p>
             These days I&apos;m building experimental electronics, interactive
             objects, tiny playful things, and web tools, and writing about the
-            process as I go. When I&apos;m not making: taking long walks, soaking 
-            in nature, fiddling with my knitting machine, playing chess, experimenting 
-            in the kitchen, and finding joy in small, lovely things — hunting for rare 
-            trinkets, lingering in thoughtfully designed cafés, discovering stationery 
-            finds, appreciating well-crafted tools, and noticing the details in a perfectly 
-            designed snack wrapper.
+            process as I go. When I&apos;m not making: long walks, soaking in
+            nature, fiddling with my knitting machine, playing chess,
+            experimenting in the kitchen, and finding joy in small, lovely
+            things — rare trinkets, thoughtfully designed cafés, good stationery
+            finds, well-crafted tools, and the packaging details on a snack
+            wrapper.
           </p>
           <p>
             Aesthetically, I live in two worlds at once. In person I&apos;m all

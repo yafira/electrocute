@@ -4,7 +4,7 @@ const pastelColors = [
   [255, 209, 220], // pink
   [253, 253, 150], // yellow
   [173, 216, 230], // blue
-  [144, 238, 144], // green
+  [144, 238, 144]  // green
 ];
 function setup() {
   createCanvas(windowWidth, windowHeight);

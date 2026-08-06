@@ -3,7 +3,13 @@ import Head from "next/head";
 import computerArt from "../data/computerArt";
 import styles from "../styles/ComputerArt.module.css";
 
-const TAGLINE = "tiny algorithms doodling on their own.";
+const TAGLINE =
+  "tiny algorithms doodling on their own — mostly p5.js, sometimes plotted onto real paper.";
+
+const featuredPiece = computerArt.find(
+  (p) => p.slug === "self-portrait-kawaii",
+);
+const gridPieces = computerArt.filter((p) => p.slug !== "self-portrait-kawaii");
 
 function resolveEmbedUrl(piece) {
   return (
@@ -12,23 +18,37 @@ function resolveEmbedUrl(piece) {
   );
 }
 
+// one grid tile. self-hosted live sketches lazy-load an actual iframe
+// preview once scrolled into view — the canvas-scaling fix in each
+// sketch's own index.html means this can finally render at a real
+// size instead of cropping. pieces not yet converted (still only a
+// p5-editor sketchId) show a plain placeholder instead of embedding
+// the editor's toolbar chrome inline. static/plotter pieces show
+// their photo. click any tile for the fullscreen viewer — except
+// pieces flagged `interactive`, which stay live and clickable right in
+// the grid instead (the sketch itself handles the click), since
+// forcing those into a one-off fullscreen view would just get in the
+// way of playing with them.
 function Tile({ piece, onExpand }) {
   const frameRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
   const isSelfHosted = piece.kind === "live" && Boolean(piece.embedPath);
+  const isInteractive = Boolean(piece.interactive);
 
   useEffect(() => {
     if (!isSelfHosted) return undefined;
     const el = frameRef.current;
     if (!el) return undefined;
 
+    // bidirectional: mount the iframe when scrolled into view, but also
+    // unmount it again when scrolled back out. without this, every
+    // sketch you've ever scrolled past stays mounted and keeps
+    // animating in the background — with 30+ pieces that adds up fast
+    // and the page grinds to a crawl the further down you go.
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setLoaded(true);
-            observer.disconnect();
-          }
+          setLoaded(entry.isIntersecting);
         });
       },
       { rootMargin: "200px" },
@@ -37,6 +57,34 @@ function Tile({ piece, onExpand }) {
     return () => observer.disconnect();
   }, [isSelfHosted]);
 
+  const media =
+    piece.kind === "static" ? (
+      <img
+        className={styles.media}
+        src={piece.images[0]}
+        alt=""
+        loading="lazy"
+      />
+    ) : isSelfHosted ? (
+      loaded ? (
+        <iframe
+          className={isInteractive ? styles.mediaInteractive : styles.media}
+          src={piece.embedPath}
+          title={piece.title}
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin"
+        />
+      ) : (
+        <span className={styles.loadingTile} aria-hidden="true" />
+      )
+    ) : (
+      <span className={styles.livePlaceholder}>
+        <span className={styles.livePlaceholderLabel}>
+          view sketch {"\u2197"}
+        </span>
+      </span>
+    );
+
   return (
     <div className={styles.tile} id={`piece-${piece.slug}`}>
       <div className={styles.tileHead}>
@@ -44,62 +92,81 @@ function Tile({ piece, onExpand }) {
         <span className={styles.tags}>{piece.tags.join(" / ")}</span>
       </div>
 
-      <button
-        type="button"
-        className={styles.frame}
-        ref={frameRef}
-        onClick={() => onExpand(piece)}
-        aria-label={`open ${piece.title}`}
-      >
-        {piece.kind === "static" ? (
-          <img
-            className={styles.media}
-            src={piece.images[0]}
-            alt=""
-            loading="lazy"
-          />
-        ) : isSelfHosted ? (
-          loaded ? (
-            <iframe
-              className={styles.media}
-              src={piece.embedPath}
-              title={piece.title}
-              loading="lazy"
-              sandbox="allow-scripts allow-same-origin"
-            />
-          ) : (
-            <span className={styles.loadingTile} aria-hidden="true" />
-          )
-        ) : (
-          <span className={styles.livePlaceholder}>
-            <span className={styles.livePlaceholderLabel}>
-              view sketch {"\u2197"}
-            </span>
-          </span>
-        )}
-      </button>
+      {isInteractive ? (
+        <div className={styles.frame} ref={frameRef}>
+          {media}
+        </div>
+      ) : (
+        <button
+          type="button"
+          className={styles.frame}
+          ref={frameRef}
+          onClick={() => onExpand(piece)}
+          aria-label={`open ${piece.title}`}
+        >
+          {media}
+        </button>
+      )}
 
       <div className={styles.tileFoot}>
         <span className={styles.title}>{piece.title}</span>
         <span className={styles.expand} aria-hidden="true">
-          {"\u2197"}
+          {isInteractive ? "click to change \u2728" : "\u2197"}
         </span>
       </div>
     </div>
   );
 }
 
+// featured widget above the directory — just the self-portrait, live
+// and clickable, no lazy-load delay since it's always the first thing
+// on the page. a small personal touch before the numbered collection
+// starts.
+function FeaturedPortrait({ piece }) {
+  if (!piece) return null;
+
+  return (
+    <div className={styles.featured} id={`piece-${piece.slug}`}>
+      <div className={styles.featuredFrame}>
+        <iframe
+          className={styles.mediaInteractive}
+          src={piece.embedPath}
+          title={piece.title}
+          sandbox="allow-scripts allow-same-origin"
+        />
+      </div>
+      <p className={styles.featuredCaption}>
+        hi, it&apos;s me — click to change my face
+      </p>
+    </div>
+  );
+}
+
+// sticky sidebar — a plain directory of every piece by name. clicking
+// one opens it directly in the fullscreen viewer — except interactive
+// pieces, which instead scroll the grid to that tile, since they don't
+// have a fullscreen view to open.
 function Directory({ onExpand }) {
+  const handleClick = (piece) => {
+    if (piece.interactive) {
+      document
+        .getElementById(`piece-${piece.slug}`)
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+    onExpand(piece);
+  };
+
   return (
     <nav className={styles.directory} aria-label="piece directory">
       <div className={styles.directoryHead}>index</div>
       <ul className={styles.directoryList}>
-        {computerArt.map((piece) => (
+        {gridPieces.map((piece) => (
           <li key={piece.slug}>
             <button
               type="button"
               className={styles.directoryItem}
-              onClick={() => onExpand(piece)}
+              onClick={() => handleClick(piece)}
             >
               <span className={styles.directoryIndex}>{piece.index}</span>
               <span className={styles.directoryTitle}>{piece.title}</span>
@@ -111,6 +178,9 @@ function Directory({ onExpand }) {
   );
 }
 
+// fullscreen viewer — dark backdrop, the piece large and centered, a
+// close button, nothing else. no title bar, no drag handle, no url
+// bar; a takeover view rather than a floating window.
 function Lightbox({ piece, onClose }) {
   const [activeImage, setActiveImage] = useState(0);
 
@@ -133,12 +203,12 @@ function Lightbox({ piece, onClose }) {
     >
       <button
         type="button"
-        onClick={onClose}
         className={styles.winCloseBtn}
-        aria-label="close"
+        onClick={onClose}
+        aria-label="close and return to computer art"
       >
         <span className={styles.winCloseX} aria-hidden="true">
-          ×
+          {"\u00D7"}
         </span>
       </button>
 
@@ -193,6 +263,11 @@ function Lightbox({ piece, onClose }) {
 export default function ComputerArt() {
   const [activePiece, setActivePiece] = useState(null);
 
+  // opening the viewer pushes a history entry (or replaces it, if
+  // switching straight from one piece to another) so the browser's
+  // back button closes the viewer instead of navigating away from the
+  // page entirely. closing it — via the X, backdrop, or Escape — pops
+  // that entry back off so history stays clean either way.
   const openPiece = (piece) => {
     if (typeof window !== "undefined") {
       const method = activePiece ? "replaceState" : "pushState";
@@ -203,8 +278,8 @@ export default function ComputerArt() {
 
   const closePiece = () => {
     setActivePiece(null);
-    if (typeof window !== "undefined") {
-      window.history.replaceState(null, "", window.location.pathname);
+    if (typeof window !== "undefined" && window.location.hash) {
+      window.history.back();
     }
   };
 
@@ -244,10 +319,13 @@ export default function ComputerArt() {
         </header>
 
         <div className={styles.layout}>
-          <Directory onExpand={openPiece} />
+          <div className={styles.sidebar}>
+            <FeaturedPortrait piece={featuredPiece} />
+            <Directory onExpand={openPiece} />
+          </div>
 
           <section className={styles.grid} aria-label="generative art grid">
-            {computerArt.map((piece) => (
+            {gridPieces.map((piece) => (
               <Tile key={piece.slug} piece={piece} onExpand={openPiece} />
             ))}
           </section>
