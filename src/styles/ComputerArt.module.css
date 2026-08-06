@@ -1,7 +1,3 @@
-/* this page is always dark, regardless of the site's light/dark
-   toggle elsewhere — same approach as /poetronics having its own
-   fixed night-sky aesthetic. */
-
 .page {
   --bg: #0a0a0a;
   --panel: #141414;
@@ -61,7 +57,7 @@
   margin: 0;
 }
 
-/* two-column layout: sticky sidebar + grid */
+/* two-column layout: sticky directory + grid */
 
 .layout {
   max-width: 88rem;
@@ -102,6 +98,7 @@
   height: 100%;
   border: none;
   display: block;
+  touch-action: manipulation;
 }
 
 .featuredCaption {
@@ -237,6 +234,7 @@
   display: block;
   background: #000;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .loadingTile {
@@ -551,4 +549,13 @@
   .grid {
     grid-template-columns: 1fr;
   }
+}
+
+.featuredCaption a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.featuredCaption a:hover {
+  text-decoration: underline;
 }
