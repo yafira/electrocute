@@ -3,8 +3,7 @@ import Head from "next/head";
 import computerArt from "../data/computerArt";
 import styles from "../styles/ComputerArt.module.css";
 
-const TAGLINE =
-  "tiny algorithms doodling on their own.";
+const TAGLINE = "tiny algorithms doodling on their own.";
 
 const featuredPiece = computerArt.find(
   (p) => p.slug === "self-portrait-kawaii",
@@ -135,7 +134,19 @@ function FeaturedPortrait({ piece }) {
           sandbox="allow-scripts allow-same-origin"
         />
       </div>
-      <p className={styles.featuredCaption}>click to change my face!</p>
+      <p className={styles.featuredCaption}>
+        hi, i&apos;m{" "}
+        <a
+          href="https://yafira.xyz/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "none" }}
+        >
+          yafira
+        </a>{" "}
+        aka electrocute! ✿<br></br>
+        click on my face to change it. ☻
+      </p>
     </div>
   );
 }
