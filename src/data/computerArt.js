@@ -227,12 +227,12 @@ const computerArt = [
     tags: ["p5.js"],
   },
   {
-    slug: "piet-mondrian-but-pastel",
-    title: "piet mondrian, but pastel",
+    slug: "soft-neoplasticism",
+    title: "soft neoplasticism",
     index: "22",
     tint: "mint",
     kind: "live",
-    embedPath: "/sketches/piet-mondrian-but-pastel/index.html",
+    embedPath: "/sketches/soft-neoplasticism/index.html",
     tags: ["p5.js"],
   },
   {
