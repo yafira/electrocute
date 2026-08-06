@@ -145,7 +145,7 @@ function FeaturedPortrait({ piece }) {
           yafira
         </a>{" "}
         aka electrocute! ✿<br></br>
-        click on my face to change it. ☻
+        click to switch my expression. ☻
       </p>
     </div>
   );
