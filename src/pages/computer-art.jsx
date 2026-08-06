@@ -124,15 +124,10 @@ function FeaturedPortrait({ piece }) {
       </div>
       <p className={styles.featuredCaption}>
         hi, i&apos;m{" "}
-        <a
-          href="https://yafira.xyz/"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ textDecoration: "none" }}
-        >
+        <a href="https://yafira.xyz/" target="_blank" rel="noopener noreferrer">
           yafira
         </a>{" "}
-        aka electrocute! ✿<br></br>
+        aka electrocute! ✿<br />
         click to switch my expression. ☻
       </p>
     </div>
