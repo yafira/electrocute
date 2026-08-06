@@ -31,6 +31,7 @@ function resolveEmbedUrl(piece) {
 function Tile({ piece, onExpand }) {
   const frameRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
+  const [isActive, setIsActive] = useState(false);
   const isSelfHosted = piece.kind === "live" && Boolean(piece.embedPath);
   const isInteractive = Boolean(piece.interactive);
 
@@ -48,6 +49,7 @@ function Tile({ piece, onExpand }) {
       (entries) => {
         entries.forEach((entry) => {
           setLoaded(entry.isIntersecting);
+          if (!entry.isIntersecting) setIsActive(false);
         });
       },
       { rootMargin: "200px" },
@@ -66,13 +68,29 @@ function Tile({ piece, onExpand }) {
       />
     ) : isSelfHosted ? (
       loaded ? (
-        <iframe
-          className={isInteractive ? styles.mediaInteractive : styles.media}
-          src={piece.embedPath}
-          title={piece.title}
-          loading="lazy"
-          sandbox="allow-scripts allow-same-origin"
-        />
+        <div
+          className={`${styles.interactiveContainer} ${isInteractive && isActive ? styles.interactiveActive : ""}`}
+        >
+          <iframe
+            className={isInteractive ? styles.mediaInteractive : styles.media}
+            src={piece.embedPath}
+            title={piece.title}
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin"
+          />
+          {isInteractive && (
+            <button
+              type="button"
+              className={styles.touchShield}
+              onClick={() => setIsActive(true)}
+              aria-label={`interact with ${piece.title}`}
+            >
+              <span className={styles.touchShieldLabel}>
+                {isActive ? "" : "tap to play ✨"}
+              </span>
+            </button>
+          )}
+        </div>
       ) : (
         <span className={styles.loadingTile} aria-hidden="true" />
       )
