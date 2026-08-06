@@ -90,7 +90,6 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   border: 1px solid var(--line);
-  overflow: hidden;
 }
 
 .featuredFrame iframe {
@@ -107,6 +106,15 @@
   line-height: 1.4;
   color: var(--muted);
   text-align: center;
+}
+
+.featuredCaption a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.featuredCaption a:hover {
+  text-decoration: underline;
 }
 
 .directory {
@@ -496,6 +504,10 @@
     flex-direction: column;
   }
 
+  .featuredCaption {
+    display: none;
+  }
+
   .sidebar {
     position: static;
     flex: none;
@@ -549,13 +561,4 @@
   .grid {
     grid-template-columns: 1fr;
   }
-}
-
-.featuredCaption a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.featuredCaption a:hover {
-  text-decoration: underline;
 }
