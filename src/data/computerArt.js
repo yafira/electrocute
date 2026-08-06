@@ -1,21 +1,22 @@
-// pieces for the /computer-art page.
-//
-// kind: "live"   → running p5.js sketch, self-hosted under
-//                  public/sketches/<slug>/ and lazy-loaded directly in
-//                  the grid tile, or opened full-size in the
-//                  fullscreen viewer on click. embedPath is the local
-//                  path to that sketch's index.html.
-// kind: "static" → a plotter print or other physical output. images is
-//                  an array of photos of the piece, shown as a small
-//                  gallery in the fullscreen viewer.
-//
-// only self-hosted pieces are listed here right now — sketches still
-// only available via the p5 editor were removed until their actual
-// source code comes in, since embedding the editor's own toolbar
-// inline in the grid isn't worth it. see git history / chat for the
-// removed gen-N placeholders if needed as a reference for re-adding.
+// pieces for /computer-art.
+// self-portrait-kawaii is shown separately, above the directory (see
+// computer-art.jsx) — not part of the numbered grid.
+// kind: "live" -> self-hosted sketch under public/sketches/<slug>/.
+//   skipLivePreview keeps it out of the grid's auto-preview (too heavy
+//   to run while scrolling), but it still opens fine in the viewer.
+// kind: "static" -> photos of a physical piece (e.g. plotter print).
 
 const computerArt = [
+  {
+    slug: "self-portrait-kawaii",
+    title: "self portrait, kawaii",
+    index: "01",
+    tint: "blush",
+    kind: "live",
+    embedPath: "/sketches/self-portrait-kawaii/index.html",
+    tags: ["p5.js"],
+    interactive: true,
+  },
   {
     slug: "radiant-pulse",
     title: "radiant pulse",
@@ -59,7 +60,7 @@ const computerArt = [
     tags: ["p5.js"],
   },
   {
-    slug: "sailor-moon-esque",
+    slug: "sailor-moon-city",
     title: "sailor moon city",
     index: "05",
     tint: "sky",
@@ -110,7 +111,7 @@ const computerArt = [
   },
   {
     slug: "plotter-drawing-10print",
-    title: "core memory plotter drawings",
+    title: "plotter drawing — 10 print",
     index: "10",
     tint: "butter",
     kind: "static",
@@ -232,6 +233,97 @@ const computerArt = [
     tint: "mint",
     kind: "live",
     embedPath: "/sketches/piet-mondrian-but-pastel/index.html",
+    tags: ["p5.js"],
+  },
+  {
+    slug: "infinite-radiance-expanded",
+    title: "infinite radiance, expanded",
+    index: "23",
+    tint: "sky",
+    kind: "live",
+    embedPath: "/sketches/infinite-radiance-expanded/index.html",
+    tags: ["p5.js"],
+  },
+  {
+    slug: "cellular-automaton",
+    title: "cellular automaton",
+    index: "24",
+    tint: "mint",
+    kind: "live",
+    embedPath: "/sketches/cellular-automaton/index.html",
+    tags: ["p5.js"],
+  },
+  {
+    slug: "phyllotaxis-1",
+    title: "phyllotaxis 1",
+    index: "25",
+    tint: "sky",
+    kind: "live",
+    embedPath: "/sketches/phyllotaxis-1/index.html",
+    tags: ["p5.js"],
+  },
+  {
+    slug: "phyllotaxis-2",
+    title: "phyllotaxis 2",
+    index: "26",
+    tint: "mint",
+    kind: "live",
+    embedPath: "/sketches/phyllotaxis-2/index.html",
+    tags: ["p5.js"],
+  },
+  {
+    slug: "phyllotaxis-3",
+    title: "phyllotaxis 3",
+    index: "27",
+    tint: "butter",
+    kind: "live",
+    embedPath: "/sketches/phyllotaxis-3/index.html",
+    tags: ["p5.js"],
+  },
+  {
+    slug: "phyllotaxis-4",
+    title: "phyllotaxis 4",
+    index: "28",
+    tint: "blush",
+    kind: "live",
+    embedPath: "/sketches/phyllotaxis-4/index.html",
+    tags: ["p5.js"],
+  },
+  {
+    slug: "distorted-pi",
+    title: "distorted pi",
+    index: "29",
+    tint: "sky",
+    kind: "live",
+    embedPath: "/sketches/distorted-pi/index.html",
+    tags: ["p5.js"],
+  },
+  {
+    slug: "l-system-tree",
+    title: "l-system tree",
+    index: "30",
+    tint: "mint",
+    kind: "live",
+    embedPath: "/sketches/l-system-tree/index.html",
+    tags: ["p5.js"],
+  },
+  {
+    slug: "algorithmic-botany",
+    title: "algorithmic botany",
+    index: "31",
+    tint: "sky",
+    kind: "live",
+    embedPath: "/sketches/algorithmic-botany/index.html",
+    tags: ["p5.js"],
+    skipLivePreview: true,
+  },
+  {
+    slug: "bubble-gum-smiley",
+    title: "bubble gum smiley",
+    index: "32",
+    tint: "blush",
+    kind: "live",
+    embedPath: "/sketches/bubble-gum-smiley/index.html",
     tags: ["p5.js"],
   },
 ];
