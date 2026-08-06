@@ -110,8 +110,8 @@ const computerArt = [
     tags: ["p5.js"],
   },
   {
-    slug: "plotter-drawing-10print",
-    title: "plotter drawing — 10 print",
+    slug: "plotter-drawing",
+    title: "core memory plotter drawing",
     index: "10",
     tint: "butter",
     kind: "static",
@@ -119,11 +119,11 @@ const computerArt = [
     blurb:
       "generated in p5, then sent to the plotter — pen on paper, drawn one line at a time.",
     images: [
-      "/assets/computer-art/plotter-drawing-10print/plot-01.png",
-      "/assets/computer-art/plotter-drawing-10print/plot-02.png",
-      "/assets/computer-art/plotter-drawing-10print/plot-03.png",
-      "/assets/computer-art/plotter-drawing-10print/plot-04.png",
-      "/assets/computer-art/plotter-drawing-10print/plot-05.png",
+      "/assets/computer-art/plotter-drawing/plot-01.png",
+      "/assets/computer-art/plotter-drawing/plot-02.png",
+      "/assets/computer-art/plotter-drawing/plot-03.png",
+      "/assets/computer-art/plotter-drawing/plot-04.png",
+      "/assets/computer-art/plotter-drawing/plot-05.png",
     ],
   },
   {
