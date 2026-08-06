@@ -4,7 +4,7 @@ import computerArt from "../data/computerArt";
 import styles from "../styles/ComputerArt.module.css";
 
 const TAGLINE =
-  "tiny algorithms doodling on their own — mostly p5.js, sometimes plotted onto real paper.";
+  "tiny algorithms doodling on their own.";
 
 const featuredPiece = computerArt.find(
   (p) => p.slug === "self-portrait-kawaii",
