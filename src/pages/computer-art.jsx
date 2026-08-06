@@ -31,7 +31,6 @@ function resolveEmbedUrl(piece) {
 function Tile({ piece, onExpand }) {
   const frameRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
-  const [isActive, setIsActive] = useState(false);
   const isSelfHosted = piece.kind === "live" && Boolean(piece.embedPath);
   const isInteractive = Boolean(piece.interactive);
 
@@ -40,16 +39,10 @@ function Tile({ piece, onExpand }) {
     const el = frameRef.current;
     if (!el) return undefined;
 
-    // bidirectional: mount the iframe when scrolled into view, but also
-    // unmount it again when scrolled back out. without this, every
-    // sketch you've ever scrolled past stays mounted and keeps
-    // animating in the background — with 30+ pieces that adds up fast
-    // and the page grinds to a crawl the further down you go.
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           setLoaded(entry.isIntersecting);
-          if (!entry.isIntersecting) setIsActive(false);
         });
       },
       { rootMargin: "200px" },
@@ -68,29 +61,13 @@ function Tile({ piece, onExpand }) {
       />
     ) : isSelfHosted ? (
       loaded ? (
-        <div
-          className={`${styles.interactiveContainer} ${isInteractive && isActive ? styles.interactiveActive : ""}`}
-        >
-          <iframe
-            className={isInteractive ? styles.mediaInteractive : styles.media}
-            src={piece.embedPath}
-            title={piece.title}
-            loading="lazy"
-            sandbox="allow-scripts allow-same-origin"
-          />
-          {isInteractive && (
-            <button
-              type="button"
-              className={styles.touchShield}
-              onClick={() => setIsActive(true)}
-              aria-label={`interact with ${piece.title}`}
-            >
-              <span className={styles.touchShieldLabel}>
-                {isActive ? "" : "tap to play ✨"}
-              </span>
-            </button>
-          )}
-        </div>
+        <iframe
+          className={styles.media}
+          src={piece.embedPath}
+          title={piece.title}
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin"
+        />
       ) : (
         <span className={styles.loadingTile} aria-hidden="true" />
       )
@@ -109,32 +86,25 @@ function Tile({ piece, onExpand }) {
         <span className={styles.tags}>{piece.tags.join(" / ")}</span>
       </div>
 
-      {isInteractive ? (
-        <div className={styles.frame} ref={frameRef}>
-          {media}
-        </div>
-      ) : (
-        <button
-          type="button"
-          className={styles.frame}
-          ref={frameRef}
-          onClick={() => onExpand(piece)}
-          aria-label={`open ${piece.title}`}
-        >
-          {media}
-        </button>
-      )}
+      <button
+        type="button"
+        className={styles.frame}
+        ref={frameRef}
+        onClick={() => onExpand(piece)}
+        aria-label={`open ${piece.title}`}
+      >
+        {media}
+      </button>
 
       <div className={styles.tileFoot}>
         <span className={styles.title}>{piece.title}</span>
         <span className={styles.expand} aria-hidden="true">
-          {isInteractive ? "click to change \u2728" : "\u2197"}
+          {isInteractive ? "tap to play \u2728" : "\u2197"}
         </span>
       </div>
     </div>
   );
 }
-
 // featured widget above the directory — just the self-portrait, live
 // and clickable, no lazy-load delay since it's always the first thing
 // on the page. a small personal touch before the numbered collection
