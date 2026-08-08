@@ -8,7 +8,6 @@ const KEY = "electrocute:notes";
 
 function clean(value, max) {
   return String(value || "")
-    .replace(/[<>]/g, "")
     .replace(/\s+/g, " ")
     .trim()
     .slice(0, max);
