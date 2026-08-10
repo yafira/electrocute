@@ -168,7 +168,7 @@ export const resources = [
   {
     slug: "ecute-club",
     title: "ecute club",
-    href: "https://ecute.club/",
+    href: "https://club.electrocute.io/",
     icon: "/assets/ecute.png",
     blurb: "a soft start guide to electronics.",
     tint: "#e8e6ff",
