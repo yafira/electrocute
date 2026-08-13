@@ -195,18 +195,17 @@
 
 /* photos on the canvas */
 
+/* wrapper that positions a photo on the canvas — handles x/y/rot/z
+   and the float animation. children (the button and, optionally,
+   a credit link) are positioned relative to THIS box, so they
+   automatically sit right against the image regardless of its
+   rendered height — no manual offset guessing needed. */
 .photoItem {
   position: absolute;
   left: var(--x, 50%);
   top: var(--y, 50%);
   width: var(--w, 170px);
   z-index: var(--z, 5);
-  display: block;
-  border: none;
-  background: transparent;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
   box-sizing: border-box;
 
   transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
@@ -219,6 +218,22 @@
   animation-play-state: paused;
   transform: translate(-50%, -50%) translateY(-10px) scale(1.15) rotate(0deg);
   z-index: 40;
+}
+
+/* the actual clickable button inside the wrapper — just fills it,
+   all positioning/animation lives on .photoItem above */
+.photoButton {
+  display: block;
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
 }
 
 .photo {
@@ -293,6 +308,33 @@
   opacity: 1;
 }
 
+/* maker credit link for a photo — e.g. crediting the artist who
+   made a physical object shown in the shot (like the kofi mug).
+   a real <a>, rendered as a sibling of .photoButton inside the
+   same .photoItem wrapper (can't nest a link inside the button).
+   positioned the same way .photoLabel is — relative to the
+   wrapper's own content box — so it sits right under the image
+   regardless of the image's actual rendered height, no manual
+   offset needed. unlike .photoLabel this is visible at rest, not
+   just on hover, since it's attribution rather than a title reveal. */
+.photoCredit {
+  position: absolute;
+  top: calc(100% + 34px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.photoCredit:hover {
+  color: #9d96e7;
+  text-decoration: underline;
+}
+
 @keyframes cozyFloat {
   0% {
     transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
@@ -356,6 +398,14 @@
   background: #2b2839;
   color: rgba(255, 255, 255, 0.7);
   border-color: rgba(255, 255, 255, 0.18);
+}
+
+:global(body.ecute-dark) .photoCredit {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+:global(body.ecute-dark) .photoCredit:hover {
+  color: #cbb8f2;
 }
 
 :global(body.ecute-dark) .cardPhotoReveal {
@@ -794,6 +844,14 @@
     transform: scale(1.06) rotate(0deg);
   }
   .photoLabel {
+    display: none;
+  }
+  /* the credit link is positioned relative to the desktop collage
+     canvas; in the mobile stacked grid that canvas collapses, so
+     the absolute --x/--y math no longer applies. hide it here and
+     let it live inline under the photo instead (see .photoCreditMobile
+     note in Container.js if you want it to reappear on mobile). */
+  .photoCredit {
     display: none;
   }
   .resourcesGrid {

@@ -30,6 +30,7 @@ const COLLAGE_ORDER = [
   { type: "card", slug: "poetronics" },
   { type: "card", slug: "computer-art" },
   { type: "card", slug: "soft-circuit-library" },
+  { type: "photo", slug: "kofi" },
   { type: "card", slug: "synthwave-chimes" },
   { type: "photo", slug: "pocket-oracle-of-time" },
   { type: "card", slug: "sailor-moon-calculator" },
@@ -160,12 +161,9 @@ export default function Container() {
           if (!p) return null;
 
           return (
-            <button
+            <div
               key={`photo-${p.slug}`}
-              type="button"
               className={styles.photoItem}
-              onClick={() => openProject(p.href, p.title, setOpen)}
-              title={p.title}
               style={{
                 "--x": p.pos.x,
                 "--y": p.pos.y,
@@ -176,29 +174,54 @@ export default function Container() {
                 "--label-offset": `${p.pos.labelOffset ?? 0}px`,
               }}
             >
-              <img
-                src={p.image}
-                alt={p.title}
-                className={
-                  p.hoverImage
-                    ? `${styles.photo} ${styles.photoBase}`
-                    : styles.photo
+              <button
+                type="button"
+                className={styles.photoButton}
+                onClick={() =>
+                  openProject(p.href, p.title, setOpen, p.panelSize)
                 }
-                loading="lazy"
-              />
-              {p.hoverImage && (
+                title={p.title}
+              >
                 <img
-                  src={p.hoverImage}
-                  alt=""
-                  aria-hidden="true"
-                  className={`${styles.photo} ${styles.photoHoverImg}`}
+                  src={p.image}
+                  alt={p.title}
+                  className={
+                    p.hoverImage
+                      ? `${styles.photo} ${styles.photoBase}`
+                      : styles.photo
+                  }
                   loading="lazy"
                 />
+                {p.hoverImage && (
+                  <img
+                    src={p.hoverImage}
+                    alt=""
+                    aria-hidden="true"
+                    className={`${styles.photo} ${styles.photoHoverImg}`}
+                    loading="lazy"
+                  />
+                )}
+                <span className={styles.photoLabel} aria-hidden="true">
+                  {p.title}
+                </span>
+              </button>
+
+              {/* maker-credit link for photos that need one (e.g. kofi
+                  mug credited to maoprojects). a real <a>, sibling of
+                  the button rather than nested inside it — sits inside
+                  the same positioned wrapper, so it lines up against
+                  the image automatically without any manual offset. */}
+              {p.credit && (
+                <a
+                  href={p.credit.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.photoCredit}
+                >
+                  {p.credit.text}
+                </a>
               )}
-              <span className={styles.photoLabel} aria-hidden="true">
-                {p.title}
-              </span>
-            </button>
+            </div>
           );
         })}
 
@@ -221,7 +244,7 @@ export default function Container() {
               isMobile={false}
             />
 
-            <TermTrinket x="8%" y="74%" rot={-2} isMobile={false} />
+            <TermTrinket x="6%" y="80%" rot={-2} isMobile={false} />
             <ResistorTrinket x="90%" y="78%" rot={6} isMobile={false} />
             <ScopeTrinket
               x="56%"
@@ -388,6 +411,7 @@ export default function Container() {
         <IframePanel
           url={open.href}
           title={open.title}
+          size={open.size}
           onClose={() => setOpen(null)}
         />
       )}

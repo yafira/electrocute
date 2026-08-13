@@ -26,15 +26,19 @@ export function isMobileViewport() {
 // dead-end "can't be embedded" panel on mobile and go straight to a
 // new tab. must be called directly from the click handler so
 // window.open stays inside the user gesture (popup blockers).
-export function openProject(href, title, setOpen) {
+//
+// `size` is optional — { w, h } in px — for embeds that need a
+// non-default panel size (e.g. Ko-fi's compact widget, which looks
+// lost in the normal 780x600 default). omit it for the normal size.
+export function openProject(href, title, setOpen, size) {
   if (!isEmbeddable(href) && isMobileViewport()) {
     window.open(href, "_blank", "noopener,noreferrer");
   } else {
-    setOpen({ href, title });
+    setOpen({ href, title, size });
   }
 }
 
-export default function IframePanel({ url, title, onClose }) {
+export default function IframePanel({ url, title, onClose, size }) {
   const loadingRef = useRef(null);
   const windowRef = useRef(null);
   const dragState = useRef(null);
@@ -49,15 +53,16 @@ export default function IframePanel({ url, title, onClose }) {
   }, [onClose]);
 
   useEffect(() => {
-    const w = Math.min(780, window.innerWidth - 48);
-    const h = Math.min(600, window.innerHeight - 80);
+    const w = Math.min(size?.w ?? 780, window.innerWidth - 48);
+    const h = Math.min(size?.h ?? 600, window.innerHeight - 80);
     setPos({
       x: Math.round((window.innerWidth - w) / 2),
       y: Math.round((window.innerHeight - h) / 4),
       w,
       h,
     });
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [size?.w, size?.h]);
 
   const onTitleBarMouseDown = (e) => {
     if (e.button !== 0) return;
