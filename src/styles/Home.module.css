@@ -319,7 +319,7 @@
    just on hover, since it's attribution rather than a title reveal. */
 .photoCredit {
   position: absolute;
-  top: calc(100% + 34px);
+  top: calc(100% + 28px);
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;

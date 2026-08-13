@@ -71,7 +71,7 @@ const projects = [
     hoverBg: "#e3d6fb",
     hoverBorder: "#cbb8f2",
     shape: "sticky",
-    pos: { x: "44%", y: "61%", rot: -3, z: 10 },
+    pos: { x: "42%", y: "61%", rot: -3, z: 10 },
   },
   {
     slug: "kawaii-ml",
@@ -121,7 +121,7 @@ const projects = [
     hoverBg: "#e9d4f4",
     hoverBorder: "#e89cf1",
     shape: "sticky",
-    pos: { x: "13%", y: "72%", rot: 1.6, z: 10 },
+    pos: { x: "13%", y: "71%", rot: 1.6, z: 10 },
   },
   {
     slug: "sailor-moon-calculator",
@@ -275,7 +275,7 @@ export const photoItems = [
     hoverImage: "/assets/craft/tendertronic2.png",
     href: "https://months-tap-da9.craft.me/tendertronic",
     labelOffset: -120,
-    pos: { x: "20%", y: "82%", w: 200, rot: -10, z: 6, delay: 2.1 },
+    pos: { x: "20%", y: "81%", w: 200, rot: -10, z: 6, delay: 2.1 },
   },
   {
     slug: "puffcast",
@@ -289,7 +289,7 @@ export const photoItems = [
     title: "custom light LEDs",
     image: "/assets/craft/custom-leds.jpg",
     href: "https://months-tap-da9.craft.me/led-lights",
-    pos: { x: "9%", y: "95%", w: 165, rot: 4, z: 4, delay: 1.5 },
+    pos: { x: "9%", y: "94%", w: 165, rot: 4, z: 4, delay: 1.5 },
   },
   {
     slug: "electrojute",
@@ -304,7 +304,8 @@ export const photoItems = [
     title: "support the lab",
     image: "/assets/kofi.png",
     href: "https://ko-fi.com/electrocutelab/?hidefeed=true&widget=true&embed=true&preview=true",
-    pos: { x: "15%", y: "56%", w: 150, rot: -3, z: 14, delay: 1.7 },
+    externalHref: "https://ko-fi.com/electrocutelab/",
+    pos: { x: "17%", y: "56%", w: 150, rot: -3, z: 14, delay: 1.7 },
     panelSize: { w: 460, h: 680 },
     credit: {
       text: "summer goth mug by maoprojects",

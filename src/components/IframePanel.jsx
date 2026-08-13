@@ -30,15 +30,28 @@ export function isMobileViewport() {
 // `size` is optional — { w, h } in px — for embeds that need a
 // non-default panel size (e.g. Ko-fi's compact widget, which looks
 // lost in the normal 780x600 default). omit it for the normal size.
-export function openProject(href, title, setOpen, size) {
+//
+// `externalUrl` is optional — use it when the URL that should load
+// IN the iframe differs from the URL the "open in new tab" button
+// and url bar should point to (e.g. Ko-fi: the iframe needs the
+// widget/embed query params, but "open in new tab" should go to the
+// plain profile page). omit it and both just use `href`.
+export function openProject(href, title, setOpen, size, externalUrl) {
   if (!isEmbeddable(href) && isMobileViewport()) {
-    window.open(href, "_blank", "noopener,noreferrer");
+    window.open(externalUrl || href, "_blank", "noopener,noreferrer");
   } else {
-    setOpen({ href, title, size });
+    setOpen({ href, title, size, externalUrl });
   }
 }
 
-export default function IframePanel({ url, title, onClose, size }) {
+export default function IframePanel({
+  url,
+  title,
+  onClose,
+  size,
+  externalUrl,
+}) {
+  const displayUrl = externalUrl || url;
   const loadingRef = useRef(null);
   const windowRef = useRef(null);
   const dragState = useRef(null);
@@ -162,7 +175,7 @@ export default function IframePanel({ url, title, onClose, size }) {
           </div>
           <span className={styles.windowTitle}>{title}</span>
           <a
-            href={url}
+            href={displayUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.externalBtn}
@@ -174,7 +187,7 @@ export default function IframePanel({ url, title, onClose, size }) {
         </div>
 
         <div className={styles.urlBar}>
-          <span className={styles.urlText}>{url}</span>
+          <span className={styles.urlText}>{displayUrl}</span>
         </div>
 
         <div className={styles.body}>
@@ -195,7 +208,7 @@ export default function IframePanel({ url, title, onClose, size }) {
             <div className={styles.blocked}>
               <p>this page can&apos;t be embedded.</p>
               <a
-                href={url}
+                href={displayUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.blockedLink}

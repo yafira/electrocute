@@ -178,7 +178,13 @@ export default function Container() {
                 type="button"
                 className={styles.photoButton}
                 onClick={() =>
-                  openProject(p.href, p.title, setOpen, p.panelSize)
+                  openProject(
+                    p.href,
+                    p.title,
+                    setOpen,
+                    p.panelSize,
+                    p.externalHref,
+                  )
                 }
                 title={p.title}
               >
@@ -244,7 +250,7 @@ export default function Container() {
               isMobile={false}
             />
 
-            <TermTrinket x="6%" y="80%" rot={-2} isMobile={false} />
+            <TermTrinket x="7%" y="80%" rot={-2} isMobile={false} />
             <ResistorTrinket x="90%" y="78%" rot={6} isMobile={false} />
             <ScopeTrinket
               x="56%"
@@ -412,6 +418,7 @@ export default function Container() {
           url={open.href}
           title={open.title}
           size={open.size}
+          externalUrl={open.externalUrl}
           onClose={() => setOpen(null)}
         />
       )}
