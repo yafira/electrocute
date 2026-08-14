@@ -31,13 +31,31 @@ const items = [
     href: "https://thesoft.computer/",
     blurb:
       "a textile computing object exploring calm technology and anti-optimization.",
-    pos: { x: "78%", y: "14%", w: 300, rot: 3, delay: 0.6 },
+    pos: { x: "68%", y: "14%", w: 300, rot: 3, delay: 0.6 },
     corpus: {
       openers: ["a slow machine", "the felt", "this quiet cavity"],
       closers: [
         "thinks without hurrying",
         "holds four kinds of memory",
         "waits to be touched",
+      ],
+    },
+  },
+  {
+    slug: "soft-computer-mini-travel",
+    title: "soft computer mini (travel edition)",
+    image: "/assets/craft/soft-computer-mini.png",
+    hoverImage: "/assets/craft/soft-computer-mini2.png",
+    href: "https://thesoft.computer/",
+    blurb:
+      "a pocket-sized reader for slow poems — four felt keys, a flower button, and an e-ink screen that blooms one line at a time.",
+    pos: { x: "45%", y: "40%", w: 240, rot: -4, delay: 1.0 },
+    corpus: {
+      openers: ["the pocket reader", "a folded felt", "the traveling flower"],
+      closers: [
+        "blooms one line at a time",
+        "fits in a palm, not a gallery",
+        "keeps its poems close for the trip",
       ],
     },
   },
@@ -66,7 +84,7 @@ const items = [
     href: "https://months-tap-da9.craft.me/moonpocket",
     blurb:
       "a small pocket that keeps a sliver of moonlight, and a circuit, close.",
-    pos: { x: "46%", y: "40%", w: 275, rot: 2, delay: 0.9 },
+    pos: { x: "45%", y: "75%", w: 280, rot: -10, delay: 2.1 },
     corpus: {
       openers: ["the pocket", "a sliver of moon", "this small dark"],
       closers: [
@@ -84,7 +102,7 @@ const items = [
     href: "https://months-tap-da9.craft.me/oracle",
     blurb:
       "a small e-ink oracle that offers a quiet poem instead of the time — no button, no rush.",
-    pos: { x: "80%", y: "58%", w: 230, rot: 5, delay: 1.2 },
+    pos: { x: "80%", y: "50%", w: 230, rot: 5, delay: 1.2 },
     corpus: {
       openers: ["the oracle", "the e-ink face", "the hour"],
       closers: [
@@ -102,7 +120,7 @@ const items = [
     href: "https://months-tap-da9.craft.me/tendertronic",
     blurb:
       "an analog synth that's sharp and loud by nature — the softness is in how patiently you tune it.",
-    pos: { x: "28%", y: "74%", w: 280, rot: -10, delay: 2.1 },
+    pos: { x: "10%", y: "70%", w: 275, rot: 2, delay: 0.9 },
     corpus: {
       openers: ["the circuit", "an untuned oscillator", "the loudest knob"],
       closers: [
@@ -439,7 +457,7 @@ export default function Poetronics() {
         </div>
         <div
           className={styles.thoughtTrail}
-          style={{ left: "50%", top: "89%", "--rot": "2deg" }}
+          style={{ left: "25%", top: "89%", "--rot": "2deg" }}
         >
           hush...
         </div>
