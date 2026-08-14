@@ -1,0 +1,34 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- cup body: rounded rectangle outline -->
+  <rect
+    x="16" y="98"
+    width="392" height="332"
+    rx="48"
+    fill="none"
+    stroke="#000000"
+    stroke-width="32"
+  />
+
+  <!-- handle: rounded D shape, open on the left where it meets the cup -->
+  <path
+    d="M408 184
+       Q 500 184 500 264
+       Q 500 344 408 344"
+    fill="none"
+    stroke="#000000"
+    stroke-width="32"
+    stroke-linecap="round"
+  />
+
+  <!-- heart, filled black, smaller and centered within the cup -->
+  <path
+    d="M212 320
+       C 172 286 128 252 128 202
+       C 128 172 150 150 178 150
+       C 196 150 210 159 212 178
+       C 214 159 228 150 246 150
+       C 274 150 296 172 296 202
+       C 296 252 252 286 212 320 Z"
+    fill="#000000"
+  />
+</svg>
