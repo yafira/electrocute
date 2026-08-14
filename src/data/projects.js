@@ -248,6 +248,14 @@ export const photoItems = [
     pos: { x: "88%", y: "17%", w: 215, rot: 3, z: 12, delay: 0.6 },
   },
   {
+    slug: "soft-computer-mini-travel",
+    title: "soft computer mini (travel edition)",
+    image: "/assets/craft/soft-computer-mini2.png",
+    hoverImage: "/assets/craft/soft-computer-mini.png",
+    href: "https://thesoft.computer/",
+    pos: { x: "63%", y: "38%", w: 200, rot: -4, z: 8, delay: 1.0 },
+  },
+  {
     slug: "ribbon-logic",
     title: "ribbon logic",
     image: "/assets/craft/ribbon-logic.png",
