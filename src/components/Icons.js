@@ -112,6 +112,21 @@ export default function Icons({ size = 25 }) {
         />
       </Link>
       <Link
+        href="https://ko-fi.com/electrocutelab"
+        title="ko-fi"
+        aria-label="support on ko-fi"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Image
+          src="/assets/kofi-icon.svg"
+          alt=""
+          width={s}
+          height={s}
+          aria-hidden="true"
+        />
+      </Link>
+      <Link
         href="mailto:electrocutelab@protonmail.com"
         title="email"
         aria-label="email"
