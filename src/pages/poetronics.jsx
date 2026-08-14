@@ -48,7 +48,7 @@ const items = [
     hoverImage: "/assets/craft/soft-computer-mini2.png",
     href: "https://thesoft.computer/",
     blurb:
-      "a pocket-sized reader for slow poems — four felt keys, a flower button, and an e-ink screen that blooms one line at a time.",
+      "the travel-sized sibling of the original soft computer — a flower trackpad, soft keys, and an e-ink screen that blooms one line at a time.",
     pos: { x: "45%", y: "40%", w: 240, rot: -4, delay: 1.0 },
     corpus: {
       openers: ["the pocket reader", "a folded felt", "the traveling flower"],
