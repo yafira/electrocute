@@ -3,7 +3,7 @@ import Head from "next/head";
 import computerArt from "../data/computerArt";
 import styles from "../styles/ComputerArt.module.css";
 
-const TAGLINE = "tiny algorithms doodling on their own.";
+const TAGLINE = "tiny algorithms, drawn through code";
 
 const featuredPiece = computerArt.find(
   (p) => p.slug === "self-portrait-kawaii",
