@@ -270,15 +270,6 @@ export default function SoftInterfaces() {
             </a>{" "}
             by sarah cadigan-fried
           </p>
-          <a
-            href="https://instagram.com/softinterfaces"
-            target="_blank"
-            rel="noreferrer"
-            className={styles.instagramLink}
-            aria-label="Follow soft interfaces on Instagram"
-          >
-            <i className="fa-brands fa-instagram"></i>
-          </a>
         </footer>
       </main>
     </>
