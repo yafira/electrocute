@@ -1,6 +1,7 @@
 import styles from "../styles/Header.module.css";
 import Link from "next/link";
 import { useState } from "react";
+import PrintToggle from "./PrintToggle";
 
 export default function Header() {
   const [petals, setPetals] = useState([]);
@@ -22,6 +23,8 @@ export default function Header() {
 
   return (
     <div className={styles.Header}>
+      <PrintToggle />
+
       <Link href="/">
         <h1 className={styles.logo}>
           <span>electrocute</span>
