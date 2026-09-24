@@ -17,7 +17,6 @@
     "electrocute-ui": "^0.3.6",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
-    "fluoro-riso": "^0.1.1",
     "framer-motion": "^10.12.4",
     "mini-css-extract-plugin": "^2.7.6",
     "next": "13.3.0",
