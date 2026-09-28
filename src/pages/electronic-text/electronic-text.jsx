@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
-import electronicText from "../data/electronicText";
+import electronicText from "../../data/electronicText";
 import styles from "../styles/ElectronicText.module.css";
 
 const TAGLINE = "poems written by rules, grammars, and chance";
