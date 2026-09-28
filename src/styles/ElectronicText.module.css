@@ -56,46 +56,178 @@
   margin: 0;
 }
 
-/* contents */
+/* grid of pieces */
 
-.contents {
+.grid {
   max-width: 56rem;
-  margin: 0 auto 4rem;
-  padding: 1rem 0;
+  margin: 0 auto;
+  padding-top: 2rem;
   border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+  gap: 2.5rem 1.5rem;
+}
+
+.tile {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 2rem;
-  font-size: 0.85rem;
-}
-
-.contents a {
-  text-decoration: none;
-  display: inline-flex;
+  flex-direction: column;
   gap: 0.6rem;
+  text-decoration: none;
+  color: var(--ink);
+  min-width: 0;
 }
 
-.contents a:hover,
-.contents a:focus-visible {
+.tileHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.tileTools {
+  font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tileFrame {
+  display: block;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--ink);
+  overflow: hidden;
+  position: relative;
+  container-type: inline-size;
+  transition: transform 0.15s ease;
+}
+
+.tile:hover .tileFrame,
+.tile:focus-visible .tileFrame {
+  transform: translate(-3px, -3px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.tile:focus-visible {
+  outline: none;
+}
+
+.tileText {
+  display: block;
+  height: 100%;
+  padding: 1rem;
+  background: var(--paper);
+}
+
+.tileText pre {
+  margin: 0;
+  font-family: var(--body);
+  /* the longest stanza line is about 44 characters with its indent, so size to fit the tile */
+  font-size: 0.6rem;
+  font-size: min(0.75rem, calc((100cqi - 2rem) / 27));
+  line-height: 1.7;
+  white-space: pre;
+}
+
+.tilePhoto {
+  display: block;
+  height: 100%;
+  position: relative;
+}
+
+.tilePhoto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tilePhotoHover {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.tile:hover .tilePhotoHover {
+  opacity: 1;
+}
+
+.tileDark {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  padding: 1rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.tilePixel {
+  font-family: var(--pixel);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.tileFoot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.tileTitle {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.tile:hover .tileTitle {
   text-decoration: underline;
 }
 
-/* pieces */
+.tileSummary {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  font-weight: 300;
+  color: var(--muted);
+}
 
-.pieces {
+/* a single piece's page */
+
+.detail {
   max-width: 56rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 6rem;
+  gap: 1.75rem;
 }
 
-.piece {
+.detailHeader {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  scroll-margin-top: 2rem;
+}
+
+.detailHeader .eyebrow {
+  margin: 0;
+}
+
+.pager {
+  max-width: 56rem;
+  margin: 5rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ink);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.8rem;
+}
+
+.pager a {
+  text-decoration: none;
+}
+
+.pager a:hover,
+.pager a:focus-visible {
+  text-decoration: underline;
 }
 
 .pieceHead {
@@ -114,8 +246,9 @@
 }
 
 .pieceTitle {
-  font-size: 1.25rem;
-  font-weight: 500;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 400;
+  line-height: 1.1;
   margin: 0;
 }
 
@@ -287,7 +420,7 @@
 
 .footer {
   max-width: 56rem;
-  margin: 6rem auto 0;
+  margin: 4rem auto 0;
   padding-top: 1.5rem;
   border-top: 1px solid var(--line);
   font-size: 0.75rem;
