@@ -1,0 +1,315 @@
+.page {
+  --paper: #ffffff;
+  --ink: #0a0a0a;
+  --muted: #6b6b6b;
+  --faint: #bdbdbd;
+  --line: #e2e2e2;
+
+  --body: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --pixel: "Pixelify Sans", "IBM Plex Mono", monospace;
+
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--body);
+  padding: 4rem 1.5rem 6rem;
+}
+
+.page a {
+  color: inherit;
+}
+
+/* header */
+
+.header {
+  max-width: 56rem;
+  margin: 0 auto 2rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.eyebrow:hover,
+.eyebrow:focus-visible {
+  color: var(--ink);
+}
+
+.title1 {
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+  margin: 0 0 0.75rem;
+}
+
+.tagline {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--muted);
+  font-weight: 300;
+  margin: 0;
+}
+
+/* contents */
+
+.contents {
+  max-width: 56rem;
+  margin: 0 auto 4rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  font-size: 0.85rem;
+}
+
+.contents a {
+  text-decoration: none;
+  display: inline-flex;
+  gap: 0.6rem;
+}
+
+.contents a:hover,
+.contents a:focus-visible {
+  text-decoration: underline;
+}
+
+/* pieces */
+
+.pieces {
+  max-width: 56rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.piece {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  scroll-margin-top: 2rem;
+}
+
+.pieceHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+.index {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.pieceTitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.meta {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.blurb {
+  margin: 0;
+  max-width: 62ch;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.work {
+  min-width: 0;
+}
+
+.pieceFoot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.origin {
+  margin: 0;
+  max-width: 56ch;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.links a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+}
+
+.links a:hover,
+.links a:focus-visible {
+  border-bottom-style: dashed;
+}
+
+/* live piece */
+
+.liveFrame {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: var(--paper);
+  color-scheme: light;
+}
+
+/* sample poems + photo */
+
+.poemsLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.photo {
+  position: relative;
+  margin: 0;
+  border: 1px solid var(--line);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photoHover {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.photo:hover .photoHover {
+  opacity: 1;
+}
+
+.samples {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 2rem 1.5rem;
+}
+
+.sample {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.sampleLabel {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sampleText {
+  margin: 0;
+  font-family: var(--body);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* single poem */
+
+.poemBlock {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.poemTitle {
+  margin: 0;
+  font-family: var(--pixel);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.poemText {
+  margin: 0;
+  font-family: var(--body);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  font-weight: 300;
+  white-space: pre-wrap;
+}
+
+.pending {
+  margin: 0;
+  padding: 2rem;
+  border: 1px dashed var(--faint);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* footer */
+
+.footer {
+  max-width: 56rem;
+  margin: 6rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 2.5rem 1rem 4rem;
+  }
+  .poemsLayout {
+    grid-template-columns: 1fr;
+  }
+  .photo {
+    max-width: 15rem;
+  }
+  .meta {
+    margin-left: 0;
+    width: 100%;
+  }
+}

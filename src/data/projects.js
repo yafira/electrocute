@@ -49,6 +49,18 @@ const projects = [
     pos: { x: "77%", y: "34%", rot: 2, z: 10 },
   },
   {
+    slug: "electronic-text",
+    title: "electronic text",
+    href: "/electronic-text",
+    icon: "/assets/electronic-text-icon.svg",
+    blurb: "poems written by rules, grammars, and chance.",
+    tint: "#f7f7f7",
+    hoverBg: "#ececec",
+    hoverBorder: "#cfcfcf",
+    shape: "sticky",
+    pos: { x: "13%", y: "20.5%", rot: 1.5, z: 10 },
+  },
+  {
     slug: "neural-nectar",
     title: "neural nectar",
     href: "https://neural-nectar.vercel.app", // ← swap in your actual deployed URL

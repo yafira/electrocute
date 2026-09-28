@@ -29,6 +29,7 @@ const COLLAGE_ORDER = [
   { type: "card", slug: "soft-components" },
   { type: "card", slug: "poetronics" },
   { type: "card", slug: "computer-art" },
+  { type: "card", slug: "electronic-text" },
   { type: "card", slug: "soft-circuit-library" },
   { type: "photo", slug: "kofi" },
   { type: "card", slug: "synthwave-chimes" },

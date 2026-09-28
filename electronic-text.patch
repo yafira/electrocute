@@ -1,0 +1,1076 @@
+diff --git a/README.md b/README.md
+index 6ce6bd2..36fafc6 100644
+--- a/README.md
++++ b/README.md
+@@ -10,6 +10,7 @@ electrocute is where i document my creative endeavors, experiments, craft, and c
+ 
+ - **[soft interfaces](https://electrocute.io/soft-interfaces)** — a portfolio of projects rendered as pastel swatch cards pinned to a graph paper wall
+ - **[computer art](https://electrocute.io/computer-art)** — a dark, directory-indexed gallery of generative p5.js sketches and plotter prints; click any piece to view it full screen
++- **[electronic text](https://electrocute.io/electronic-text)** — generative poems and poetry objects in black and white, including a computer of ___, a live poem readers can write into
+ - **[electrodex](https://electrocute.io/electrodex)** — a community directory of creative tech spaces, makerspaces, and textile/craft communities, styled as a singly linked list (hex memory addresses, pointer wires and all)
+ - **poemdeck** — a little generative poetry gadget powered by tracery grammars
+ - **about + contact** — who i am and how to reach me
+diff --git a/public/assets/electronic-text-icon.svg b/public/assets/electronic-text-icon.svg
+new file mode 100644
+index 0000000..225ba26
+--- /dev/null
++++ b/public/assets/electronic-text-icon.svg
+@@ -0,0 +1,5 @@
++<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
++  <rect x="8" y="10" width="48" height="34" rx="6" fill="none" stroke="#9a9a9a" stroke-width="3"/>
++  <path d="M16 22 H34 M20 29 H40 M24 36 H32" fill="none" stroke="#9a9a9a" stroke-width="2.4" stroke-linecap="round"/>
++  <path d="M32 44 V50 M22 53 H42" fill="none" stroke="#9a9a9a" stroke-width="3" stroke-linecap="round"/>
++</svg>
+diff --git a/public/text/a-computer-of/README.md b/public/text/a-computer-of/README.md
+new file mode 100644
+index 0000000..1170ba2
+--- /dev/null
++++ b/public/text/a-computer-of/README.md
+@@ -0,0 +1,85 @@
++# a computer of ___
++
++A generative poem that builds soft computers: imaginary machines made of fabric, powered gently, and built without urgency. The reader can help build them.
++
++Each stanza assembles one machine in a seven-line cascade: material, binding, power, interface, place, inhabitant, promise. Each line steps further in, like something being carefully layered. Every visit opens with a finished machine, and each click or press of the space bar builds another one line by line.
++
++```
++A computer of moss
++     held by snaps and patience
++          powered by a long nap
++               with a screen that refuses urgency
++                    resting in the studio after critique
++                         inhabited by a shy machine spirit
++                              and it will wait for you.
++```
++
++## Two ways to build
++
++**my words** builds from seven lists of phrases I wrote from my own design practice: "laced with ribbon logic", "a screen that refuses urgency", "it will never ask for your attention twice".
++
++**our words** braids the reader's phrases in with mine. The reader writes into seven fields, and each field finishes the words above it ("a computer of ___", "powered by ___", "and ___"). For each line the generator tosses a coin between my phrases and the reader's; a part they leave empty comes from mine. A reader who writes a single phrase has the same chance of appearing as my whole list. The reader's phrases are underlined, so you can see where their words sit next to mine.
++
++## Why the web
++
++The poem started as a Python notebook that printed seven stanzas and stopped. In the browser it keeps going, and it can take in the reader's words. The machine stops being something I describe to you and becomes something we build together, one line mine, the next yours.
++
++## How it works
++
++Each line of the cascade is a prefix, a slot, and an ending:
++
++```js
++const CASCADE = [
++  ["A computer of ", "material", ""],
++  ["", "structure", ""],
++  ["powered by ", "power", ""],
++  ["with ", "interface", ""],
++  ["resting ", "location", ""],
++  ["inhabited by ", "inhabitant", ""],
++  ["and ", "promise", "."]
++];
++```
++
++Each slot is filled from my vocabulary, or in **our words**, from a coin toss between my phrases and the reader's:
++
++```js
++function fill(slot) {
++  const yours = yourWords(slot);
++  if (state.src === "mine") return { word: pick(MINE[slot]), mine: false };
++  // an even chance either way, so a single phrase of theirs is as likely as my whole list
++  if (yours.length && Math.random() < 0.5) return { word: pick(yours), mine: true };
++  return { word: pick(MINE[slot]), mine: false };
++}
++```
++
++The stepped indentation is one CSS rule. Each line gets its position in the cascade as `--i`:
++
++```css
++.line { padding-left: calc(var(--i) * var(--step)); }
++```
++
++`--step` is `5ch` on wide screens and `2ch` on phones, so the cascade fits a narrow screen without scrolling sideways.
++
++## Files
++
++- `index.html` holds the markup: the poem, the mode buttons, and the reader's form.
++- `style.css` holds the black-and-white styling, the cascade, and the light and dark themes.
++- `script.js` holds the vocabulary, the generator, the line-by-line reveal, and the saving of the reader's phrases.
++
++## Running it
++
++Open `index.html` in a browser, with `style.css` and `script.js` in the same folder. No build step, no server, and no libraries.
++
++The only external resource is IBM Plex Mono from Google Fonts. Without a connection it falls back to the system monospace font.
++
++## Origin
++
++The generator began as Assignment #1 in Reading and Writing Electronic Text at NYU ITP, taught by Allison Parrish. The notebook is `poetry_generator.ipynb` in [electronic-txt](https://github.com/yafira/electronic-txt). The vocabulary, the seven-line structure, and the stepped indentation all come from that notebook. The web version adds the reader.
++
++## Privacy
++
++Phrases typed into the fields are saved only in that reader's own browser, so they're still there on the next visit. Nothing is sent anywhere, and "clear" empties them.
++
++## Credits
++
++Yafira Martinez, 2026.
+diff --git a/public/text/a-computer-of/favicon.svg b/public/text/a-computer-of/favicon.svg
+new file mode 100644
+index 0000000..cef77e1
+--- /dev/null
++++ b/public/text/a-computer-of/favicon.svg
+@@ -0,0 +1,16 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
++  <style>
++    .ink { fill: none; stroke: #0a0a0a; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
++    .screen { fill: #ffffff; }
++    @media (prefers-color-scheme: dark) {
++      .ink { stroke: #f5f5f5; }
++      .screen { fill: #0a0a0a; }
++    }
++  </style>
++  <!-- monitor -->
++  <rect class="ink screen" x="4" y="4" width="24" height="17" rx="4"/>
++  <!-- a blank on the screen, like the ___ in the title -->
++  <path class="ink" d="M9.5 15.5h7"/>
++  <!-- stand -->
++  <path class="ink" d="M16 21v4M10 27.5h12"/>
++</svg>
+diff --git a/public/text/a-computer-of/index.html b/public/text/a-computer-of/index.html
+new file mode 100644
+index 0000000..1a1796c
+--- /dev/null
++++ b/public/text/a-computer-of/index.html
+@@ -0,0 +1,55 @@
++<!doctype html>
++<html lang="en">
++<head>
++<meta charset="utf-8">
++<meta name="viewport" content="width=device-width, initial-scale=1">
++<title>a computer of ___</title>
++<link rel="icon" href="favicon.svg" type="image/svg+xml">
++<link rel="preconnect" href="https://fonts.googleapis.com">
++<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap">
++<link rel="stylesheet" href="style.css">
++</head>
++<body>
++<div class="wrap">
++  <header>
++    <h1>a computer of ___</h1>
++    <p>A generator of soft computers: imaginary machines made of fabric, powered gently, built without urgency. Each stanza assembles one machine in seven steps: material, binding, power, interface, place, inhabitant, promise.</p>
++  </header>
++
++  <button id="stage" type="button" aria-label="Build another computer" aria-live="polite"></button>
++
++  <div class="panel">
++    <div class="controls">
++      <div class="group" role="group" aria-label="Whose words">
++        <button id="src-mine" type="button" aria-pressed="false">my words</button>
++        <button id="src-ours" type="button" aria-pressed="true">our words</button>
++      </div>
++      <button id="again" class="again" type="button">build another</button>
++    </div>
++    <p class="hint" id="hint"></p>
++    <form id="yours" class="yours">
++      <p class="yours-intro">Write your own parts of the machine and they will be braided in with mine. Separate phrases with commas. Each field finishes the words above it.</p>
++      <div class="fields">
++        <label for="f-material"><span>a computer of</span><input id="f-material" autocomplete="off" placeholder="moss, my old sweater"></label>
++        <label for="f-structure"><span>held together how?</span><input id="f-structure" autocomplete="off" placeholder="pinned with hair clips"></label>
++        <label for="f-power"><span>powered by</span><input id="f-power" autocomplete="off" placeholder="a long nap, streetlight"></label>
++        <label for="f-interface"><span>with</span><input id="f-interface" autocomplete="off" placeholder="a button that hums back"></label>
++        <label for="f-location"><span>resting</span><input id="f-location" autocomplete="off" placeholder="on the fire escape"></label>
++        <label for="f-inhabitant"><span>inhabited by</span><input id="f-inhabitant" autocomplete="off" placeholder="my grandmother's recipes"></label>
++        <label for="f-promise"><span>and</span><input id="f-promise" autocomplete="off" placeholder="it will wait for you"></label>
++      </div>
++      <div class="form-actions">
++        <button type="submit" class="again">build with these</button>
++        <button type="button" id="clear-yours" class="toggle">clear</button>
++      </div>
++    </form>
++  </div>
++
++  <footer>
++    <p><b>my words</b> builds from seven lists of phrases I wrote from my own design practice. <b>our words</b> braids your phrases in with mine, taking each line from one or the other. Your phrases are underlined.</p>
++    <p>Yafira Martinez, 2026</p>
++  </footer>
++</div>
++<script src="script.js"></script>
++</body>
++</html>
+diff --git a/public/text/a-computer-of/script.js b/public/text/a-computer-of/script.js
+new file mode 100644
+index 0000000..af653f6
+--- /dev/null
++++ b/public/text/a-computer-of/script.js
+@@ -0,0 +1,151 @@
++// my vocabulary, from the original generator
++const MINE = {
++  material: ["felt", "knit", "tulle", "conductive thread", "soft silicone", "foam", "velvet", "gel", "mesh", "industrial felt", "cloud fiber"],
++  structure: ["stitched with running thread", "sealed with a slow zipper", "laced with ribbon logic", "held by snaps and patience", "taped with care (temporary)", "woven in loops that remember"],
++  power: ["moonlight", "usb power", "a warm battery", "static", "a dim wall outlet", "no power at all", "a shared charge"],
++  interface: ["a keyboard that blushes when touched", "a screen that refuses urgency", "buttons that only work if you're gentle", "a dial that drifts like weather", "a touchpad made of cloth and friction", "a cursor that waits for your breath"],
++  location: ["under a desk lamp at midnight", "in a room where time is slower", "inside a tote bag", "by the window with quiet air", "in the studio after critique", "near a plant that survives anyway"],
++  inhabitant: ["people who log off early", "hands learning softness", "a shy machine spirit", "tired students and their prototypes", "a small archive of care", "memories that don't want to be optimized"],
++  promise: ["it will not rush you", "it will misbehave politely", "it will keep your secrets imperfectly", "it will take breaks with you", "it will glow only when needed", "it will never ask for your attention twice"]
++};
++
++// the seven-line cascade
++const CASCADE = [
++  ["A computer of ", "material", ""],
++  ["", "structure", ""],
++  ["powered by ", "power", ""],
++  ["with ", "interface", ""],
++  ["resting ", "location", ""],
++  ["inhabited by ", "inhabitant", ""],
++  ["and ", "promise", "."]
++];
++const SLOTS = CASCADE.map(c => c[1]);
++
++const pick = a => a[Math.floor(Math.random() * a.length)];
++const state = { src: "ours" };
++const theirs = {};
++const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
++
++// the reader's phrases for one slot
++function yourWords(slot) {
++  return (theirs[slot] || "").split(",").map(s => s.trim()).filter(Boolean);
++}
++
++// one slot's word: mine, or in our words a coin toss between mine and theirs
++function fill(slot) {
++  const yours = yourWords(slot);
++  if (state.src === "mine") return { word: pick(MINE[slot]), mine: false };
++  // an even chance either way, so a single phrase of theirs is as likely as my whole list
++  if (yours.length && Math.random() < 0.5) return { word: pick(yours), mine: true };
++  return { word: pick(MINE[slot]), mine: false };
++}
++
++function buildStanza() {
++  return CASCADE.map(([pre, slot, post]) => ({ pre, post, ...fill(slot) }));
++}
++
++function fillLine(el, l) {
++  el.textContent = "";
++  el.append(l.pre);
++  const w = document.createElement("span");
++  w.className = "w" + (l.mine ? " mine" : "");
++  w.textContent = l.word;
++  el.append(w, l.post);
++}
++
++const stage = document.getElementById("stage");
++const history = [];
++let building = false;
++
++function render() {
++  stage.textContent = "";
++  history.forEach((s, idx) => {
++    const st = document.createElement("span");
++    st.className = "stanza" + (idx < history.length - 1 ? " old" : "");
++    s.forEach((l, i) => {
++      const el = document.createElement("span");
++      el.className = "line";
++      el.style.setProperty("--i", i);
++      fillLine(el, l);
++      st.append(el);
++    });
++    stage.append(st);
++  });
++}
++
++const wait = ms => new Promise(r => setTimeout(r, ms));
++
++async function another() {
++  if (building) return;
++  building = true;
++  history.push(buildStanza());
++  if (history.length > 4) history.shift();
++  render();
++  if (!reduced) {
++    const lines = [...stage.lastElementChild.children];
++    lines.forEach(el => el.classList.add("pending"));
++    for (const el of lines) {
++      el.classList.remove("pending");
++      await wait(260);
++    }
++  }
++  building = false;
++}
++
++function setHint() {
++  const given = SLOTS.filter(s => yourWords(s).length).length;
++  const h = document.getElementById("hint");
++  if (state.src === "mine") h.textContent = "Click the poem or press space to build another.";
++  else h.textContent = given
++    ? "Each line comes from my phrases or yours. Yours are underlined."
++    : "Write into the fields below and your phrases will be braided in with mine.";
++}
++
++function sync() {
++  ["mine", "ours"].forEach(k => document.getElementById("src-" + k).setAttribute("aria-pressed", state.src === k));
++  document.getElementById("yours").hidden = state.src === "mine";
++  setHint();
++}
++
++["mine", "ours"].forEach(k => {
++  document.getElementById("src-" + k).onclick = () => { state.src = k; sync(); another(); };
++});
++
++// the reader's phrases stay in their own browser between visits, when the browser allows it
++const KEY = "acomputerof-words";
++function save() { try { localStorage.setItem(KEY, JSON.stringify(theirs)); } catch (e) {} }
++function load() {
++  try { Object.assign(theirs, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) {}
++  SLOTS.forEach(s => { document.getElementById("f-" + s).value = theirs[s] || ""; });
++}
++SLOTS.forEach(s => {
++  document.getElementById("f-" + s).addEventListener("input", e => { theirs[s] = e.target.value; save(); setHint(); });
++});
++document.getElementById("yours").addEventListener("submit", e => { e.preventDefault(); another(); });
++document.getElementById("clear-yours").onclick = () => {
++  SLOTS.forEach(s => { theirs[s] = ""; document.getElementById("f-" + s).value = ""; });
++  save();
++  setHint();
++};
++
++document.getElementById("again").onclick = another;
++stage.onclick = another;
++document.addEventListener("keydown", e => {
++  if (e.code === "Space" && e.target === document.body) { e.preventDefault(); another(); }
++});
++
++// each visit starts with a finished machine already on the page
++load();
++sync();
++history.push(buildStanza());
++render();
++
++// when embedded with ?embed, hide the header and footer and tell the host page how tall to be
++if (new URLSearchParams(location.search).has("embed")) {
++  document.documentElement.classList.add("embed");
++  const report = () => parent.postMessage({ type: "acomputerof:height", height: document.documentElement.scrollHeight }, "*");
++  new ResizeObserver(report).observe(document.body);
++  // the host may start listening after this runs, so it can ask again
++  window.addEventListener("message", e => { if (e.data?.type === "acomputerof:measure") report(); });
++  report();
++}
+diff --git a/public/text/a-computer-of/style.css b/public/text/a-computer-of/style.css
+new file mode 100644
+index 0000000..e1a70fe
+--- /dev/null
++++ b/public/text/a-computer-of/style.css
+@@ -0,0 +1,83 @@
++/* layout: one column, the stanza cascades down and to the right like layered cloth; controls sit under it */
++:root {
++  --paper: #ffffff;
++  --ink: #0a0a0a;
++  --ink-soft: #6b6b6b;
++  --ink-faint: #bdbdbd;
++  --rule: #e2e2e2;
++  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
++  --step: 5ch;
++}
++@media (prefers-color-scheme: dark) {
++  :root:not([data-theme="light"]) { --paper: #0a0a0a; --ink: #f5f5f5; --ink-soft: #9a9a9a; --ink-faint: #4a4a4a; --rule: #262626; color-scheme: dark; }
++}
++:root[data-theme="dark"] { --paper: #0a0a0a; --ink: #f5f5f5; --ink-soft: #9a9a9a; --ink-faint: #4a4a4a; --rule: #262626; color-scheme: dark; }
++
++* { box-sizing: border-box; }
++html, body { min-height: 100%; }
++body {
++  background: var(--paper);
++  color: var(--ink);
++  font-family: var(--mono);
++  font-size: 15px;
++  line-height: 1.6;
++  padding-block: 40px 56px;
++  padding-inline: 24px;
++}
++.wrap { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
++
++header { display: flex; flex-direction: column; gap: 8px; max-width: 62ch; }
++h1 { font-size: 15px; font-weight: 500; margin: 0; letter-spacing: 0.01em; }
++header p { margin: 0; color: var(--ink-soft); font-weight: 300; }
++
++#stage {
++  appearance: none; background: none; border: 0; color: inherit; font: inherit; text-align: left;
++  padding: 0; cursor: pointer; display: flex; flex-direction: column; gap: 36px; min-width: 0;
++}
++#stage:focus-visible { outline: 1px dashed var(--ink); outline-offset: 12px; }
++
++.stanza { display: flex; flex-direction: column; font-size: clamp(15px, 1.6vw + 8px, 20px); line-height: 1.75; }
++.stanza.old { color: var(--ink-faint); font-size: 15px; line-height: 1.6; }
++.line { padding-left: calc(var(--i) * var(--step)); text-indent: -2ch; margin-left: 2ch; min-width: 0; overflow-wrap: anywhere; }
++.line.pending { visibility: hidden; }
++.w { font-weight: 500; }
++.stanza.old .w { font-weight: 400; }
++
++.controls { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; border-top: 1px solid var(--rule); padding-top: 20px; }
++.group { display: flex; gap: 0; border: 1px solid var(--ink); }
++.group button, .toggle, .again {
++  font: inherit; font-size: 13px; color: var(--ink); background: var(--paper); border: 0; padding: 6px 12px; cursor: pointer;
++}
++.group button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
++.group button + button { border-left: 1px solid var(--ink); }
++.toggle { padding: 6px 0; display: inline-flex; gap: 8px; align-items: center; }
++.again { border: 1px solid var(--ink); margin-left: auto; }
++.again:hover, .group button:hover { text-decoration: underline; }
++button:focus-visible { outline: 1px dashed var(--ink); outline-offset: 3px; }
++.panel { display: flex; flex-direction: column; gap: 16px; }
++.yours { display: flex; flex-direction: column; gap: 16px; border: 1px solid var(--ink); padding: 20px; }
++.yours-intro { margin: 0; color: var(--ink-soft); font-weight: 300; font-size: 13px; max-width: 62ch; }
++.fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 14px 24px; }
++.fields label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--ink-soft); min-width: 0; }
++.fields input { font: inherit; font-size: 14px; color: var(--ink); background: var(--paper); border: 0; border-bottom: 1px solid var(--ink-faint); padding: 4px 0; border-radius: 0; width: 100%; }
++.fields input::placeholder { color: var(--ink-faint); }
++.fields input:focus { outline: none; border-bottom-color: var(--ink); }
++.form-actions { display: flex; gap: 20px; align-items: center; }
++.form-actions .again { margin-left: 0; }
++.w.mine { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
++.hint { margin: 0;  color: var(--ink-soft); font-size: 13px; font-weight: 300; }
++
++footer { color: var(--ink-soft); font-size: 12px; font-weight: 300; max-width: 62ch; display: flex; flex-direction: column; gap: 6px; }
++footer p { margin: 0; }
++
++@media (max-width: 560px) {
++  :root { --step: 2ch; }
++  body { padding-inline: 16px; padding-block: 28px 40px; }
++  .again { margin-left: 0; }
++}
++@media (prefers-reduced-motion: reduce) { .line.pending { visibility: visible; } }
++
++/* embedded on electrocute.io/electronic-text: the host page supplies the title and notes */
++.embed body { padding-block: 8px 24px; padding-inline: 4px; }
++.embed header, .embed footer { display: none; }
++.embed .wrap { gap: 32px; }
+diff --git a/src/components/Container.js b/src/components/Container.js
+index 47fbe40..4b930ec 100644
+--- a/src/components/Container.js
++++ b/src/components/Container.js
+@@ -29,6 +29,7 @@ const COLLAGE_ORDER = [
+   { type: "card", slug: "soft-components" },
+   { type: "card", slug: "poetronics" },
+   { type: "card", slug: "computer-art" },
++  { type: "card", slug: "electronic-text" },
+   { type: "card", slug: "soft-circuit-library" },
+   { type: "photo", slug: "kofi" },
+   { type: "card", slug: "synthwave-chimes" },
+diff --git a/src/data/electronicText.js b/src/data/electronicText.js
+new file mode 100644
+index 0000000..e009d13
+--- /dev/null
++++ b/src/data/electronicText.js
+@@ -0,0 +1,78 @@
++// pieces for /electronic-text.
++// kind decides how each one is shown:
++//   live  → the piece itself, embedded from /public
++//   poems → sample outputs printed as text, plus a photo of the object
++//   poem  → a single styled poem
++
++const electronicText = [
++  {
++    slug: "a-computer-of",
++    index: "01",
++    title: "a computer of ___",
++    year: "2026",
++    tools: ["javascript", "generative grammar"],
++    kind: "live",
++    embedPath: "/text/a-computer-of/index.html",
++    blurb:
++      "a generator of soft computers: imaginary machines made of fabric, powered gently, built without urgency. each stanza assembles one machine in seven steps, each line stepping further in. in \"our words\" you can write your own parts of the machine, and they get braided in with mine.",
++    origin:
++      "began as a python notebook in reading and writing electronic text (allison parrish, nyu itp).",
++    links: [
++      { label: "open on its own", href: "/text/a-computer-of/index.html" },
++      {
++        label: "notebook",
++        href: "https://github.com/yafira/electronic-txt/blob/main/poetry_generator.ipynb",
++      },
++    ],
++  },
++  {
++    slug: "ribbon-logic",
++    index: "02",
++    title: "ribbon logic",
++    year: "2026",
++    tools: ["circuitpython", "markov chain", "semantic corpus"],
++    kind: "poems",
++    image: "/assets/craft/ribbon-logic.png",
++    hoverImage: "/assets/craft/ribbon-logic.gif",
++    blurb:
++      "a small button-press poetry object. a markov chain built from my own freewriting meets vocabulary pulled from the class's hand-tagged semantic corpus, and a rejection rule refuses any word tagged cold, sharp, or academic. each press shifts the temperature between cool, neutral, and warm and picks a new poem form.",
++    origin:
++      "made for reading and writing electronic text (allison parrish, nyu itp). adafruit qualia esp32-s3, 2.1\" round display, one button.",
++    // diamond-form outputs from ribbon_logic.ipynb, one per temperature
++    poems: [
++      {
++        label: "cool",
++        text: "a computer of flute-player\n   again\n      threads\n         the\n      loop\n   lust\nstrong",
++      },
++      {
++        label: "neutral",
++        text: "a computer of bodies\n   breast\n      praise\n         stocking\n      salon\n   you\nfancies",
++      },
++      {
++        label: "warm",
++        text: "a computer of hand\n   ease\n      home\n         lap\n      aura\n   enchanted\nfunny",
++      },
++    ],
++    links: [
++      { label: "project notes", href: "https://months-tap-da9.craft.me/ribbon-logic" },
++      {
++        label: "code",
++        href: "https://github.com/yafira/electronic-txt/tree/main/ribbon%20logic",
++      },
++    ],
++  },
++  {
++    slug: "memory-drift",
++    index: "03",
++    title: "memory drift",
++    year: "2026",
++    tools: ["generative text"],
++    kind: "poem",
++    blurb: "", // TODO: one or two lines about memory drift
++    // TODO: paste the poem here, one line per line break
++    text: "",
++    links: [],
++  },
++];
++
++export default electronicText;
+diff --git a/src/data/projects.js b/src/data/projects.js
+index ee70830..2443e97 100644
+--- a/src/data/projects.js
++++ b/src/data/projects.js
+@@ -48,6 +48,18 @@ const projects = [
+     shape: "sticky",
+     pos: { x: "77%", y: "34%", rot: 2, z: 10 },
+   },
++  {
++    slug: "electronic-text",
++    title: "electronic text",
++    href: "/electronic-text",
++    icon: "/assets/electronic-text-icon.svg",
++    blurb: "poems written by rules, grammars, and chance.",
++    tint: "#f7f7f7",
++    hoverBg: "#ececec",
++    hoverBorder: "#cfcfcf",
++    shape: "sticky",
++    pos: { x: "13%", y: "20.5%", rot: 1.5, z: 10 },
++  },
+   {
+     slug: "neural-nectar",
+     title: "neural nectar",
+diff --git a/src/pages/electronic-text.jsx b/src/pages/electronic-text.jsx
+new file mode 100644
+index 0000000..3ddca37
+--- /dev/null
++++ b/src/pages/electronic-text.jsx
+@@ -0,0 +1,187 @@
++import { useEffect, useRef, useState } from "react";
++import Head from "next/head";
++import electronicText from "../data/electronicText";
++import styles from "../styles/ElectronicText.module.css";
++
++const TAGLINE = "poems written by rules, grammars, and chance";
++
++// the live piece, embedded from /public. it reports its own height
++// through postMessage so the frame grows with the poem instead of
++// scrolling inside itself.
++function LivePiece({ piece }) {
++  const frameRef = useRef(null);
++  const [height, setHeight] = useState(760);
++
++  useEffect(() => {
++    const onMessage = (e) => {
++      if (e.source !== frameRef.current?.contentWindow) return;
++      if (e.data?.type === "acomputerof:height") {
++        setHeight(Math.ceil(e.data.height));
++      }
++    };
++    window.addEventListener("message", onMessage);
++    // the frame may have reported before this listener existed, so ask it again
++    frameRef.current?.contentWindow?.postMessage({ type: "acomputerof:measure" }, "*");
++    return () => window.removeEventListener("message", onMessage);
++  }, []);
++
++  const measure = () =>
++    frameRef.current?.contentWindow?.postMessage({ type: "acomputerof:measure" }, "*");
++
++  return (
++    <iframe
++      ref={frameRef}
++      className={styles.liveFrame}
++      src={`${piece.embedPath}?embed`}
++      title={piece.title}
++      onLoad={measure}
++      style={{ height }}
++    />
++  );
++}
++
++// sample outputs beside a photo of the object. hovering the photo
++// swaps in the moving version when there is one.
++function PoemsPiece({ piece }) {
++  return (
++    <div className={styles.poemsLayout}>
++      <figure className={styles.photo}>
++        <img
++          className={styles.photoBase}
++          src={piece.image}
++          alt={`${piece.title}, the object`}
++          loading="lazy"
++        />
++        {piece.hoverImage && (
++          <img
++            className={styles.photoHover}
++            src={piece.hoverImage}
++            alt=""
++            loading="lazy"
++          />
++        )}
++      </figure>
++      <div className={styles.samples}>
++        {piece.poems.map((poem) => (
++          <div key={poem.label} className={styles.sample}>
++            <span className={styles.sampleLabel}>{poem.label}</span>
++            <pre className={styles.sampleText}>{poem.text}</pre>
++          </div>
++        ))}
++      </div>
++    </div>
++  );
++}
++
++// a single poem, set as its own dark block with a pixel title
++function PoemPiece({ piece }) {
++  if (!piece.text) {
++    return <p className={styles.pending}>poem coming soon.</p>;
++  }
++  return (
++    <div className={styles.poemBlock}>
++      <p className={styles.poemTitle}>{piece.title}</p>
++      <pre className={styles.poemText}>{piece.text}</pre>
++    </div>
++  );
++}
++
++function Piece({ piece }) {
++  return (
++    <article className={styles.piece} id={piece.slug}>
++      <div className={styles.pieceHead}>
++        <span className={styles.index}>{piece.index}</span>
++        <h2 className={styles.pieceTitle}>{piece.title}</h2>
++        <span className={styles.meta}>
++          {[piece.year, ...piece.tools].join(" / ")}
++        </span>
++      </div>
++
++      {piece.blurb && <p className={styles.blurb}>{piece.blurb}</p>}
++
++      <div className={styles.work}>
++        {piece.kind === "live" && <LivePiece piece={piece} />}
++        {piece.kind === "poems" && <PoemsPiece piece={piece} />}
++        {piece.kind === "poem" && <PoemPiece piece={piece} />}
++      </div>
++
++      {(piece.origin || piece.links.length > 0) && (
++        <div className={styles.pieceFoot}>
++          {piece.origin && <p className={styles.origin}>{piece.origin}</p>}
++          {piece.links.length > 0 && (
++            <ul className={styles.links}>
++              {piece.links.map((link) => {
++                const external = link.href.startsWith("http");
++                return (
++                  <li key={link.href}>
++                    <a
++                      href={link.href}
++                      {...(external
++                        ? { target: "_blank", rel: "noopener noreferrer" }
++                        : {})}
++                    >
++                      {link.label} {"↗"}
++                    </a>
++                  </li>
++                );
++              })}
++            </ul>
++          )}
++        </div>
++      )}
++    </article>
++  );
++}
++
++export default function ElectronicText() {
++  return (
++    <>
++      <Head>
++        <title>electronic text</title>
++        <meta
++          name="description"
++          content="generative poems and poetry objects from electrocute lab"
++        />
++        <link rel="preconnect" href="https://fonts.googleapis.com" />
++        <link
++          rel="preconnect"
++          href="https://fonts.gstatic.com"
++          crossOrigin="anonymous"
++        />
++        <link
++          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Pixelify+Sans:wght@400;500&display=swap"
++          rel="stylesheet"
++        />
++      </Head>
++
++      <main className={styles.page}>
++        <header className={styles.header}>
++          <a className={styles.eyebrow} href="https://electrocute.io">
++            {"←"} electrocute.io
++          </a>
++          <h1 className={styles.title1}>electronic text</h1>
++          <p className={styles.tagline}>{TAGLINE}</p>
++        </header>
++
++        <nav className={styles.contents} aria-label="pieces on this page">
++          {electronicText.map((piece) => (
++            <a key={piece.slug} href={`#${piece.slug}`}>
++              <span className={styles.index}>{piece.index}</span>
++              {piece.title}
++            </a>
++          ))}
++        </nav>
++
++        <div className={styles.pieces}>
++          {electronicText.map((piece) => (
++            <Piece key={piece.slug} piece={piece} />
++          ))}
++        </div>
++
++        <footer className={styles.footer}>
++          <a href="https://electrocute.io">electrocute lab</a>
++        </footer>
++      </main>
++    </>
++  );
++}
+diff --git a/src/styles/ElectronicText.module.css b/src/styles/ElectronicText.module.css
+new file mode 100644
+index 0000000..cc06210
+--- /dev/null
++++ b/src/styles/ElectronicText.module.css
+@@ -0,0 +1,315 @@
++.page {
++  --paper: #ffffff;
++  --ink: #0a0a0a;
++  --muted: #6b6b6b;
++  --faint: #bdbdbd;
++  --line: #e2e2e2;
++
++  --body: "IBM Plex Mono", ui-monospace, Menlo, monospace;
++  --pixel: "Pixelify Sans", "IBM Plex Mono", monospace;
++
++  min-height: 100vh;
++  color: var(--ink);
++  background: var(--paper);
++  font-family: var(--body);
++  padding: 4rem 1.5rem 6rem;
++}
++
++.page a {
++  color: inherit;
++}
++
++/* header */
++
++.header {
++  max-width: 56rem;
++  margin: 0 auto 2rem;
++}
++
++.eyebrow {
++  display: inline-block;
++  font-size: 0.72rem;
++  letter-spacing: 0.1em;
++  margin: 0 0 1.5rem;
++  color: var(--muted);
++  text-decoration: none;
++}
++
++.eyebrow:hover,
++.eyebrow:focus-visible {
++  color: var(--ink);
++}
++
++.title1 {
++  font-family: var(--body);
++  font-weight: 400;
++  font-size: clamp(2rem, 5vw, 3rem);
++  line-height: 1.1;
++  margin: 0 0 0.75rem;
++}
++
++.tagline {
++  font-size: 0.85rem;
++  line-height: 1.6;
++  color: var(--muted);
++  font-weight: 300;
++  margin: 0;
++}
++
++/* contents */
++
++.contents {
++  max-width: 56rem;
++  margin: 0 auto 4rem;
++  padding: 1rem 0;
++  border-top: 1px solid var(--ink);
++  border-bottom: 1px solid var(--line);
++  display: flex;
++  flex-wrap: wrap;
++  gap: 0.5rem 2rem;
++  font-size: 0.85rem;
++}
++
++.contents a {
++  text-decoration: none;
++  display: inline-flex;
++  gap: 0.6rem;
++}
++
++.contents a:hover,
++.contents a:focus-visible {
++  text-decoration: underline;
++}
++
++/* pieces */
++
++.pieces {
++  max-width: 56rem;
++  margin: 0 auto;
++  display: flex;
++  flex-direction: column;
++  gap: 6rem;
++}
++
++.piece {
++  display: flex;
++  flex-direction: column;
++  gap: 1.25rem;
++  scroll-margin-top: 2rem;
++}
++
++.pieceHead {
++  display: flex;
++  flex-wrap: wrap;
++  align-items: baseline;
++  gap: 0.4rem 1rem;
++  padding-bottom: 0.75rem;
++  border-bottom: 1px solid var(--ink);
++}
++
++.index {
++  font-size: 0.72rem;
++  color: var(--muted);
++  font-variant-numeric: tabular-nums;
++}
++
++.pieceTitle {
++  font-size: 1.25rem;
++  font-weight: 500;
++  margin: 0;
++}
++
++.meta {
++  margin-left: auto;
++  font-size: 0.72rem;
++  color: var(--muted);
++  font-weight: 300;
++}
++
++.blurb {
++  margin: 0;
++  max-width: 62ch;
++  font-size: 0.9rem;
++  line-height: 1.7;
++  font-weight: 300;
++}
++
++.work {
++  min-width: 0;
++}
++
++.pieceFoot {
++  display: flex;
++  flex-wrap: wrap;
++  justify-content: space-between;
++  gap: 0.75rem 2rem;
++  font-size: 0.75rem;
++  color: var(--muted);
++}
++
++.origin {
++  margin: 0;
++  max-width: 56ch;
++  line-height: 1.6;
++  font-weight: 300;
++}
++
++.links {
++  list-style: none;
++  margin: 0;
++  padding: 0;
++  display: flex;
++  flex-wrap: wrap;
++  gap: 1.25rem;
++}
++
++.links a {
++  color: var(--ink);
++  text-decoration: none;
++  border-bottom: 1px solid var(--ink);
++}
++
++.links a:hover,
++.links a:focus-visible {
++  border-bottom-style: dashed;
++}
++
++/* live piece */
++
++.liveFrame {
++  display: block;
++  width: 100%;
++  border: 0;
++  background: var(--paper);
++  color-scheme: light;
++}
++
++/* sample poems + photo */
++
++.poemsLayout {
++  display: grid;
++  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
++  gap: 2.5rem;
++  align-items: start;
++}
++
++.photo {
++  position: relative;
++  margin: 0;
++  border: 1px solid var(--line);
++  aspect-ratio: 1 / 1;
++  overflow: hidden;
++}
++
++.photo img {
++  display: block;
++  width: 100%;
++  height: 100%;
++  object-fit: cover;
++}
++
++.photoHover {
++  position: absolute;
++  inset: 0;
++  opacity: 0;
++  transition: opacity 0.2s ease;
++}
++
++.photo:hover .photoHover {
++  opacity: 1;
++}
++
++.samples {
++  display: grid;
++  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
++  gap: 2rem 1.5rem;
++}
++
++.sample {
++  display: flex;
++  flex-direction: column;
++  gap: 0.6rem;
++  min-width: 0;
++}
++
++.sampleLabel {
++  font-size: 0.68rem;
++  letter-spacing: 0.1em;
++  text-transform: uppercase;
++  color: var(--muted);
++}
++
++.sampleText {
++  margin: 0;
++  font-family: var(--body);
++  font-size: 0.85rem;
++  line-height: 1.6;
++  white-space: pre;
++  overflow-x: auto;
++}
++
++/* single poem */
++
++.poemBlock {
++  background: var(--ink);
++  color: var(--paper);
++  padding: 2.5rem 2rem;
++  display: flex;
++  flex-direction: column;
++  gap: 1.5rem;
++}
++
++.poemTitle {
++  margin: 0;
++  font-family: var(--pixel);
++  font-size: 1.6rem;
++  line-height: 1;
++}
++
++.poemText {
++  margin: 0;
++  font-family: var(--body);
++  font-size: 0.95rem;
++  line-height: 1.8;
++  font-weight: 300;
++  white-space: pre-wrap;
++}
++
++.pending {
++  margin: 0;
++  padding: 2rem;
++  border: 1px dashed var(--faint);
++  color: var(--muted);
++  font-size: 0.85rem;
++}
++
++/* footer */
++
++.footer {
++  max-width: 56rem;
++  margin: 6rem auto 0;
++  padding-top: 1.5rem;
++  border-top: 1px solid var(--line);
++  font-size: 0.75rem;
++  color: var(--muted);
++}
++
++.footer a {
++  text-decoration: none;
++}
++
++@media (max-width: 640px) {
++  .page {
++    padding: 2.5rem 1rem 4rem;
++  }
++  .poemsLayout {
++    grid-template-columns: 1fr;
++  }
++  .photo {
++    max-width: 15rem;
++  }
++  .meta {
++    margin-left: 0;
++    width: 100%;
++  }
++}
