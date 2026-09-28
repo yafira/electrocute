@@ -10,6 +10,7 @@ electrocute is where i document my creative endeavors, experiments, craft, and c
 
 - **[soft interfaces](https://electrocute.io/soft-interfaces)** — a portfolio of projects rendered as pastel swatch cards pinned to a graph paper wall
 - **[computer art](https://electrocute.io/computer-art)** — a dark, directory-indexed gallery of generative p5.js sketches and plotter prints; click any piece to view it full screen
+- **[electronic text](https://electrocute.io/electronic-text)** — generative poems and poetry objects in black and white, including a computer of ___, a live poem readers can write into
 - **[electrodex](https://electrocute.io/electrodex)** — a community directory of creative tech spaces, makerspaces, and textile/craft communities, styled as a singly linked list (hex memory addresses, pointer wires and all)
 - **poemdeck** — a little generative poetry gadget powered by tracery grammars
 - **about + contact** — who i am and how to reach me
