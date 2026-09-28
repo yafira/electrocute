@@ -21,7 +21,7 @@ const projects = [
     hoverBg: "#f2b9e0",
     hoverBorder: "#e88fc9",
     shape: "sticky",
-    pos: { x: "12%", y: "8%", rot: -2, z: 10 },
+    pos: { x: "8%", y: "4%", rot: -2, z: 10 },
   },
   {
     slug: "soft-interfaces",
@@ -58,7 +58,7 @@ const projects = [
     hoverBg: "#ececec",
     hoverBorder: "#cfcfcf",
     shape: "sticky",
-    pos: { x: "13%", y: "20.5%", rot: 1.5, z: 10 },
+    pos: { x: "15%", y: "16%", rot: 1.5, z: 10 },
   },
   {
     slug: "neural-nectar",
@@ -108,7 +108,7 @@ const projects = [
     hoverBg: "#faf6ff",
     hoverBorder: "#cdc1ee",
     shape: "wide",
-    pos: { x: "17%", y: "46%", rot: -1.5, z: 10 },
+    pos: { x: "17%", y: "48%", rot: -1.5, z: 10 },
   },
   {
     slug: "soft-circuit-library",
@@ -133,7 +133,7 @@ const projects = [
     hoverBg: "#e9d4f4",
     hoverBorder: "#e89cf1",
     shape: "sticky",
-    pos: { x: "13%", y: "71%", rot: 1.6, z: 10 },
+    pos: { x: "13%", y: "72%", rot: 1.6, z: 10 },
   },
   {
     slug: "sailor-moon-calculator",
@@ -159,7 +159,7 @@ const projects = [
     hoverBg: "#fae7ef",
     hoverBorder: "#fecfe2",
     shape: "wide",
-    pos: { x: "38%", y: "94%", rot: 4, z: 10 },
+    pos: { x: "38%", y: "94.5%", rot: 4, z: 10 },
   },
 ];
 
@@ -250,7 +250,7 @@ export const photoItems = [
     title: "petalbyte",
     image: "/assets/craft/petalbyte.png",
     href: "https://months-tap-da9.craft.me/petalbyte",
-    pos: { x: "34%", y: "13%", w: 180, rot: -6, z: 6, delay: 0 },
+    pos: { x: "36%", y: "13%", w: 180, rot: -6, z: 6, delay: 0 },
   },
   {
     slug: "the-soft-computer",
@@ -272,7 +272,7 @@ export const photoItems = [
     title: "ribbon logic",
     image: "/assets/craft/ribbon-logic.png",
     href: "https://months-tap-da9.craft.me/ribbon-logic",
-    pos: { x: "9%", y: "29%", w: 190, rot: -4, z: 6, delay: 1.8 },
+    pos: { x: "9%", y: "30%", w: 190, rot: -4, z: 6, delay: 1.8 },
   },
   {
     slug: "moonpocket",
@@ -325,7 +325,7 @@ export const photoItems = [
     image: "/assets/kofi.png",
     href: "https://ko-fi.com/electrocutelab/?hidefeed=true&widget=true&embed=true&preview=true",
     externalHref: "https://ko-fi.com/electrocutelab/",
-    pos: { x: "17%", y: "56%", w: 150, rot: -3, z: 14, delay: 1.7 },
+    pos: { x: "16%", y: "57%", w: 150, rot: -3, z: 14, delay: 1.7 },
     panelSize: { w: 460, h: 680 },
     credit: {
       text: "summer goth mug by maoprojects",
