@@ -21,7 +21,7 @@ const projects = [
     hoverBg: "#f2b9e0",
     hoverBorder: "#e88fc9",
     shape: "sticky",
-    pos: { x: "8%", y: "4%", rot: -2, z: 10 },
+    pos: { x: "12%", y: "4%", rot: -2, z: 10 },
   },
   {
     slug: "soft-interfaces",
