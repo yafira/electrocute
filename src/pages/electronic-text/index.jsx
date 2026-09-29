@@ -36,18 +36,20 @@ function TilePreview({ piece }) {
   // each line keeps its indent, and wraps under itself if it runs long
   return (
     <span className={styles.tileText}>
-      {text.split("\n").map((line, i) => {
-        const indent = line.length - line.trimStart().length;
-        return (
-          <span
-            key={i}
-            className={styles.tileLine}
-            style={{ "--indent": `${indent}ch` }}
-          >
-            {line.trim() || "\u00a0"}
-          </span>
-        );
-      })}
+      <span className={styles.tileBody}>
+        {text.split("\n").map((line, i) => {
+          const indent = line.length - line.trimStart().length;
+          return (
+            <span
+              key={i}
+              className={styles.tileLine}
+              style={{ "--indent": `${indent}ch` }}
+            >
+              {line.trim() || "\u00a0"}
+            </span>
+          );
+        })}
+      </span>
     </span>
   );
 }

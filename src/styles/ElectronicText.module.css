@@ -112,9 +112,14 @@
   outline: none;
 }
 
+/* the poem sits in the middle of the tile; its lines stay left-aligned
+   to each other so the cascade keeps its shape. "safe" keeps the top of
+   a long poem visible instead of pushing it out of the frame. */
 .tileText {
   display: flex;
   flex-direction: column;
+  justify-content: safe center;
+  align-items: safe center;
   height: 100%;
   padding: 1rem;
   background: var(--paper);
@@ -133,6 +138,11 @@
   height: 2.5rem;
   background: linear-gradient(to bottom, transparent, var(--paper));
   pointer-events: none;
+}
+
+.tileBody {
+  display: block;
+  max-width: 100%;
 }
 
 .tileLine {
