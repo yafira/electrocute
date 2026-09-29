@@ -62,7 +62,7 @@ function Tile({ piece, onExpand }) {
     ) : isSelfHosted ? (
       loaded ? (
         <iframe
-          className={isInteractive ? styles.mediaInteractive : styles.media}
+          className={styles.media}
           src={piece.embedPath}
           title={piece.title}
           loading="lazy"
@@ -86,23 +86,15 @@ function Tile({ piece, onExpand }) {
         <span className={styles.tags}>{piece.tags.join(" / ")}</span>
       </div>
 
-      {isInteractive ? (
-        // interactive pieces get a plain wrapper instead of a button, so
-        // clicks land in the sketch rather than opening the viewer
-        <div className={styles.frame} ref={frameRef}>
-          {media}
-        </div>
-      ) : (
-        <button
-          type="button"
-          className={styles.frame}
-          ref={frameRef}
-          onClick={() => onExpand(piece)}
-          aria-label={`open ${piece.title}`}
-        >
-          {media}
-        </button>
-      )}
+      <button
+        type="button"
+        className={styles.frame}
+        ref={frameRef}
+        onClick={() => onExpand(piece)}
+        aria-label={`open ${piece.title}`}
+      >
+        {media}
+      </button>
 
       <div className={styles.tileFoot}>
         <span className={styles.title}>{piece.title}</span>
