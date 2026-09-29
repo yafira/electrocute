@@ -40,13 +40,23 @@ const computerArt = [
     tags: ["p5.js"],
   },
   {
-    slug: "gem-bubbles",
-    title: "gem bubbles",
-    index: "03",
-    tint: "butter",
+    slug: "computer-garden",
+    title: "computer.garden()",
+    index: "33",
+    tint: "mint",
     kind: "live",
-    embedPath: "/sketches/gem-bubbles/index.html",
-    sketchId: "N-YZTWvhT",
+    embedPath: "/sketches/computer-garden/index.html",
+    tags: ["processing", "pcd 2026"],
+    blurb:
+      "four woven core-memory blocks write themselves in, one pastel core at a time. made for processing community day 2026 @ nyc.",
+  },
+  {
+    slug: "infinite-radiance",
+    title: "infinite radiance",
+    index: "21",
+    tint: "blush",
+    kind: "live",
+    embedPath: "/sketches/infinite-radiance/index.html",
     tags: ["p5.js"],
   },
   {
@@ -217,15 +227,7 @@ const computerArt = [
     embedPath: "/sketches/in-the-glitch/index.html",
     tags: ["p5.js"],
   },
-  {
-    slug: "infinite-radiance",
-    title: "infinite radiance",
-    index: "21",
-    tint: "blush",
-    kind: "live",
-    embedPath: "/sketches/infinite-radiance/index.html",
-    tags: ["p5.js"],
-  },
+
   {
     slug: "soft-neoplasticism",
     title: "soft neoplasticism",
@@ -233,6 +235,16 @@ const computerArt = [
     tint: "mint",
     kind: "live",
     embedPath: "/sketches/soft-neoplasticism/index.html",
+    tags: ["p5.js"],
+  },
+  {
+    slug: "gem-bubbles",
+    title: "gem bubbles",
+    index: "03",
+    tint: "butter",
+    kind: "live",
+    embedPath: "/sketches/gem-bubbles/index.html",
+    sketchId: "N-YZTWvhT",
     tags: ["p5.js"],
   },
   {
@@ -325,17 +337,6 @@ const computerArt = [
     kind: "live",
     embedPath: "/sketches/bubble-gum-smiley/index.html",
     tags: ["p5.js"],
-  },
-  {
-    slug: "computer-garden",
-    title: "computer.garden()",
-    index: "33",
-    tint: "mint",
-    kind: "live",
-    embedPath: "/sketches/computer-garden/index.html",
-    tags: ["processing", "pcd 2026"],
-    blurb:
-      "four woven core-memory blocks write themselves in, one pastel core at a time. made for processing community day 2026 @ nyc.",
   },
 ];
 
