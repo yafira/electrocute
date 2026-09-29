@@ -100,11 +100,12 @@ const electronicText = [
       "A computer of felt\n  laced with ribbon logic\n    powered by moonlight\n      with a screen that refuses urgency\n        resting inside a tote bag\n          inhabited by a shy machine spirit\n            and it will not rush you.",
     embedPath: "/text/a-computer-of/index.html",
     blurb:
-      'a generator of soft computers: imaginary machines made of fabric, powered gently, built without urgency. each stanza assembles one machine in seven steps, each line stepping further in. in "our words" you can write your own parts of the machine, and they get braided in with mine.',
+      'a generator of soft computers: imaginary machines made of fabric, powered gently, built without urgency. each stanza assembles one machine in seven steps, each line stepping further in. in "our words" you can write your own parts of the machine, and they get braided in with mine. ribbon logic is its expanded version in physical form.',
     origin:
       "began as a python notebook in reading and writing electronic text (allison parrish, nyu itp).",
     links: [
       { label: "open on its own", href: "/text/a-computer-of/index.html" },
+      { label: "ribbon logic", href: "/electronic-text/ribbon-logic" },
       {
         label: "notebook",
         href: "https://github.com/yafira/electronic-txt/blob/main/poetry_generator.ipynb",
