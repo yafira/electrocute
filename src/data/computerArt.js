@@ -326,6 +326,17 @@ const computerArt = [
     embedPath: "/sketches/bubble-gum-smiley/index.html",
     tags: ["p5.js"],
   },
+  {
+    slug: "computer-garden",
+    title: "computer.garden()",
+    index: "33",
+    tint: "mint",
+    kind: "live",
+    embedPath: "/sketches/computer-garden/index.html",
+    tags: ["processing", "pcd 2026"],
+    blurb:
+      "four woven core-memory blocks write themselves in, one pastel core at a time. made for processing community day 2026 @ nyc.",
+  },
 ];
 
 export default computerArt;
