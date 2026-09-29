@@ -51,10 +51,10 @@ const bayer = [
 // every generation, so successive gardens genuinely differ
 let quadCols = 5;
 let quadRows = 6;
-const outerMarginXFrac = 0.16;
-const outerMarginYFrac = 0.11;
+const outerMarginXFrac = 0.15;
+const outerMarginYFrac = 0.15;
 const gapXFrac = 0.07;
-const gapYFrac = 0.045;
+const gapYFrac = 0.07;
 
 let quadrants = [];
 let cores = [];
@@ -85,7 +85,8 @@ function hexToRGB(h) {
 }
 
 function setup() {
-  createCanvas(1000, 1300);
+  // square, like a chip package
+  createCanvas(1000, 1000);
   noSmooth();
 
   paletteRGB = paletteHex.map(hexToRGB);
@@ -194,16 +195,16 @@ function drawPackage() {
   const edgeMarginX = bufW * outerMarginXFrac * 0.55;
   const edgeMarginY = bufH * outerMarginYFrac * 0.55;
 
-  const pinCountX = 22;
+  const pinCountX = 20;
   for (let i = 0; i < pinCountX; i++) {
     const x = map(i, 0, pinCountX - 1, bufW * 0.08, bufW * 0.92) * SCALE;
     line(x, edgeMarginY * 0.4, x, edgeMarginY * 0.4 + pinLen);
     line(x, height - edgeMarginY * 0.4, x, height - edgeMarginY * 0.4 - pinLen);
   }
 
-  const pinCountY = 16;
+  const pinCountY = 20;
   for (let i = 0; i < pinCountY; i++) {
-    const y = map(i, 0, pinCountY - 1, bufH * 0.1, bufH * 0.9) * SCALE;
+    const y = map(i, 0, pinCountY - 1, bufH * 0.08, bufH * 0.92) * SCALE;
     line(edgeMarginX * 0.4, y, edgeMarginX * 0.4 + pinLen, y);
     line(width - edgeMarginX * 0.4, y, width - edgeMarginX * 0.4 - pinLen, y);
   }
@@ -212,7 +213,7 @@ function drawPackage() {
   fill(pinColor);
   const holeR = 4.5 * SCALE * 0.5;
   const hx = bufW * 0.075;
-  const hy = bufH * 0.065;
+  const hy = bufH * 0.075;
   ellipse(hx * SCALE, hy * SCALE, holeR * 2, holeR * 2);
   ellipse((bufW - hx) * SCALE, hy * SCALE, holeR * 2, holeR * 2);
   ellipse(hx * SCALE, (bufH - hy) * SCALE, holeR * 2, holeR * 2);
