@@ -1,55 +1,123 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>a computer of ___</title>
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="wrap">
-  <header>
-    <h1>a computer of ___</h1>
-    <p>A generator of soft computers: imaginary machines made of fabric, powered gently, built without urgency. Each stanza assembles one machine in seven steps: material, binding, power, interface, place, inhabitant, promise.</p>
-  </header>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>a computer of ___</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <h1>a computer of ___</h1>
+        <p>
+          A generator of soft computers: imaginary machines made of fabric,
+          powered gently, built without urgency. Each stanza assembles one
+          machine in seven steps: material, binding, power, interface, place,
+          inhabitant, promise.
+        </p>
+      </header>
 
-  <button id="stage" type="button" aria-label="Build another computer" aria-live="polite"></button>
+      <button
+        id="stage"
+        type="button"
+        aria-label="Build another computer"
+        aria-live="polite"
+      ></button>
 
-  <div class="panel">
-    <div class="controls">
-      <div class="group" role="group" aria-label="Whose words">
-        <button id="src-mine" type="button" aria-pressed="false">my words</button>
-        <button id="src-ours" type="button" aria-pressed="true">our words</button>
+      <div class="panel">
+        <div class="controls">
+          <div class="group" role="group" aria-label="Whose words">
+            <button id="src-mine" type="button" aria-pressed="false">
+              my words
+            </button>
+            <button id="src-ours" type="button" aria-pressed="true">
+              our words
+            </button>
+          </div>
+          <button id="again" class="again" type="button">build another</button>
+        </div>
+        <p class="hint" id="hint"></p>
+        <form id="yours" class="yours">
+          <p class="yours-intro">
+            Write your own parts of the machine and they will be braided in with
+            mine. Separate phrases with commas. Each field finishes the words
+            above it.
+          </p>
+          <div class="fields">
+            <label for="f-material"
+              ><span>a computer of</span
+              ><input
+                id="f-material"
+                autocomplete="off"
+                placeholder="moss, my old sweater"
+            /></label>
+            <label for="f-structure"
+              ><span>held together how?</span
+              ><input
+                id="f-structure"
+                autocomplete="off"
+                placeholder="pinned with hair clips"
+            /></label>
+            <label for="f-power"
+              ><span>powered by</span
+              ><input
+                id="f-power"
+                autocomplete="off"
+                placeholder="a long nap, streetlight"
+            /></label>
+            <label for="f-interface"
+              ><span>with</span
+              ><input
+                id="f-interface"
+                autocomplete="off"
+                placeholder="a button that hums back"
+            /></label>
+            <label for="f-location"
+              ><span>resting</span
+              ><input
+                id="f-location"
+                autocomplete="off"
+                placeholder="on the fire escape"
+            /></label>
+            <label for="f-inhabitant"
+              ><span>inhabited by</span
+              ><input
+                id="f-inhabitant"
+                autocomplete="off"
+                placeholder="my grandmother's recipes"
+            /></label>
+            <label for="f-promise"
+              ><span>and</span
+              ><input
+                id="f-promise"
+                autocomplete="off"
+                placeholder="it will wait for you"
+            /></label>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="again">build with these</button>
+            <button type="button" id="clear-yours" class="toggle">clear</button>
+          </div>
+        </form>
       </div>
-      <button id="again" class="again" type="button">build another</button>
+
+      <footer>
+        <p>
+          <b>my words</b> builds from seven lists of phrases I wrote from my own
+          design practice. <b>our words</b> braids your phrases in with mine,
+          taking each line from one or the other. Your phrases are stitched in
+          with a dashed edge.
+        </p>
+        <p>Yafira Martinez, 2026</p>
+      </footer>
     </div>
-    <p class="hint" id="hint"></p>
-    <form id="yours" class="yours">
-      <p class="yours-intro">Write your own parts of the machine and they will be braided in with mine. Separate phrases with commas. Each field finishes the words above it.</p>
-      <div class="fields">
-        <label for="f-material"><span>a computer of</span><input id="f-material" autocomplete="off" placeholder="moss, my old sweater"></label>
-        <label for="f-structure"><span>held together how?</span><input id="f-structure" autocomplete="off" placeholder="pinned with hair clips"></label>
-        <label for="f-power"><span>powered by</span><input id="f-power" autocomplete="off" placeholder="a long nap, streetlight"></label>
-        <label for="f-interface"><span>with</span><input id="f-interface" autocomplete="off" placeholder="a button that hums back"></label>
-        <label for="f-location"><span>resting</span><input id="f-location" autocomplete="off" placeholder="on the fire escape"></label>
-        <label for="f-inhabitant"><span>inhabited by</span><input id="f-inhabitant" autocomplete="off" placeholder="my grandmother's recipes"></label>
-        <label for="f-promise"><span>and</span><input id="f-promise" autocomplete="off" placeholder="it will wait for you"></label>
-      </div>
-      <div class="form-actions">
-        <button type="submit" class="again">build with these</button>
-        <button type="button" id="clear-yours" class="toggle">clear</button>
-      </div>
-    </form>
-  </div>
-
-  <footer>
-    <p><b>my words</b> builds from seven lists of phrases I wrote from my own design practice. <b>our words</b> braids your phrases in with mine, taking each line from one or the other. Your phrases are underlined.</p>
-    <p>Yafira Martinez, 2026</p>
-  </footer>
-</div>
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
