@@ -64,7 +64,7 @@
   padding-top: 2rem;
   border-top: 1px solid var(--ink);
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
   gap: 2.5rem 1.5rem;
 }
 
@@ -113,59 +113,32 @@
 }
 
 .tileText {
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   padding: 1rem;
   background: var(--paper);
-}
-
-.tileText pre {
-  margin: 0;
-  font-family: var(--body);
-  /* the longest stanza line is about 44 characters with its indent, so size to fit the tile */
   font-size: 0.6rem;
-  font-size: min(0.75rem, calc((100cqi - 2rem) / 27));
+  font-size: min(0.72rem, calc((100cqi - 2rem) / 34));
   line-height: 1.7;
-  white-space: pre;
 }
 
-.tilePhoto {
-  display: block;
-  height: 100%;
-  position: relative;
-}
-
-.tilePhoto img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.tilePhotoHover {
+/* fade the bottom edge so a long poem trails off instead of cutting mid-line */
+.tileText::after {
+  content: "";
   position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2.5rem;
+  background: linear-gradient(to bottom, transparent, var(--paper));
+  pointer-events: none;
 }
 
-.tile:hover .tilePhotoHover {
-  opacity: 1;
-}
-
-.tileDark {
-  display: flex;
-  align-items: flex-end;
-  height: 100%;
-  padding: 1rem;
-  background: var(--ink);
-  color: var(--paper);
-}
-
-.tilePixel {
-  font-family: var(--pixel);
-  font-size: 1.6rem;
-  line-height: 1;
+.tileLine {
+  display: block;
+  padding-left: calc(var(--indent) + 2ch);
+  text-indent: -2ch;
 }
 
 .tileFoot {

@@ -1,39 +1,53 @@
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import electronicText from "../../data/electronicText";
+import electronicText, { buildStanza } from "../../data/electronicText";
 import styles from "../../styles/ElectronicText.module.css";
 
 const TAGLINE = "poems written by rules, grammars, and chance";
 
-// what each tile shows above its title, by kind: a stanza for live
-// pieces, the object's photo for poetry objects, and a dark block with
-// the pixel title for single poems
-function TilePreview({ piece }) {
+// each tile previews the piece's own text, the way it shows up when
+// you open it: a freshly built stanza for a computer of ___, one of
+// ribbon logic's poems, or the opening of a single poem. the first
+// render uses fixed text so the server and browser agree, then the
+// page swaps in a new one.
+function firstText(piece) {
+  if (piece.kind === "live") return piece.sample;
+  if (piece.kind === "poems") return piece.poems[0].text;
+  return piece.text;
+}
+
+function freshText(piece) {
+  if (piece.kind === "live") return buildStanza();
   if (piece.kind === "poems") {
-    return (
-      <span className={styles.tilePhoto}>
-        <img src={piece.image} alt="" loading="lazy" />
-        {piece.hoverImage && (
-          <img
-            className={styles.tilePhotoHover}
-            src={piece.hoverImage}
-            alt=""
-            loading="lazy"
-          />
-        )}
-      </span>
-    );
+    const poems = piece.poems;
+    return poems[Math.floor(Math.random() * poems.length)].text;
   }
-  if (piece.kind === "poem") {
-    return (
-      <span className={styles.tileDark}>
-        <span className={styles.tilePixel}>{piece.title}</span>
-      </span>
-    );
-  }
+  return piece.text;
+}
+
+function TilePreview({ piece }) {
+  const [text, setText] = useState(() => firstText(piece));
+
+  useEffect(() => {
+    setText(freshText(piece));
+  }, [piece]);
+
+  // each line keeps its indent, and wraps under itself if it runs long
   return (
     <span className={styles.tileText}>
-      <pre>{piece.sample}</pre>
+      {text.split("\n").map((line, i) => {
+        const indent = line.length - line.trimStart().length;
+        return (
+          <span
+            key={i}
+            className={styles.tileLine}
+            style={{ "--indent": `${indent}ch` }}
+          >
+            {line.trim() || "\u00a0"}
+          </span>
+        );
+      })}
     </span>
   );
 }

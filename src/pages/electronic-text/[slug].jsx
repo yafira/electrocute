@@ -115,7 +115,7 @@ export default function TextPiece({ slug }) {
               <span className={styles.index}>{piece.index}</span>
               <h1 className={styles.pieceTitle}>{piece.title}</h1>
               <span className={styles.meta}>
-                {[piece.year, ...piece.tools].join(" / ")}
+                {[piece.year, ...piece.tools].filter(Boolean).join(" / ")}
               </span>
             </div>
             {piece.blurb && <p className={styles.blurb}>{piece.blurb}</p>}
