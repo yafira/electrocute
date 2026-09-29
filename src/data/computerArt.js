@@ -42,7 +42,7 @@ const computerArt = [
   {
     slug: "computer-garden",
     title: "computer.garden()",
-    index: "33",
+    index: "03",
     tint: "mint",
     kind: "live",
     embedPath: "/sketches/computer-garden/index.html",
@@ -53,7 +53,7 @@ const computerArt = [
   {
     slug: "infinite-radiance",
     title: "infinite radiance",
-    index: "21",
+    index: "04",
     tint: "blush",
     kind: "live",
     embedPath: "/sketches/infinite-radiance/index.html",
@@ -62,7 +62,7 @@ const computerArt = [
   {
     slug: "crt-tv-with-glitch",
     title: "technical difficulties",
-    index: "04",
+    index: "05",
     tint: "blush",
     kind: "live",
     embedPath: "/sketches/crt-tv-with-glitch/index.html",
@@ -72,7 +72,7 @@ const computerArt = [
   {
     slug: "sailor-moon-city",
     title: "sailor moon city",
-    index: "05",
+    index: "06",
     tint: "sky",
     kind: "live",
     embedPath: "/sketches/sailor-moon-city/index.html",
@@ -82,7 +82,7 @@ const computerArt = [
   {
     slug: "meditative-moire",
     title: "meditative moire",
-    index: "06",
+    index: "07",
     tint: "mint",
     kind: "live",
     embedPath: "/sketches/meditative-moire/index.html",
@@ -92,7 +92,7 @@ const computerArt = [
   {
     slug: "pastel-improvisation",
     title: "pastel improvisation",
-    index: "07",
+    index: "08",
     tint: "blush",
     kind: "live",
     embedPath: "/sketches/pastel-improvisation/index.html",
@@ -102,7 +102,7 @@ const computerArt = [
   {
     slug: "cookie-dough-ice-cream",
     title: "cookie dough ice cream",
-    index: "08",
+    index: "09",
     tint: "sky",
     kind: "live",
     embedPath: "/sketches/cookie-dough-ice-cream/index.html",
@@ -112,7 +112,7 @@ const computerArt = [
   {
     slug: "truchet-pattern",
     title: "truchet pattern",
-    index: "09",
+    index: "10",
     tint: "mint",
     kind: "live",
     embedPath: "/sketches/truchet-pattern/index.html",
@@ -122,7 +122,7 @@ const computerArt = [
   {
     slug: "plotter-drawing",
     title: "core memory plotter drawing",
-    index: "10",
+    index: "11",
     tint: "butter",
     kind: "static",
     tags: ["p5.js", "plotter"],
@@ -139,7 +139,7 @@ const computerArt = [
   {
     slug: "binary-smiley",
     title: "binary smiley",
-    index: "11",
+    index: "12",
     tint: "mint",
     kind: "live",
     embedPath: "/sketches/binary-smiley/index.html",
@@ -149,7 +149,7 @@ const computerArt = [
   {
     slug: "particle-flow",
     title: "particle flow",
-    index: "12",
+    index: "13",
     tint: "sky",
     kind: "live",
     embedPath: "/sketches/particle-flow/index.html",
@@ -158,7 +158,7 @@ const computerArt = [
   {
     slug: "negative-void",
     title: "negative void",
-    index: "13",
+    index: "14",
     tint: "blush",
     kind: "live",
     embedPath: "/sketches/negative-void/index.html",
@@ -167,7 +167,7 @@ const computerArt = [
   {
     slug: "radiality",
     title: "radiality",
-    index: "14",
+    index: "15",
     tint: "mint",
     kind: "live",
     embedPath: "/sketches/radiality/index.html",
@@ -176,7 +176,7 @@ const computerArt = [
   {
     slug: "confetti",
     title: "confetti",
-    index: "15",
+    index: "16",
     tint: "butter",
     kind: "live",
     embedPath: "/sketches/confetti/index.html",
@@ -185,7 +185,7 @@ const computerArt = [
   {
     slug: "recursively-pastel",
     title: "recursively pastel",
-    index: "16",
+    index: "17",
     tint: "sky",
     kind: "live",
     embedPath: "/sketches/recursively-pastel/index.html",
@@ -194,7 +194,7 @@ const computerArt = [
   {
     slug: "one-million-stars",
     title: "one million stars",
-    index: "17",
+    index: "18",
     tint: "blush",
     kind: "live",
     embedPath: "/sketches/one-million-stars/index.html",
@@ -203,7 +203,7 @@ const computerArt = [
   {
     slug: "radioactive-cube",
     title: "radioactive cube",
-    index: "18",
+    index: "19",
     tint: "mint",
     kind: "live",
     embedPath: "/sketches/radioactive-cube/index.html",
@@ -212,7 +212,7 @@ const computerArt = [
   {
     slug: "joy-division",
     title: "joy division",
-    index: "19",
+    index: "20",
     tint: "butter",
     kind: "live",
     embedPath: "/sketches/joy-division/index.html",
@@ -221,7 +221,7 @@ const computerArt = [
   {
     slug: "in-the-glitch",
     title: "in the glitch",
-    index: "20",
+    index: "21",
     tint: "sky",
     kind: "live",
     embedPath: "/sketches/in-the-glitch/index.html",
@@ -240,7 +240,7 @@ const computerArt = [
   {
     slug: "gem-bubbles",
     title: "gem bubbles",
-    index: "03",
+    index: "23",
     tint: "butter",
     kind: "live",
     embedPath: "/sketches/gem-bubbles/index.html",
@@ -250,7 +250,7 @@ const computerArt = [
   {
     slug: "infinite-radiance-expanded",
     title: "infinite radiance, expanded",
-    index: "23",
+    index: "24",
     tint: "sky",
     kind: "live",
     embedPath: "/sketches/infinite-radiance-expanded/index.html",
@@ -259,7 +259,7 @@ const computerArt = [
   {
     slug: "cellular-automaton",
     title: "cellular automaton",
-    index: "24",
+    index: "25",
     tint: "mint",
     kind: "live",
     embedPath: "/sketches/cellular-automaton/index.html",
@@ -268,7 +268,7 @@ const computerArt = [
   {
     slug: "phyllotaxis-1",
     title: "phyllotaxis 1",
-    index: "25",
+    index: "26",
     tint: "sky",
     kind: "live",
     embedPath: "/sketches/phyllotaxis-1/index.html",
@@ -277,7 +277,7 @@ const computerArt = [
   {
     slug: "phyllotaxis-2",
     title: "phyllotaxis 2",
-    index: "26",
+    index: "27",
     tint: "mint",
     kind: "live",
     embedPath: "/sketches/phyllotaxis-2/index.html",
@@ -286,7 +286,7 @@ const computerArt = [
   {
     slug: "phyllotaxis-3",
     title: "phyllotaxis 3",
-    index: "27",
+    index: "28",
     tint: "butter",
     kind: "live",
     embedPath: "/sketches/phyllotaxis-3/index.html",
@@ -295,7 +295,7 @@ const computerArt = [
   {
     slug: "phyllotaxis-4",
     title: "phyllotaxis 4",
-    index: "28",
+    index: "29",
     tint: "blush",
     kind: "live",
     embedPath: "/sketches/phyllotaxis-4/index.html",
@@ -304,7 +304,7 @@ const computerArt = [
   {
     slug: "distorted-pi",
     title: "distorted pi",
-    index: "29",
+    index: "30",
     tint: "sky",
     kind: "live",
     embedPath: "/sketches/distorted-pi/index.html",
@@ -313,7 +313,7 @@ const computerArt = [
   {
     slug: "l-system-tree",
     title: "l-system tree",
-    index: "30",
+    index: "31",
     tint: "mint",
     kind: "live",
     embedPath: "/sketches/l-system-tree/index.html",
@@ -322,7 +322,7 @@ const computerArt = [
   {
     slug: "algorithmic-botany",
     title: "algorithmic botany",
-    index: "31",
+    index: "32",
     tint: "sky",
     kind: "live",
     embedPath: "/sketches/algorithmic-botany/index.html",
@@ -332,7 +332,7 @@ const computerArt = [
   {
     slug: "bubble-gum-smiley",
     title: "bubble gum smiley",
-    index: "32",
+    index: "33",
     tint: "blush",
     kind: "live",
     embedPath: "/sketches/bubble-gum-smiley/index.html",
