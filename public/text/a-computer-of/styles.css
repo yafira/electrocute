@@ -7,6 +7,16 @@
   --rule: #e2e2e2;
   --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --step: 5ch;
+
+  /* one pastel per part of the machine */
+  --material: #f9d5e1;
+  --structure: #fcddc7;
+  --power: #faedb4;
+  --interface: #d5ebcb;
+  --location: #cfe5f6;
+  --inhabitant: #ddd3f4;
+  --promise: #cdeee6;
+  --on-pastel: #0a0a0a;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) { --paper: #0a0a0a; --ink: #f5f5f5; --ink-soft: #9a9a9a; --ink-faint: #4a4a4a; --rule: #262626; color-scheme: dark; }
@@ -43,6 +53,26 @@ header p { margin: 0; color: var(--ink-soft); font-weight: 300; }
 .w { font-weight: 500; }
 .stanza.old .w { font-weight: 400; }
 
+/* on the standalone page, each word sits on its part's pastel like a
+   highlighter; the text stays dark on the pastel in both themes. the
+   embed on electrocute.io/electronic-text stays black and white. */
+html:not(.embed) .w {
+  color: var(--on-pastel);
+  background: var(--slot);
+  padding: 0 0.25em;
+  border-radius: 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+html:not(.embed) .stanza.old { color: var(--ink); opacity: 0.4; }
+.slot-material { --slot: var(--material); }
+.slot-structure { --slot: var(--structure); }
+.slot-power { --slot: var(--power); }
+.slot-interface { --slot: var(--interface); }
+.slot-location { --slot: var(--location); }
+.slot-inhabitant { --slot: var(--inhabitant); }
+.slot-promise { --slot: var(--promise); }
+
 .controls { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; border-top: 1px solid var(--rule); padding-top: 20px; }
 .group { display: flex; gap: 0; border: 1px solid var(--ink); }
 .group button, .toggle, .again {
@@ -59,12 +89,45 @@ button:focus-visible { outline: 1px dashed var(--ink); outline-offset: 3px; }
 .yours-intro { margin: 0; color: var(--ink-soft); font-weight: 300; font-size: 13px; max-width: 62ch; }
 .fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 14px 24px; }
 .fields label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--ink-soft); min-width: 0; }
+html:not(.embed) .fields label span::before {
+  content: "";
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-right: 0.5em;
+  vertical-align: -0.05em;
+  border-radius: 2px;
+  background: var(--slot);
+}
+label[for="f-material"] { --slot: var(--material); }
+label[for="f-structure"] { --slot: var(--structure); }
+label[for="f-power"] { --slot: var(--power); }
+label[for="f-interface"] { --slot: var(--interface); }
+label[for="f-location"] { --slot: var(--location); }
+label[for="f-inhabitant"] { --slot: var(--inhabitant); }
+label[for="f-promise"] { --slot: var(--promise); }
 .fields input { font: inherit; font-size: 14px; color: var(--ink); background: var(--paper); border: 0; border-bottom: 1px solid var(--ink-faint); padding: 4px 0; border-radius: 0; width: 100%; }
 .fields input::placeholder { color: var(--ink-faint); }
 .fields input:focus { outline: none; border-bottom-color: var(--ink); }
 .form-actions { display: flex; gap: 20px; align-items: center; }
 .form-actions .again { margin-left: 0; }
-.w.mine { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+/* the reader's words: underlined in the black-and-white embed, and on
+   the standalone page stitched in with a dashed edge drawn on the pastel */
+.embed .w.mine { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+html:not(.embed) .w.mine {
+  outline: 1.5px dashed var(--on-pastel);
+  outline-offset: -3px;
+  padding: 0.05em 0.4em;
+}
+.mark {
+  padding: 0 0.3em;
+  border-radius: 2px;
+  color: var(--on-pastel);
+  background: var(--promise);
+  outline: 1.5px dashed var(--on-pastel);
+  outline-offset: -3px;
+}
+.embed .mark { background: none; color: inherit; outline: none; text-decoration: underline; text-underline-offset: 4px; }
 .hint { margin: 0;  color: var(--ink-soft); font-size: 13px; font-weight: 300; }
 
 footer { color: var(--ink-soft); font-size: 12px; font-weight: 300; max-width: 62ch; display: flex; flex-direction: column; gap: 6px; }
