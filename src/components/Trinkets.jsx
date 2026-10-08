@@ -132,16 +132,35 @@ export function playSynthSound(type) {
   try {
     const ctx = getCtx();
 
-    if (type === "zap-on") {
-      // power surging up the cable: a rising fizz with sparks along
-      // the way, then a bright snap as it reaches the logo
-      bzzt(ctx, 0, { freq: 70, to: 160, dur: 0.38, peak: 0.035 });
-      crackle(ctx, 0, { dur: 0.36, count: 16, peak: 0.07 });
-      crackle(ctx, 0.37, { dur: 0.06, count: 6, peak: 0.12 });
-    } else if (type === "zap-off") {
-      // power cut: a short sag and a last few dying sparks
-      bzzt(ctx, 0, { freq: 140, to: 50, dur: 0.22, peak: 0.03 });
-      crackle(ctx, 0.02, { dur: 0.25, count: 7, peak: 0.05 });
+    if (type === "neon-on" || type === "neon-off") {
+      // a neon sign: a relay click and a ballast hum (stuttering as it
+      // catches when switching on), then the old two-blip beep after
+      const on = type === "neon-on";
+      crackle(ctx, 0, { dur: 0.01, count: 2, peak: 0.15 });
+      if (on) {
+        [0.03, 0.11, 0.16, 0.27].forEach((d, i) =>
+          bzzt(ctx, d, { freq: 120, dur: i === 3 ? 0.5 : 0.05, peak: 0.03 }),
+        );
+        crackle(ctx, 0.03, { dur: 0.3, count: 5, peak: 0.04 });
+      } else {
+        bzzt(ctx, 0.01, { freq: 120, to: 90, dur: 0.15, peak: 0.025 });
+      }
+      const beep = on ? 0.8 : 0.2;
+      pluck(ctx, beep, {
+        freq: 740,
+        to: 880,
+        dur: 0.05,
+        peak: 0.03,
+        type: "square",
+        filterFreq: 2200,
+      });
+      pluck(ctx, beep + 0.07, {
+        freq: 990,
+        dur: 0.09,
+        peak: 0.024,
+        type: "square",
+        filterFreq: 1800,
+      });
     } else if (type === "led") {
       // a firefly blinking on: two quick notes hopping upward
       pluck(ctx, 0, {
@@ -773,8 +792,8 @@ export function BreadboardTrinket({
 
   const handleButtonClick = (e) => {
     e.stopPropagation();
-    // the led is about to flip, so the zap matches where it's going
-    playSynthSound(ledOn ? "zap-off" : "zap-on");
+    // the led is about to flip, so the sound matches where it's going
+    playSynthSound(ledOn ? "neon-off" : "neon-on");
     setPressAnim(true);
     setTimeout(() => setPressAnim(false), 150);
     if (onButtonPress) onButtonPress();
