@@ -51,11 +51,98 @@ function pluck(
   osc.stop(t + dur + 0.02);
 }
 
+// a pinch of white noise, reused for every spark
+let noiseBuffer = null;
+function getNoise(ctx) {
+  if (noiseBuffer) return noiseBuffer;
+  noiseBuffer = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
+  const data = noiseBuffer.getChannelData(0);
+  for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+  return noiseBuffer;
+}
+
+// a scatter of tiny sparks: very short noise ticks at random moments,
+// each through its own bright bandpass so they snap and pop like an arc
+function crackle(ctx, start, { dur = 0.3, count = 14, peak = 0.08 }) {
+  const noise = getNoise(ctx);
+  for (let i = 0; i < count; i++) {
+    const t = ctx.currentTime + start + Math.random() * dur;
+    const len = 0.004 + Math.random() * 0.018;
+    const src = ctx.createBufferSource();
+    const filter = ctx.createBiquadFilter();
+    const gain = ctx.createGain();
+
+    src.buffer = noise;
+    filter.type = "bandpass";
+    filter.frequency.value = 1800 + Math.random() * 5000;
+    filter.Q.value = 1.5;
+
+    const level = peak * (0.35 + Math.random() * 0.65);
+    gain.gain.setValueAtTime(level, t);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + len);
+
+    src.connect(filter);
+    filter.connect(gain);
+    gain.connect(ctx.destination);
+    src.start(t, Math.random() * 0.5, len + 0.01);
+  }
+}
+
+// the buzz of current itself: a gritty sawtooth hum that wobbles fast,
+// swept in pitch so it can surge up or sag away
+function bzzt(ctx, start, { freq, to = freq, dur = 0.3, peak = 0.04 }) {
+  const t = ctx.currentTime + start;
+  const osc = ctx.createOscillator();
+  const wobble = ctx.createOscillator();
+  const wobbleDepth = ctx.createGain();
+  const filter = ctx.createBiquadFilter();
+  const gain = ctx.createGain();
+
+  osc.type = "sawtooth";
+  osc.frequency.setValueAtTime(freq, t);
+  osc.frequency.exponentialRampToValueAtTime(to, t + dur);
+
+  // a fast irregular wobble on the pitch is what makes it fizz
+  wobble.type = "square";
+  wobble.frequency.value = 37;
+  wobbleDepth.gain.value = freq * 0.25;
+  wobble.connect(wobbleDepth);
+  wobbleDepth.connect(osc.frequency);
+
+  filter.type = "bandpass";
+  filter.frequency.setValueAtTime(900, t);
+  filter.frequency.exponentialRampToValueAtTime(2400, t + dur);
+  filter.Q.value = 0.9;
+
+  gain.gain.setValueAtTime(0.0001, t);
+  gain.gain.exponentialRampToValueAtTime(peak, t + 0.02);
+  gain.gain.setValueAtTime(peak, t + dur * 0.7);
+  gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+
+  osc.connect(filter);
+  filter.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start(t);
+  wobble.start(t);
+  osc.stop(t + dur + 0.02);
+  wobble.stop(t + dur + 0.02);
+}
+
 export function playSynthSound(type) {
   try {
     const ctx = getCtx();
 
-    if (type === "led") {
+    if (type === "zap-on") {
+      // power surging up the cable: a rising fizz with sparks along
+      // the way, then a bright snap as it reaches the logo
+      bzzt(ctx, 0, { freq: 70, to: 160, dur: 0.38, peak: 0.035 });
+      crackle(ctx, 0, { dur: 0.36, count: 16, peak: 0.07 });
+      crackle(ctx, 0.37, { dur: 0.06, count: 6, peak: 0.12 });
+    } else if (type === "zap-off") {
+      // power cut: a short sag and a last few dying sparks
+      bzzt(ctx, 0, { freq: 140, to: 50, dur: 0.22, peak: 0.03 });
+      crackle(ctx, 0.02, { dur: 0.25, count: 7, peak: 0.05 });
+    } else if (type === "led") {
       // a firefly blinking on: two quick notes hopping upward
       pluck(ctx, 0, {
         freq: 660,
@@ -686,7 +773,8 @@ export function BreadboardTrinket({
 
   const handleButtonClick = (e) => {
     e.stopPropagation();
-    playSynthSound("terminal");
+    // the led is about to flip, so the zap matches where it's going
+    playSynthSound(ledOn ? "zap-off" : "zap-on");
     setPressAnim(true);
     setTimeout(() => setPressAnim(false), 150);
     if (onButtonPress) onButtonPress();
