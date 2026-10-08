@@ -12,6 +12,8 @@
 }
 
 .container {
+  /* anchors the power cable layer */
+  position: relative;
   max-width: 1040px;
   margin: 0 auto;
   padding: 0 32px;

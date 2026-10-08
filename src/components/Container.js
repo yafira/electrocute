@@ -16,6 +16,7 @@ import {
   BreadboardTrinket,
   LedTrinket,
 } from "./Trinkets";
+import { sendPower } from "../lib/powerSurge";
 
 const COLLAGE_ORDER = [
   { type: "card", slug: "electrocute-ui" },
@@ -59,8 +60,11 @@ export default function Container() {
 
   const [ledOn, setLedOn] = useState(false);
 
+  // the breadboard button also feeds the power cable up to the logo
   const handleBreadboardButtonPress = () => {
-    setLedOn((prev) => !prev);
+    const next = !ledOn;
+    setLedOn(next);
+    sendPower(next);
   };
 
   useEffect(() => {

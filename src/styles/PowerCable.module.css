@@ -1,0 +1,101 @@
+/* the cable layer covers the page container so both ends can be
+   measured against the same origin; it never takes clicks */
+.layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.cable {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  overflow: visible;
+}
+
+.cable path {
+  fill: none;
+  stroke-linecap: round;
+}
+
+/* the outer jacket, same ink as the breadboard outline */
+.sheath {
+  stroke: #2c2440;
+  stroke-width: 5.5;
+}
+
+.core {
+  stroke: #c5caef;
+  stroke-width: 2.5;
+  transition: stroke 0.3s ease;
+}
+
+/* while powered, current keeps creeping up the cord like the
+   conductive thread in the nav */
+.powered .core {
+  stroke: #b2a4d4;
+  stroke-dasharray: 3 3;
+  animation: flow 0.9s linear infinite;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -6;
+  }
+}
+
+/* one bright packet of current per button press */
+.surge {
+  stroke: #ffffff;
+  stroke-width: 3.5;
+  stroke-dasharray: 14 130;
+  stroke-dashoffset: 14;
+  filter: drop-shadow(0 0 4px #b2a4d4) drop-shadow(0 0 2px #ff9ad5);
+  animation: surge 0.38s ease-in both;
+}
+
+@keyframes surge {
+  0% {
+    stroke-dashoffset: 14;
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -100;
+    opacity: 0;
+  }
+}
+
+.header {
+  fill: #2c2440;
+}
+
+.pin {
+  stroke: #c8c8ce;
+  stroke-width: 1.4;
+}
+
+.plug {
+  fill: #fdfcf6;
+  stroke: #2c2440;
+  stroke-width: 1.5;
+}
+
+.plugGrip {
+  stroke: #2c2440;
+  stroke-width: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .powered .core {
+    animation: none;
+  }
+  .surge {
+    display: none;
+  }
+}

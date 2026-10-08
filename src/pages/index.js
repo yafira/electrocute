@@ -7,6 +7,7 @@ import Container from "@/components/Container";
 import PunchCard from "@/components/PunchCard";
 import SoftPot from "@/components/SoftPot";
 import SoftCircuit from "@/components/SoftCircuit";
+import PowerCable from "@/components/PowerCable";
 import { playFeltTone } from "@/lib/feltTone";
 import styles from "@/styles/Home.module.css";
 
@@ -43,6 +44,7 @@ export default function Home() {
       <Contributions />
       <Footer />
       <SoftPot />
+      <PowerCable />
     </div>
   );
 }

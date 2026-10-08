@@ -757,6 +757,8 @@ export function BreadboardTrinket({
                   cy={rowY(r)}
                   r="1.4"
                   className={`${styles.hole} ${litHole === key ? styles.holeLit : ""}`}
+                  // the top right hole is where the logo's power cable plugs in
+                  data-power-hole={key === "R-3-0" ? "" : undefined}
                 />
               );
             }),
