@@ -10,126 +10,17 @@
 // never renumbers or erases anyone's already-punched progress.
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import styles from "../styles/PunchCard.module.css";
+import {
+  COLS,
+  MOTIFS,
+  MOTIF_DATA,
+  resolvePosition,
+} from "../data/punchMotifs";
 
 const LOCAL_COUNT_KEY = "electrocute:punchcard:local-count";
 const PUNCHED_KEY = "electrocute:punchcard:punched";
-
-const COLS = 24;
-
-const MOTIFS = [
-  {
-    name: "three flowers",
-    rows: [
-      "........................",
-      "...##......##......##...",
-      "..####....####....####..",
-      "..####....####....####..",
-      "...##......##......##...",
-      ".....#......#......#....",
-      ".....#......#......#....",
-      "....##.....##.....##....",
-      ".....#......#......#....",
-      "........................",
-      "#..#..#..#..#..#..#..#..",
-      "........................",
-    ],
-  },
-  {
-    name: "one heart",
-    rows: [
-      ".........##..##.........",
-      "........########........",
-      "........########........",
-      "........########........",
-      ".........######.........",
-      "..........####..........",
-      "...........##...........",
-      "........................",
-      "#..#..#..#..#..#..#..#..",
-    ],
-  },
-  {
-    name: "one smiley",
-    rows: [
-      ".........#####..........",
-      "........#.....#.........",
-      ".......#..#.#..#........",
-      ".......#.......#........",
-      ".......#.#...#.#........",
-      ".......#..###..#........",
-      "........#.....#.........",
-      ".........#####..........",
-      "........................",
-      "#..#..#..#..#..#..#..#..",
-    ],
-  },
-  {
-    name: "one star",
-    rows: [
-      "...........#............",
-      "...........#............",
-      ".........#####..........",
-      ".........#####..........",
-      ".......#########........",
-      "........#######.........",
-      ".........#####..........",
-      "........##...##.........",
-      ".......##.....##........",
-      "........................",
-      "#..#..#..#..#..#..#..#..",
-    ],
-  },
-];
-
-// carriage order for one motif: bottom row first, left to right —
-// the way the card feeds through the machine as fabric grows.
-function buildMotifData(rows) {
-  const numRows = rows.length;
-  const cells = [];
-  for (let r = numRows - 1; r >= 0; r--) {
-    for (let c = 0; c < COLS; c++) {
-      cells.push({ row: r, col: c, hole: rows[r][c] === "#" });
-    }
-  }
-  const holes = cells.filter((cell) => cell.hole);
-  return { cells, holes, numRows, holeCount: holes.length };
-}
-
-const MOTIF_DATA = MOTIFS.map((m) => buildMotifData(m.rows));
-const CYCLE_HOLE_COUNTS = MOTIF_DATA.map((d) => d.holeCount);
-const CYCLE_TOTAL = CYCLE_HOLE_COUNTS.reduce((a, b) => a + b, 0);
-
-// given the all-time punch total, resolves which motif is currently
-// being filled, how far into it, and how many motif-cards have been
-// completed overall (cycling back to the first motif when the list
-// runs out).
-function resolvePosition(total) {
-  if (!total || total <= 0) {
-    return { motifIndex: 0, punchedInMotif: 0, cardsDone: 0 };
-  }
-  const idx0 = total - 1;
-  const cyclesCompleted = Math.floor(idx0 / CYCLE_TOTAL);
-  const posInCycle = idx0 % CYCLE_TOTAL;
-
-  let running = 0;
-  let motifIndex = 0;
-  let posInMotif = 0;
-  for (let i = 0; i < MOTIF_DATA.length; i++) {
-    if (posInCycle < running + CYCLE_HOLE_COUNTS[i]) {
-      motifIndex = i;
-      posInMotif = posInCycle - running;
-      break;
-    }
-    running += CYCLE_HOLE_COUNTS[i];
-  }
-
-  return {
-    motifIndex,
-    punchedInMotif: posInMotif + 1,
-    cardsDone: cyclesCompleted * MOTIF_DATA.length + motifIndex,
-  };
-}
 
 export default function PunchCard() {
   const [count, setCount] = useState(null);
@@ -137,6 +28,8 @@ export default function PunchCard() {
   const [hasPunched, setHasPunched] = useState(false);
   const [justPunched, setJustPunched] = useState(false);
   const [busy, setBusy] = useState(false);
+  // true when this visitor's hole was the last one on the card
+  const [finishedCard, setFinishedCard] = useState(false);
 
   useEffect(() => {
     setHasPunched(Boolean(localStorage.getItem(PUNCHED_KEY)));
@@ -169,6 +62,7 @@ export default function PunchCard() {
         const res = await fetch("/api/punch", { method: "POST" });
         const data = await res.json();
         if (typeof data.count === "number") setCount(data.count);
+        if (data.completed) setFinishedCard(true);
       } catch {
         setCount((c) => (c || 0) + 1);
       }
@@ -225,7 +119,7 @@ export default function PunchCard() {
   const fabH = ROWS * st + 16;
 
   return (
-    <section className={styles.punchcard}>
+    <section id="punchcard" className={styles.punchcard}>
       <h2>the communal punch card</h2>
       <p className={styles.intro}>
         every visitor punches one hole, carriage order, bottom row first. below,
@@ -389,6 +283,17 @@ export default function PunchCard() {
       >
         {hasPunched ? "you've punched your hole" : "punch your hole"}
       </button>
+
+      {finishedCard && (
+        <p className={styles.status}>
+          yours was the last hole. that card is off the machine and saved to
+          the archive.
+        </p>
+      )}
+
+      <Link href="/punch-card-archive" className={styles.archiveLink}>
+        see the finished cards →
+      </Link>
     </section>
   );
 }
