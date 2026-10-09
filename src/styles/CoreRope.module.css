@@ -24,7 +24,7 @@
 
 .svg {
   display: block;
-  width: 148px;
+  width: 124px;
   height: auto;
   overflow: visible;
   filter: drop-shadow(0 3px 6px rgba(74, 68, 83, 0.1));
@@ -35,45 +35,34 @@
   transform: translateY(-3px) rotate(-1deg);
 }
 
-/* the strip of fabric the rope is pinned to */
-.cloth {
-  fill: #f7f1df;
-  stroke: #e6dcc0;
-  stroke-width: 1.5;
-  stroke-dasharray: 4 3;
+.ring {
+  stroke: #1e1d1b;
+  stroke-width: 2;
+  transition:
+    stroke 0.12s ease,
+    fill 0.25s ease,
+    filter 0.12s ease;
 }
 
-.ring,
-.ringFront {
-  fill: none;
-  stroke: #4a4453;
-  stroke-width: 4.5;
-  transition: stroke 0.15s ease, filter 0.15s ease;
-}
-
-.ringFront {
-  stroke-linecap: round;
-}
-
+/* the ring the read pulse is passing through */
 .ringLit {
   stroke: #b2a4d4;
+  stroke-width: 3;
   filter: drop-shadow(0 0 4px rgba(178, 164, 212, 0.95));
 }
 
 .wire {
   fill: none;
+  stroke: #6f6b63;
   stroke-width: 1.6;
+  stroke-linejoin: round;
   stroke-linecap: round;
-  transition: d 0.35s ease, stroke-width 0.2s ease;
-}
-
-.wireActive {
-  stroke-width: 2.4;
+  opacity: 0.55;
 }
 
 .label {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 7px;
+  font-size: 10px;
   letter-spacing: 0.08em;
   fill: #a99f83;
 }
@@ -110,14 +99,12 @@
   }
 }
 
-:global(body.ecute-dark) .cloth {
-  fill: #2f2a3b;
-  stroke: #5a5170;
+:global(body.ecute-dark) .ring {
+  stroke: #e8e2fb;
 }
 
-:global(body.ecute-dark) .ring,
-:global(body.ecute-dark) .ringFront {
-  stroke: #9a90b8;
+:global(body.ecute-dark) .wire {
+  stroke: #b8b0d0;
 }
 
 :global(body.ecute-dark) .fact {
@@ -128,7 +115,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .svg,
-  .wire,
+  .ring,
   .fact {
     transition: none;
     animation: none;
