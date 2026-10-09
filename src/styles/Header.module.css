@@ -42,6 +42,13 @@
   border-radius: 0.008em;
   background: #2c2440;
   pointer-events: none;
+  /* only shows while the breadboard's cable is actually plugged in.
+     hidden rather than removed, so the cable can still measure it */
+  visibility: hidden;
+}
+
+:global(html.power-cable) .socket {
+  visibility: visible;
 }
 
 .logo {
@@ -223,7 +230,9 @@
     margin: 0;
   }
   .Header h1 {
-    font-size: 200px;
+    /* full size on wide screens, scaling down with the window on
+       tablets so the wordmark never runs past the edges */
+    font-size: min(200px, 21vw);
     margin: 0;
     padding-bottom: 0;
   }

@@ -195,8 +195,22 @@
 }
 
 @media screen and (max-width: 640px) {
+  /* on phones the pills get their own row on top, and the coin cell,
+     switch, and LED sit underneath on one neat stitched row */
   .board {
-    gap: 4px;
+    gap: 12px 4px;
+    max-width: 340px;
+  }
+  .sewnNav {
+    order: -1;
+    flex-basis: 100%;
+    justify-content: center;
+    margin: 0;
+  }
+  /* the threads that ran into and out of the pills */
+  .board > span:nth-of-type(2),
+  .board > span:nth-of-type(4) {
+    display: none;
   }
   .thread {
     flex-basis: 12px;

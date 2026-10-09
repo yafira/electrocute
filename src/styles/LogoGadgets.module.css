@@ -36,6 +36,14 @@
   transform: translateY(-2px);
 }
 
+/* on small laptops the gap under the logo is narrower, so the panel
+   shrinks to stay clear of the coin cell and the electrocute-ui card */
+@media screen and (max-width: 1199px) {
+  .modemSvg {
+    width: 140px;
+  }
+}
+
 .modemBody {
   fill: #efe9da;
   stroke: #d8cfb8;

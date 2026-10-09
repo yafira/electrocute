@@ -32,8 +32,10 @@ export default function PowerCable() {
     // the breadboard isn't rendered on small screens, so no cable there
     if (!layer || !hole || !socket) {
       setEnds(null);
+      document.documentElement.classList.remove("power-cable");
       return;
     }
+    document.documentElement.classList.add("power-cable");
     const origin = layer.getBoundingClientRect();
     const h = centerOf(hole, origin);
     const s = centerOf(socket, origin);
@@ -72,6 +74,7 @@ export default function PowerCable() {
       clearInterval(settle);
       clearTimeout(stopSettle);
       off();
+      document.documentElement.classList.remove("power-cable");
     };
   }, [measure]);
 

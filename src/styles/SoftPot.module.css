@@ -117,12 +117,15 @@
   mix-blend-mode: multiply;
 }
 
+/* on phones there's no spare corner, so instead of floating over the
+   cards the dial settles at the very bottom of the page */
 @media screen and (max-width: 750px) {
   .pot {
-    left: 10px;
-    bottom: 10px;
+    position: static;
+    margin: 0 auto 28px;
+    width: fit-content;
   }
   .slider {
-    width: 88px;
+    width: 120px;
   }
 }

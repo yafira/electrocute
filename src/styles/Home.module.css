@@ -954,6 +954,13 @@
   transition: transform 0.2s ease;
 }
 
+/* a bigger invisible hit area around the little switch for fingers */
+.miniToggleTrinket::before {
+  content: "";
+  position: absolute;
+  inset: -10px -6px;
+}
+
 .miniToggleTrinket:hover {
   transform: translate(-50%, -50%) scale(1.15);
 }

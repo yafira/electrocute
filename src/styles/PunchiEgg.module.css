@@ -95,10 +95,11 @@
   top: 94px;
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 14px;
 }
 
 .buttons button {
+  position: relative;
   width: 14px;
   height: 14px;
   padding: 0;
@@ -109,6 +110,14 @@
   font-size: 0;
   cursor: pointer;
   transition: transform 0.1s ease;
+}
+
+/* a bigger invisible hit area so the tiny buttons are easy to tap */
+.buttons button::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
 }
 
 /* the middle button sits a touch lower, like the real thing */
