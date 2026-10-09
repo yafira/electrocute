@@ -1,0 +1,138 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.5rem auto 0;
+  padding: 0 1rem;
+}
+
+.chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.chip:focus-visible {
+  outline: 2px dashed #b2a4d4;
+  outline-offset: 6px;
+  border-radius: 8px;
+}
+
+.chipSvg {
+  width: 96px;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 3px 6px rgba(44, 36, 64, 0.18));
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.chip:hover .chipSvg {
+  transform: translateY(-3px) rotate(-2deg);
+}
+
+.chip:active .chipSvg {
+  transform: translateY(1px);
+}
+
+.pins rect {
+  fill: #c8c8ce;
+  stroke: #6b6b70;
+  stroke-width: 0.6;
+}
+
+.body {
+  fill: #2c2440;
+}
+
+.notch {
+  fill: #463c5c;
+}
+
+.part {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  fill: #c5caef;
+}
+
+.spec {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 6px;
+  fill: #857b9e;
+}
+
+.label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  color: #9d96e7;
+}
+
+/* the paper prints out of the chip, a few lines at a time */
+.tray {
+  width: min(320px, 100%);
+  min-height: 1rem;
+  margin-top: 0.75rem;
+}
+
+.paper {
+  margin: 0;
+  padding: 0.9rem 1rem 1rem;
+  background: #fffdf6;
+  border: 1px solid #ece4cc;
+  border-radius: 3px;
+  box-shadow: 0 3px 8px rgba(74, 68, 83, 0.08);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #2c2440;
+  text-align: center;
+  text-wrap: balance;
+  transform-origin: top center;
+  animation: printOut 0.9s steps(9) both;
+}
+
+.paper small {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #857b7b;
+}
+
+.torn {
+  animation: tearOff 0.38s ease-in forwards;
+}
+
+@keyframes printOut {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(-6px);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0) rotate(-1deg);
+  }
+}
+
+@keyframes tearOff {
+  to {
+    opacity: 0;
+    transform: translate(30px, 18px) rotate(10deg);
+  }
+}
+
+:global(body.ecute-dark) .label {
+  color: #d9d3ef;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paper,
+  .torn {
+    animation: none;
+  }
+}

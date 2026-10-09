@@ -12,6 +12,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import styles from "../styles/PunchCard.module.css";
+import PunchiEgg from "./PunchiEgg";
 import {
   COLS,
   MOTIFS,
@@ -283,6 +284,14 @@ export default function PunchCard() {
       >
         {hasPunched ? "you've punched your hole" : "punch your hole"}
       </button>
+
+      {count !== null && (
+        <PunchiEgg
+          punched={punched}
+          cardSize={CARD_SIZE}
+          justPunched={justPunched}
+        />
+      )}
 
       {hasPunched && (
         <p className={styles.thanks}>

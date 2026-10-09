@@ -1,0 +1,137 @@
+/* the modem and moth under the logo. both are placed on the collage
+   canvas like the other trinkets, by their top-left corner. */
+
+.modem,
+.moth {
+  position: absolute;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.modem:focus-visible,
+.moth:focus-visible {
+  outline: 2px dashed #b2a4d4;
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+/* dial-up modem front panel */
+.modem {
+  z-index: 12;
+}
+
+.modemSvg {
+  display: block;
+  width: 190px;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.08));
+  transition: transform 0.2s ease;
+}
+
+.modem:hover .modemSvg {
+  transform: translateY(-2px);
+}
+
+.modemBody {
+  fill: #efe9da;
+  stroke: #d8cfb8;
+  stroke-width: 1.5;
+}
+
+.modemLip {
+  fill: #e3dcc8;
+}
+
+.modemLabel {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 6.5px;
+  fill: #857b7b;
+}
+
+.modemBrand {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 6px;
+  letter-spacing: 0.8px;
+  fill: #a99f83;
+}
+
+.lit {
+  filter: drop-shadow(0 0 2px currentColor);
+}
+
+:global(body.ecute-dark) .modemBody {
+  fill: #3a3448;
+  stroke: #5a5170;
+}
+
+:global(body.ecute-dark) .modemLip {
+  fill: #332d40;
+}
+
+/* the moth */
+.moth {
+  z-index: 45;
+  transition:
+    left 1.1s cubic-bezier(0.45, 0.05, 0.3, 1),
+    top 1.1s cubic-bezier(0.45, 0.05, 0.3, 1);
+}
+
+.mothSvg {
+  display: block;
+  width: 58px;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 2px 3px rgba(74, 68, 83, 0.12));
+}
+
+.wing {
+  transform-box: fill-box;
+  animation: rest 3.6s ease-in-out infinite;
+}
+
+.wingLeft {
+  transform-origin: right center;
+}
+
+.wingRight {
+  transform-origin: left center;
+}
+
+.flying .wing {
+  animation: flap 0.12s ease-in-out infinite alternate;
+}
+
+@keyframes flap {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0.25);
+  }
+}
+
+/* at rest it gives its wings a slow little fold now and then */
+@keyframes rest {
+  0%,
+  88%,
+  100% {
+    transform: scaleX(1);
+  }
+  93% {
+    transform: scaleX(0.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wing,
+  .flying .wing {
+    animation: none;
+  }
+  .moth {
+    transition: none;
+  }
+}

@@ -1,4 +1,6 @@
 .punchcard {
+  /* punchi is placed against this on wide screens */
+  position: relative;
   max-width: 900px;
   margin: 3rem auto 1rem;
   padding: 0 1rem;

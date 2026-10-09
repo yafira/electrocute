@@ -17,6 +17,7 @@ import {
   LedTrinket,
 } from "./Trinkets";
 import { sendPower } from "../lib/powerSurge";
+import { ModemTrinket, MothTrinket } from "./LogoGadgets";
 
 const COLLAGE_ORDER = [
   { type: "card", slug: "electrocute-ui" },
@@ -266,6 +267,10 @@ export default function Container() {
               isMobile={false}
             />
             <ChipTrinket isMobile={false} />
+
+            {/* under the logo, left of the sewn nav */}
+            <ModemTrinket x="1.5%" y="-6.2%" rot={-3} />
+            <MothTrinket x="17%" y="-10%" />
             <BreadboardTrinket
               x="76%"
               y="-10%"
