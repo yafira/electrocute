@@ -34,6 +34,8 @@
   line-height: 1.75;
   margin-bottom: 1rem;
   overflow-wrap: break-word;
+  /* keeps a word or two from ending up alone on the last line */
+  text-wrap: pretty;
 }
 
 .card a,

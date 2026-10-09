@@ -27,7 +27,7 @@ export default function Contact() {
             i&apos;m currently looking for design engineering and creative
             technology roles — the sweet spot where design and code meet,
             ideally with hardware in the mix. i light up at embedded electronics
-            and hardware design, e-textiles, physical computing, and tactile
+            and hardware design, e&#8209;textiles, physical computing, and tactile
             interaction: wherever technology meets texture, gesture, or form.
           </p>
           <p>
