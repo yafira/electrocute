@@ -241,16 +241,17 @@ export default function Container() {
         {!isMobile && (
           <>
             <StitchTrinket x="54%" y="5%" rot={-8} isMobile={false} />
+            {/* the knob and power switch sit centered under the scope */}
             <KnobTrinket
-              x="51.5%"
-              y="31%"
+              x="calc(56% - 24px)"
+              y="28%"
               rot={0}
               onTurn={handleKnobTurn}
               isMobile={false}
             />
             <ToggleTrinket
-              x="55%"
-              y="31%"
+              x="calc(56% + 22px)"
+              y="28%"
               rot={0}
               active={isCircuitOn}
               onToggle={() => setIsCircuitOn(!isCircuitOn)}
@@ -273,8 +274,8 @@ export default function Container() {
             <ModemTrinket x="1.5%" y="-6.2%" rot={-3} />
             <MothTrinket x="17%" y="-10%" />
 
-            {/* core rope memory, for margaret hamilton */}
-            <CoreRopeTrinket x="87%" y="31%" rot={4} />
+            {/* core memory, for margaret hamilton, beside the scope */}
+            <CoreRopeTrinket x="calc(56% + 92px)" y="17.6%" rot={3} />
             <BreadboardTrinket
               x="76%"
               y="-10%"
