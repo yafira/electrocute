@@ -11,8 +11,8 @@ import { noise, tone } from "../lib/tinySynth";
 
 const grammar = {
   origin: [
-    "#subject.capitalize# #verb# #object#.",
-    "#subject.capitalize# #verb# #object#, and that is enough.",
+    "#subject# #verb# #object#.",
+    "#subject# #verb# #object#, and that is enough.",
     "soon, #subject# will #future#.",
     "trust #subject#. it #verb# #object#.",
   ],
@@ -22,7 +22,7 @@ const grammar = {
     "your next stitch",
     "a quiet capacitor",
     "the knit row",
-    "a sleepy LED",
+    "a sleepy led",
     "the conductive yarn",
     "this soft circuit",
     "an unsoldered heart",
