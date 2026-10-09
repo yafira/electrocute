@@ -24,7 +24,7 @@
 
 .svg {
   display: block;
-  width: 124px;
+  width: 100px;
   height: auto;
   overflow: visible;
   filter: drop-shadow(0 3px 6px rgba(74, 68, 83, 0.1));
@@ -35,10 +35,11 @@
   transform: translateY(-3px) rotate(-1deg);
 }
 
-/* the strip of fabric the plane is pinned to */
+/* the strip of fabric the plane is pinned to, in the same wisteria as
+   the scope's frame so the two read as one instrument */
 .cloth {
-  fill: #f7f1df;
-  stroke: #e6dcc0;
+  fill: #f4f0ff;
+  stroke: #cfc3f5;
   stroke-width: 1.5;
   stroke-dasharray: 4 3;
 }
@@ -81,7 +82,7 @@
   font-family: "IBM Plex Mono", monospace;
   font-size: 10px;
   letter-spacing: 0.08em;
-  fill: #a99f83;
+  fill: #9d96c4;
 }
 
 /* the fact note, same as the moth's */
