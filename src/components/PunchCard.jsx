@@ -284,10 +284,11 @@ export default function PunchCard() {
         {hasPunched ? "you've punched your hole" : "punch your hole"}
       </button>
 
-      {finishedCard && (
-        <p className={styles.status}>
-          yours was the last hole. that card is off the machine and saved to
-          the archive.
+      {hasPunched && (
+        <p className={styles.thanks}>
+          {finishedCard
+            ? "thank you! yours was the last hole. that card is off the machine and saved to the archive."
+            : "thank you for punching a hole. your stitch is part of the fabric now."}
         </p>
       )}
 

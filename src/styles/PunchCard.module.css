@@ -172,3 +172,16 @@
 :global(.voidworld) .archiveLink {
   color: #d9d3ef;
 }
+
+.thanks {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: #9d96e7;
+  max-width: 380px;
+  margin: 0.9rem auto 0;
+}
+
+:global(.voidworld) .thanks {
+  color: #d9d3ef;
+}

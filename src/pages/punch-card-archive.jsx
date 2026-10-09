@@ -130,6 +130,7 @@ function Swatch({ rows }) {
 export default function PunchCardArchive() {
   const [cards, setCards] = useState(null);
   const [shared, setShared] = useState(true);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     let alive = true;
@@ -139,6 +140,7 @@ export default function PunchCardArchive() {
         if (!alive) return;
         setShared(Boolean(data.shared));
         setCards(data.cards || []);
+        setTotal(Number(data.total) || 0);
       })
       .catch(() => alive && setCards([]));
     return () => {
@@ -200,6 +202,19 @@ export default function PunchCardArchive() {
               </li>
             ))}
           </ol>
+        )}
+
+        {cards && cards.length > 0 && (
+          <section className={styles.thanks}>
+            <h2>thank you</h2>
+            <p>
+              to everyone who stopped by and punched a hole: these cards are
+              yours. {total} {total === 1 ? "hole" : "holes"} so far, one
+              visitor at a time, and every one of them is a stitch in this
+              fabric.
+            </p>
+            <p className={styles.signoff}>— yafira, electrocute lab</p>
+          </section>
         )}
       </main>
 

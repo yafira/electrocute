@@ -1,4 +1,5 @@
-// GET -> { cards: [...] } every finished punch card, newest first.
+// GET -> { cards: [...], total } every finished punch card, newest
+// first, plus the all-time number of holes punched.
 //
 // cards finished before the archive existed are filled in here the
 // first time they're missing, without a date (we only ever stored the
@@ -30,5 +31,5 @@ export default async function handler(req, res) {
     cards = await readArchive();
   }
 
-  return res.status(200).json({ cards, shared: true });
+  return res.status(200).json({ cards, total, shared: true });
 }

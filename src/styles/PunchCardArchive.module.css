@@ -112,3 +112,37 @@
   letter-spacing: 0.06em;
   fill: #a99f83;
 }
+
+.thanks {
+  max-width: 520px;
+  margin: 72px auto 0;
+  padding: 28px 24px;
+  text-align: center;
+  background: #fff8fb;
+  border: 2px dashed #fecfe2;
+  border-radius: 20px;
+}
+
+.thanks h2 {
+  font-family: "Cute Font", cursive;
+  font-weight: 400;
+  font-size: 40px;
+  margin: 0 0 8px;
+  color: #000000;
+}
+
+.thanks p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #000000;
+  margin: 0;
+}
+
+.thanks .signoff {
+  margin-top: 14px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  color: #9d96e7;
+}
