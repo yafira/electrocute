@@ -4,8 +4,9 @@
 // a 4 × 4 grid of ferrite rings with one copper wire weaving past all of
 // them, row by row like a knitting carriage. where the wire threads
 // through a ring, that's a 1. where it dips under and around, a 0, just
-// like core rope. clicking flips one bit (the wire re-threads itself)
-// and a read pulse runs down the wire, lighting each ring in turn.
+// like core rope, and a ring holding a 1 is tinted pastel. clicking flips
+// one bit (the wire re-threads itself) and a read pulse runs down the
+// wire, lighting each ring in turn.
 // hovering, or tapping on a phone, shares a fact about hamilton, apollo,
 // and the rope weavers.
 
@@ -89,6 +90,9 @@ function wirePath(bits) {
   return d;
 }
 
+// a ring holding a 1 is tinted with one of these pastels, by position
+const PASTELS = ["#E0BFC2", "#C3D9C6", "#E3CB9A", "#B9CFE0"];
+
 const START = [
   1, 0, 1, 1,
   0, 1, 0, 0,
@@ -166,7 +170,7 @@ export default function CoreRopeTrinket({ x, y, rot = 0, isMobile = false }) {
 
         {/* each ring's back half, then the wire, then the ring's front
             half on top, so the wire looks threaded through */}
-        {bits.map((_, i) => {
+        {bits.map((bit, i) => {
           const { cx, cy } = ringPos(i);
           return (
             <ellipse
@@ -175,6 +179,7 @@ export default function CoreRopeTrinket({ x, y, rot = 0, isMobile = false }) {
               cy={cy}
               rx="8"
               ry="13"
+              fill={bit ? PASTELS[i % PASTELS.length] : "none"}
               className={`${styles.ring} ${lit === i ? styles.ringLit : ""}`}
             />
           );

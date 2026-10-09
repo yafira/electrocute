@@ -45,11 +45,11 @@
 
 /* ferrite rings seen edge-on: a darker back and a lighter front half */
 .ring {
-  fill: none;
   stroke: #5b5650;
   stroke-width: 4.5;
   transition:
     stroke 0.12s ease,
+    fill 0.25s ease,
     filter 0.12s ease;
 }
 

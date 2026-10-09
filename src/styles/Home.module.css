@@ -629,8 +629,8 @@
 /* potentiometer knob — each click turns it another 45° */
 .knob {
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: #e8e6ff;
   border: 1.5px solid #bdb8f1;
@@ -648,11 +648,11 @@
 .knobFace::after {
   content: "";
   position: absolute;
-  top: 4px;
+  top: 3px;
   left: 50%;
-  width: 3px;
-  height: 12px;
-  margin-left: -1.5px;
+  width: 2.5px;
+  height: 8px;
+  margin-left: -1.25px;
   border-radius: 2px;
   background: #9d96e7;
 }

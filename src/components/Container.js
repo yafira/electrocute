@@ -242,14 +242,14 @@ export default function Container() {
           <>
             <StitchTrinket x="54%" y="5%" rot={-8} isMobile={false} />
             <KnobTrinket
-              x="54%"
+              x="51.5%"
               y="31%"
               rot={0}
               onTurn={handleKnobTurn}
               isMobile={false}
             />
             <ToggleTrinket
-              x="59%"
+              x="55%"
               y="31%"
               rot={0}
               active={isCircuitOn}

@@ -46,7 +46,7 @@ const projects = [
     hoverBg: "#dbe8ff",
     hoverBorder: "#b8d0f7",
     shape: "sticky",
-    pos: { x: "77%", y: "34%", rot: 2, z: 10 },
+    pos: { x: "71.5%", y: "34%", rot: 2, z: 10 },
   },
   {
     slug: "electronic-text",
