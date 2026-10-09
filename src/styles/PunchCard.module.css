@@ -24,6 +24,7 @@
   color: #000000;
   margin: 0 auto 1.5rem;
   max-width: 460px;
+  text-wrap: balance;
 }
 
 :global(.voidworld) .intro {
