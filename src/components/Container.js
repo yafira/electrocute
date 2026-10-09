@@ -275,7 +275,7 @@ export default function Container() {
             <MothTrinket x="17%" y="-10%" />
 
             {/* core memory, for margaret hamilton, beside the scope */}
-            <CoreRopeTrinket x="calc(56% + 92px)" y="17.6%" rot={3} />
+            <CoreRopeTrinket x="calc(59% + 92px)" y="18.6%" rot={3} />
             <BreadboardTrinket
               x="76%"
               y="-10%"
