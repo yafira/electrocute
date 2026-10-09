@@ -164,6 +164,19 @@ export function ModemTrinket({ x, y, rot = 0 }) {
   );
 }
 
+// fun facts the moth shares when you hover over it: the first
+// computer "bug", grace hopper, and moths themselves
+const MOTH_FACTS = [
+  "sept 9, 1947: operators of the harvard mark II found a moth stuck in relay #70 and taped it into the logbook as the \"first actual case of bug being found.\"",
+  "that logbook, moth and all, now lives at the smithsonian's national museum of american history.",
+  "grace hopper loved telling the moth story, but engineers were already calling glitches \"bugs\" back in thomas edison's day.",
+  "grace hopper handed out \"nanoseconds\": 11.8-inch pieces of wire, the distance light travels in one billionth of a second.",
+  "in 1952 grace hopper built the A-0 system, one of the very first compilers. her later work led to COBOL.",
+  "grace hopper retired from the navy as a rear admiral. people called her \"amazing grace.\"",
+  "silk comes from a moth: the silkworm, bombyx mori, spins its cocoon from one single thread that can run 900 meters long.",
+  "moths don't aim for lamps. they tilt their backs toward the brightest thing, mistaking it for the sky, and get stuck circling.",
+];
+
 function flutterSound() {
   for (let i = 0; i < 6; i++) {
     tone(i * 0.09, {
@@ -183,6 +196,15 @@ export function MothTrinket({ x, y }) {
   const [flying, setFlying] = useState(false);
   const powered = useRef(false);
   const timers = useRef([]);
+  // which fact to show, moving on to the next one on every hover
+  const [fact, setFact] = useState(null);
+  const factIndex = useRef(Math.floor(Math.random() * MOTH_FACTS.length));
+
+  const showFact = () => {
+    setFact(MOTH_FACTS[factIndex.current % MOTH_FACTS.length]);
+    factIndex.current += 1;
+  };
+  const hideFact = () => setFact(null);
 
   const clear = () => {
     timers.current.forEach(clearTimeout);
@@ -259,9 +281,22 @@ export function MothTrinket({ x, y }) {
       type="button"
       className={`${styles.moth} ${flying ? styles.flying : ""}`}
       style={style}
-      onClick={shoo}
+      onClick={() => {
+        hideFact();
+        shoo();
+      }}
+      onMouseEnter={showFact}
+      onMouseLeave={hideFact}
+      onFocus={showFact}
+      onBlur={hideFact}
       aria-label="tiny moth: shoo it"
+      aria-describedby={fact ? "moth-fact" : undefined}
     >
+      {fact && !flying && (
+        <span id="moth-fact" role="tooltip" className={styles.fact}>
+          {fact}
+        </span>
+      )}
       <svg viewBox="0 0 54 40" className={styles.mothSvg} aria-hidden="true">
         <g className={`${styles.wing} ${styles.wingLeft}`}>
           <path

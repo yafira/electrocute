@@ -134,7 +134,48 @@
   }
 }
 
+/* the little note the moth shows on hover. it hangs below the moth so
+   it never runs off the top of the page when the moth is on the logo */
+.fact {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  width: max-content;
+  max-width: 230px;
+  transform: translateX(-50%);
+  padding: 8px 11px;
+  background: #fffdf6;
+  border: 1.5px dashed #c5caef;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(74, 68, 83, 0.1);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #2c2440;
+  text-align: center;
+  text-wrap: balance;
+  white-space: normal;
+  pointer-events: none;
+  animation: factIn 0.2s ease-out;
+}
+
+@keyframes factIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -4px);
+  }
+}
+
+:global(body.ecute-dark) .fact {
+  background: #2f2a3b;
+  border-color: #5a5170;
+  color: #e8e2fb;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .fact {
+    animation: none;
+  }
   .wing,
   .flying .wing {
     animation: none;
