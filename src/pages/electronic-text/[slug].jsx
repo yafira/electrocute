@@ -77,7 +77,15 @@ function PoemPiece({ piece }) {
   return (
     <div className={styles.poemBlock}>
       <p className={styles.poemTitle}>{piece.title}</p>
-      <pre className={styles.poemText}>{piece.text}</pre>
+      {/* one span per line, so a line that wraps on a phone hangs under
+          itself instead of looking like a new line of the poem */}
+      <div className={styles.poemText}>
+        {piece.text.split("\n").map((line, i) => (
+          <span key={i} className={styles.poemLine}>
+            {line || "\u00a0"}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }

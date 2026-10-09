@@ -40,6 +40,9 @@ header { display: flex; flex-direction: column; gap: 8px; max-width: 62ch; }
 h1 { font-size: 15px; font-weight: 500; margin: 0; letter-spacing: 0.01em; }
 header p { margin: 0; color: var(--ink-soft); font-weight: 300; }
 
+/* keep a single word from sitting alone on the last line */
+header p, footer p, .hint, .yours-intro { text-wrap: pretty; }
+
 #stage {
   appearance: none; background: none; border: 0; color: inherit; font: inherit; text-align: left;
   padding: 0; cursor: pointer; display: flex; flex-direction: column; gap: 36px; min-width: 0;
@@ -48,7 +51,7 @@ header p { margin: 0; color: var(--ink-soft); font-weight: 300; }
 
 .stanza { display: flex; flex-direction: column; font-size: clamp(15px, 1.6vw + 8px, 20px); line-height: 1.75; }
 .stanza.old { color: var(--ink-faint); font-size: 15px; line-height: 1.6; }
-.line { padding-left: calc(var(--i) * var(--step)); text-indent: -2ch; margin-left: 2ch; min-width: 0; overflow-wrap: anywhere; }
+.line { padding-left: calc(var(--i) * var(--step)); text-indent: -2ch; margin-left: 2ch; min-width: 0; overflow-wrap: break-word; text-wrap: balance; }
 .line.pending { visibility: hidden; }
 .w { font-weight: 500; }
 .stanza.old .w { font-weight: 400; }
@@ -134,9 +137,12 @@ footer { color: var(--ink-soft); font-size: 12px; font-weight: 300; max-width: 6
 footer p { margin: 0; }
 
 @media (max-width: 560px) {
-  :root { --step: 2ch; }
+  /* a tighter cascade and smaller type so most lines fit a phone without wrapping */
+  :root { --step: 1.25ch; }
   body { padding-inline: 16px; padding-block: 28px 40px; }
-  .again { margin-left: 0; }
+  .stanza { font-size: 14px; line-height: 1.8; }
+  .controls { gap: 12px; }
+  .yours { padding: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { .line.pending { visibility: visible; } }
 

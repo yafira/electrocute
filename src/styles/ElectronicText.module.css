@@ -147,6 +147,7 @@
 
 .tileLine {
   display: block;
+  text-wrap: balance;
   padding-left: calc(var(--indent) + 2ch);
   text-indent: -2ch;
 }
@@ -414,9 +415,43 @@
   text-decoration: none;
 }
 
+/* keep a single word from sitting alone on the last line */
+.tagline,
+.blurb,
+.origin,
+.tileSummary {
+  text-wrap: pretty;
+}
+
+/* a poem line that wraps splits into two even halves instead of
+   leaving one word behind */
+.poemLine {
+  display: block;
+  padding-left: 1.5ch;
+  text-indent: -1.5ch;
+  text-wrap: balance;
+}
+
 @media (max-width: 640px) {
   .page {
     padding: 2.5rem 1rem 4rem;
+  }
+  /* square tiles on a phone give the poem more room, so the text can be bigger */
+  .tileFrame {
+    aspect-ratio: 1 / 1;
+  }
+  .tileText {
+    font-size: 0.72rem;
+  }
+  .tileTools {
+    white-space: normal;
+    text-align: right;
+  }
+  .poemBlock {
+    padding: 1.75rem 1.25rem;
+  }
+  .poemText {
+    font-size: 0.85rem;
   }
   .poemsLayout {
     grid-template-columns: 1fr;
