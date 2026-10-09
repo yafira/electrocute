@@ -50,10 +50,13 @@
 }
 
 .back {
+  display: inline-block;
   font-family: "IBM Plex Mono", monospace;
   font-size: 12px;
   color: #9d96e7;
   text-decoration: none;
+  /* a taller tap area without changing how it looks */
+  padding: 10px 6px;
 }
 
 .back:hover {

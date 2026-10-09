@@ -10,6 +10,14 @@
   line-height: 0;
 }
 
+/* on small laptops the gap beside the scope is narrower, so the chip
+   shifts left to stay clear of the soft computer photo */
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+  .rope:not(.inline) {
+    margin-left: -30px;
+  }
+}
+
 /* inside the phone bench it just sits in the flow */
 .inline {
   position: relative;
