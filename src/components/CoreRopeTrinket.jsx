@@ -1,11 +1,13 @@
 // a little core memory plane, in honor of margaret hamilton and the
 // women who wove apollo's software by hand.
 //
-// a 4 × 4 grid of ferrite rings with one wire threading through all of
-// them, row by row like a knitting carriage. a ring filled with pastel
-// is a set bit. clicking flips one bit, then a pulse runs down the wire
-// and lights each ring in turn. hovering, or tapping on a phone, shares
-// a fact about hamilton, apollo, and the rope weavers.
+// a 4 × 4 grid of ferrite rings with one copper wire weaving past all of
+// them, row by row like a knitting carriage. where the wire threads
+// through a ring, that's a 1. where it dips under and around, a 0, just
+// like core rope. clicking flips one bit (the wire re-threads itself)
+// and a read pulse runs down the wire, lighting each ring in turn.
+// hovering, or tapping on a phone, shares a fact about hamilton, apollo,
+// and the rope weavers.
 
 import { useEffect, useRef, useState } from "react";
 import styles from "../styles/CoreRope.module.css";
@@ -34,14 +36,64 @@ const THREAD = Array.from({ length: SIZE * SIZE }, (_, k) => {
   const col = k % SIZE;
   return row * SIZE + (row % 2 ? SIZE - 1 - col : col);
 });
-const WIRE = "M " + THREAD.map((i) => `${ringPos(i).cx} ${ringPos(i).cy}`).join(" L ");
-// a set bit takes one of these pastels, by position
-const PASTELS = ["#E0BFC2", "#C3D9C6", "#E3CB9A", "#B9CFE0"];
+// how far the wire drops to pass under a ring it doesn't thread
+const DIP = 17;
+const HALF = 9; // half the width of the straight run at each ring
+
+// builds the copper wire for the current bits: straight through a ring
+// for a 1, a smooth dip underneath for a 0, turning at the end of each
+// row to come back along the next one
+function wirePath(bits) {
+  let d = "";
+  for (let row = 0; row < SIZE; row++) {
+    const order = Array.from({ length: SIZE }, (_, k) =>
+      row % 2 ? row * SIZE + SIZE - 1 - k : row * SIZE + k,
+    );
+    const dir = row % 2 ? -1 : 1;
+    const level = (i) => ringPos(i).cy + (bits[i] ? 0 : DIP);
+
+    order.forEach((ring, k) => {
+      const { cx } = ringPos(ring);
+      const y = level(ring);
+      const enter = cx - dir * HALF;
+      const exit = cx + dir * HALF;
+      if (row === 0 && k === 0) {
+        d += `M ${enter - dir * 14} ${y} L ${enter} ${y}`;
+      } else if (k > 0) {
+        // (the first ring of later rows is reached by the turn below)
+        const prev = order[k - 1];
+        const px = ringPos(prev).cx + dir * HALF;
+        const py = level(prev);
+        const mid = (px + enter) / 2;
+        d += ` C ${mid} ${py}, ${mid} ${y}, ${enter} ${y}`;
+      }
+      d += ` L ${exit} ${y}`;
+    });
+
+    // swing round to the start of the next row
+    if (row < SIZE - 1) {
+      const lastRing = order[SIZE - 1];
+      const nextFirst = (row + 1) % 2 ? (row + 1) * SIZE + SIZE - 1 : (row + 1) * SIZE;
+      const fromX = ringPos(lastRing).cx + dir * HALF;
+      const fromY = level(lastRing);
+      const toX = ringPos(nextFirst).cx + dir * HALF;
+      const toY = level(nextFirst);
+      const bend = fromX + dir * 16;
+      d += ` C ${bend} ${fromY}, ${bend} ${toY}, ${toX} ${toY}`;
+    } else {
+      const lastRing = order[SIZE - 1];
+      const endX = ringPos(lastRing).cx + dir * (HALF + 14);
+      d += ` L ${endX} ${level(lastRing)}`;
+    }
+  }
+  return d;
+}
+
 const START = [
+  1, 0, 1, 1,
   0, 1, 0, 0,
+  1, 1, 0, 1,
   0, 0, 1, 0,
-  1, 0, 0, 0,
-  0, 0, 0, 1,
 ];
 
 export default function CoreRopeTrinket({ x, y, rot = 0, isMobile = false }) {
@@ -109,28 +161,42 @@ export default function CoreRopeTrinket({ x, y, rot = 0, isMobile = false }) {
       aria-label="core rope memory, in honor of margaret hamilton: weave a bit"
       aria-describedby={fact ? "core-rope-fact" : undefined}
     >
-      <svg viewBox="0 0 180 196" className={styles.svg} aria-hidden="true">
-        {/* the threading wire, behind the rings */}
-        <path d={WIRE} className={styles.wire} />
+      <svg viewBox="0 0 180 200" className={styles.svg} aria-hidden="true">
+        <rect x="1" y="1" width="178" height="198" rx="10" className={styles.cloth} />
 
-        {bits.map((bit, i) => {
+        {/* each ring's back half, then the wire, then the ring's front
+            half on top, so the wire looks threaded through */}
+        {bits.map((_, i) => {
           const { cx, cy } = ringPos(i);
           return (
-            <circle
-              key={i}
+            <ellipse
+              key={`back-${i}`}
               cx={cx}
               cy={cy}
-              r="12"
-              fill={bit ? PASTELS[i % PASTELS.length] : "none"}
+              rx="8"
+              ry="13"
               className={`${styles.ring} ${lit === i ? styles.ringLit : ""}`}
             />
           );
         })}
 
-        <text x="12" y="188" className={styles.label}>
+        <path d={wirePath(bits)} className={styles.wire} />
+
+        {bits.map((_, i) => {
+          const { cx, cy } = ringPos(i);
+          return (
+            <path
+              key={`front-${i}`}
+              d={`M ${cx} ${cy - 13} A 8 13 0 0 1 ${cx} ${cy + 13}`}
+              className={`${styles.ringFront} ${lit === i ? styles.ringLit : ""}`}
+            />
+          );
+        })}
+
+        <text x="14" y="188" className={styles.label}>
           core · 0x{word}
         </text>
-        <text x="168" y="188" textAnchor="end" className={styles.label}>
+        <text x="166" y="188" textAnchor="end" className={styles.label}>
           for m.h.
         </text>
       </svg>
