@@ -18,6 +18,7 @@ import {
 } from "./Trinkets";
 import { sendPower } from "../lib/powerSurge";
 import { ModemTrinket, MothTrinket } from "./LogoGadgets";
+import CoreRopeTrinket from "./CoreRopeTrinket";
 
 const COLLAGE_ORDER = [
   { type: "card", slug: "electrocute-ui" },
@@ -271,6 +272,9 @@ export default function Container() {
             {/* under the logo, left of the sewn nav */}
             <ModemTrinket x="1.5%" y="-6.2%" rot={-3} />
             <MothTrinket x="17%" y="-10%" />
+
+            {/* core rope memory, for margaret hamilton */}
+            <CoreRopeTrinket x="64%" y="18.5%" rot={3} />
             <BreadboardTrinket
               x="76%"
               y="-10%"
@@ -405,6 +409,12 @@ export default function Container() {
             style={{ display: "flex", justifyContent: "center", width: "100%" }}
           >
             <TermTrinket isMobile={true} />
+          </div>
+
+          <div
+            style={{ display: "flex", justifyContent: "center", width: "100%" }}
+          >
+            <CoreRopeTrinket isMobile={true} />
           </div>
         </div>
       )}

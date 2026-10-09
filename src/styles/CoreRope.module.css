@@ -1,0 +1,136 @@
+/* the core rope swatch, placed on the collage like the other trinkets */
+.rope {
+  position: absolute;
+  /* above the cards, so its fact note is never tucked under one */
+  z-index: 45;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+}
+
+/* inside the phone bench it just sits in the flow */
+.inline {
+  position: relative;
+  z-index: 5;
+}
+
+.rope:focus-visible {
+  outline: 2px dashed #b2a4d4;
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+.svg {
+  display: block;
+  width: 148px;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 3px 6px rgba(74, 68, 83, 0.1));
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.rope:hover .svg {
+  transform: translateY(-3px) rotate(-1deg);
+}
+
+/* the strip of fabric the rope is pinned to */
+.cloth {
+  fill: #f7f1df;
+  stroke: #e6dcc0;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+
+.ring,
+.ringFront {
+  fill: none;
+  stroke: #4a4453;
+  stroke-width: 4.5;
+  transition: stroke 0.15s ease, filter 0.15s ease;
+}
+
+.ringFront {
+  stroke-linecap: round;
+}
+
+.ringLit {
+  stroke: #b2a4d4;
+  filter: drop-shadow(0 0 4px rgba(178, 164, 212, 0.95));
+}
+
+.wire {
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  transition: d 0.35s ease, stroke-width 0.2s ease;
+}
+
+.wireActive {
+  stroke-width: 2.4;
+}
+
+.label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  fill: #a99f83;
+}
+
+/* the fact note, same as the moth's */
+.fact {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  z-index: 50;
+  width: max-content;
+  max-width: 240px;
+  transform: translateX(-50%);
+  padding: 8px 11px;
+  background: #fffdf6;
+  border: 1.5px dashed #c5caef;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(74, 68, 83, 0.1);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #2c2440;
+  text-align: center;
+  text-wrap: balance;
+  white-space: normal;
+  pointer-events: none;
+  animation: factIn 0.2s ease-out;
+}
+
+@keyframes factIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -4px);
+  }
+}
+
+:global(body.ecute-dark) .cloth {
+  fill: #2f2a3b;
+  stroke: #5a5170;
+}
+
+:global(body.ecute-dark) .ring,
+:global(body.ecute-dark) .ringFront {
+  stroke: #9a90b8;
+}
+
+:global(body.ecute-dark) .fact {
+  background: #2f2a3b;
+  border-color: #5a5170;
+  color: #e8e2fb;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svg,
+  .wire,
+  .fact {
+    transition: none;
+    animation: none;
+  }
+}
