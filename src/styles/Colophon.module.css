@@ -44,6 +44,8 @@
   line-height: 1.75;
   color: #2b2733;
   margin: 0 0 14px;
+  /* keeps a single word from ending up alone on the last line */
+  text-wrap: pretty;
 }
 
 .section {
@@ -95,6 +97,7 @@
   font-size: 14px;
   color: #2b2733;
   margin: 0;
+  text-wrap: pretty;
 }
 
 /* felt swatch chips with a ring snap in the corner */

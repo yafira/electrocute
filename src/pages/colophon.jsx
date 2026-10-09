@@ -14,7 +14,11 @@ const MATERIALS = [
   ["motion", "framer-motion page fades + hand-rolled css keyframes"],
   ["generative text", "tracery-grammar"],
   ["icons", "font awesome + hand-drawn svg doodads"],
-  ["api bits", "upstash redis via vercel serverless functions"],
+  ["sound", "web audio api, synthesized in real time"],
+  [
+    "api bits",
+    "upstash redis via vercel serverless functions (counters, punch cards, the archive, guest notes)",
+  ],
   ["hosting", "vercel, deployed on every push to main"],
 ];
 
@@ -118,9 +122,9 @@ export default function Colophon() {
             the dashed borders are inspired by running stitches — one of the
             first stitches most people learn in sewing. the homepage collage is
             hand-placed; every card and photo is positioned individually, more
-            like arranging a corkboard than assembling a grid. the little
-            circuit in the navigation generates its sound with the web audio api
-            in real time — no audio files, just synthesized waveforms.
+            like arranging a corkboard than assembling a grid. every hum, beep,
+            and dial&#8209;up screech on the site is synthesized live with the web
+            audio api: no audio files, just waveforms and a little noise.
           </p>
           <p>
             animations respect{" "}
