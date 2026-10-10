@@ -307,9 +307,9 @@ export const photoItems = [
   {
     slug: "custom-light-leds",
     title: "custom light LEDs",
-    image: "/assets/craft/custom-leds.jpg",
+    image: "/assets/craft/custom-leds.png",
     href: "https://months-tap-da9.craft.me/led-lights",
-    pos: { x: "9%", y: "94%", w: 165, rot: 4, z: 4, delay: 1.5 },
+    pos: { x: "10%", y: "93%", w: 165, rot: 4, z: 4, delay: 1.5 },
   },
   {
     slug: "electrojute",
