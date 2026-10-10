@@ -22,11 +22,14 @@
 }
 
 :global(.voidworld) .Footer h3,
-:global(.voidworld) .Footer a {
+:global(.voidworld) .Footer a,
+:global(body.ecute-dark) .Footer h3,
+:global(body.ecute-dark) .Footer a {
   color: #d9d3ef;
 }
 
-:global(.voidworld) .Footer a:hover {
+:global(.voidworld) .Footer a:hover,
+:global(body.ecute-dark) .Footer a:hover {
   color: rgb(200, 174, 250);
 }
 
@@ -97,6 +100,7 @@
   display: block;
 }
 
-:global(.voidworld) .footerIcons a {
+:global(.voidworld) .footerIcons a,
+:global(body.ecute-dark) .footerIcons a {
   filter: invert(0.85);
 }

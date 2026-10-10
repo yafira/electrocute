@@ -297,7 +297,7 @@ export default function Container() {
             gap: "24px",
             margin: "40px auto 10px auto",
             padding: "24px 16px",
-            background: "rgba(255, 255, 255, 0.4)",
+            background: "var(--bench-bg, rgba(255, 255, 255, 0.4))",
             border: "2px dashed #beb0eb",
             borderRadius: "24px",
             maxWidth: "340px",

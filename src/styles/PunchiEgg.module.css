@@ -149,7 +149,8 @@
   text-wrap: balance;
 }
 
-:global(.voidworld) .note {
+:global(.voidworld) .note,
+:global(body.ecute-dark) .note {
   color: #f3c6dc;
 }
 

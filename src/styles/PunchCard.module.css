@@ -15,7 +15,8 @@
   color: #000000;
 }
 
-:global(.voidworld) .punchcard h2 {
+:global(.voidworld) .punchcard h2,
+:global(body.ecute-dark) .punchcard h2 {
   color: #e8e2fb;
 }
 
@@ -29,7 +30,8 @@
   text-wrap: balance;
 }
 
-:global(.voidworld) .intro {
+:global(.voidworld) .intro,
+:global(body.ecute-dark) .intro {
   color: #d9d3ef;
 }
 
@@ -125,7 +127,8 @@
   margin: 0.9rem 0 1rem;
 }
 
-:global(.voidworld) .status {
+:global(.voidworld) .status,
+:global(body.ecute-dark) .status {
   color: #d9d3ef;
 }
 
@@ -174,7 +177,8 @@
   color: #b2a4d4;
 }
 
-:global(.voidworld) .archiveLink {
+:global(.voidworld) .archiveLink,
+:global(body.ecute-dark) .archiveLink {
   color: #d9d3ef;
 }
 
@@ -190,6 +194,13 @@
   margin: 0.9rem auto 0;
 }
 
-:global(.voidworld) .thanks {
+:global(.voidworld) .thanks,
+:global(body.ecute-dark) .thanks {
   color: #d9d3ef;
+}
+
+/* goth: the fabric preview on a dark felt instead of blush */
+:global(body.ecute-dark) .fabric > rect:first-of-type {
+  fill: #1c1924;
+  stroke: #5a4a63;
 }

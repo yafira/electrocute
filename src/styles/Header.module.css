@@ -255,3 +255,8 @@
     opacity: 0.7;
   }
 }
+
+/* goth: the black flower would vanish on black, so it turns pale */
+:global(body.ecute-dark) .flower {
+  filter: invert(0.88);
+}

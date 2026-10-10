@@ -56,3 +56,11 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* goth: the far end of the ambience dial */
+body.ecute-dark {
+  color: #ece9f7;
+  background: #0e0c12;
+  /* the phone bench goes from frosted glass to a faint smoke */
+  --bench-bg: rgba(255, 255, 255, 0.04);
+}
