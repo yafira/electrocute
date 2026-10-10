@@ -133,13 +133,14 @@ export function motifForCard(cardNo) {
 
 // each card is knit in its own pair of yarns: a main color for the
 // plain stitches and a contrast color where the holes are punched.
+// all soft pastels, and none too close to the cream of the card itself.
 export const YARNS = [
   { name: "blush & wisteria", base: "#fbdce9", contrast: "#b2a4d4" },
-  { name: "butter & matcha", base: "#faf0c8", contrast: "#8cc7a1" },
-  { name: "sky & rose", base: "#dbe8ff", contrast: "#e891b6" },
-  { name: "mint & plum", base: "#d9f2e6", contrast: "#9a6fb6" },
-  { name: "peach & cocoa", base: "#fde3d3", contrast: "#a8735a" },
-  { name: "lilac & ink", base: "#e8e1fa", contrast: "#4a4453" },
+  { name: "matcha & butter", base: "#d4ecd9", contrast: "#f0cf6e" },
+  { name: "sky & rose", base: "#dbe8ff", contrast: "#f2a7c3" },
+  { name: "mint & lilac", base: "#d6f2e8", contrast: "#b9a3e3" },
+  { name: "peach & sky", base: "#fde0d0", contrast: "#9cc3ec" },
+  { name: "lavender & blush", base: "#ebe3fb", contrast: "#f0a8c8" },
 ];
 
 // every yarn pair meets every motif once before any combo repeats:
