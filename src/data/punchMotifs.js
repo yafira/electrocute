@@ -133,7 +133,6 @@ export function motifForCard(cardNo) {
 
 // each card is knit in its own pair of yarns: a main color for the
 // plain stitches and a contrast color where the holes are punched.
-// they cycle on their own, so the same motif comes back in new colors.
 export const YARNS = [
   { name: "blush & wisteria", base: "#fbdce9", contrast: "#b2a4d4" },
   { name: "butter & matcha", base: "#faf0c8", contrast: "#8cc7a1" },
@@ -143,6 +142,11 @@ export const YARNS = [
   { name: "lilac & ink", base: "#e8e1fa", contrast: "#4a4453" },
 ];
 
+// every yarn pair meets every motif once before any combo repeats:
+// 4 motifs × 6 yarns = 24 different cards. each round of 12 the yarns
+// shift by one, so the pairings that already happened don't come back
 export function yarnForCard(cardNo) {
-  return YARNS[(cardNo - 1) % YARNS.length];
+  const n = cardNo - 1;
+  const shift = Math.floor(n / (MOTIFS.length * YARNS.length / 2));
+  return YARNS[(n + shift) % YARNS.length];
 }

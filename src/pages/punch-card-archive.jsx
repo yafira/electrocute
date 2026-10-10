@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { COLS, YARNS } from "@/data/punchMotifs";
+import { COLS, YARNS, yarnForCard } from "@/data/punchMotifs";
 import styles from "@/styles/PunchCardArchive.module.css";
 
 // every communal punch card that visitors have finished, newest first.
@@ -193,11 +193,11 @@ export default function PunchCardArchive() {
                   label={`card no.${c.card}, ${c.motif}, fully punched`}
                   title={`electrocute lab · 24 st · ${c.motif} · card no.${c.card}`}
                 />
-                <Swatch rows={c.rows} yarn={c.yarn} />
+                <Swatch rows={c.rows} yarn={c.yarn || yarnForCard(c.card)} />
                 <p className={styles.meta}>
                   <span>card no.{c.card}</span>
                   <span>{c.motif}</span>
-                  <span>{(c.yarn || YARNS[0]).name}</span>
+                  <span>{(c.yarn || yarnForCard(c.card)).name}</span>
                   <span>{formatDate(c.completedAt)}</span>
                 </p>
               </li>

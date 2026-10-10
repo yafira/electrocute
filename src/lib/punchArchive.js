@@ -4,7 +4,7 @@
 // what was knit even if punchMotifs.js changes later.
 
 import { redis } from "@/lib/redis";
-import { motifForCard, yarnForCard, YARNS } from "@/data/punchMotifs";
+import { motifForCard, yarnForCard } from "@/data/punchMotifs";
 
 export const ARCHIVE_KEY = "electrocute:punchcard:archive";
 
@@ -12,9 +12,7 @@ export const ARCHIVE_KEY = "electrocute:punchcard:archive";
 // yet, so a card can never be saved twice or have its date changed.
 export async function archiveCard(cardNo, completedAt) {
   const motif = motifForCard(cardNo);
-  // cards finished before yarn colors existed (no date) were all knit
-  // in the first yarn
-  const yarn = completedAt ? yarnForCard(cardNo) : YARNS[0];
+  const yarn = yarnForCard(cardNo);
   const entry = {
     card: cardNo,
     motif: motif.name,
