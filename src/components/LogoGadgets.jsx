@@ -169,7 +169,8 @@ export function ModemTrinket({ x, y, rot = 0 }) {
 const MOTH_FACTS = [
   "sept 9, 1947: operators of the harvard mark II found a moth stuck in relay #70 and taped it into the logbook as the \"first actual case of bug being found.\"",
   "that logbook, moth and all, now lives at the smithsonian's national museum of american history.",
-  "grace hopper loved telling the moth story, but engineers were already calling glitches \"bugs\" back in thomas edison's day.",
+  "a heisenbug is a bug that vanishes or changes the moment you try to look at it. it's named after heisenberg's uncertainty principle.",
+  "even ada lovelace's 1843 program, often called the first ever published, had a bug: one step in her table used the wrong variables.",
   "grace hopper handed out \"nanoseconds\": 11.8-inch pieces of wire, the distance light travels in one billionth of a second.",
   "in 1952 grace hopper built the A-0 system, one of the very first compilers. her later work led to COBOL.",
   "grace hopper retired from the navy as a rear admiral. people called her \"amazing grace.\"",
