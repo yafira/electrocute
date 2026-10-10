@@ -131,16 +131,16 @@ export function motifForCard(cardNo) {
   return MOTIFS[(cardNo - 1) % MOTIFS.length];
 }
 
-// each card is knit in its own pair of yarns: a main color for the
-// plain stitches and a contrast color where the holes are punched.
-// all soft pastels, and none too close to the cream of the card itself.
+// yarns named after the electrocute-ui palette. the contrast yarn is
+// the exact token, the main yarn is a deeper take on its pale token
+// so the plain stitches still show up
 export const YARNS = [
-  { name: "blush & wisteria", base: "#fbdce9", contrast: "#b2a4d4" },
-  { name: "matcha & butter", base: "#d4ecd9", contrast: "#f0cf6e" },
-  { name: "sky & rose", base: "#dbe8ff", contrast: "#f2a7c3" },
-  { name: "mint & lilac", base: "#d6f2e8", contrast: "#b9a3e3" },
-  { name: "peach & sky", base: "#fde0d0", contrast: "#9cc3ec" },
-  { name: "lavender & blush", base: "#ebe3fb", contrast: "#f0a8c8" },
+  { name: "blush-powder & lavender-beam", base: "#fbdce9", contrast: "#baaeff" },
+  { name: "matcha-foam & peony-fizz", base: "#dcefc9", contrast: "#f2b9e0" },
+  { name: "cloud-shoes & twilight-haze", base: "#dbe8ff", contrast: "#c0c1de" },
+  { name: "apricot-glaze & lavender-beam", base: "#fde0c8", contrast: "#baaeff" },
+  { name: "mint-sheen & peony-fizz", base: "#cfeedd", contrast: "#f2b9e0" },
+  { name: "periwinkle-shimmer & peony-fizz", base: "#ddd9ff", contrast: "#f2b9e0" },
 ];
 
 // every yarn pair meets every motif once before any combo repeats:
