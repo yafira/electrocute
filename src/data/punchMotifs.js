@@ -130,3 +130,19 @@ export function completedCards(total) {
 export function motifForCard(cardNo) {
   return MOTIFS[(cardNo - 1) % MOTIFS.length];
 }
+
+// each card is knit in its own pair of yarns: a main color for the
+// plain stitches and a contrast color where the holes are punched.
+// they cycle on their own, so the same motif comes back in new colors.
+export const YARNS = [
+  { name: "blush & wisteria", base: "#fbdce9", contrast: "#b2a4d4" },
+  { name: "butter & matcha", base: "#faf0c8", contrast: "#8cc7a1" },
+  { name: "sky & rose", base: "#dbe8ff", contrast: "#e891b6" },
+  { name: "mint & plum", base: "#d9f2e6", contrast: "#9a6fb6" },
+  { name: "peach & cocoa", base: "#fde3d3", contrast: "#a8735a" },
+  { name: "lilac & ink", base: "#e8e1fa", contrast: "#4a4453" },
+];
+
+export function yarnForCard(cardNo) {
+  return YARNS[(cardNo - 1) % YARNS.length];
+}

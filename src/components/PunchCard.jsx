@@ -18,7 +18,12 @@ import {
   MOTIFS,
   MOTIF_DATA,
   resolvePosition,
+  yarnForCard,
 } from "../data/punchMotifs";
+
+// how long a finished card stays on the machine before the next one
+// feeds in, so whoever punched the last hole gets to see it whole
+const FINISHED_HOLD_MS = 2600;
 
 const LOCAL_COUNT_KEY = "electrocute:punchcard:local-count";
 const PUNCHED_KEY = "electrocute:punchcard:punched";
@@ -31,6 +36,8 @@ export default function PunchCard() {
   const [busy, setBusy] = useState(false);
   // true when this visitor's hole was the last one on the card
   const [finishedCard, setFinishedCard] = useState(false);
+  // keeps a just-finished card on screen for a moment before moving on
+  const [holdFinished, setHoldFinished] = useState(false);
 
   useEffect(() => {
     setHasPunched(Boolean(localStorage.getItem(PUNCHED_KEY)));
@@ -77,11 +84,26 @@ export default function PunchCard() {
     localStorage.setItem(PUNCHED_KEY, "1");
     setHasPunched(true);
     setBusy(false);
+    // if that hole finished the card, show it whole, then feed in the next
+    setHoldFinished(true);
+    setTimeout(() => setHoldFinished(false), FINISHED_HOLD_MS);
     setTimeout(() => setJustPunched(false), 1500);
   };
 
   const total = count || 0;
-  const { motifIndex, punchedInMotif, cardsDone } = resolvePosition(total);
+  const pos = resolvePosition(total);
+  const full =
+    total > 0 && pos.punchedInMotif === MOTIF_DATA[pos.motifIndex].holeCount;
+  // a finished card moves off the machine and the next one feeds in
+  // empty, unless we're still holding it up for the person who finished it
+  const advance = full && !holdFinished;
+  const motifIndex = advance
+    ? (pos.motifIndex + 1) % MOTIFS.length
+    : pos.motifIndex;
+  const punchedInMotif = advance ? 0 : pos.punchedInMotif;
+  const cardsDone = advance ? pos.cardsDone + 1 : pos.cardsDone;
+  const cardNo = cardsDone + 1;
+  const yarn = yarnForCard(cardNo);
   const motif = MOTIFS[motifIndex];
   const data = MOTIF_DATA[motifIndex];
   const {
@@ -130,7 +152,8 @@ export default function PunchCard() {
 
       <div className={styles.machine}>
         <svg
-          className={styles.card}
+          key={`card-${cardNo}`}
+          className={`${styles.card} ${styles.feedIn}`}
           viewBox={`0 0 ${cardW} ${cardH}`}
           role="img"
           aria-label={`${motif.name} punch card, ${punched} of ${CARD_SIZE} holes punched`}
@@ -142,7 +165,7 @@ export default function PunchCard() {
             strokeWidth="1.5"
           />
           <text x={edge} y={17} className={styles.cardLabel}>
-            electrocute lab · 24 st · {motif.name} · card no.{cardsDone + 1}
+            electrocute lab · 24 st · {motif.name} · card no.{cardNo}
           </text>
 
           {Array.from({ length: ROWS }, (_, r) => (
@@ -204,10 +227,11 @@ export default function PunchCard() {
         </svg>
 
         <svg
+          key={`fabric-${cardNo}`}
           className={styles.fabric}
           viewBox={`0 0 ${fabW} ${fabH}`}
           role="img"
-          aria-label={`knit preview, ${knitRow} of ${ROWS} rows on the machine`}
+          aria-label={`knit preview in ${yarn.name}, ${knitRow} of ${ROWS} rows on the machine`}
         >
           <rect
             x="0"
@@ -227,7 +251,7 @@ export default function PunchCard() {
             const x = 8 + cellDef.col * st + st / 2;
             const y = 8 + cellDef.row * st + st / 2;
             const arm = st * 0.32;
-            const color = isContrast ? "#b2a4d4" : "#fbdce9";
+            const color = isContrast ? yarn.contrast : yarn.base;
             const isNewest =
               justPunched &&
               newest &&
@@ -257,6 +281,20 @@ export default function PunchCard() {
             );
           })}
         </svg>
+
+        <p className={styles.yarn}>
+          <span
+            className={styles.yarnDot}
+            style={{ background: yarn.base }}
+            aria-hidden="true"
+          />
+          <span
+            className={styles.yarnDot}
+            style={{ background: yarn.contrast }}
+            aria-hidden="true"
+          />
+          yarn: {yarn.name}
+        </p>
       </div>
 
       <p className={styles.status}>

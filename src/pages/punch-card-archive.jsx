@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { COLS } from "@/data/punchMotifs";
+import { COLS, YARNS } from "@/data/punchMotifs";
 import styles from "@/styles/PunchCardArchive.module.css";
 
 // every communal punch card that visitors have finished, newest first.
@@ -72,7 +72,7 @@ function FinishedCard({ rows, label, title }) {
   );
 }
 
-function Swatch({ rows }) {
+function Swatch({ rows, yarn = YARNS[0] }) {
   const w = COLS * STITCH + 12;
   const h = rows.length * STITCH + 12;
   const arm = STITCH * 0.32;
@@ -98,7 +98,7 @@ function Swatch({ rows }) {
         [...row].map((ch, c) => {
           const x = 6 + c * STITCH + STITCH / 2;
           const y = 6 + r * STITCH + STITCH / 2;
-          const color = ch === "#" ? "#b2a4d4" : "#fbdce9";
+          const color = ch === "#" ? yarn.contrast : yarn.base;
           return (
             <g key={`${r}-${c}`}>
               <line
@@ -193,10 +193,11 @@ export default function PunchCardArchive() {
                   label={`card no.${c.card}, ${c.motif}, fully punched`}
                   title={`electrocute lab · 24 st · ${c.motif} · card no.${c.card}`}
                 />
-                <Swatch rows={c.rows} />
+                <Swatch rows={c.rows} yarn={c.yarn} />
                 <p className={styles.meta}>
                   <span>card no.{c.card}</span>
                   <span>{c.motif}</span>
+                  <span>{(c.yarn || YARNS[0]).name}</span>
                   <span>{formatDate(c.completedAt)}</span>
                 </p>
               </li>

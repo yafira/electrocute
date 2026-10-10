@@ -1,10 +1,10 @@
 // the punch card archive. one entry per finished card, kept in a
 // redis hash keyed by card number. each entry saves a copy of the
-// motif's rows, so the archive keeps showing exactly what was knit
-// even if the motif list in punchMotifs.js changes later.
+// motif's rows and yarn colors, so the archive keeps showing exactly
+// what was knit even if punchMotifs.js changes later.
 
 import { redis } from "@/lib/redis";
-import { motifForCard } from "@/data/punchMotifs";
+import { motifForCard, yarnForCard, YARNS } from "@/data/punchMotifs";
 
 export const ARCHIVE_KEY = "electrocute:punchcard:archive";
 
@@ -12,10 +12,14 @@ export const ARCHIVE_KEY = "electrocute:punchcard:archive";
 // yet, so a card can never be saved twice or have its date changed.
 export async function archiveCard(cardNo, completedAt) {
   const motif = motifForCard(cardNo);
+  // cards finished before yarn colors existed (no date) were all knit
+  // in the first yarn
+  const yarn = completedAt ? yarnForCard(cardNo) : YARNS[0];
   const entry = {
     card: cardNo,
     motif: motif.name,
     rows: motif.rows,
+    yarn,
     completedAt,
   };
   return redis("HSETNX", ARCHIVE_KEY, String(cardNo), JSON.stringify(entry));

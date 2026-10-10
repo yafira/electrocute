@@ -204,3 +204,51 @@
   fill: #1c1924;
   stroke: #5a4a63;
 }
+
+/* a new card feeding into the machine */
+.feedIn {
+  animation: feedIn 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes feedIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px) rotate(2deg);
+  }
+}
+
+/* which yarns this card is knit in */
+.yarn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 2px 0 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #857b7b;
+}
+
+.yarnDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(74, 68, 83, 0.25);
+}
+
+.yarnDot + .yarnDot {
+  margin-left: -8px;
+  margin-right: 3px;
+}
+
+:global(.voidworld) .yarn,
+:global(body.ecute-dark) .yarn {
+  color: #bfb9d6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feedIn {
+    animation: none;
+  }
+}
