@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { COLS, YARNS, yarnForCard } from "@/data/punchMotifs";
+import { COLS, YARNS, yarnForCard, wash } from "@/data/punchMotifs";
 import styles from "@/styles/PunchCardArchive.module.css";
 
 // every communal punch card that visitors have finished, newest first.
@@ -89,8 +89,8 @@ function Swatch({ rows, yarn = YARNS[0] }) {
         width={w}
         height={h}
         rx="7"
-        fill="#fff8fb"
-        stroke="#fecfe2"
+        fill={wash(yarn.base, 0.65)}
+        stroke={wash(yarn.contrast, 0.35)}
         strokeWidth="1.5"
         strokeDasharray="5 4"
       />

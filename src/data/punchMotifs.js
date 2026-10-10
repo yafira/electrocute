@@ -150,3 +150,13 @@ export function yarnForCard(cardNo) {
   const shift = Math.floor(n / (MOTIFS.length * YARNS.length / 2));
   return YARNS[(n + shift) % YARNS.length];
 }
+
+// a yarn color mixed toward white, for the felt the swatch sits on
+export function wash(hex, amount) {
+  const n = parseInt(hex.slice(1), 16);
+  const mix = (c) => Math.round(c + (255 - c) * amount);
+  const r = mix((n >> 16) & 255);
+  const g = mix((n >> 8) & 255);
+  const b = mix(n & 255);
+  return `rgb(${r}, ${g}, ${b})`;
+}

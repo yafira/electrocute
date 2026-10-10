@@ -199,7 +199,7 @@
   color: #d9d3ef;
 }
 
-/* goth: the fabric preview on a dark felt instead of blush */
+/* goth: the fabric preview sits on dark felt whatever the yarn */
 :global(body.ecute-dark) .fabric > rect:first-of-type {
   fill: #1c1924;
   stroke: #5a4a63;

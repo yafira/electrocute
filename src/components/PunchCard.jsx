@@ -19,6 +19,7 @@ import {
   MOTIF_DATA,
   resolvePosition,
   yarnForCard,
+  wash,
 } from "../data/punchMotifs";
 
 // how long a finished card stays on the machine before the next one
@@ -239,8 +240,8 @@ export default function PunchCard() {
             width={fabW}
             height={fabH}
             rx="8"
-            fill="#fff8fb"
-            stroke="#fecfe2"
+            fill={wash(yarn.base, 0.65)}
+            stroke={wash(yarn.contrast, 0.35)}
             strokeWidth="1.5"
             strokeDasharray="5 4"
           />
