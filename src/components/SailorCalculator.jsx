@@ -176,31 +176,37 @@ export default function SailorCalculator({ onClose }) {
           >
             delete
           </button>
-          {KEYS.flat().map((k) => (
-            <button
-              key={k}
-              type="button"
-              className={styles.btn}
-              onClick={() => press(k)}
-              aria-label={
-                { "÷": "divide", "×": "times", "−": "minus" }[k] || undefined
-              }
-            >
-              {k}
-            </button>
-          ))}
+          {KEYS.flat().map((k) => {
+            const button = (
+              <button
+                key={k}
+                type="button"
+                className={styles.btn}
+                onClick={() => press(k)}
+                aria-label={
+                  { "÷": "divide", "×": "times", "−": "minus" }[k] || undefined
+                }
+              >
+                {k}
+              </button>
+            );
+            // the two stars ride in the ÷ and × cells, like the original
+            if (k !== "÷" && k !== "×") return button;
+            return (
+              <div key={k} className={styles.starCell}>
+                {button}
+                <svg
+                  className={styles.star}
+                  viewBox="0 0 40 38"
+                  aria-hidden="true"
+                >
+                  <polygon points="20,1 25,14 39,14 28,23 32,37 20,29 8,37 12,23 1,14 15,14" />
+                </svg>
+              </div>
+            );
+          })}
         </div>
 
-        <svg
-          className={styles.stars}
-          width="40"
-          height="84"
-          viewBox="0 0 40 84"
-          aria-hidden="true"
-        >
-          <polygon points="20,2 25,15 39,15 28,24 32,38 20,30 8,38 12,24 1,15 15,15" />
-          <polygon points="20,44 25,57 39,57 28,66 32,80 20,72 8,80 12,66 1,57 15,57" />
-        </svg>
       </div>
     </div>
   );
