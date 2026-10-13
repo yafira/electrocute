@@ -149,6 +149,24 @@ const projects = [
     pos: { x: "68%", y: "78%", rot: -0.8, z: 10 },
   },
   {
+    slug: "iron-bloom",
+    title: "iron bloom",
+    // itch's embed player, since itch.io game pages can't be framed.
+    // "open in new tab" goes to the regular itch page instead
+    href: "https://itch.io/embed-upload/18218369?color=fbfcf5",
+    externalHref: "https://electrocute.itch.io/iron-bloom",
+    icon: "/assets/iron-bloom-icon.svg",
+    photo:
+      "https://img.itch.zone/aW1nLzI4MzA5MzYxLnBuZw==/original/%2FTuyKV.png",
+    blurb:
+      "a cozy game about six days at home. water the plant. rest the body. repeat.",
+    tint: "#f3f9ee",
+    hoverBg: "#e4f2d9",
+    hoverBorder: "#c9e3b5",
+    shape: "sticky",
+    pos: { x: "41.5%", y: "72.5%", rot: -2, z: 10 },
+  },
+  {
     slug: "snax",
     title: "snax",
     href: "https://snax.blog",

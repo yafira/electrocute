@@ -37,6 +37,7 @@ const COLLAGE_ORDER = [
   { type: "photo", slug: "kofi" },
   { type: "card", slug: "synthwave-chimes" },
   { type: "photo", slug: "pocket-oracle-of-time" },
+  { type: "card", slug: "iron-bloom" },
   { type: "card", slug: "sailor-moon-calculator" },
   { type: "photo", slug: "puffcast" },
   { type: "photo", slug: "custom-light-leds" },
@@ -121,7 +122,15 @@ export default function Container() {
           type="button"
           className={styles.card}
           style={cardStyle}
-          onClick={() => openProject(project.href, project.title, setOpen)}
+          onClick={() =>
+            openProject(
+              project.href,
+              project.title,
+              setOpen,
+              project.panelSize,
+              project.externalHref,
+            )
+          }
         >
           {cardContent}
         </button>
