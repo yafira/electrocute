@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 import projects, { photoItems, resources } from "../data/projects";
 import IframePanel, { openProject } from "./IframePanel";
 import PoetronicsCard from "./PoetronicsCard";
+import SailorCalculator from "./SailorCalculator";
 import {
   StitchTrinket,
   KnobTrinket,
@@ -63,16 +64,10 @@ export default function Container() {
 
   const [ledOn, setLedOn] = useState(false);
 
-  // the sailor moon calculator lives on the bench as a trinket now.
-  // the app itself is close to square, so the window is too
-  // (the extra height is the title and url bars)
-  const openCalculator = () =>
-    openProject(
-      "https://sailor-moon-calculator.netlify.app/",
-      "sailor moon calculator",
-      setOpen,
-      { w: 540, h: 640 },
-    );
+  // the sailor moon calculator lives on the bench as a trinket now,
+  // and pops up on its own when clicked
+  const [calcOpen, setCalcOpen] = useState(false);
+  const openCalculator = () => setCalcOpen(true);
 
   // the breadboard button also feeds the power cable up to the logo
   const handleBreadboardButtonPress = () => {
@@ -466,6 +461,8 @@ export default function Container() {
           </span>
         ))}
       </div>
+
+      {calcOpen && <SailorCalculator onClose={() => setCalcOpen(false)} />}
 
       {open && (
         <IframePanel
