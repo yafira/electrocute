@@ -14,7 +14,7 @@ export default function Contact() {
         <title>contact — electrocute</title>
         <meta
           name="description"
-          content="get in touch with yafira: email, github, instagram, are.na, and more."
+          content="get in touch with yafira: email, github, instagram, itch.io, are.na, and more."
         />
       </Head>
 

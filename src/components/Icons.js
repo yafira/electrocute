@@ -112,6 +112,19 @@ export default function Icons({ size = 25 }) {
         />
       </Link>
       <Link
+        href="https://electrocute.itch.io/"
+        title="itch.io"
+        aria-label="games on itch.io"
+      >
+        <Image
+          src="/assets/gamepad-icon.svg"
+          alt=""
+          width={s}
+          height={s}
+          aria-hidden="true"
+        />
+      </Link>
+      <Link
         href="https://ko-fi.com/electrocutelab"
         title="ko-fi"
         aria-label="support on ko-fi"

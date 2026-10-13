@@ -1,8 +1,9 @@
 .Icons {
   display: flex;
-  flex-wrap: wrap;
+  /* one even row across the card, so no icon wraps on its own */
+  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   margin-top: 1.25rem;
 }
 
@@ -20,12 +21,12 @@
   border-bottom: none !important;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .Icons {
     width: 100%;
     display: grid;
-    /* ten icons, two even rows of five, so none is left on its own */
-    grid-template-columns: repeat(5, 1fr);
+    /* eleven icons, rows of six and five, so none is left on its own */
+    grid-template-columns: repeat(6, 1fr);
     justify-items: center;
     align-items: center;
     gap: 1.25rem 0.5rem;
