@@ -278,11 +278,11 @@ export default function Container() {
             />
 
             <TermTrinket x="7%" y="80%" rot={-2} isMobile={false} />
-            <ResistorTrinket x="90%" y="78%" rot={6} isMobile={false} />
+            <ResistorTrinket x="7.5%" y="84.5%" rot={-4} isMobile={false} />
             <CalcTrinket
-              x="95%"
-              y="67%"
-              rot={8}
+              x="90%"
+              y="78%"
+              rot={6}
               isMobile={false}
               onOpen={openCalculator}
             />
