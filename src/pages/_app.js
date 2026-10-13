@@ -14,14 +14,14 @@ export default function App({ Component, pageProps, router }) {
         <meta property="og:site_name" content="electrocute.io" />
         <meta
           property="og:image"
-          content="https://electrocute.io/og-image.png"
+          content="https://electrocute.io/og-image.png?v=2"
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:image"
-          content="https://electrocute.io/og-image.png"
+          content="https://electrocute.io/og-image.png?v=2"
         />
       </Head>
       <motion.div
