@@ -33,7 +33,9 @@
 
 .collage {
   position: relative;
-  height: 1280px;
+  /* every y in projects.js is a % of this, so changing it means
+     rescaling those too */
+  height: 1500px;
   /* bleeds a little wider than the .container column and centers
      on the viewport — tuned so pieces sit close but never collide */
   width: min(1240px, calc(100vw - 48px));

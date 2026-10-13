@@ -21,7 +21,7 @@ const projects = [
     hoverBg: "#f2b9e0",
     hoverBorder: "#e88fc9",
     shape: "sticky",
-    pos: { x: "12%", y: "4%", rot: -2, z: 10 },
+    pos: { x: "12%", y: "3.41%", rot: -2, z: 10 },
   },
   {
     slug: "soft-interfaces",
@@ -34,7 +34,7 @@ const projects = [
     hoverBg: "#e9ecef",
     hoverBorder: "#dadfe5",
     shape: "wide",
-    pos: { x: "62%", y: "12%", rot: 1, z: 10 },
+    pos: { x: "62%", y: "10.24%", rot: 1, z: 10 },
   },
   {
     slug: "computer-art",
@@ -46,7 +46,7 @@ const projects = [
     hoverBg: "#dbe8ff",
     hoverBorder: "#b8d0f7",
     shape: "sticky",
-    pos: { x: "71.5%", y: "36%", rot: 2, z: 10 },
+    pos: { x: "71.5%", y: "30.72%", rot: 2, z: 10 },
   },
   {
     slug: "electronic-text",
@@ -58,7 +58,7 @@ const projects = [
     hoverBg: "#ececec",
     hoverBorder: "#cfcfcf",
     shape: "sticky",
-    pos: { x: "15%", y: "16%", rot: 1.5, z: 10 },
+    pos: { x: "15%", y: "13.65%", rot: 1.5, z: 10 },
   },
   {
     slug: "neural-nectar",
@@ -71,7 +71,7 @@ const projects = [
     hoverBg: "#f1dacc",
     hoverBorder: "#f5c5a7",
     shape: "wide",
-    pos: { x: "75%", y: "64%", rot: 3, z: 10 },
+    pos: { x: "75%", y: "54.61%", rot: 3, z: 10 },
   },
   {
     slug: "poetronics",
@@ -83,7 +83,7 @@ const projects = [
     hoverBg: "#e3d6fb",
     hoverBorder: "#cbb8f2",
     shape: "sticky",
-    pos: { x: "42%", y: "61%", rot: -3, z: 10 },
+    pos: { x: "42%", y: "52.05%", rot: -3, z: 10 },
   },
   {
     slug: "kawaii-ml",
@@ -95,7 +95,7 @@ const projects = [
     hoverBg: "#d9f9ef",
     hoverBorder: "#94f1d3",
     shape: "pill",
-    pos: { x: "32%", y: "30%", rot: -4, z: 10 },
+    pos: { x: "32%", y: "25.6%", rot: -4, z: 10 },
   },
   {
     slug: "soft-components",
@@ -108,7 +108,7 @@ const projects = [
     hoverBg: "#faf6ff",
     hoverBorder: "#cdc1ee",
     shape: "wide",
-    pos: { x: "17%", y: "48%", rot: -1.5, z: 10 },
+    pos: { x: "17%", y: "40.96%", rot: -1.5, z: 10 },
   },
   {
     slug: "soft-circuit-library",
@@ -121,7 +121,7 @@ const projects = [
     hoverBg: "#fbecdd",
     hoverBorder: "#e7c29d",
     shape: "wide",
-    pos: { x: "75%", y: "48%", rot: -1.2, z: 10 },
+    pos: { x: "75%", y: "40.96%", rot: -1.2, z: 10 },
   },
   {
     slug: "synthwave-chimes",
@@ -133,7 +133,7 @@ const projects = [
     hoverBg: "#e9d4f4",
     hoverBorder: "#e89cf1",
     shape: "sticky",
-    pos: { x: "13%", y: "72%", rot: 1.6, z: 10 },
+    pos: { x: "13%", y: "61.44%", rot: 1.6, z: 10 },
   },
   {
     slug: "sailor-moon-calculator",
@@ -146,7 +146,7 @@ const projects = [
     hoverBg: "#fcfade",
     hoverBorder: "#f7f3cf",
     shape: "pill",
-    pos: { x: "68%", y: "78%", rot: -0.8, z: 10 },
+    pos: { x: "68%", y: "66.56%", rot: -0.8, z: 10 },
   },
   {
     slug: "iron-bloom",
@@ -164,7 +164,7 @@ const projects = [
     hoverBg: "#e4f2d9",
     hoverBorder: "#c9e3b5",
     shape: "sticky",
-    pos: { x: "41.5%", y: "72.5%", rot: -2, z: 10 },
+    pos: { x: "54%", y: "93%", rot: -2, z: 10 },
   },
   {
     slug: "snax",
@@ -177,7 +177,7 @@ const projects = [
     hoverBg: "#fae7ef",
     hoverBorder: "#fecfe2",
     shape: "wide",
-    pos: { x: "38%", y: "94.5%", rot: 4, z: 10 },
+    pos: { x: "38%", y: "80.64%", rot: 4, z: 10 },
   },
 ];
 
@@ -268,14 +268,14 @@ export const photoItems = [
     title: "petalbyte",
     image: "/assets/craft/petalbyte.png",
     href: "https://months-tap-da9.craft.me/petalbyte",
-    pos: { x: "36%", y: "13%", w: 180, rot: -6, z: 6, delay: 0 },
+    pos: { x: "36%", y: "11.09%", w: 180, rot: -6, z: 6, delay: 0 },
   },
   {
     slug: "the-soft-computer",
     title: "the soft computer",
     image: "/assets/craft/the-soft-computer.png",
     href: "https://thesoft.computer/",
-    pos: { x: "88%", y: "17%", w: 215, rot: 3, z: 12, delay: 0.6 },
+    pos: { x: "88%", y: "14.51%", w: 215, rot: 3, z: 12, delay: 0.6 },
   },
   {
     slug: "soft-computer-mini-travel",
@@ -283,28 +283,28 @@ export const photoItems = [
     image: "/assets/craft/soft-computer-mini2.png",
     hoverImage: "/assets/craft/soft-computer-mini.png",
     href: "https://thesoft.computer/",
-    pos: { x: "63%", y: "38%", w: 200, rot: -4, z: 8, delay: 1.0 },
+    pos: { x: "63%", y: "32.43%", w: 200, rot: -4, z: 8, delay: 1.0 },
   },
   {
     slug: "ribbon-logic",
     title: "ribbon logic",
     image: "/assets/craft/ribbon-logic.png",
     href: "https://months-tap-da9.craft.me/ribbon-logic",
-    pos: { x: "9%", y: "30%", w: 190, rot: -4, z: 6, delay: 1.8 },
+    pos: { x: "9%", y: "25.6%", w: 190, rot: -4, z: 6, delay: 1.8 },
   },
   {
     slug: "moonpocket",
     title: "moonpocket",
     image: "/assets/craft/moonpocket.png",
     href: "https://months-tap-da9.craft.me/moonpocket",
-    pos: { x: "45%", y: "44%", w: 195, rot: 1, z: 6, delay: 0.9 },
+    pos: { x: "45%", y: "37.55%", w: 195, rot: 1, z: 6, delay: 0.9 },
   },
   {
     slug: "pocket-oracle-of-time",
     title: "pocket oracle of time",
     image: "/assets/craft/pocket-oracle-of-time.png",
     href: "https://months-tap-da9.craft.me/oracle",
-    pos: { x: "42%", y: "78%", w: 160, rot: 5, z: 6, delay: 1.2 },
+    pos: { x: "42%", y: "66.56%", w: 160, rot: 5, z: 6, delay: 1.2 },
   },
   {
     slug: "tendertronic",
@@ -313,21 +313,21 @@ export const photoItems = [
     hoverImage: "/assets/craft/tendertronic2.png",
     href: "https://months-tap-da9.craft.me/tendertronic",
     labelOffset: -120,
-    pos: { x: "20%", y: "81%", w: 200, rot: -10, z: 6, delay: 2.1 },
+    pos: { x: "20%", y: "69.12%", w: 200, rot: -10, z: 6, delay: 2.1 },
   },
   {
     slug: "puffcast",
     title: "puffcast",
     image: "/assets/craft/puffcast.png",
     href: "https://months-tap-da9.craft.me/puffcast",
-    pos: { x: "70%", y: "94%", w: 285, rot: -5, z: 6, delay: 2.4 },
+    pos: { x: "70%", y: "80.21%", w: 285, rot: -5, z: 6, delay: 2.4 },
   },
   {
     slug: "custom-light-leds",
     title: "custom light LEDs",
     image: "/assets/craft/custom-leds.png",
     href: "https://months-tap-da9.craft.me/led-lights",
-    pos: { x: "10%", y: "93%", w: 165, rot: 4, z: 4, delay: 1.5 },
+    pos: { x: "10%", y: "79.36%", w: 165, rot: 4, z: 4, delay: 1.5 },
   },
   {
     slug: "electrojute",
@@ -335,7 +335,7 @@ export const photoItems = [
     image: "/assets/craft/electrojute_off.png",
     hoverImage: "/assets/craft/electrojute_on.png",
     href: "https://months-tap-da9.craft.me/electrojute",
-    pos: { x: "90%", y: "93%", w: 175, rot: -3, z: 6, delay: 0.3 },
+    pos: { x: "90%", y: "79.36%", w: 175, rot: -3, z: 6, delay: 0.3 },
   },
   {
     slug: "kofi",
@@ -343,7 +343,7 @@ export const photoItems = [
     image: "/assets/kofi.png",
     href: "https://ko-fi.com/electrocutelab/?hidefeed=true&widget=true&embed=true&preview=true",
     externalHref: "https://ko-fi.com/electrocutelab/",
-    pos: { x: "16%", y: "57%", w: 150, rot: -3, z: 14, delay: 1.7 },
+    pos: { x: "16%", y: "48.64%", w: 150, rot: -3, z: 14, delay: 1.7 },
     panelSize: { w: 460, h: 680 },
     credit: {
       text: "summer goth mug by maoprojects",

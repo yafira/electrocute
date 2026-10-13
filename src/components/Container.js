@@ -249,45 +249,46 @@ export default function Container() {
 
         {!isMobile && (
           <>
-            <StitchTrinket x="54%" y="5%" rot={-8} isMobile={false} />
+            <StitchTrinket x="54%" y="4.27%" rot={-8} isMobile={false} />
             {/* the knob and power switch sit centered under the scope */}
             <KnobTrinket
               x="calc(56% - 24px)"
-              y="28%"
+              y="23.89%"
               rot={0}
               onTurn={handleKnobTurn}
               isMobile={false}
             />
             <ToggleTrinket
               x="calc(56% + 22px)"
-              y="28%"
+              y="23.89%"
               rot={0}
               active={isCircuitOn}
               onToggle={() => setIsCircuitOn(!isCircuitOn)}
               isMobile={false}
             />
 
-            <TermTrinket x="7%" y="80%" rot={-2} isMobile={false} />
-            <ResistorTrinket x="90%" y="78%" rot={6} isMobile={false} />
+            <TermTrinket x="7%" y="68.27%" rot={-2} isMobile={false} />
+            <ResistorTrinket x="90%" y="66.56%" rot={6} isMobile={false} />
             <ScopeTrinket
               x="56%"
-              y="23%"
+              y="19.63%"
               rot={-1}
               isPowered={isCircuitOn}
               scale={scopeScale}
               isMobile={false}
             />
-            <ChipTrinket isMobile={false} />
+            {/* same strip it walked before the collage grew */}
+            <ChipTrinket boundsY={[71.68, 81.07]} isMobile={false} />
 
             {/* under the logo, left of the sewn nav */}
-            <ModemTrinket x="1.5%" y="-6.2%" rot={-3} />
-            <MothTrinket x="17%" y="-10%" />
+            <ModemTrinket x="1.5%" y="-5.29%" rot={-3} />
+            <MothTrinket x="17%" y="-8.53%" />
 
             {/* core memory, for margaret hamilton, beside the scope */}
-            <CoreRopeTrinket x="calc(60% + 92px)" y="19.6%" rot={3} />
+            <CoreRopeTrinket x="calc(60% + 92px)" y="16.73%" rot={3} />
             <BreadboardTrinket
               x="76%"
-              y="-10%"
+              y="-8.53%"
               rot={-4}
               isMobile={false}
               ledOn={ledOn}
