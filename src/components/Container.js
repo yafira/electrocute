@@ -277,7 +277,7 @@ export default function Container() {
               isMobile={false}
             />
 
-            <TermTrinket x="7%" y="80%" rot={-2} isMobile={false} />
+            <TermTrinket x="66%" y="87.5%" rot={-2} isMobile={false} />
             <ResistorTrinket x="7.5%" y="84.5%" rot={-4} isMobile={false} />
             <CalcTrinket
               x="90%"
