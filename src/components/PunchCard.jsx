@@ -64,6 +64,19 @@ export default function PunchCard() {
   // roving focus for keyboard: one hole is tabbable, arrows move it
   const [focusIdx, setFocusIdx] = useState(null);
   const holeRefs = useRef({});
+  // on touchscreens the holes are too small to hit, so a tap picks the
+  // nearest open hole and a button confirms the punch
+  const [touch, setTouch] = useState(false);
+  const [picked, setPicked] = useState(null);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(pointer: coarse)");
+    const update = () => setTouch(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const applyServer = (data) => {
     if (typeof data.count === "number") setCount(data.count);
@@ -210,6 +223,10 @@ export default function PunchCard() {
   const openHoles = HOLES.map((_, i) => i).filter((i) => !punchedSet.has(i));
   const tabHole =
     focusIdx !== null && openHoles.includes(focusIdx) ? focusIdx : openHoles[0];
+  const pickedHole =
+    touch && canPunch && picked !== null && openHoles.includes(picked)
+      ? picked
+      : null;
   const mine = myCard === shownCardNo ? myHole : null;
   const myRowKnit = mine !== null && HOLES[mine].row >= ROWS - knitRows;
 
@@ -239,6 +256,34 @@ export default function PunchCard() {
   const cell = 15;
   const edge = 22;
   const headH = 26;
+  const holeX = (h) => edge + h.col * cell + cell / 2;
+  const holeY = (h) => headH + h.row * cell + cell / 2;
+
+  // a tap anywhere on the card picks the closest open hole, so it
+  // doesn't matter if a fingertip lands a little off
+  const pickNearest = (e) => {
+    if (!touch || !canPunch) return;
+    const svg = cardRef.current;
+    const ctm = svg?.getScreenCTM();
+    if (!ctm) return;
+    const pt = svg.createSVGPoint();
+    pt.x = e.clientX;
+    pt.y = e.clientY;
+    const { x, y } = pt.matrixTransform(ctm.inverse());
+    let best = null;
+    let bestDist = Infinity;
+    openHoles.forEach((i) => {
+      const d = Math.hypot(holeX(HOLES[i]) - x, holeY(HOLES[i]) - y);
+      if (d < bestDist) {
+        bestDist = d;
+        best = i;
+      }
+    });
+    if (best !== null && bestDist <= cell * 2) {
+      setPicked(best);
+      setNotice("");
+    }
+  };
   const cardW = COLS * cell + edge * 2;
   const cardH = ROWS * cell + headH + 14;
 
@@ -260,7 +305,9 @@ export default function PunchCard() {
           key={`card-${shownCardNo}`}
           className={`${styles.card} ${styles.feedIn}`}
           viewBox={`0 0 ${cardW} ${cardH}`}
+          ref={cardRef}
           role={canPunch ? "group" : "img"}
+          onClick={pickNearest}
           aria-label={`${motif.name} punch card, ${punched} of ${CARD_SIZE} holes punched`}
         >
           <path
@@ -314,17 +361,29 @@ export default function PunchCard() {
                   role="button"
                   tabIndex={i === tabHole ? 0 : -1}
                   aria-label={`punch row ${ROWS - cellDef.row}, stitch ${cellDef.col + 1}`}
-                  onClick={() => punch(i)}
+                  onClick={touch ? undefined : () => punch(i)}
                   onKeyDown={(e) => onHoleKey(e, i)}
                   onFocus={() => setFocusIdx(i)}
                 >
                   {/* bigger invisible target so it's easy to hit */}
                   <circle cx={cx} cy={cy} r={cell / 2} fill="transparent" />
+                  {pickedHole === i && (
+                    <circle
+                      cx={cx}
+                      cy={cy}
+                      r="9"
+                      className={styles.pickRing}
+                    />
+                  )}
                   <circle
                     cx={cx}
                     cy={cy}
                     r="4.5"
-                    className={styles.openHoleMark}
+                    className={
+                      pickedHole === i
+                        ? `${styles.openHoleMark} ${styles.pickedMark}`
+                        : styles.openHoleMark
+                    }
                     strokeWidth="1.2"
                     strokeDasharray="2 2"
                   />
@@ -458,6 +517,18 @@ export default function PunchCard() {
 
       {hasPunched ? (
         <p className={styles.punchedPill}>you&apos;ve punched your hole</p>
+      ) : pickedHole !== null && !busy ? (
+        <div className={styles.confirm}>
+          <button
+            type="button"
+            className={styles.punchButton}
+            onClick={() => punch(pickedHole)}
+          >
+            punch row {ROWS - HOLES[pickedHole].row}, stitch{" "}
+            {HOLES[pickedHole].col + 1}
+          </button>
+          <p className={styles.hint}>or tap another hole</p>
+        </div>
       ) : (
         <p className={styles.hint} aria-live="polite">
           {notice ||
@@ -465,7 +536,9 @@ export default function PunchCard() {
               ? " "
               : busy
                 ? "punching…"
-                : "click any dashed hole on the card to punch it")}
+                : touch
+                  ? "tap a dashed hole on the card to pick it"
+                  : "click any dashed hole on the card to punch it")}
         </p>
       )}
 

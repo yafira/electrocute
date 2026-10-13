@@ -166,6 +166,58 @@
   margin: 0;
 }
 
+/* touchscreens: the punch button that confirms a picked hole */
+.confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.punchButton {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  color: #000000;
+  background: #f4f0ff;
+  border: 2px dashed #d5c8fa;
+  border-radius: 999px;
+  padding: 0.65rem 1.5rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.punchButton:active {
+  background: #e8e1fa;
+}
+
+.openHoleMark.pickedMark {
+  fill: rgba(157, 150, 231, 0.45);
+  stroke: #6f66c9;
+  stroke-dasharray: none;
+}
+
+.pickRing {
+  fill: none;
+  stroke: #9d96e7;
+  stroke-width: 1.4;
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: pickPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pickPulse {
+  0%,
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+  50% {
+    opacity: 0.45;
+    scale: 1.15;
+  }
+}
+
 /* the holes visitors can punch, right on the card */
 .openHole {
   cursor: pointer;
@@ -289,6 +341,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .pickRing {
+    animation: none;
+  }
   .feedIn {
     animation: none;
   }
