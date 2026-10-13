@@ -146,7 +146,7 @@ const projects = [
     photo:
       "https://img.itch.zone/aW1nLzI4MzA5MzYxLnBuZw==/original/%2FTuyKV.png",
     blurb:
-      "a cozy game about six days at home. water the plant. rest the body. repeat.",
+      "a short pixel cozy game about that time of the month, one small ritual at a time. water the plant. rest the body. repeat.",
     tint: "#f3f9ee",
     hoverBg: "#e4f2d9",
     hoverBorder: "#c9e3b5",
