@@ -211,8 +211,7 @@ export default function PunchCard() {
   const tabHole =
     focusIdx !== null && openHoles.includes(focusIdx) ? focusIdx : openHoles[0];
   const mine = myCard === shownCardNo ? myHole : null;
-  const myRowKnit =
-    mine !== null && HOLES[mine].row >= ROWS - knitRows;
+  const myRowKnit = mine !== null && HOLES[mine].row >= ROWS - knitRows;
 
   // rows that knit because of this visitor's punch, to animate them in
   const freshRowStart = justPunched ? ROWS - knitRows : ROWS;
@@ -366,7 +365,7 @@ export default function PunchCard() {
           className={styles.fabric}
           viewBox={`0 0 ${fabW} ${fabH}`}
           role="img"
-          aria-label={`knit preview in ${yarn.name}, ${knitRows} of ${ROWS} rows on the machine`}
+          aria-label={`knit preview in ${yarn.name}, ${knitRows} of ${ROWS} rows knit, ${punched} contrast stitches placed`}
         >
           <rect
             x="0"
@@ -380,7 +379,6 @@ export default function PunchCard() {
             strokeDasharray="5 4"
           />
           {CELLS.map((cellDef) => {
-            if (cellDef.row < ROWS - knitRows) return null;
             const key = `st-${cellDef.row}-${cellDef.col}`;
             const i = cellDef.hole
               ? HOLES.findIndex(
@@ -388,32 +386,39 @@ export default function PunchCard() {
                 )
               : -1;
             const isContrast = i >= 0 && punchedSet.has(i);
+            const isKnit = cellDef.row >= ROWS - knitRows;
+            // rows the carriage hasn't reached yet only show the contrast
+            // stitches people have punched, waiting faintly in place
+            if (!isKnit && !isContrast) return null;
             const x = 8 + cellDef.col * st + st / 2;
             const y = 8 + cellDef.row * st + st / 2;
             const arm = st * 0.32;
             const color = isContrast ? yarn.contrast : yarn.base;
             const isFresh =
-              cellDef.row >= freshRowStart && cellDef.row < freshRowEnd;
+              (cellDef.row >= freshRowStart && cellDef.row < freshRowEnd) ||
+              (justPunched && i >= 0 && i === mine);
             return (
               <g key={key} className={isFresh ? styles.newStitchV : undefined}>
-                <line
-                  x1={x - arm}
-                  y1={y - arm}
-                  x2={x}
-                  y2={y + arm}
-                  stroke={color}
-                  strokeWidth="3.4"
-                  strokeLinecap="round"
-                />
-                <line
-                  x1={x + arm}
-                  y1={y - arm}
-                  x2={x}
-                  y2={y + arm}
-                  stroke={color}
-                  strokeWidth="3.4"
-                  strokeLinecap="round"
-                />
+                <g className={isKnit ? undefined : styles.waitingStitch}>
+                  <line
+                    x1={x - arm}
+                    y1={y - arm}
+                    x2={x}
+                    y2={y + arm}
+                    stroke={color}
+                    strokeWidth="3.4"
+                    strokeLinecap="round"
+                  />
+                  <line
+                    x1={x + arm}
+                    y1={y - arm}
+                    x2={x}
+                    y2={y + arm}
+                    stroke={color}
+                    strokeWidth="3.4"
+                    strokeLinecap="round"
+                  />
+                </g>
               </g>
             );
           })}
@@ -490,7 +495,7 @@ export default function PunchCard() {
             <>
               thank you for punching a hole.
               <br />
-              your stitch knits once the carriage reaches its row.
+              your stitch is waiting in the fabric until the carriage reaches its row.
             </>
           )}
         </p>
