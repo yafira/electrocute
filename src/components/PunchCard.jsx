@@ -1,15 +1,15 @@
-// the communal punch card. every visitor punches one hole; holes fill
-// the card in carriage order and the fabric below knits itself as
-// they land. shared via /api/punch, falls back to per-device
+// the communal punch card. every visitor punches one hole, and they
+// pick which one, like punching a real card by hand. the machine knits
+// from the bottom row up, so a row only knits once all of its holes
+// are punched. shared via /api/punch, falls back to per-device
 // localStorage if there's no backend.
 //
 // cards cycle through several motifs instead of repeating the same
-// one forever. motifs don't need matching hole counts — the whole
-// punch history is treated as one continuous sequence across however
-// many patterns are listed, so adding, removing, or reordering motifs
-// never renumbers or erases anyone's already-punched progress.
+// one forever. the all-time punch count decides which card is on the
+// machine, so adding, removing, or reordering motifs never renumbers
+// or erases anyone's already-punched progress.
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import styles from "../styles/PunchCard.module.css";
 import PunchiEgg from "./PunchiEgg";
@@ -17,7 +17,9 @@ import {
   COLS,
   MOTIFS,
   MOTIF_DATA,
-  resolvePosition,
+  currentCard,
+  motifIndexForCard,
+  knitRowCount,
   yarnForCard,
   wash,
 } from "../data/punchMotifs";
@@ -27,18 +29,55 @@ import {
 const FINISHED_HOLD_MS = 2600;
 
 const LOCAL_COUNT_KEY = "electrocute:punchcard:local-count";
+const LOCAL_HOLES_KEY = "electrocute:punchcard:local-holes";
 const PUNCHED_KEY = "electrocute:punchcard:punched";
+
+function readLocalHoles(cardNo, punchedBefore) {
+  try {
+    const saved = JSON.parse(localStorage.getItem(LOCAL_HOLES_KEY));
+    if (saved && saved.card === cardNo) return saved.holes;
+  } catch {
+    // nothing saved yet
+  }
+  // older local cards were punched in carriage order
+  return Array.from({ length: punchedBefore }, (_, i) => i);
+}
 
 export default function PunchCard() {
   const [count, setCount] = useState(null);
   const [shared, setShared] = useState(false);
+  // the card on the machine and which of its holes are punched
+  const [cardNo, setCardNo] = useState(1);
+  const [holes, setHoles] = useState([]);
   const [hasPunched, setHasPunched] = useState(false);
+  const [myHole, setMyHole] = useState(null);
+  const [myCard, setMyCard] = useState(null);
   const [justPunched, setJustPunched] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [notice, setNotice] = useState("");
   // true when this visitor's hole was the last one on the card
   const [finishedCard, setFinishedCard] = useState(false);
   // keeps a just-finished card on screen for a moment before moving on
-  const [holdFinished, setHoldFinished] = useState(false);
+  const [held, setHeld] = useState(null);
+  // rows knit before this visitor's punch, so new rows can knit in
+  const [knitBefore, setKnitBefore] = useState(0);
+  // roving focus for keyboard: one hole is tabbable, arrows move it
+  const [focusIdx, setFocusIdx] = useState(null);
+  const holeRefs = useRef({});
+
+  const applyServer = (data) => {
+    if (typeof data.count === "number") setCount(data.count);
+    if (typeof data.card === "number") setCardNo(data.card);
+    if (Array.isArray(data.holes)) setHoles(data.holes);
+  };
+
+  const loadLocal = () => {
+    const localCount = Number(localStorage.getItem(LOCAL_COUNT_KEY)) || 0;
+    const card = currentCard(localCount);
+    setCount(localCount);
+    setCardNo(card.cardNo);
+    setHoles(readLocalHoles(card.cardNo, card.punchedBefore));
+  };
 
   useEffect(() => {
     setHasPunched(Boolean(localStorage.getItem(PUNCHED_KEY)));
@@ -49,62 +88,110 @@ export default function PunchCard() {
         if (!alive) return;
         if (data.shared && typeof data.count === "number") {
           setShared(true);
-          setCount(data.count);
+          applyServer(data);
         } else {
-          setCount(Number(localStorage.getItem(LOCAL_COUNT_KEY)) || 0);
+          loadLocal();
         }
       })
       .catch(() => {
-        if (alive) setCount(Number(localStorage.getItem(LOCAL_COUNT_KEY)) || 0);
+        if (alive) loadLocal();
       });
     return () => {
       alive = false;
     };
   }, []);
 
-  const punch = async () => {
-    if (hasPunched || busy) return;
-    setBusy(true);
-    setJustPunched(true);
-    if (shared) {
-      try {
-        const res = await fetch("/api/punch", { method: "POST" });
-        const data = await res.json();
-        if (typeof data.count === "number") setCount(data.count);
-        if (data.completed) setFinishedCard(true);
-      } catch {
-        setCount((c) => (c || 0) + 1);
-      }
-    } else {
-      setCount((c) => {
-        const next = (c || 0) + 1;
-        localStorage.setItem(LOCAL_COUNT_KEY, String(next));
-        return next;
-      });
-    }
+  // after the finished card has been shown off, catch up with the
+  // next card, which other people may have started on already
+  const releaseHeld = () => {
+    setHeld(null);
+    if (!shared) return;
+    fetch("/api/punch")
+      .then((res) => res.json())
+      .then((data) => data.shared && applyServer(data))
+      .catch(() => {});
+  };
+
+  const done = () => {
     localStorage.setItem(PUNCHED_KEY, "1");
     setHasPunched(true);
-    setBusy(false);
-    // if that hole finished the card, show it whole, then feed in the next
-    setHoldFinished(true);
-    setTimeout(() => setHoldFinished(false), FINISHED_HOLD_MS);
     setTimeout(() => setJustPunched(false), 1500);
   };
 
-  const total = count || 0;
-  const pos = resolvePosition(total);
-  const full =
-    total > 0 && pos.punchedInMotif === MOTIF_DATA[pos.motifIndex].holeCount;
-  // a finished card moves off the machine and the next one feeds in
-  // empty, unless we're still holding it up for the person who finished it
-  const advance = full && !holdFinished;
-  const motifIndex = advance
-    ? (pos.motifIndex + 1) % MOTIFS.length
-    : pos.motifIndex;
-  const punchedInMotif = advance ? 0 : pos.punchedInMotif;
-  const cardsDone = advance ? pos.cardsDone + 1 : pos.cardsDone;
-  const cardNo = cardsDone + 1;
-  const yarn = yarnForCard(cardNo);
+  const punch = async (hole) => {
+    if (hasPunched || busy || count === null) return;
+    if (holes.includes(hole)) return;
+    const data = MOTIF_DATA[motifIndexForCard(cardNo)];
+    setBusy(true);
+    setNotice("");
+    setKnitBefore(knitRowCount(data, holes));
+
+    if (shared) {
+      try {
+        const res = await fetch("/api/punch", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ hole }),
+        });
+        const result = await res.json();
+        if (res.status === 409) {
+          applyServer(result);
+          setNotice("someone just punched that one! pick another hole.");
+          setBusy(false);
+          return;
+        }
+        if (!res.ok) throw new Error("punch failed");
+        setMyHole(hole);
+        setMyCard(result.card);
+        setJustPunched(true);
+        if (result.completed) {
+          setFinishedCard(true);
+          setHeld({ cardNo: result.card, holes: result.holes });
+          setTimeout(releaseHeld, FINISHED_HOLD_MS);
+        }
+        applyServer(result);
+        done();
+      } catch {
+        setNotice("the machine jammed, try again in a moment.");
+      }
+      setBusy(false);
+      return;
+    }
+
+    // no backend: keep the card on this device
+    const nextHoles = [...holes, hole].sort((a, b) => a - b);
+    const nextCount = count + 1;
+    localStorage.setItem(LOCAL_COUNT_KEY, String(nextCount));
+    setMyHole(hole);
+    setMyCard(cardNo);
+    setJustPunched(true);
+    if (nextHoles.length >= data.holeCount) {
+      setFinishedCard(true);
+      setHeld({ cardNo, holes: nextHoles });
+      const next = currentCard(nextCount);
+      localStorage.setItem(
+        LOCAL_HOLES_KEY,
+        JSON.stringify({ card: next.cardNo, holes: [] }),
+      );
+      setCardNo(next.cardNo);
+      setHoles([]);
+      setTimeout(() => setHeld(null), FINISHED_HOLD_MS);
+    } else {
+      localStorage.setItem(
+        LOCAL_HOLES_KEY,
+        JSON.stringify({ card: cardNo, holes: nextHoles }),
+      );
+      setHoles(nextHoles);
+    }
+    setCount(nextCount);
+    done();
+    setBusy(false);
+  };
+
+  // which card to draw: the one just finished, while it's held up
+  const shownCardNo = held ? held.cardNo : cardNo;
+  const shownHoles = held ? held.holes : holes;
+  const motifIndex = motifIndexForCard(shownCardNo);
   const motif = MOTIFS[motifIndex];
   const data = MOTIF_DATA[motifIndex];
   const {
@@ -113,24 +200,42 @@ export default function PunchCard() {
     numRows: ROWS,
     holeCount: CARD_SIZE,
   } = data;
-  const punched = punchedInMotif;
+  const punchedSet = new Set(shownHoles);
+  const punched = punchedSet.size;
+  const cardsDone = shownCardNo - 1;
+  const yarn = yarnForCard(shownCardNo);
+  const knitRows = knitRowCount(data, shownHoles);
 
-  const carriage = useMemo(() => {
-    if (punched === 0) return -1;
-    const lastHole = HOLES[punched - 1];
-    return CELLS.findIndex(
-      (cell) => cell.row === lastHole.row && cell.col === lastHole.col,
-    );
-  }, [punched, CELLS, HOLES]);
+  const canPunch = !hasPunched && count !== null && !busy && !held;
+  const openHoles = HOLES.map((_, i) => i).filter((i) => !punchedSet.has(i));
+  const tabHole =
+    focusIdx !== null && openHoles.includes(focusIdx) ? focusIdx : openHoles[0];
+  const mine = myCard === shownCardNo ? myHole : null;
+  const myRowKnit =
+    mine !== null && HOLES[mine].row >= ROWS - knitRows;
 
-  const punchedSet = useMemo(() => {
-    const set = new Set();
-    HOLES.slice(0, punched).forEach((h) => set.add(`${h.row}-${h.col}`));
-    return set;
-  }, [punched, HOLES]);
+  // rows that knit because of this visitor's punch, to animate them in
+  const freshRowStart = justPunched ? ROWS - knitRows : ROWS;
+  const freshRowEnd = justPunched ? ROWS - knitBefore : ROWS;
 
-  const knitRow = carriage < 0 ? 0 : Math.floor(carriage / COLS) + 1;
-  const newest = punched > 0 ? HOLES[punched - 1] : null;
+  const onHoleKey = (e, i) => {
+    const at = openHoles.indexOf(i);
+    let to = null;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+      to = openHoles[Math.min(at + 1, openHoles.length - 1)];
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+      to = openHoles[Math.max(at - 1, 0)];
+    } else if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      punch(i);
+      return;
+    }
+    if (to !== null && to !== undefined) {
+      e.preventDefault();
+      setFocusIdx(to);
+      holeRefs.current[to]?.focus();
+    }
+  };
 
   const cell = 15;
   const edge = 22;
@@ -146,17 +251,17 @@ export default function PunchCard() {
     <section id="punchcard" className={styles.punchcard}>
       <h2>the communal punch card</h2>
       <p className={styles.intro}>
-        every visitor punches one hole, carriage order, bottom row first. below,
-        the machine knits what we&apos;ve punched so far — the pattern changes
-        with every new card.
+        every visitor punches one hole, anywhere in the pattern. the machine
+        knits from the bottom row up, so a row knits once all its holes are
+        punched. the pattern changes with every new card.
       </p>
 
       <div className={styles.machine}>
         <svg
-          key={`card-${cardNo}`}
+          key={`card-${shownCardNo}`}
           className={`${styles.card} ${styles.feedIn}`}
           viewBox={`0 0 ${cardW} ${cardH}`}
-          role="img"
+          role={canPunch ? "group" : "img"}
           aria-label={`${motif.name} punch card, ${punched} of ${CARD_SIZE} holes punched`}
         >
           <path
@@ -166,7 +271,7 @@ export default function PunchCard() {
             strokeWidth="1.5"
           />
           <text x={edge} y={17} className={styles.cardLabel}>
-            electrocute lab · 24 st · {motif.name} · card no.{cardNo}
+            electrocute lab · 24 st · {motif.name} · card no.{shownCardNo}
           </text>
 
           {Array.from({ length: ROWS }, (_, r) => (
@@ -190,15 +295,44 @@ export default function PunchCard() {
             const cx = edge + cellDef.col * cell + cell / 2;
             const cy = headH + cellDef.row * cell + cell / 2;
             const key = `${cellDef.row}-${cellDef.col}`;
-            const isPunched = punchedSet.has(key);
-            const isNewest =
-              justPunched &&
-              newest &&
-              newest.row === cellDef.row &&
-              newest.col === cellDef.col;
             if (!cellDef.hole) {
               return <circle key={key} cx={cx} cy={cy} r="1" fill="#e6dcc0" />;
             }
+            const i = HOLES.findIndex(
+              (h) => h.row === cellDef.row && h.col === cellDef.col,
+            );
+            const isPunched = punchedSet.has(i);
+            const isNewest = justPunched && mine === i;
+
+            if (!isPunched && canPunch) {
+              return (
+                <g
+                  key={key}
+                  ref={(el) => {
+                    holeRefs.current[i] = el;
+                  }}
+                  className={styles.openHole}
+                  role="button"
+                  tabIndex={i === tabHole ? 0 : -1}
+                  aria-label={`punch row ${ROWS - cellDef.row}, stitch ${cellDef.col + 1}`}
+                  onClick={() => punch(i)}
+                  onKeyDown={(e) => onHoleKey(e, i)}
+                  onFocus={() => setFocusIdx(i)}
+                >
+                  {/* bigger invisible target so it's easy to hit */}
+                  <circle cx={cx} cy={cy} r={cell / 2} fill="transparent" />
+                  <circle
+                    cx={cx}
+                    cy={cy}
+                    r="4.5"
+                    className={styles.openHoleMark}
+                    strokeWidth="1.2"
+                    strokeDasharray="2 2"
+                  />
+                </g>
+              );
+            }
+
             return (
               <g key={key}>
                 <circle
@@ -228,11 +362,11 @@ export default function PunchCard() {
         </svg>
 
         <svg
-          key={`fabric-${cardNo}`}
+          key={`fabric-${shownCardNo}`}
           className={styles.fabric}
           viewBox={`0 0 ${fabW} ${fabH}`}
           role="img"
-          aria-label={`knit preview in ${yarn.name}, ${knitRow} of ${ROWS} rows on the machine`}
+          aria-label={`knit preview in ${yarn.name}, ${knitRows} of ${ROWS} rows on the machine`}
         >
           <rect
             x="0"
@@ -245,21 +379,23 @@ export default function PunchCard() {
             strokeWidth="1.5"
             strokeDasharray="5 4"
           />
-          {CELLS.map((cellDef, i) => {
-            if (i > carriage) return null;
+          {CELLS.map((cellDef) => {
+            if (cellDef.row < ROWS - knitRows) return null;
             const key = `st-${cellDef.row}-${cellDef.col}`;
-            const isContrast = punchedSet.has(`${cellDef.row}-${cellDef.col}`);
+            const i = cellDef.hole
+              ? HOLES.findIndex(
+                  (h) => h.row === cellDef.row && h.col === cellDef.col,
+                )
+              : -1;
+            const isContrast = i >= 0 && punchedSet.has(i);
             const x = 8 + cellDef.col * st + st / 2;
             const y = 8 + cellDef.row * st + st / 2;
             const arm = st * 0.32;
             const color = isContrast ? yarn.contrast : yarn.base;
-            const isNewest =
-              justPunched &&
-              newest &&
-              newest.row === cellDef.row &&
-              newest.col === cellDef.col;
+            const isFresh =
+              cellDef.row >= freshRowStart && cellDef.row < freshRowEnd;
             return (
-              <g key={key} className={isNewest ? styles.newStitchV : undefined}>
+              <g key={key} className={isFresh ? styles.newStitchV : undefined}>
                 <line
                   x1={x - arm}
                   y1={y - arm}
@@ -304,7 +440,7 @@ export default function PunchCard() {
         ) : (
           <>
             {punched} of {CARD_SIZE} holes punched
-            {" by visitors"} · row {knitRow} of {ROWS} on the machine
+            {" by visitors"} · row {knitRows} of {ROWS} on the machine
             {cardsDone > 0 && (
               <>
                 {" "}
@@ -315,14 +451,18 @@ export default function PunchCard() {
         )}
       </p>
 
-      <button
-        type="button"
-        className={styles.punchButton}
-        onClick={punch}
-        disabled={hasPunched || count === null || busy}
-      >
-        {hasPunched ? "you've punched your hole" : "punch your hole"}
-      </button>
+      {hasPunched ? (
+        <p className={styles.punchedPill}>you&apos;ve punched your hole</p>
+      ) : (
+        <p className={styles.hint} aria-live="polite">
+          {notice ||
+            (count === null
+              ? " "
+              : busy
+                ? "punching…"
+                : "click any dashed hole on the card to punch it")}
+        </p>
+      )}
 
       {count !== null && (
         <PunchiEgg
@@ -340,11 +480,17 @@ export default function PunchCard() {
               <br />
               that card is off the machine and saved to the archive.
             </>
-          ) : (
+          ) : mine === null || myRowKnit ? (
             <>
               thank you for punching a hole.
               <br />
               your stitch is part of the fabric now.
+            </>
+          ) : (
+            <>
+              thank you for punching a hole.
+              <br />
+              your stitch knits once the carriage reaches its row.
             </>
           )}
         </p>

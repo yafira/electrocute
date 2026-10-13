@@ -132,31 +132,67 @@
   color: #d9d3ef;
 }
 
-.punchButton {
+.hint {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-size: 14px;
-  color: #000000;
-  background: #f4f0ff;
-  border: 2px dashed #d5c8fa;
+  color: #6f66c9;
+  margin: 0 auto;
+  min-height: 1.6em;
+  text-wrap: balance;
+}
+
+:global(.voidworld) .hint,
+:global(body.ecute-dark) .hint {
+  color: #c9c1f5;
+}
+
+/* same look the old disabled button had once you'd punched */
+.punchedPill {
+  display: inline-block;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: #8a8a8a;
+  background: #fbfcf5;
+  border: 2px dashed #e4e4e4;
   border-radius: 999px;
   padding: 0.5rem 1.4rem;
+  margin: 0;
+}
+
+/* the holes visitors can punch, right on the card */
+.openHole {
   cursor: pointer;
+  outline: none;
+}
+
+.openHoleMark {
+  fill: transparent;
+  stroke: #a99f83;
+  transform-origin: center;
+  transform-box: fill-box;
   transition:
-    background 0.15s ease,
-    transform 0.15s ease;
+    fill 0.15s ease,
+    stroke 0.15s ease,
+    scale 0.15s ease;
 }
 
-.punchButton:hover:not(:disabled) {
-  background: #e8e1fa;
-  transform: translateY(-2px);
+.openHole:hover .openHoleMark,
+.openHole:focus-visible .openHoleMark {
+  fill: rgba(74, 68, 83, 0.3);
+  stroke: #4a4453;
+  stroke-dasharray: none;
+  scale: 1.2;
 }
 
-.punchButton:disabled {
-  background: #fbfcf5;
-  border-color: #e4e4e4;
-  color: #8a8a8a;
-  cursor: default;
+.openHole:focus-visible .openHoleMark {
+  stroke-width: 2;
+}
+
+.openHole:active .openHoleMark {
+  fill: #4a4453;
+  scale: 0.9;
 }
 
 .archiveLink {

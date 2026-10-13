@@ -119,6 +119,39 @@ export function resolvePosition(total) {
   };
 }
 
+// the card the next punch lands on. a card that was just finished is
+// off the machine, so this is already the next (empty) one.
+// punchedBefore is how many of its holes were punched before now.
+export function currentCard(total) {
+  const next = resolvePosition((total || 0) + 1);
+  return {
+    cardNo: next.cardsDone + 1,
+    motifIndex: next.motifIndex,
+    holeCount: MOTIF_DATA[next.motifIndex].holeCount,
+    punchedBefore: next.punchedInMotif - 1,
+  };
+}
+
+// the motif index for any card number
+export function motifIndexForCard(cardNo) {
+  return (cardNo - 1) % MOTIFS.length;
+}
+
+// how many rows the machine has knit: it works bottom up and can't
+// knit a row until every hole in that row is punched
+export function knitRowCount(data, punchedHoles) {
+  const done = new Set(punchedHoles);
+  let rows = 0;
+  for (let r = data.numRows - 1; r >= 0; r--) {
+    const rowDone = data.holes.every(
+      (h, i) => h.row !== r || done.has(i),
+    );
+    if (!rowDone) break;
+    rows++;
+  }
+  return rows;
+}
+
 // how many cards are completely punched for a given all-time total
 export function completedCards(total) {
   const { motifIndex, punchedInMotif, cardsDone } = resolvePosition(total);
