@@ -442,6 +442,77 @@ export function ResistorTrinket({ x, y, rot, isMobile }) {
 
 const TERM_MESSAGES = ["3.3v ok", "hello, world", "stitching...", "soft: on"];
 
+// the sailor moon calculator, shrunk down to a little handheld on the
+// bench. clicking it opens the real one in the floating window
+const CALC_KEYS = Array.from({ length: 12 }, (_, i) => i);
+
+export function CalcTrinket({ x, y, rot, isMobile, onOpen }) {
+  return (
+    <button
+      type="button"
+      className={styles.trinket}
+      style={trinketStyle(x, y, rot, isMobile)}
+      onClick={() => {
+        playSynthSound("chip");
+        onOpen?.();
+      }}
+      aria-label="open the sailor moon calculator"
+      title="sailor moon calculator"
+    >
+      <svg
+        className={styles.calcTrinket}
+        width="46"
+        height="64"
+        viewBox="0 0 46 64"
+        aria-hidden="true"
+      >
+        {/* body */}
+        <rect
+          x="2"
+          y="2"
+          width="42"
+          height="60"
+          rx="12"
+          fill="#fcd9ec"
+          stroke="#e88fc9"
+          strokeWidth="1.5"
+        />
+        {/* little crescent up top */}
+        <path
+          d="M23 6.5 a3.6 3.6 0 1 0 3.2 5.4 a2.8 2.8 0 1 1 -3.2 -5.4 z"
+          fill="#f0d264"
+        />
+        {/* screen */}
+        <rect
+          x="8"
+          y="15"
+          width="30"
+          height="11"
+          rx="3"
+          fill="#efeaff"
+          stroke="#c9bdf2"
+          strokeWidth="1"
+        />
+        <text x="34.5" y="23.5" className={styles.calcDigits} textAnchor="end">
+          0.
+        </text>
+        {/* keys */}
+        {CALC_KEYS.map((k) => (
+          <circle
+            key={k}
+            cx={12 + (k % 3) * 11}
+            cy={33 + Math.floor(k / 3) * 7.4}
+            r="2.7"
+            fill={k === 11 ? "#f2b9e0" : "#ffffff"}
+            stroke="#e7b3d3"
+            strokeWidth="0.8"
+          />
+        ))}
+      </svg>
+    </button>
+  );
+}
+
 export function TermTrinket({ x, y, rot, isMobile }) {
   const [i, setI] = useState(0);
 

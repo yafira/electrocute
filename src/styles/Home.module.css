@@ -33,9 +33,7 @@
 
 .collage {
   position: relative;
-  /* every y in projects.js is a % of this, so changing it means
-     rescaling those too */
-  height: 1500px;
+  height: 1280px;
   /* bleeds a little wider than the .container column and centers
      on the viewport — tuned so pieces sit close but never collide */
   width: min(1240px, calc(100vw - 48px));
@@ -573,6 +571,18 @@
 
 .trinket:hover {
   transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(1.12);
+}
+
+/* sailor moon calculator — a tiny handheld that opens the real one */
+.calcTrinket {
+  display: block;
+  filter: drop-shadow(0 3px 6px rgba(232, 143, 201, 0.25));
+}
+
+.calcDigits {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px;
+  fill: #9d96e7;
 }
 
 /* led — toggles a blush glow */
