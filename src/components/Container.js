@@ -63,14 +63,15 @@ export default function Container() {
 
   const [ledOn, setLedOn] = useState(false);
 
-  // the sailor moon calculator lives on the bench as a trinket now,
-  // and opens in a window sized like a handheld
+  // the sailor moon calculator lives on the bench as a trinket now.
+  // the app itself is close to square, so the window is too
+  // (the extra height is the title and url bars)
   const openCalculator = () =>
     openProject(
       "https://sailor-moon-calculator.netlify.app/",
       "sailor moon calculator",
       setOpen,
-      { w: 380, h: 640 },
+      { w: 540, h: 640 },
     );
 
   // the breadboard button also feeds the power cable up to the logo
