@@ -274,7 +274,7 @@ export default function Container() {
             />
 
             <TermTrinket x="66%" y="87.5%" rot={-2} isMobile={false} />
-            <ResistorTrinket x="7.5%" y="84.5%" rot={-4} isMobile={false} />
+            <ResistorTrinket x="78.5%" y="85.5%" rot={-4} isMobile={false} />
             <CalcTrinket
               x="90%"
               y="78%"
@@ -297,7 +297,7 @@ export default function Container() {
             <MothTrinket x="17%" y="-10%" />
 
             {/* core memory, for margaret hamilton, beside the scope */}
-            <CoreRopeTrinket x="calc(60% + 92px)" y="19.6%" rot={3} />
+            <CoreRopeTrinket x="calc(62% + 92px)" y="19.6%" rot={3} />
             <BreadboardTrinket
               x="76%"
               y="-10%"

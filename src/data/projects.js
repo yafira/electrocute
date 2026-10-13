@@ -307,7 +307,7 @@ export const photoItems = [
     title: "puffcast",
     image: "/assets/craft/puffcast.png",
     href: "https://months-tap-da9.craft.me/puffcast",
-    pos: { x: "70%", y: "94%", w: 285, rot: -5, z: 6, delay: 2.4 },
+    pos: { x: "70%", y: "96%", w: 285, rot: -5, z: 6, delay: 2.4 },
   },
   {
     slug: "custom-light-leds",
