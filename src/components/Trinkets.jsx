@@ -461,8 +461,8 @@ export function CalcTrinket({ x, y, rot, isMobile, onOpen }) {
     >
       <svg
         className={styles.calcTrinket}
-        width={isMobile ? 46 : 60}
-        height={isMobile ? 64 : 84}
+        width={isMobile ? 46 : 74}
+        height={isMobile ? 64 : 103}
         viewBox="0 0 46 64"
         aria-hidden="true"
       >
