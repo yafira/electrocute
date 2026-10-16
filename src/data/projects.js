@@ -83,7 +83,7 @@ const projects = [
     hoverBg: "#e3d6fb",
     hoverBorder: "#cbb8f2",
     shape: "sticky",
-    pos: { x: "42%", y: "61%", rot: -3, z: 10 },
+    pos: { x: "41%", y: "61.5%", rot: -3, z: 10 },
   },
   {
     slug: "kawaii-ml",
@@ -108,7 +108,7 @@ const projects = [
     hoverBg: "#faf6ff",
     hoverBorder: "#cdc1ee",
     shape: "wide",
-    pos: { x: "17%", y: "48%", rot: -1.5, z: 10 },
+    pos: { x: "17%", y: "47%", rot: -4.2, z: 10 },
   },
   {
     slug: "soft-circuit-library",
