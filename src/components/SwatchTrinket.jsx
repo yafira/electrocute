@@ -1,13 +1,14 @@
-// one little index card pulled from the soft circuit library: a coin
-// cell and an led sequin joined by two traces of conductive thread.
+// a little felt swatch from the soft circuit library: a coin cell and
+// an led sequin sewn on and joined by two traces of conductive thread,
+// with a woven tag stitched to the top.
 //
 // clicking it lights the sequin, and when the light flickers out the
-// card gets mended: a new pink cross-stitch lands on the thread with
-// today's date in the corner, the way every repair in the library is
+// swatch gets mended: a new pink cross-stitch lands on the thread and
+// the tag gets today's date, the way every repair in the library is
 // dated. hovering, or tapping on a phone, shares a soft circuit care tip.
 
 import { useEffect, useRef, useState } from "react";
-import styles from "../styles/IndexCard.module.css";
+import styles from "../styles/Swatch.module.css";
 import { tone } from "../lib/tinySynth";
 
 const TIPS = [
@@ -30,6 +31,29 @@ const MEND_SPOTS = [
   [86, 58],
 ];
 
+// felt cut with pinking shears: a zigzag all the way around
+function pinkedEdge(x0, y0, x1, y1, tooth = 4) {
+  const pts = [];
+  const along = (ax, ay, bx, by, out) => {
+    const len = Math.hypot(bx - ax, by - ay);
+    const n = Math.round(len / tooth);
+    for (let i = 0; i < n; i++) {
+      const t = i / n;
+      const px = ax + (bx - ax) * t;
+      const py = ay + (by - ay) * t;
+      const o = i % 2 ? 0 : 1.8;
+      pts.push([px + out[0] * o, py + out[1] * o]);
+    }
+  };
+  along(x0, y0, x1, y0, [0, -1]);
+  along(x1, y0, x1, y1, [1, 0]);
+  along(x1, y1, x0, y1, [0, 1]);
+  along(x0, y1, x0, y0, [-1, 0]);
+  return pts.map(([px, py]) => `${px.toFixed(1)},${py.toFixed(1)}`).join(" ");
+}
+
+const EDGE = pinkedEdge(4, 8, 116, 90);
+
 const today = () => {
   const d = new Date();
   const mm = String(d.getMonth() + 1).padStart(2, "0");
@@ -37,8 +61,8 @@ const today = () => {
   return `${mm}.${dd}`;
 };
 
-export default function IndexCardTrinket({ x, y, rot = 0, isMobile = false }) {
-  // the card arrives with one old mend already on it
+export default function SwatchTrinket({ x, y, rot = 0, isMobile = false }) {
+  // the swatch arrives with one old mend already on it
   const [mends, setMends] = useState([1]);
   const [date, setDate] = useState("03.26");
   const [lit, setLit] = useState(false);
@@ -74,7 +98,7 @@ export default function IndexCardTrinket({ x, y, rot = 0, isMobile = false }) {
       setLit(false);
       setMends((cur) => {
         const free = MEND_SPOTS.map((_, i) => i).filter((i) => !cur.includes(i));
-        // a full card starts over with a fresh mend, like a new card
+        // a fully mended swatch starts over, like a fresh one from the box
         if (!free.length) return [Math.floor(Math.random() * MEND_SPOTS.length)];
         return [...cur, free[Math.floor(Math.random() * free.length)]];
       });
@@ -99,21 +123,24 @@ export default function IndexCardTrinket({ x, y, rot = 0, isMobile = false }) {
       onMouseLeave={isMobile ? undefined : () => setTip(null)}
       onFocus={nextTip}
       onBlur={() => setTip(null)}
-      aria-label="an index card from the soft circuit library: light it and mend it"
-      aria-describedby={tip ? "index-card-tip" : undefined}
+      aria-label="a soft circuit swatch from the library: light it and mend it"
+      aria-describedby={tip ? "swatch-tip" : undefined}
     >
       <svg viewBox="0 0 120 92" className={styles.svg} aria-hidden="true">
-        {/* the index card, with its ruled lines */}
-        <rect x="1" y="1" width="118" height="90" rx="4" className={styles.paper} />
-        <line x1="6" y1="16" x2="114" y2="16" className={styles.topRule} />
-        {[28, 40, 52, 64, 76].map((ly) => (
-          <line key={ly} x1="6" y1={ly} x2="114" y2={ly} className={styles.rule} />
+        {/* the felt, with a faint weave */}
+        <polygon points={EDGE} className={styles.felt} />
+        {[18, 26, 34, 42, 50, 58, 66, 74, 82].map((ly) => (
+          <line key={`h${ly}`} x1="8" y1={ly} x2="112" y2={ly} className={styles.weave} />
         ))}
-        <text x="8" y="12" className={styles.label}>
-          no.07
-        </text>
-        <text x="112" y="12" textAnchor="end" className={styles.label}>
-          mended {date}
+        {[14, 22, 30, 38, 46, 54, 62, 70, 78, 86, 94, 102, 110].map((lx) => (
+          <line key={`v${lx}`} x1={lx} y1="12" x2={lx} y2="86" className={styles.weave} />
+        ))}
+
+        {/* the woven tag, stitched on at the top */}
+        <rect x="30" y="2" width="60" height="13" rx="1.5" className={styles.tag} />
+        <rect x="32" y="4" width="56" height="9" rx="1" className={styles.tagStitch} />
+        <text x="60" y="11" textAnchor="middle" className={styles.label}>
+          no.07 · {date}
         </text>
 
         {/* two traces of conductive thread, in running stitch */}
@@ -145,7 +172,7 @@ export default function IndexCardTrinket({ x, y, rot = 0, isMobile = false }) {
       </svg>
 
       {tip && (
-        <span id="index-card-tip" role="tooltip" className={styles.tip}>
+        <span id="swatch-tip" role="tooltip" className={styles.tip}>
           {tip}
         </span>
       )}

@@ -22,7 +22,7 @@ import { sendPower } from "../lib/powerSurge";
 import { ModemTrinket, MothTrinket } from "./LogoGadgets";
 import CoreRopeTrinket from "./CoreRopeTrinket";
 import PlotterTrinket from "./PlotterTrinket";
-import IndexCardTrinket from "./IndexCardTrinket";
+import SwatchTrinket from "./SwatchTrinket";
 
 const COLLAGE_ORDER = [
   { type: "card", slug: "electrocute-ui" },
@@ -304,8 +304,8 @@ export default function Container() {
             {/* a pen plotter, for vera molnár, beside computer art */}
             <PlotterTrinket x="calc(100% - 140px)" y="30.4%" rot={4} />
 
-            {/* an index card from the soft circuit library, tucked into its corner */}
-            <IndexCardTrinket x="calc(80% + 108px)" y="40%" rot={6} />
+            {/* a soft circuit swatch from the library, tucked into its corner */}
+            <SwatchTrinket x="calc(80% + 108px)" y="40%" rot={6} />
             <BreadboardTrinket
               x="76%"
               y="-10%"
@@ -371,7 +371,7 @@ export default function Container() {
               <CalcTrinket isMobile={true} onOpen={openCalculator} />
             </div>
             <div className={styles.benchItem}>
-              <IndexCardTrinket isMobile={true} />
+              <SwatchTrinket isMobile={true} />
             </div>
             <div className={styles.benchItem}>
               <CoreRopeTrinket isMobile={true} />

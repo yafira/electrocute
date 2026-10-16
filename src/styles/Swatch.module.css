@@ -1,4 +1,4 @@
-/* the little index card beside the soft circuit library card */
+/* the little felt swatch tucked into the soft circuit library card */
 .card {
   position: absolute;
   /* above the cards, so its tip note is never tucked under one */
@@ -10,7 +10,7 @@
   line-height: 0;
 }
 
-/* on small laptops the plotter sits lower, so the card drops a little
+/* on small laptops the plotter sits lower, so the swatch drops a little
    and shrinks to stay clear of it */
 @media screen and (max-width: 1199px) {
   .card:not(.inline) {
@@ -46,32 +46,43 @@
   transform: translateY(-3px) rotate(2deg);
 }
 
-.paper {
+/* soft lavender felt */
+.felt {
+  fill: #ece6fb;
+  stroke: #d5c8fa;
+  stroke-width: 0.8;
+  stroke-linejoin: round;
+}
+
+.weave {
+  stroke: #ffffff;
+  stroke-width: 0.5;
+  opacity: 0.4;
+}
+
+.tag {
   fill: #fffdf6;
   stroke: #ecdcc8;
-  stroke-width: 1;
-}
-
-.topRule {
-  stroke: #f2b9e0;
-  stroke-width: 1;
-}
-
-.rule {
-  stroke: #dbe8ff;
   stroke-width: 0.8;
+}
+
+.tagStitch {
+  fill: none;
+  stroke: #f2b9e0;
+  stroke-width: 0.7;
+  stroke-dasharray: 2 1.5;
 }
 
 .label {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 6.5px;
+  font-size: 6px;
   letter-spacing: 0.04em;
   fill: #a99f83;
 }
 
 .thread {
   fill: none;
-  stroke: #a9a9b8;
+  stroke: #9f9cae;
   stroke-width: 1.4;
   stroke-dasharray: 4 2.5;
   stroke-linecap: round;
@@ -171,4 +182,13 @@
     transition: none;
     animation: none;
   }
+}
+
+:global(body.ecute-dark) .felt {
+  fill: #2f2a3b;
+  stroke: #5a5170;
+}
+
+:global(body.ecute-dark) .weave {
+  opacity: 0.08;
 }
