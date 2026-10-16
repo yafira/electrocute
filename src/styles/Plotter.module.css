@@ -1,0 +1,155 @@
+/* the pen plotter, sitting beside the computer art card */
+.plotter {
+  position: absolute;
+  /* above the cards, so its fact note is never tucked under one */
+  z-index: 45;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+}
+
+/* on small laptops the gap beside the card is tight, so it shrinks
+   and drops a little to stay clear of the soft computer photo */
+@media screen and (max-width: 1199px) {
+  .plotter:not(.inline) {
+    margin-top: 32px;
+  }
+  .plotter:not(.inline) .svg {
+    width: 104px;
+  }
+}
+
+/* inside the phone bench it just sits in the flow */
+.inline {
+  position: relative;
+  z-index: 5;
+}
+
+.plotter:focus-visible {
+  outline: 2px dashed #b2a4d4;
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+.svg {
+  display: block;
+  width: 124px;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 3px 6px rgba(74, 68, 83, 0.1));
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.plotter:hover .svg {
+  transform: translateY(-3px) rotate(1deg);
+}
+
+.bed {
+  fill: #f4f0ff;
+  stroke: #cfc3f5;
+  stroke-width: 1.5;
+}
+
+.rail {
+  fill: #e4dcfb;
+  stroke: #cfc3f5;
+  stroke-width: 1;
+}
+
+.paper {
+  fill: #fffdf6;
+  stroke: #e6dcc0;
+  stroke-width: 1;
+}
+
+.ink {
+  fill: none;
+  stroke-width: 0.9;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.gantry,
+.carriage {
+  transition: transform 0.03s linear;
+}
+
+.bar {
+  fill: #e4dcfb;
+  stroke: #b2a4d4;
+  stroke-width: 1;
+}
+
+.head {
+  fill: #fffdf6;
+  stroke: #b2a4d4;
+  stroke-width: 1;
+}
+
+.label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  fill: #9d96c4;
+}
+
+/* the fact note, same as the moth's */
+.fact {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  z-index: 50;
+  width: max-content;
+  max-width: 240px;
+  transform: translateX(-50%);
+  padding: 8px 11px;
+  background: #fffdf6;
+  border: 1.5px dashed #c5caef;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(74, 68, 83, 0.1);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #2c2440;
+  text-align: center;
+  text-wrap: balance;
+  white-space: normal;
+  pointer-events: none;
+  animation: factIn 0.2s ease-out;
+}
+
+@keyframes factIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -4px);
+  }
+}
+
+:global(body.ecute-dark) .bed {
+  fill: #2f2a3b;
+  stroke: #5a5170;
+}
+
+:global(body.ecute-dark) .rail,
+:global(body.ecute-dark) .bar {
+  fill: #3d3650;
+  stroke: #5a5170;
+}
+
+:global(body.ecute-dark) .fact {
+  background: #2f2a3b;
+  border-color: #5a5170;
+  color: #e8e2fb;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svg,
+  .gantry,
+  .carriage,
+  .fact {
+    transition: none;
+    animation: none;
+  }
+}

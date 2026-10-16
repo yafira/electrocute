@@ -21,6 +21,7 @@ import {
 import { sendPower } from "../lib/powerSurge";
 import { ModemTrinket, MothTrinket } from "./LogoGadgets";
 import CoreRopeTrinket from "./CoreRopeTrinket";
+import PlotterTrinket from "./PlotterTrinket";
 
 const COLLAGE_ORDER = [
   { type: "card", slug: "electrocute-ui" },
@@ -298,6 +299,9 @@ export default function Container() {
 
             {/* core memory, for margaret hamilton, beside the scope */}
             <CoreRopeTrinket x="calc(62% + 92px)" y="19.6%" rot={3} />
+
+            {/* a pen plotter, for vera molnár, beside computer art */}
+            <PlotterTrinket x="calc(100% - 140px)" y="30.4%" rot={4} />
             <BreadboardTrinket
               x="76%"
               y="-10%"
@@ -444,6 +448,12 @@ export default function Container() {
             style={{ display: "flex", justifyContent: "center", width: "100%" }}
           >
             <CoreRopeTrinket isMobile={true} />
+          </div>
+
+          <div
+            style={{ display: "flex", justifyContent: "center", width: "100%" }}
+          >
+            <PlotterTrinket isMobile={true} />
           </div>
         </div>
       )}
