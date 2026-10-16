@@ -1,0 +1,174 @@
+/* the little index card beside the soft circuit library card */
+.card {
+  position: absolute;
+  /* above the cards, so its tip note is never tucked under one */
+  z-index: 45;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+}
+
+/* on small laptops the plotter sits lower, so the card drops a little
+   and shrinks to stay clear of it */
+@media screen and (max-width: 1199px) {
+  .card:not(.inline) {
+    margin-top: 24px;
+  }
+  .card:not(.inline) .svg {
+    width: 72px;
+  }
+}
+
+/* inside the phone bench it just sits in the flow */
+.inline {
+  position: relative;
+  z-index: 5;
+}
+
+.card:focus-visible {
+  outline: 2px dashed #b2a4d4;
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.svg {
+  display: block;
+  width: 84px;
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 3px 6px rgba(74, 68, 83, 0.12));
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card:hover .svg {
+  transform: translateY(-3px) rotate(2deg);
+}
+
+.paper {
+  fill: #fffdf6;
+  stroke: #ecdcc8;
+  stroke-width: 1;
+}
+
+.topRule {
+  stroke: #f2b9e0;
+  stroke-width: 1;
+}
+
+.rule {
+  stroke: #dbe8ff;
+  stroke-width: 0.8;
+}
+
+.label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 6.5px;
+  letter-spacing: 0.04em;
+  fill: #a99f83;
+}
+
+.thread {
+  fill: none;
+  stroke: #a9a9b8;
+  stroke-width: 1.4;
+  stroke-dasharray: 4 2.5;
+  stroke-linecap: round;
+}
+
+.cell {
+  fill: #e9e6ee;
+  stroke: #b9b4c4;
+  stroke-width: 1;
+}
+
+.cellTop {
+  fill: #f6f4f9;
+  stroke: #c9c4d4;
+  stroke-width: 0.8;
+}
+
+.cellMark {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  fill: #9d96c4;
+}
+
+.sequin {
+  fill: #f1ecfb;
+  stroke: #c7bdf0;
+  stroke-width: 1;
+  transition: fill 0.15s ease;
+}
+
+.sequinLit {
+  fill: #ffd9ef;
+  stroke: #f2b9e0;
+  stroke-width: 1;
+}
+
+.glow {
+  fill: #ffb3dd;
+  opacity: 0.45;
+  filter: blur(3px);
+}
+
+.sequinHole {
+  fill: #fffdf6;
+  stroke: #c7bdf0;
+  stroke-width: 0.6;
+}
+
+.mend line {
+  stroke: #e98fc4;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+/* the tip note, same as the moth's */
+.tip {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  z-index: 50;
+  width: max-content;
+  max-width: 230px;
+  transform: translateX(-50%);
+  padding: 8px 11px;
+  background: #fffdf6;
+  border: 1.5px dashed #c5caef;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(74, 68, 83, 0.1);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #2c2440;
+  text-align: center;
+  text-wrap: balance;
+  white-space: normal;
+  pointer-events: none;
+  animation: tipIn 0.2s ease-out;
+}
+
+@keyframes tipIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -4px);
+  }
+}
+
+:global(body.ecute-dark) .tip {
+  background: #2f2a3b;
+  border-color: #5a5170;
+  color: #e8e2fb;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svg,
+  .sequin,
+  .tip {
+    transition: none;
+    animation: none;
+  }
+}

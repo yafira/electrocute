@@ -27,6 +27,11 @@
   z-index: 5;
 }
 
+/* a touch smaller on the phone bench, so it fits beside the core chip */
+.inline .svg {
+  width: 104px;
+}
+
 .plotter:focus-visible {
   outline: 2px dashed #b2a4d4;
   outline-offset: 4px;
