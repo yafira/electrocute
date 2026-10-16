@@ -348,6 +348,9 @@ export function ToggleTrinket({ x, y, rot, active, onToggle, isMobile }) {
   const styleSetting = isMobile
     ? {
         position: "relative",
+        left: "auto",
+        top: "auto",
+        transform: "none",
         display: "inline-block",
         cursor: "pointer",
         background: "none",
@@ -519,6 +522,9 @@ export function TermTrinket({ x, y, rot, isMobile }) {
   const styleSetting = isMobile
     ? {
         position: "relative",
+        left: "auto",
+        top: "auto",
+        transform: "none",
         display: "inline-flex",
         background: "none",
         border: "none",

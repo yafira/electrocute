@@ -315,36 +315,10 @@ export default function Container() {
       </div>
 
       {isMobile && (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "24px",
-            margin: "40px auto 10px auto",
-            padding: "24px 16px",
-            background: "var(--bench-bg, rgba(255, 255, 255, 0.4))",
-            border: "2px dashed #beb0eb",
-            borderRadius: "24px",
-            maxWidth: "340px",
-            width: "90%",
-            boxSizing: "border-box",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "12px",
-              fontFamily: "monospace",
-              color: "#9d96e7",
-              letterSpacing: "1px",
-            }}
-          >
-            ─── INTERACTIVE BENCH ───
-          </div>
+        <div className={styles.bench}>
+          <div className={styles.benchTitle}>─── INTERACTIVE BENCH ───</div>
 
-          <div
-            style={{ display: "flex", justifyContent: "center", width: "100%" }}
-          >
+          <div className={styles.benchScope}>
             <ScopeTrinket
               isPowered={isCircuitOn}
               scale={scopeScale}
@@ -352,108 +326,52 @@ export default function Container() {
             />
           </div>
 
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-start",
-              justifyContent: "space-between",
-              width: "100%",
-              padding: "0 4px",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                width: "65px",
-              }}
-            >
-              <KnobTrinket onTurn={handleKnobTurn} isMobile={true} />
-              <span
-                style={{
-                  fontSize: "10px",
-                  fontFamily: "monospace",
-                  color: "#a0a0a0",
-                  marginTop: "4px",
-                }}
-              >
-                scale
-              </span>
+          {/* the controls in one even row, each with its name underneath */}
+          <div className={styles.benchControls}>
+            <div className={styles.benchControl}>
+              <div className={styles.benchSlot}>
+                <KnobTrinket onTurn={handleKnobTurn} isMobile={true} />
+              </div>
+              <span className={styles.benchLabel}>scale</span>
             </div>
-
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                width: "65px",
-              }}
-            >
-              <ToggleTrinket
-                active={isCircuitOn}
-                onToggle={() => setIsCircuitOn(!isCircuitOn)}
-                isMobile={true}
-              />
-              <span
-                style={{
-                  fontSize: "10px",
-                  fontFamily: "monospace",
-                  color: "#a0a0a0",
-                  marginTop: "12px",
-                }}
-              >
-                power
-              </span>
+            <div className={styles.benchControl}>
+              <div className={styles.benchSlot}>
+                <ToggleTrinket
+                  active={isCircuitOn}
+                  onToggle={() => setIsCircuitOn(!isCircuitOn)}
+                  isMobile={true}
+                />
+              </div>
+              <span className={styles.benchLabel}>power</span>
             </div>
-
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "50px",
-                height: "50px",
-              }}
-            >
-              <LedTrinket isMobile={true} />
+            <div className={styles.benchControl}>
+              <div className={styles.benchSlot}>
+                <LedTrinket isMobile={true} />
+              </div>
+              <span className={styles.benchLabel}>led</span>
             </div>
-
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "50px",
-                height: "50px",
-              }}
-            >
-              <ResistorTrinket isMobile={true} />
+            <div className={styles.benchControl}>
+              <div className={styles.benchSlot}>
+                <ResistorTrinket isMobile={true} />
+              </div>
+              <span className={styles.benchLabel}>resistor</span>
             </div>
           </div>
 
-          <div
-            style={{ display: "flex", justifyContent: "center", width: "100%" }}
-          >
-            <TermTrinket isMobile={true} />
-          </div>
+          <TermTrinket isMobile={true} />
 
-          <div
-            style={{ display: "flex", justifyContent: "center", width: "100%" }}
-          >
-            <CalcTrinket isMobile={true} onOpen={openCalculator} />
-          </div>
-
-          <div
-            style={{ display: "flex", justifyContent: "center", width: "100%" }}
-          >
-            <CoreRopeTrinket isMobile={true} />
-          </div>
-
-          <div
-            style={{ display: "flex", justifyContent: "center", width: "100%" }}
-          >
-            <PlotterTrinket isMobile={true} />
+          {/* the little keepsakes, two by two */}
+          <div className={styles.benchSubtitle}>keepsakes</div>
+          <div className={styles.benchShelf}>
+            <div className={styles.benchItem}>
+              <CalcTrinket isMobile={true} onOpen={openCalculator} />
+            </div>
+            <div className={styles.benchItem}>
+              <CoreRopeTrinket isMobile={true} />
+            </div>
+            <div className={`${styles.benchItem} ${styles.benchWide}`}>
+              <PlotterTrinket isMobile={true} />
+            </div>
           </div>
         </div>
       )}
