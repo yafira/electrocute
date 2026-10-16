@@ -305,7 +305,7 @@ export default function Container() {
             <PlotterTrinket x="calc(100% - 140px)" y="30.4%" rot={4} />
 
             {/* a soft circuit swatch from the library, tucked into its corner */}
-            <SwatchTrinket x="calc(80% + 108px)" y="40%" rot={6} />
+            <SwatchTrinket x="calc(70% + 108px)" y="42%" rot={6} />
             <BreadboardTrinket
               x="76%"
               y="-10%"

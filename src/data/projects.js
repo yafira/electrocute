@@ -121,7 +121,7 @@ const projects = [
     hoverBg: "#fbecdd",
     hoverBorder: "#e7c29d",
     shape: "wide",
-    pos: { x: "80%", y: "48%", rot: -1.2, z: 10 },
+    pos: { x: "73%", y: "50%", rot: -1.2, z: 10 },
   },
   {
     slug: "synthwave-chimes",

@@ -3,9 +3,8 @@
 // with a woven tag stitched to the top.
 //
 // clicking it lights the sequin, and when the light flickers out the
-// swatch gets mended: a new pink cross-stitch lands on the thread and
-// the tag gets today's date, the way every repair in the library is
-// dated. hovering, or tapping on a phone, shares a soft circuit care tip.
+// swatch gets mended: a new pink cross-stitch lands on the thread.
+// hovering, or tapping on a phone, shares a soft circuit care tip.
 
 import { useEffect, useRef, useState } from "react";
 import styles from "../styles/Swatch.module.css";
@@ -54,17 +53,9 @@ function pinkedEdge(x0, y0, x1, y1, tooth = 4) {
 
 const EDGE = pinkedEdge(4, 8, 116, 90);
 
-const today = () => {
-  const d = new Date();
-  const mm = String(d.getMonth() + 1).padStart(2, "0");
-  const dd = String(d.getDate()).padStart(2, "0");
-  return `${mm}.${dd}`;
-};
-
 export default function SwatchTrinket({ x, y, rot = 0, isMobile = false }) {
   // the swatch arrives with one old mend already on it
   const [mends, setMends] = useState([1]);
-  const [date, setDate] = useState("03.26");
   const [lit, setLit] = useState(false);
   const [tip, setTip] = useState(null);
   const tipIndex = useRef(Math.floor(Math.random() * TIPS.length));
@@ -102,7 +93,6 @@ export default function SwatchTrinket({ x, y, rot = 0, isMobile = false }) {
         if (!free.length) return [Math.floor(Math.random() * MEND_SPOTS.length)];
         return [...cur, free[Math.floor(Math.random() * free.length)]];
       });
-      setDate(today());
       // a needle going through felt
       tone(0, { freq: 520, to: 260, dur: 0.06, peak: 0.01, type: "sine" });
       tone(0.12, { freq: 520, to: 260, dur: 0.06, peak: 0.01, type: "sine" });
@@ -137,10 +127,10 @@ export default function SwatchTrinket({ x, y, rot = 0, isMobile = false }) {
         ))}
 
         {/* the woven tag, stitched on at the top */}
-        <rect x="30" y="2" width="60" height="13" rx="1.5" className={styles.tag} />
-        <rect x="32" y="4" width="56" height="9" rx="1" className={styles.tagStitch} />
+        <rect x="42" y="2" width="36" height="13" rx="1.5" className={styles.tag} />
+        <rect x="44" y="4" width="32" height="9" rx="1" className={styles.tagStitch} />
         <text x="60" y="11" textAnchor="middle" className={styles.label}>
-          no.07 · {date}
+          no.07
         </text>
 
         {/* two traces of conductive thread, in running stitch */}
