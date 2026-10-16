@@ -46,10 +46,10 @@
   transform: translateY(-3px) rotate(2deg);
 }
 
-/* soft lavender felt */
+/* soft mint felt, so the pink mends pop */
 .felt {
-  fill: #ece6fb;
-  stroke: #d5c8fa;
+  fill: #d6f1e3;
+  stroke: #a9dcc2;
   stroke-width: 0.8;
   stroke-linejoin: round;
 }
