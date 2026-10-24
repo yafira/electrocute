@@ -2,7 +2,7 @@
 
 ### a digital space at the intersection of art, design and engineering
 
-hi, i'm yafira. i'm a design engineer and creative technologist, and this is the home of my independent practice, [electrocute lab](https://www.instagram.com/electrocutelab/). i build soft circuits, web tools, and what i like to call poetronics: electronics made with the sensibility of a poem.
+hi, i'm yafira. i'm a design engineer and creative technologist, and this is the home of my independent practice, [electrocute lab](https://www.instagram.com/electrocutelab/). i build soft circuits, web tools, and what i like to call poetronics: electronics with the sensibility of a poem, made to slow you down.
 
 electrocute is where i document my creative endeavors, experiments, craft, and cool findings. it's a place to show a bit of me, and hopefully spark some inspiration, growth, and all around magic ϟ
 
@@ -11,7 +11,7 @@ electrocute is where i document my creative endeavors, experiments, craft, and c
 - **[soft interfaces](https://electrocute.io/soft-interfaces)** · a portfolio of projects rendered as pastel swatch cards pinned to a graph paper wall
 - **[computer art](https://electrocute.io/computer-art)** · a dark, directory-indexed gallery of generative p5.js sketches and plotter prints; click any piece to view it full screen
 - **[electronic text](https://electrocute.io/electronic-text)** · generative poems and poetry objects in black and white, including a computer of ___, a live poem readers can write into
-- **[poetronics](https://electrocute.io/poetronics)** · electronics made with the sensibility of a poem
+- **[poetronics](https://electrocute.io/poetronics)** · electronics with the sensibility of a poem, made to slow you down
 - **[electrodex](https://electrocute.io/electrodex)** · a community directory of creative tech spaces, makerspaces, and textile/craft communities, styled as a singly linked list (hex memory addresses, pointer wires and all)
 - **[punch card archive](https://electrocute.io/punch-card-archive)** · every communal punch card visitors have finished, with the swatch each one knit
 - **[colophon](https://electrocute.io/colophon)** · how the site is made, written like a bill of materials

@@ -56,9 +56,11 @@ export default function About() {
             >
               poetronics
             </button>
-            : electronics with the sensibility of a poem. I&apos;ve always had a
-            heightened sense for detail, materials, texture and how things feel
-            in your hands. I believe machines can be tender.
+            : electronics with the sensibility of a poem, made to slow you
+            down. A poem can&apos;t be skimmed, and I don&apos;t think every
+            machine should be either. I&apos;ve always had a heightened sense
+            for detail, materials, texture and how things feel in your hands. I
+            believe machines can be tender.
           </p>
         </section>
 
