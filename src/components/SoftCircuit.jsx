@@ -1,5 +1,5 @@
 // a tiny sewable circuit that the nav lives inside of: coin cell,
-// then the about/blog/contact pills (sewn onto the board same as
+// then the about/blog/contact/shop pills (sewn onto the board same as
 // any other component), then a switch, a sewable LED, and a small
 // continuity tester made of five cross-stitches. close the switch
 // and the thread flows, the LED lights, and the stitches test the
@@ -217,6 +217,7 @@ export default function SoftCircuit({ on, ready, onToggle }) {
         <Link href="/about">about</Link>
         <a href="https://blog.electrocute.io/">blog</a>
         <Link href="/contact">contact</Link>
+        <Link href="/craftcomputery">shop</Link>
       </nav>
 
       <span className={`${styles.thread} ${on ? styles.flowing : ""}`} />
