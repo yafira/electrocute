@@ -306,8 +306,9 @@ export default function Container() {
 
             {/* a soft circuit swatch from the library, tucked into its corner */}
             <SwatchTrinket x="calc(70% + 108px)" y="42%" rot={6} />
+            {/* stays clear of the sewn nav's led on smaller laptops */}
             <BreadboardTrinket
-              x="76%"
+              x="max(76%, calc(50% + 310px))"
               y="-10%"
               rot={-4}
               isMobile={false}
