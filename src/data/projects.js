@@ -244,6 +244,18 @@ export const resources = [
     hoverBorder: "#f0e9a8",
   },
   {
+    slug: "pixel-picnic",
+    menu: "toolkit",
+    title: "pixel picnic",
+    href: "https://pixel-picnic.vercel.app",
+    icon: "/assets/pixel-picnic-icon.svg",
+    blurb:
+      "turns photos into dithered pixel patterns, right in your browser. nothing gets uploaded.",
+    tint: "#fdf0f2",
+    hoverBg: "#fbe2e7",
+    hoverBorder: "#f3c3cd",
+  },
+  {
     slug: "ecute-club",
     menu: "resources",
     title: "ecute club",
