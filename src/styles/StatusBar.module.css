@@ -117,3 +117,156 @@
     display: none;
   }
 }
+
+/* left side of the menu bar: the flower menu and the visitor count */
+.StatusMenu {
+  position: absolute;
+  top: 12px;
+  left: calc((100% - 100vw) / 2 + 24px);
+  z-index: 41;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #9a9a9a;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.StatusMenu [data-tip] {
+  position: relative;
+}
+
+/* same hover pill as the right side, hanging right from the left edge */
+.StatusMenu [data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  transform: translateY(-4px);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #c5caef;
+  color: #000000;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.StatusMenu [data-tip]:hover::after {
+  opacity: 1;
+  transform: none;
+}
+
+.flowerBtn {
+  padding: 4px;
+  border-radius: 6px;
+}
+
+/* the black logo flower, softened to the menu bar grey */
+.flowerBtn img {
+  display: block;
+  opacity: 0.45;
+  transition: opacity 0.3s ease;
+}
+
+.flowerBtn:hover img,
+.flowerBtn.open img {
+  opacity: 0.85;
+}
+
+.flowerBtn.open {
+  background: rgba(197, 202, 239, 0.45);
+}
+
+/* the dropdown, like a mac menu */
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 240px;
+  max-height: min(70vh, 560px);
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: #fbfcf5;
+  border: 1px solid #e3e3ea;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(60, 50, 90, 0.12);
+  font-size: 0.92rem;
+}
+
+.menuLabel {
+  padding: 6px 10px 4px;
+  font-size: 0.75rem;
+  color: #9a9a9a;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+  background: #c5caef;
+  outline: none;
+}
+
+.menu img {
+  flex: none;
+  object-fit: contain;
+}
+
+.arrow {
+  margin-left: auto;
+  color: #9a9a9a;
+  font-size: 0.8rem;
+}
+
+:global(body.ecute-dark) .StatusMenu {
+  color: rgba(236, 233, 247, 0.55);
+}
+
+:global(body.ecute-dark) .flowerBtn img {
+  filter: invert(1);
+}
+
+:global(body.ecute-dark) .menu {
+  background: #1e1a2a;
+  border-color: rgba(236, 233, 247, 0.12);
+}
+
+:global(body.ecute-dark) .menu a {
+  color: #ece9f7;
+}
+
+:global(body.ecute-dark) .menu a:hover,
+:global(body.ecute-dark) .menu a:focus-visible {
+  background: #2c2440;
+}
+
+:global(body.ecute-dark) .StatusMenu [data-tip]::after {
+  background: #2c2440;
+  color: #ece9f7;
+}
+
+@media screen and (max-width: 750px) {
+  .StatusMenu {
+    display: none;
+  }
+}
+
+.visitor {
+  white-space: nowrap;
+}
