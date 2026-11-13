@@ -2,6 +2,7 @@ import styles from "../styles/Header.module.css";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { onPower } from "../lib/powerSurge";
+import StatusBar from "./StatusBar";
 
 // how long the current takes to run up the cable before the logo reacts
 const CABLE_TRAVEL_MS = 380;
@@ -50,6 +51,7 @@ export default function Header() {
 
   return (
     <div className={styles.Header}>
+      <StatusBar />
       <Link href="/">
         <h1
           className={[

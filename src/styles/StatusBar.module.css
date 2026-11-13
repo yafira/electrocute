@@ -1,0 +1,119 @@
+.StatusBar {
+  position: absolute;
+  top: 12px;
+  /* pushes past the centered column out to the window's own corner */
+  right: calc((100% - 100vw) / 2 + 24px);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #9a9a9a;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.4s ease;
+}
+
+.StatusBar span {
+  display: flex;
+  align-items: center;
+}
+
+.StatusBar [data-tip] {
+  position: relative;
+}
+
+/* hover label, a little pill under each icon */
+.StatusBar [data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translate(-50%, -4px);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #c5caef;
+  color: #000000;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.StatusBar [data-tip]:hover::after,
+.StatusBar [data-tip]:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* the last two sit at the window edge, so their labels hang left */
+.StatusBar > :nth-last-child(-n + 2)[data-tip]::after {
+  left: auto;
+  right: 0;
+  transform: translateY(-4px);
+}
+
+.StatusBar > :nth-last-child(-n + 2)[data-tip]:hover::after {
+  transform: none;
+}
+
+:global(body.ecute-dark) .StatusBar [data-tip]::after {
+  background: #2c2440;
+  color: #ece9f7;
+}
+
+.off {
+  opacity: 0.35;
+}
+
+.on {
+  color: #b2a4d4;
+  opacity: 1;
+}
+
+/* slow mode is a real button, so strip the browser look */
+.slow {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  transition: color 0.4s ease;
+}
+
+.slow.on,
+.slow:hover {
+  color: #b2a4d4;
+}
+
+.slow:focus-visible {
+  outline: 2px solid #b2a4d4;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.low {
+  fill: #ff3b30;
+}
+
+.time {
+  min-width: 5.5ch;
+  justify-content: flex-end;
+}
+
+/* goth: soften to the pale lavender text */
+:global(body.ecute-dark) .StatusBar {
+  color: rgba(236, 233, 247, 0.55);
+}
+
+/* the wordmark fills the width on small screens, so hide it there */
+@media screen and (max-width: 750px) {
+  .StatusBar {
+    display: none;
+  }
+}
