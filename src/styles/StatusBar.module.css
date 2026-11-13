@@ -118,7 +118,7 @@
   }
 }
 
-/* left side of the menu bar: the flower menu and the visitor count */
+/* left side of the menu bar: the flower menu and files */
 .StatusMenu {
   position: absolute;
   top: 12px;
@@ -126,45 +126,32 @@
   z-index: 41;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 6px;
   color: #9a9a9a;
   font-family: "Space Grotesk", sans-serif;
   font-size: 1rem;
-  font-variant-numeric: tabular-nums;
 }
 
-.StatusMenu [data-tip] {
+.menuSpot {
   position: relative;
-}
-
-/* same hover pill as the right side, hanging right from the left edge */
-.StatusMenu [data-tip]::after {
-  content: attr(data-tip);
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  transform: translateY(-4px);
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: #c5caef;
-  color: #000000;
-  font-size: 0.8rem;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
-}
-
-.StatusMenu [data-tip]:hover::after {
-  opacity: 1;
-  transform: none;
+  display: flex;
 }
 
 .flowerBtn {
   padding: 4px;
   border-radius: 6px;
+}
+
+/* "files", a word menu like the mac's file menu */
+.menuWord {
+  padding: 2px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.menuWord.open {
+  color: #000000;
+  background: rgba(197, 202, 239, 0.45);
 }
 
 /* the black logo flower, softened to the menu bar grey */
@@ -242,6 +229,10 @@
   filter: invert(1);
 }
 
+:global(body.ecute-dark) .menuWord.open {
+  color: #ece9f7;
+}
+
 :global(body.ecute-dark) .menu {
   background: #1e1a2a;
   border-color: rgba(236, 233, 247, 0.12);
@@ -256,17 +247,8 @@
   background: #2c2440;
 }
 
-:global(body.ecute-dark) .StatusMenu [data-tip]::after {
-  background: #2c2440;
-  color: #ece9f7;
-}
-
 @media screen and (max-width: 750px) {
   .StatusMenu {
     display: none;
   }
-}
-
-.visitor {
-  white-space: nowrap;
 }
