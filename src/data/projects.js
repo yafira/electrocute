@@ -256,6 +256,18 @@ export const resources = [
     hoverBorder: "#f3c3cd",
   },
   {
+    slug: "soft-queue",
+    menu: "toolkit",
+    title: "soft queue",
+    href: "https://soft-queue-app.vercel.app",
+    icon: "/assets/soft-queue-icon.svg",
+    blurb:
+      "a tiny os for unfinished things. revive what you started, using what you already have.",
+    tint: "#faf6ff",
+    hoverBg: "#f1e9fd",
+    hoverBorder: "#dccff5",
+  },
+  {
     slug: "ecute-club",
     menu: "resources",
     title: "ecute club",
