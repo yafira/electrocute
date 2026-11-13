@@ -15,7 +15,7 @@ function getCtx() {
 
 export function tone(
   start,
-  { freq, to = freq, dur = 0.1, peak = 0.03, type = "sine", filter = 4000 },
+  { freq, to = freq, dur = 0.1, peak = 0.03, type = "sine", filter = 4000, attack },
 ) {
   try {
     const c = getCtx();
@@ -31,7 +31,8 @@ export function tone(
     lp.frequency.value = filter;
 
     gain.gain.setValueAtTime(0.0001, t);
-    gain.gain.exponentialRampToValueAtTime(peak, t + Math.min(0.012, dur * 0.25));
+    // a slow attack lets pads swell in instead of plucking
+    gain.gain.exponentialRampToValueAtTime(peak, t + (attack ?? Math.min(0.012, dur * 0.25)));
     gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
 
     osc.connect(lp);
