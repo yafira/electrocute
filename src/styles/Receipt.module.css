@@ -187,3 +187,24 @@
   font-size: 13px;
   color: #000000;
 }
+
+/* goth, from the ambience slider. the receipt paper stays paper */
+:global(body.ecute-dark) .wrap h2 {
+  color: #f2effc;
+}
+
+:global(body.ecute-dark) .hint,
+:global(body.ecute-dark) .signedNote {
+  color: #bfb9d6;
+}
+
+:global(body.ecute-dark) .input,
+:global(body.ecute-dark) .textarea {
+  background: #2b2839;
+  color: #ece9f7;
+}
+
+:global(body.ecute-dark) .input::placeholder,
+:global(body.ecute-dark) .textarea::placeholder {
+  color: #8f89b5;
+}

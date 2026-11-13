@@ -5,8 +5,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PoemDeck from "@/components/PoemDeck";
 import styles from "@/styles/About.module.css";
+import { useAmbience } from "@/components/SoftPot";
 
 export default function About() {
+  useAmbience();
   const [deckOpen, setDeckOpen] = useState(false);
 
   return (

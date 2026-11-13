@@ -121,3 +121,36 @@
   color: #2b2733;
   border-bottom: 1px dashed #d5c8fa;
 }
+
+/* goth, from the ambience slider on the homepage */
+:global(body.ecute-dark) .wordmark {
+  color: #f2effc;
+}
+
+:global(body.ecute-dark) .byline {
+  color: #bfb9d6;
+}
+
+:global(body.ecute-dark) .soon p,
+:global(body.ecute-dark) .back {
+  color: #d9d3ef;
+}
+
+:global(body.ecute-dark) .eyebrow {
+  color: #cbb8f2;
+  border-color: rgba(213, 200, 250, 0.4);
+}
+
+:global(body.ecute-dark) .soon p a {
+  color: #cbb8f2;
+}
+
+/* pale flower, dark bolt */
+:global(body.ecute-dark) .flower g {
+  fill: #d9d3ef;
+}
+
+:global(body.ecute-dark) .flower polygon {
+  fill: #2b2839;
+  stroke: #2b2839;
+}

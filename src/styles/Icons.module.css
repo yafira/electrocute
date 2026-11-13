@@ -37,3 +37,8 @@
     width: 100%;
   }
 }
+
+/* goth: the black line icons turn pale */
+:global(body.ecute-dark) .Icons img {
+  filter: invert(1);
+}

@@ -6,8 +6,10 @@ import Footer from "@/components/Footer";
 import Receipt from "@/components/Receipt";
 import FortuneChip from "@/components/FortuneChip";
 import styles from "@/styles/Contact.module.css";
+import { useAmbience } from "@/components/SoftPot";
 
 export default function Contact() {
+  useAmbience();
   return (
     <div className={styles.container}>
       <Head>

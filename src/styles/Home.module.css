@@ -17,7 +17,7 @@
   max-width: 1040px;
   margin: 0 auto;
   padding: 0 32px;
-  padding-bottom: 6rem;
+  padding-bottom: 1.5rem;
 }
 
 .container a {
@@ -33,7 +33,7 @@
 
 .collage {
   position: relative;
-  height: 1280px;
+  height: 1520px;
   /* bleeds a little wider than the .container column and centers
      on the viewport — tuned so pieces sit close but never collide */
   width: min(1240px, calc(100vw - 48px));

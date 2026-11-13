@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import styles from "@/styles/ComingSoon.module.css";
+import { useAmbience } from "@/components/SoftPot";
 
 // the craftcomputery mark: a rounded five-petal flower with a lilac bolt
 const petals = [0, 72, 144, 216, 288].map((a) => {
@@ -34,6 +35,7 @@ function Flower({ size = 56 }) {
 // placeholder for the craftcomputery shop until it opens.
 // no link to the shop site yet on purpose.
 export default function Craftcomputery() {
+  useAmbience();
   return (
     <div className={styles.container}>
       <Head>

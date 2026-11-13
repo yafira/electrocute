@@ -210,7 +210,7 @@ export const resources = [
   },
   {
     slug: "cute-technologies",
-    menu: "toolkit",
+    menu: "resources",
     title: "cute technologies",
     href: "https://cutetech.tools",
     icon: "/assets/cutetech.png",
@@ -219,42 +219,6 @@ export const resources = [
     tint: "#f3faea",
     hoverBg: "#edfdda",
     hoverBorder: "#d8f0ba",
-  },
-  {
-    slug: "design-hub",
-    menu: "toolkit",
-    href: "https://electrocute.gumroad.com/l/design-hub",
-    title: "design hub",
-    icon: "/assets/dhub.png",
-    blurb:
-      "a Notion template to keep track of your progress on design learnings and all around journey.",
-    tint: "#fcf7ec",
-    hoverBg: "#fcf3e1",
-    hoverBorder: "#f1dbcc",
-  },
-  {
-    slug: "coding-hub",
-    menu: "toolkit",
-    title: "coding hub",
-    href: "https://electrocute.gumroad.com/l/coding-hub",
-    icon: "/assets/chub.png",
-    blurb:
-      "a Notion template to keep track of your programming progress and all around coding journey.",
-    tint: "#f2f8ff",
-    hoverBg: "#dae9fa",
-    hoverBorder: "#b4d4f9",
-  },
-  {
-    slug: "cute-folder-pack",
-    menu: "toolkit",
-    title: "cute folder icon pack",
-    href: "https://electrocute.gumroad.com/l/cute-folder-pack",
-    icon: "/assets/cutefolder.png",
-    blurb:
-      "a cute folder icon pack in pastel, neutral, and monochrome shades, named after macaron flavors and other delicacies.",
-    tint: "#f6fffe",
-    hoverBg: "#eafdfc",
-    hoverBorder: "#bdfef8",
   },
 ];
 

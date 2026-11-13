@@ -23,10 +23,10 @@
 .intro {
   font-family: "Poppins", sans-serif;
   font-weight: 200;
-  font-size: 14px;
+  font-size: 15px;
   color: #000000;
   margin: 0 auto 1.5rem;
-  max-width: 460px;
+  max-width: 560px;
   text-wrap: balance;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .card {
-  width: min(440px, 92vw);
+  width: min(640px, 92vw);
   height: auto;
   filter: drop-shadow(0 4px 10px rgba(74, 68, 83, 0.12));
   overflow: visible;
@@ -57,7 +57,7 @@
 }
 
 .fabric {
-  width: min(400px, 88vw);
+  width: min(580px, 88vw);
   height: auto;
 }
 
@@ -127,7 +127,7 @@
 .status {
   font-family: "Poppins", sans-serif;
   font-weight: 200;
-  font-size: 13px;
+  font-size: 14px;
   color: #000000;
   margin: 0.9rem 0 1rem;
 }
@@ -140,7 +140,7 @@
 .hint {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 15px;
   color: #6f66c9;
   margin: 0 auto;
   min-height: 1.6em;

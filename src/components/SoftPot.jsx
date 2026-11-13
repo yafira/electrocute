@@ -66,6 +66,27 @@ function applyAmbience(v) {
   document.body.classList.toggle("ecute-dark", goth);
 }
 
+function clearAmbience() {
+  document.body.classList.remove("ecute-dark");
+  document.documentElement.style.removeProperty("--ambience-bg");
+  document.documentElement.style.removeProperty("--dusk");
+}
+
+const savedAmbience = () => {
+  const saved = parseFloat(localStorage.getItem(LOCAL_KEY));
+  return Number.isFinite(saved) ? saved : 0;
+};
+
+// for pages that are dressed for every ambience but don't carry the
+// slider themselves (about, contact, shop): they follow whatever it was
+// last set to, and hand the lights back when you leave
+export function useAmbience() {
+  useEffect(() => {
+    applyAmbience(savedAmbience());
+    return clearAmbience;
+  }, []);
+}
+
 export default function SoftPot() {
   const [value, setValue] = useState(0);
   const [label, setLabel] = useState("paper");
@@ -73,20 +94,16 @@ export default function SoftPot() {
   const hideTimer = useRef(null);
 
   useEffect(() => {
-    const saved = parseFloat(localStorage.getItem(LOCAL_KEY));
-    const v = Number.isFinite(saved) ? saved : 0;
+    const v = savedAmbience();
     setValue(v);
     setLabel(labelFor(v));
     applyAmbience(v);
     return () => {
       if (hideTimer.current) clearTimeout(hideTimer.current);
-      // the other pages aren't dressed for goth yet, so leaving the
-      // homepage turns the lights back on
-      if (document.body.classList.contains("ecute-dark")) {
-        document.body.classList.remove("ecute-dark");
-        document.documentElement.style.removeProperty("--ambience-bg");
-        document.documentElement.style.removeProperty("--dusk");
-      }
+      // most other pages aren't dressed for goth yet, so leaving the
+      // homepage turns the lights back on. the ones that are call
+      // useAmbience() and switch them right back
+      clearAmbience();
     };
   }, []);
 
