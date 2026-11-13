@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import projects, { resources, toolkitExtras } from "../data/projects";
+import projects, { resources } from "../data/projects";
 import styles from "../styles/StatusBar.module.css";
 
 // the left side of the menu bar, like a mac.
@@ -25,10 +25,7 @@ const wordMenus = [
   {
     name: "toolkit",
     label: "toolkit",
-    items: [
-      ...resources.filter((r) => r.menu === "toolkit"),
-      ...toolkitExtras,
-    ],
+    items: resources.filter((r) => r.menu === "toolkit"),
   },
 ];
 

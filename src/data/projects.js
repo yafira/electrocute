@@ -186,6 +186,64 @@ export const resources = [
     hoverBorder: "#fafac9",
   },
   {
+    slug: "cache",
+    menu: "toolkit",
+    title: "cache",
+    href: "https://cachecraft.io",
+    icon: "/assets/cache-icon.svg",
+    blurb: "a paste-first moodboard for collecting images, links, and colors.",
+    tint: "#fdeef6",
+    hoverBg: "#fbe0ee",
+    hoverBorder: "#f5c8de",
+  },
+  {
+    slug: "fluoro",
+    menu: "toolkit",
+    title: "fluoro",
+    href: "https://fluoro-riso.vercel.app",
+    icon: "/assets/fluoro-icon.svg",
+    blurb:
+      "riso-fy (almost) anything. a tool and npm library for risograph-style images and web pages.",
+    tint: "#eaf4fb",
+    hoverBg: "#d9ecf8",
+    hoverBorder: "#bcdcf2",
+  },
+  {
+    slug: "punch-card-studio",
+    menu: "toolkit",
+    title: "punch card studio",
+    href: "https://punchcard-studio.vercel.app",
+    icon: "/assets/punch-card-studio-icon.svg",
+    blurb:
+      "a pattern generator for punch card knitting machines and hollerith cards. an experiment.",
+    tint: "#f8f4e6",
+    hoverBg: "#f1ead2",
+    hoverBorder: "#e6dbb8",
+  },
+  {
+    slug: "altloom",
+    menu: "toolkit",
+    title: "altloom",
+    href: "https://alt-loom.vercel.app",
+    icon: "/assets/altloom-icon.svg",
+    blurb: "find the images your alt text forgot and draft starter alt text.",
+    tint: "#efedfb",
+    hoverBg: "#e1def8",
+    hoverBorder: "#c9c3f0",
+  },
+  {
+    slug: "tinkerthread",
+    menu: "toolkit",
+    title: "tinkerthread",
+    href: "https://tinkerthread.netlify.app",
+    icon: "/assets/tinkerthread-icon.svg",
+    blurb:
+      "a soft circuit simulator with leds, buttons, batteries, and resistors, plus a bill of materials.",
+    tint: "#fdfbe6",
+    hoverBg: "#f9f5cf",
+    hoverBorder: "#f0e9a8",
+  },
+  {
     slug: "ecute-club",
     menu: "resources",
     title: "ecute club",
@@ -313,37 +371,3 @@ export const photoItems = [
 ];
 
 export default projects;
-
-// tools that only live in the menu bar's toolkit list, not on the homepage
-export const toolkitExtras = [
-  {
-    slug: "cache",
-    title: "cache",
-    href: "https://cachecraft.io",
-    icon: "/assets/cache-icon.svg",
-  },
-  {
-    slug: "fluoro",
-    title: "fluoro",
-    href: "https://fluoro-riso.vercel.app",
-    icon: "/assets/fluoro-icon.svg",
-  },
-  {
-    slug: "punch-card-studio",
-    title: "punch card studio",
-    href: "https://github.com/yafira/punchcard-studio",
-    icon: "/assets/punch-card-studio-icon.svg",
-  },
-  {
-    slug: "altloom",
-    title: "altloom",
-    href: "https://alt-loom.vercel.app",
-    icon: "/assets/altloom-icon.svg",
-  },
-  {
-    slug: "tinkerthread",
-    title: "tinkerthread",
-    href: "https://tinkerthread.netlify.app",
-    icon: "/assets/tinkerthread-icon.svg",
-  },
-];
