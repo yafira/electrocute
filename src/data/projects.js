@@ -171,9 +171,12 @@ const projects = [
 // toolkits, templates, and guides — resources for other people to use,
 // rather than write-ups of my own objects/projects. shown in their
 // own grid below the collage.
+// `menu` decides which menu bar list a resource shows up in:
+// "toolkit" or "resources"
 export const resources = [
   {
     slug: "tinytinker-tools",
+    menu: "toolkit",
     title: "tinytinker.tools",
     href: "https://tinytinker.tools",
     icon: "/assets/ttt.png",
@@ -184,6 +187,7 @@ export const resources = [
   },
   {
     slug: "ecute-club",
+    menu: "resources",
     title: "ecute club",
     href: "https://club.electrocute.io/",
     icon: "/assets/ecute.png",
@@ -194,6 +198,7 @@ export const resources = [
   },
   {
     slug: "electrodex",
+    menu: "resources",
     title: "electrodex",
     href: "/electrodex",
     icon: "/assets/edex.png",
@@ -205,6 +210,7 @@ export const resources = [
   },
   {
     slug: "cute-technologies",
+    menu: "toolkit",
     title: "cute technologies",
     href: "https://cutetech.tools",
     icon: "/assets/cutetech.png",
@@ -216,6 +222,7 @@ export const resources = [
   },
   {
     slug: "design-hub",
+    menu: "toolkit",
     href: "https://electrocute.gumroad.com/l/design-hub",
     title: "design hub",
     icon: "/assets/dhub.png",
@@ -227,6 +234,7 @@ export const resources = [
   },
   {
     slug: "coding-hub",
+    menu: "toolkit",
     title: "coding hub",
     href: "https://electrocute.gumroad.com/l/coding-hub",
     icon: "/assets/chub.png",
@@ -238,6 +246,7 @@ export const resources = [
   },
   {
     slug: "cute-folder-pack",
+    menu: "toolkit",
     title: "cute folder icon pack",
     href: "https://electrocute.gumroad.com/l/cute-folder-pack",
     icon: "/assets/cutefolder.png",

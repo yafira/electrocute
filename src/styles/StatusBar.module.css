@@ -118,7 +118,7 @@
   }
 }
 
-/* left side of the menu bar: the flower menu and files */
+/* left side of the menu bar: the flower menu and word menus */
 .StatusMenu {
   position: absolute;
   top: 12px;
@@ -142,7 +142,7 @@
   border-radius: 6px;
 }
 
-/* "files", a word menu like the mac's file menu */
+/* word menus (file, resources, toolkit), like the mac file menu */
 .menuWord {
   padding: 2px 8px;
   border-radius: 6px;

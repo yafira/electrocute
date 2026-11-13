@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import projects from "../data/projects";
+import projects, { resources } from "../data/projects";
 import styles from "../styles/StatusBar.module.css";
 
 // the left side of the menu bar, like a mac.
 // the flower is the apple menu with the main links,
-// and "files" opens every project as a list.
+// then word menus for projects, resources and the toolkit.
 // once one menu is open, hovering the other one switches to it.
 
 const mainLinks = [
@@ -13,6 +13,20 @@ const mainLinks = [
   { title: "blog", href: "https://blog.electrocute.io/" },
   { title: "contact", href: "/contact" },
   { title: "shop", href: "/craftcomputery" },
+];
+
+const wordMenus = [
+  { name: "file", label: "all projects", items: projects },
+  {
+    name: "resources",
+    label: "resources",
+    items: resources.filter((r) => r.menu === "resources"),
+  },
+  {
+    name: "toolkit",
+    label: "toolkit",
+    items: resources.filter((r) => r.menu === "toolkit"),
+  },
 ];
 
 // internal pages use next's link, outside sites open in a new tab
@@ -87,31 +101,33 @@ export default function StatusMenu() {
         )}
       </span>
 
-      <span className={styles.menuSpot}>
-        <button
-          type="button"
-          className={`${styles.btn} ${styles.menuWord} ${open === "files" ? styles.open : ""}`}
-          {...trigger("files")}
-        >
-          files
-        </button>
-        {open === "files" && (
-          <ul className={styles.menu} role="menu" aria-label="all projects">
-            <li className={styles.menuLabel} role="presentation">
-              all projects
-            </li>
-            {projects.map((p) => (
-              <li key={p.slug} role="none">
-                <MenuLink href={p.href} onPick={close}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.icon} alt="" width={16} height={16} />
-                  <span>{p.title}</span>
-                </MenuLink>
+      {wordMenus.map((m) => (
+        <span key={m.name} className={styles.menuSpot}>
+          <button
+            type="button"
+            className={`${styles.btn} ${styles.menuWord} ${open === m.name ? styles.open : ""}`}
+            {...trigger(m.name)}
+          >
+            {m.name}
+          </button>
+          {open === m.name && (
+            <ul className={styles.menu} role="menu" aria-label={m.label}>
+              <li className={styles.menuLabel} role="presentation">
+                {m.label}
               </li>
-            ))}
-          </ul>
-        )}
-      </span>
+              {m.items.map((p) => (
+                <li key={p.slug} role="none">
+                  <MenuLink href={p.href} onPick={close}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={p.icon} alt="" width={16} height={16} />
+                    <span>{p.title}</span>
+                  </MenuLink>
+                </li>
+              ))}
+            </ul>
+          )}
+        </span>
+      ))}
     </div>
   );
 }
