@@ -313,3 +313,37 @@ export const photoItems = [
 ];
 
 export default projects;
+
+// tools that only live in the menu bar's toolkit list, not on the homepage
+export const toolkitExtras = [
+  {
+    slug: "cache",
+    title: "cache",
+    href: "https://cachecraft.io",
+    icon: "/assets/cache-icon.svg",
+  },
+  {
+    slug: "fluoro",
+    title: "fluoro",
+    href: "https://fluoro-riso.vercel.app",
+    icon: "/assets/fluoro-icon.svg",
+  },
+  {
+    slug: "punch-card-studio",
+    title: "punch card studio",
+    href: "https://github.com/yafira/punchcard-studio",
+    icon: "/assets/punch-card-studio-icon.svg",
+  },
+  {
+    slug: "altloom",
+    title: "altloom",
+    href: "https://alt-loom.vercel.app",
+    icon: "/assets/altloom-icon.svg",
+  },
+  {
+    slug: "tinkerthread",
+    title: "tinkerthread",
+    href: "https://tinkerthread.netlify.app",
+    icon: "/assets/tinkerthread-icon.svg",
+  },
+];
