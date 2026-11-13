@@ -17,3 +17,18 @@ export function onPower(handler) {
   window.addEventListener(EVENT, listener);
   return () => window.removeEventListener(EVENT, listener);
 }
+
+// a press from outside the page (the bluetooth board on the desk)
+// that should act exactly like clicking the breadboard's button
+const PRESS = "electrocute:press";
+
+export function pressBreadboard() {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new CustomEvent(PRESS));
+}
+
+export function onBreadboardPress(handler) {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener(PRESS, handler);
+  return () => window.removeEventListener(PRESS, handler);
+}

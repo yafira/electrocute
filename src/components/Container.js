@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
@@ -18,7 +18,7 @@ import {
   BreadboardTrinket,
   LedTrinket,
 } from "./Trinkets";
-import { sendPower } from "../lib/powerSurge";
+import { sendPower, onBreadboardPress } from "../lib/powerSurge";
 import { ModemTrinket, MothTrinket } from "./LogoGadgets";
 import CoreRopeTrinket from "./CoreRopeTrinket";
 import PlotterTrinket from "./PlotterTrinket";
@@ -77,6 +77,11 @@ export default function Container() {
     setLedOn(next);
     sendPower(next);
   };
+
+  // a bluetooth board's button presses the same breadboard button
+  const pressRef = useRef(handleBreadboardButtonPress);
+  pressRef.current = handleBreadboardButtonPress;
+  useEffect(() => onBreadboardPress(() => pressRef.current()), []);
 
   useEffect(() => {
     function handleResize() {

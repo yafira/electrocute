@@ -1,11 +1,21 @@
-import { useEffect, useState } from "react";
-import { onPower } from "../lib/powerSurge";
+import { useEffect, useRef, useState } from "react";
+import { onPower, pressBreadboard } from "../lib/powerSurge";
+import {
+  bluetoothSupported,
+  connectBoard,
+  disconnectBoard,
+  linkedBoard,
+  setBoardLed,
+} from "../lib/bluetoothLink";
+import { musicPlaying, startMusic, stopMusic } from "../lib/musicBox";
+import { tone } from "../lib/tinySynth";
 import styles from "../styles/StatusBar.module.css";
 
 // tiny menu-bar row in the top right corner.
 // clock, moon, ethernet and battery read the visitor's world,
-// the power plug follows the breadboard cable, slow mode is a real switch,
-// bluetooth and headphones are just there for the look.
+// the power plug follows the breadboard cable, slow mode and the speaker
+// are real switches. bluetooth wiggles the trinkets awake, and
+// option-click on it pairs a real board (see lib/bluetoothLink).
 // battery only reports in chromium browsers, others get a full one.
 
 const SLOW_KEY = "electrocute:slow";
@@ -47,6 +57,45 @@ const setSlow = (on) => {
   document
     .getAnimations()
     .forEach((a) => (a.playbackRate = on ? SLOW_RATE : 1));
+};
+
+// the trinkets in the collage are everything that isn't a card or photo
+const findTrinkets = () => {
+  let spot = document.querySelector("[data-power-hole]");
+  while (spot && getComputedStyle(spot).position !== "absolute") {
+    spot = spot.parentElement;
+  }
+  const collage = spot?.parentElement;
+  if (!collage) return [];
+  return [...collage.children].filter(
+    (el) => !/cardSpot|photoItem/.test(String(el.className)),
+  );
+};
+
+// each trinket gives a little shake, one after another, like pairing
+const wiggle = (trinkets) => {
+  const rate = document.documentElement.classList.contains("slow-mode")
+    ? SLOW_RATE
+    : 1;
+  trinkets.forEach((el, i) => {
+    const shake = el.animate(
+      [
+        { rotate: "0deg" },
+        { rotate: "-7deg" },
+        { rotate: "6deg" },
+        { rotate: "-3deg" },
+        { rotate: "0deg" },
+      ],
+      { duration: 520, delay: i * 90, easing: "ease-in-out" },
+    );
+    shake.playbackRate = rate;
+  });
+  return (520 + trinkets.length * 90) / rate;
+};
+
+const chirp = () => {
+  tone(0, { freq: 880, to: 990, dur: 0.08, peak: 0.02 });
+  tone(0.1, { freq: 1320, dur: 0.14, peak: 0.02 });
 };
 
 const icon = {
@@ -103,12 +152,11 @@ function Ethernet() {
   );
 }
 
-function Headphones() {
+function Speaker({ playing }) {
   return (
     <svg {...icon}>
-      <path d="M4 15v-3a8 8 0 0 1 16 0v3" />
-      <rect x="3" y="14" width="4" height="6" rx="1.5" />
-      <rect x="17" y="14" width="4" height="6" rx="1.5" />
+      <path d="M4 10v4h4l5 4V6L8 10z" />
+      {playing && <path d="M16.5 9a4 4 0 0 1 0 6M19 6.5a7.5 7.5 0 0 1 0 11" />}
     </svg>
   );
 }
@@ -162,6 +210,9 @@ export default function StatusBar() {
   const [hasCable, setHasCable] = useState(false);
   const [powered, setPowered] = useState(false);
   const [slow, setSlowState] = useState(false);
+  const [playing, setPlaying] = useState(false);
+  const [pairing, setPairing] = useState(null);
+  const [board, setBoard] = useState(null);
 
   // clock (and moon), ticks every second so the minute flips on time
   useEffect(() => {
@@ -213,6 +264,7 @@ export default function StatusBar() {
   useEffect(() => {
     let timer;
     const off = onPower((on) => {
+      setBoardLed(on);
       clearTimeout(timer);
       timer = setTimeout(() => setPowered(on), CABLE_TRAVEL_MS);
     });
@@ -242,6 +294,64 @@ export default function StatusBar() {
     };
   }, [slow]);
 
+  // music and a paired board both outlive page changes, so pick them back up
+  useEffect(() => {
+    setPlaying(musicPlaying());
+    setBoard(linkedBoard());
+  }, []);
+
+  const toggleMusic = () => {
+    if (musicPlaying()) stopMusic();
+    else startMusic();
+    setPlaying(musicPlaying());
+  };
+
+  const pairTimers = useRef([]);
+  useEffect(() => () => pairTimers.current.forEach(clearTimeout), []);
+
+  const pairTrinkets = () => {
+    pairTimers.current.forEach(clearTimeout);
+    const trinkets = findTrinkets();
+    chirp();
+    if (!trinkets.length) {
+      setPairing("no trinkets nearby");
+    } else {
+      setPairing("searching…");
+      const done = wiggle(trinkets);
+      pairTimers.current = [
+        setTimeout(() => setPairing(`paired with ${trinkets.length} trinkets`), done),
+      ];
+    }
+    pairTimers.current.push(setTimeout(() => setPairing(null), 4000));
+  };
+
+  // option-click (alt-click) opens the browser's picker for a real board
+  const pairBoard = async () => {
+    if (linkedBoard()) {
+      disconnectBoard();
+      return;
+    }
+    try {
+      setPairing("looking for a board…");
+      const name = await connectBoard({
+        onPress: pressBreadboard,
+        onDisconnect: () => setBoard(null),
+      });
+      setBoard(name);
+      setPairing(null);
+      chirp();
+    } catch {
+      // picker closed or no board found
+      setPairing("no board paired");
+      setTimeout(() => setPairing(null), 2500);
+    }
+  };
+
+  const clickBluetooth = (e) => {
+    if (e.altKey && bluetoothSupported()) pairBoard();
+    else pairTrinkets();
+  };
+
   const toggleSlow = () => {
     const next = !slow;
     localStorage.setItem(SLOW_KEY, next ? "on" : "off");
@@ -257,7 +367,7 @@ export default function StatusBar() {
     <div className={styles.StatusBar}>
       <button
         type="button"
-        className={`${styles.slow} ${slow ? styles.on : ""}`}
+        className={`${styles.btn} ${slow ? styles.on : ""}`}
         onClick={toggleSlow}
         aria-pressed={slow}
         aria-label="slow mode"
@@ -282,12 +392,28 @@ export default function StatusBar() {
       >
         <Ethernet />
       </span>
-      <span data-tip="headphones">
-        <Headphones />
-      </span>
-      <span data-tip="bluetooth">
+      <button
+        type="button"
+        className={`${styles.btn} ${playing ? styles.on : ""}`}
+        onClick={toggleMusic}
+        aria-pressed={playing}
+        aria-label="music"
+        data-tip={playing ? "music: playing" : "music: off"}
+      >
+        <Speaker playing={playing} />
+      </button>
+      <button
+        type="button"
+        className={`${styles.btn} ${board ? styles.on : ""}`}
+        onClick={clickBluetooth}
+        aria-label="bluetooth"
+        data-tip={
+          pairing ||
+          (board ? `bluetooth: connected to ${board}` : "bluetooth")
+        }
+      >
         <Bluetooth />
-      </span>
+      </button>
       <span data-tip={`battery ${percent}%${battery.charging ? ", charging" : ""}`}>
         <Battery level={battery.level} low={low} />
       </span>

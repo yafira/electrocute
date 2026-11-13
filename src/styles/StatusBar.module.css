@@ -74,8 +74,8 @@
   opacity: 1;
 }
 
-/* slow mode is a real button, so strip the browser look */
-.slow {
+/* the clickable icons are real buttons, so strip the browser look */
+.btn {
   display: flex;
   align-items: center;
   padding: 0;
@@ -86,12 +86,12 @@
   transition: color 0.4s ease;
 }
 
-.slow.on,
-.slow:hover {
+.btn.on,
+.btn:hover {
   color: #b2a4d4;
 }
 
-.slow:focus-visible {
+.btn:focus-visible {
   outline: 2px solid #b2a4d4;
   outline-offset: 4px;
   border-radius: 4px;
