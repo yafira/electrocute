@@ -38,8 +38,8 @@ export default function Contact() {
           </p>
           <p>
             the best way to reach me is email:{" "}
-            <Link href="mailto:electrocutelab@protonmail.com">
-              electrocutelab@protonmail.com
+            <Link href="mailto:yafira@electrocutelab.com">
+              yafira@electrocutelab.com
             </Link>
             .
           </p>

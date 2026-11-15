@@ -140,7 +140,7 @@ export default function Icons({ size = 25 }) {
         />
       </Link>
       <Link
-        href="mailto:electrocutelab@protonmail.com"
+        href="mailto:yafira@electrocutelab.com"
         title="email"
         aria-label="email"
       >
