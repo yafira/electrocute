@@ -279,6 +279,18 @@ export const resources = [
     hoverBorder: "#9d96e7",
   },
   {
+    slug: "tiny-soft-computer",
+    menu: "resources",
+    title: "tiny soft computer",
+    href: "https://tiny-soft-computer.vercel.app",
+    icon: "/assets/tiny-soft-computer.png",
+    blurb:
+      "an open source workshop guide for building and teaching a tiny soft computer. made for softer 2026.",
+    tint: "#eaf7f6",
+    hoverBg: "#d8f0ee",
+    hoverBorder: "#b6e2de",
+  },
+  {
     slug: "electrodex",
     menu: "resources",
     title: "electrodex",

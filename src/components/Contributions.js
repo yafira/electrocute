@@ -73,6 +73,26 @@ export default function Contributions() {
           </span>
           <span className={styles.caption}>slow harvest</span>
         </a>
+
+        <a
+          className={styles.item}
+          href="https://www.arte.tv/fr/videos/126484-033-A/tracks/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="cyberdecks: les ordis faits maison sans IA et sans tech bros | tracks | arte"
+        >
+          <span className={styles.thumb}>
+            <img
+              src="/assets/featured/arte-tracks-v2.webp"
+              alt="the soft computer's e-ink screen reading care, in the arte tracks cyberdecks episode"
+            />
+          </span>
+          <span className={styles.source}>arte tracks</span>
+          <span className={styles.caption} lang="fr">
+            <span>cyberdecks:</span> <span>les ordis faits</span>{" "}
+            <span>maison sans IA</span> <span>et sans tech bros</span>
+          </span>
+        </a>
       </div>
 
       {open && (

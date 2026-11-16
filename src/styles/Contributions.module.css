@@ -1,5 +1,5 @@
 .contributions {
-  max-width: 520px;
+  max-width: 680px;
   margin: 1.5rem auto 0;
   padding: 0 1.5rem;
   font-family: "IBM Plex Mono", monospace;
@@ -17,6 +17,7 @@
 
 .row {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   gap: 20px;
 }
@@ -125,7 +126,19 @@
     gap: 14px;
   }
   .contributions {
-    padding: 0 0.75rem;
+    padding: 0;
+  }
+  /* too narrow for four across, so the row scrolls sideways
+     instead of stacking */
+  .row {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 6px 0.75rem 0.5rem;
+    scroll-snap-type: x proximity;
+  }
+  .item {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
   }
   .item {
     width: 100px;
