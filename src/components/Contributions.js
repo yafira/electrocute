@@ -30,7 +30,10 @@ export default function Contributions() {
               title="hello blob: agar as interface (preview)"
             />
           </span>
-          <span className={styles.caption}>hello blob: agar as interface</span>
+          <span className={styles.source}>growing bio hci</span>
+          <span className={styles.caption}>
+            <span>hello blob:</span> <span>agar as interface</span>
+          </span>
         </button>
 
         <a
@@ -40,13 +43,35 @@ export default function Contributions() {
           rel="noopener noreferrer"
           title="dial-a-site: #17"
         >
-          <span className={styles.thumb}>
+          <span className={`${styles.thumb} ${styles.badge}`}>
             <img
               src="https://internetphonebook.net/images/badges/hand-with-flower-border-radius.png"
               alt="this website is in the internet phone book"
             />
           </span>
+          <span className={styles.source}>internet phone book</span>
           <span className={styles.caption}>dial-a-site: #17</span>
+        </a>
+
+        <a
+          className={styles.item}
+          href="https://smallbatchdata.market/archive/slow-harvest"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="small batch: slow harvest"
+        >
+          <span className={styles.thumb}>
+            <img
+              className={styles.top}
+              src="https://smallbatchdata.market/images/archive/slow-harvest-1.jpg"
+              alt="slow harvest stall poster for the small batch dataset farmers market"
+            />
+          </span>
+          <span className={styles.source}>
+            <span>small batch:</span> <span>a dataset</span>{" "}
+            <span>farmers market</span>
+          </span>
+          <span className={styles.caption}>slow harvest</span>
         </a>
       </div>
 

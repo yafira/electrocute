@@ -1,5 +1,5 @@
 .contributions {
-  max-width: 500px;
+  max-width: 520px;
   margin: 1.5rem auto 0;
   padding: 0 1.5rem;
   font-family: "IBM Plex Mono", monospace;
@@ -26,7 +26,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
-  width: 96px;
+  width: 136px;
   border: none;
   background: none;
   padding: 0;
@@ -38,8 +38,8 @@
 
 .thumb {
   position: relative;
-  width: 96px;
-  height: 96px;
+  width: 136px;
+  height: 136px;
   border-radius: 10px;
   overflow: hidden;
   background: #f0f0f0;
@@ -65,7 +65,7 @@
   width: 420px;
   height: 420px;
   border: none;
-  transform: scale(0.229);
+  transform: scale(0.3238);
   transform-origin: top left;
   pointer-events: none;
 }
@@ -77,10 +77,46 @@
   display: block;
 }
 
+/* the phone book badge gets breathing room so the < > aren't
+   cut off at the edges */
+.badge {
+  background: #fffbd1;
+}
+
+.thumb.badge img {
+  object-fit: contain;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* poster is tall, so keep the "slow harvest" sign in frame */
+.thumb img.top {
+  object-position: top;
+}
+
+/* each phrase stays together as its own line, so nothing gets
+   left hanging alone */
+.source > span,
+.caption > span {
+  display: block;
+}
+
+/* where each one is from, sits right above the caption */
+.source {
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  color: #b5b5b5;
+  line-height: 1.2;
+  margin-bottom: -0.25rem;
+  text-transform: lowercase;
+  text-wrap: balance;
+}
+
 .caption {
-  font-size: 0.68rem;
+  font-size: 0.78rem;
   color: #888;
   line-height: 1.3;
+  text-wrap: balance;
   text-transform: lowercase;
 }
 
@@ -88,11 +124,23 @@
   .row {
     gap: 14px;
   }
+  .contributions {
+    padding: 0 0.75rem;
+  }
   .item {
-    width: 78px;
+    width: 100px;
   }
   .thumb {
-    width: 78px;
-    height: 78px;
+    width: 100px;
+    height: 100px;
+  }
+  .thumb iframe {
+    transform: scale(0.238);
+  }
+  .source {
+    font-size: 0.56rem;
+  }
+  .caption {
+    font-size: 0.66rem;
   }
 }
