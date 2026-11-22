@@ -116,7 +116,7 @@
   margin: 0 0 14px;
   /* evens out the lines so nothing sits alone at the end */
   text-wrap: balance;
-  max-width: 470px;
+  max-width: 540px;
 }
 
 .soon p a {

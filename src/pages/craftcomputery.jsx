@@ -139,7 +139,7 @@ export default function Craftcomputery() {
         </p>
         <p>
           for now the shelves hold digital files. handmade physical pieces are
-          still brewing in the lab, and they&apos;ll come out in small&nbsp;batches.
+          still brewing in the lab, and they&apos;ll come out in small batches.
         </p>
         <a className={styles.visit} href="https://craftcomputery.com">
           visit the shop →
