@@ -110,7 +110,7 @@ export default function Craftcomputery() {
         <title>craftcomputery — electrocute</title>
         <meta
           name="description"
-          content="craftcomputery, the craft-tech r&d division of electrocute lab. a small shop for handmade computing, now open."
+          content="craftcomputery, the craft-tech r&d division of electrocute lab. an artisanal shop for handmade computing, now open."
         />
         <meta property="og:title" content="craftcomputery — electrocute" />
         <link
@@ -119,7 +119,7 @@ export default function Craftcomputery() {
         />
         <meta
           property="og:description"
-          content="a small shop for handmade computing, now open."
+          content="an artisanal shop for handmade computing, now open."
         />
       </Head>
 
@@ -134,7 +134,7 @@ export default function Craftcomputery() {
         {/* a little neon sign hanging in the window */}
         <NeonSign />
         <p>
-          the craft-tech r&amp;d division of electrocute lab, and a small shop
+          the craft-tech r&amp;d division of electrocute lab, and an artisanal shop
           for handmade computing.
         </p>
         <p>
