@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Image from "next/image";
+import MachineDay from "./MachineDay";
 
 export default function Footer() {
   return (
@@ -45,6 +46,8 @@ export default function Footer() {
           />
         </Link>
       </div>
+
+      <MachineDay />
 
       <p className={styles.colophonLine}>
         <Link href="/colophon">colophon</Link>

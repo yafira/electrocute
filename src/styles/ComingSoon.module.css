@@ -181,6 +181,19 @@
   box-shadow: 5px 5px 0 #d5c8fa;
 }
 
+.opened {
+  margin: -4px 0 22px !important;
+  font-family: "IBM Plex Mono", monospace !important;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.08em;
+  color: #8a8496 !important;
+}
+
+:global(body.ecute-dark) .opened {
+  color: #a9a2c2 !important;
+}
+
 .follow {
   font-size: 13px !important;
 }

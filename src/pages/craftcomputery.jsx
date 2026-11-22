@@ -133,6 +133,8 @@ export default function Craftcomputery() {
         </h1>
         {/* a little neon sign hanging in the window */}
         <NeonSign />
+        {/* the day the shop opened, 11/22, the way the machine counts it */}
+        <p className={styles.opened}>opened 1011 / 10110 · synchronous idle</p>
         <p>
           the craft-tech r&amp;d division of electrocute lab, and an artisanal shop
           for handmade computing.

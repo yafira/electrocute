@@ -104,3 +104,24 @@
 :global(body.ecute-dark) .footerIcons a {
   filter: invert(0.85);
 }
+
+/* the date in binary and ascii, a tiny machine stamp */
+.machineDay {
+  margin: 6px auto 0;
+  padding: 0 16px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  line-height: 1.6;
+  color: #8a8496;
+  text-wrap: balance;
+}
+
+.machineWords {
+  white-space: nowrap;
+}
+
+:global(.voidworld) .machineDay,
+:global(body.ecute-dark) .machineDay {
+  color: #a9a2c2;
+}
