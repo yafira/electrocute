@@ -62,7 +62,12 @@ export default function Craftcomputery() {
           <span className={styles.wordmark}>craftcomputery</span>
           <span className={styles.byline}>by electrocute lab</span>
         </h1>
-        <span className={styles.eyebrow}>open now</span>
+        {/* a little neon sign in the window */}
+        <span className={styles.neon} role="img" aria-label="open now">
+          <span className={styles.neonText} aria-hidden="true">
+            open <span className={styles.neonFlicker}>now</span>
+          </span>
+        </span>
         <p>
           the craft-tech r&amp;d division of electrocute lab, and a small shop
           for handmade computing.

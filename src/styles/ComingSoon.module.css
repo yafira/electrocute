@@ -123,6 +123,48 @@
   border-bottom: 1px dashed #d5c8fa;
 }
 
+/* the open now sign, a little neon tube on a dark backing plate */
+.neon {
+  display: inline-block;
+  margin: 4px 0 26px;
+  padding: 12px 24px 14px;
+  background: #1d1b19;
+  border-radius: 14px;
+  box-shadow: 0 0 0 2px #2b2733, 0 0 10px rgba(255, 127, 179, 0.55), inset 0 0 10px rgba(255, 127, 179, 0.35), 0 6px 18px rgba(29, 27, 25, 0.25);
+  border: 2.5px solid #f9d6e1;
+  outline: 2px solid rgba(244, 166, 196, 0.35);
+  outline-offset: -8px;
+}
+
+.neonText {
+  font-family: "Departure Mono", "IBM Plex Mono", monospace;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: #fff4f8;
+  text-shadow: 0 0 2px #fff, 0 0 6px #ff9ec4, 0 0 12px #ff7fb3, 0 0 22px #ff6aa8, 0 0 38px #f45c9f;
+}
+
+/* "now" buzzes now and then, like a tube that's a little loose */
+.neonFlicker {
+  animation: neon-buzz 5s linear infinite;
+}
+
+@keyframes neon-buzz {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neonFlicker {
+    animation: none;
+  }
+}
+
 /* the button to the shop, like the shop's own buttons */
 .visit {
   display: inline-block;
