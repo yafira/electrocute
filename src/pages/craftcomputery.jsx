@@ -32,8 +32,7 @@ function Flower({ size = 56 }) {
   );
 }
 
-// placeholder for the craftcomputery shop until it opens.
-// no link to the shop site yet on purpose.
+// the craftcomputery page: the shop is open, this points people to it
 export default function Craftcomputery() {
   useAmbience();
   return (
@@ -42,16 +41,16 @@ export default function Craftcomputery() {
         <title>craftcomputery — electrocute</title>
         <meta
           name="description"
-          content="craftcomputery, the craft-tech r&d division of electrocute lab. a small shop for handmade computing, coming soon."
+          content="craftcomputery, the craft-tech r&d division of electrocute lab. a small shop for handmade computing, now open."
         />
         <meta property="og:title" content="craftcomputery — electrocute" />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap"
         />
         <meta
           property="og:description"
-          content="a small shop for handmade computing, coming soon."
+          content="a small shop for handmade computing, now open."
         />
       </Head>
 
@@ -63,13 +62,20 @@ export default function Craftcomputery() {
           <span className={styles.wordmark}>craftcomputery</span>
           <span className={styles.byline}>by electrocute lab</span>
         </h1>
-        <span className={styles.eyebrow}>coming soon</span>
+        <span className={styles.eyebrow}>open now</span>
         <p>
           the craft-tech r&amp;d division of electrocute lab, and a small shop
-          for handmade computing. things are still brewing in the lab.
+          for handmade computing.
         </p>
         <p>
-          in the meantime, follow along on{" "}
+          for now the shelves hold digital files. handmade physical pieces are
+          still brewing in the lab, and they&apos;ll come out in small&nbsp;batches.
+        </p>
+        <a className={styles.visit} href="https://craftcomputery.com">
+          visit the shop →
+        </a>
+        <p className={styles.follow}>
+          follow along on{" "}
           <a
             href="https://instagram.com/craftcomputery"
             target="_blank"
