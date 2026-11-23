@@ -846,6 +846,7 @@ export function BreadboardTrinket({
   rot = -4,
   isMobile,
   ledOn,
+  circuitOn = false,
   onButtonPress,
 }) {
   const [litHole, setLitHole] = useState(null);
@@ -869,6 +870,8 @@ export function BreadboardTrinket({
 
   const handleButtonClick = (e) => {
     e.stopPropagation();
+    // nothing happens, no sound or press, until the header switch is on
+    if (!circuitOn) return;
     // the led is about to flip, so the sound matches where it's going
     playSynthSound(ledOn ? "neon-off" : "neon-on");
     setPressAnim(true);

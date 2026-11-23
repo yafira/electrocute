@@ -58,7 +58,7 @@ const SHAPE_CLASS = {
   pill: "spotPill",
 };
 
-export default function Container() {
+export default function Container({ circuitOn = false }) {
   const [open, setOpen] = useState(null);
   const [isCircuitOn, setIsCircuitOn] = useState(true);
   const [scopeScale, setScopeScale] = useState(1);
@@ -73,6 +73,8 @@ export default function Container() {
 
   // the breadboard button also feeds the power cable up to the logo
   const handleBreadboardButtonPress = () => {
+    // the breadboard only works while the header switch is on
+    if (!circuitOn) return;
     const next = !ledOn;
     setLedOn(next);
     sendPower(next);
@@ -82,6 +84,13 @@ export default function Container() {
   const pressRef = useRef(handleBreadboardButtonPress);
   pressRef.current = handleBreadboardButtonPress;
   useEffect(() => onBreadboardPress(() => pressRef.current()), []);
+
+  // switching the header circuit off cuts the led and the cable too
+  useEffect(() => {
+    if (circuitOn || !ledOn) return;
+    setLedOn(false);
+    sendPower(false);
+  }, [circuitOn, ledOn]);
 
   useEffect(() => {
     function handleResize() {
@@ -318,6 +327,7 @@ export default function Container() {
               rot={-4}
               isMobile={false}
               ledOn={ledOn}
+              circuitOn={circuitOn}
               onButtonPress={handleBreadboardButtonPress}
             />
           </>

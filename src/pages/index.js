@@ -39,7 +39,7 @@ export default function Home() {
       </Head>
       <Header />
       <SoftCircuit on={on} ready={ready} onToggle={toggle} />
-      <Container />
+      <Container circuitOn={on} />
       <PunchCard />
       <Contributions />
       <Footer />
