@@ -63,7 +63,7 @@ const projects = [
   {
     slug: "neural-nectar",
     title: "neural nectar",
-    href: "https://neural-nectar.vercel.app", // ← swap in your actual deployed URL
+    href: "/neural-nectar", // ← swap in your actual deployed URL
     icon: "/assets/nn.png",
     blurb:
       "a series of soft, small machine learning experiments made with ml5.js and p5.js — mood mirrors, pose trails, and other gentle intelligence.",
@@ -126,7 +126,7 @@ const projects = [
   {
     slug: "synthwave-chimes",
     title: "synthwave chimes",
-    href: "https://synthwave-chimes.netlify.app/",
+    href: "/synthwave-chimes",
     icon: "/assets/flower.png",
     blurb: "a digital synth chime that blends shapes with interactive sound.",
     tint: "#f5e6fd",
@@ -200,7 +200,7 @@ export const resources = [
     slug: "fluoro",
     menu: "toolkit",
     title: "fluoro",
-    href: "https://fluoro-riso.vercel.app",
+    href: "/fluoro",
     icon: "/assets/fluoro-icon.svg",
     blurb:
       "riso-fy (almost) anything. a tool and npm library for risograph-style images and web pages.",
@@ -212,7 +212,7 @@ export const resources = [
     slug: "punch-card-studio",
     menu: "toolkit",
     title: "punch card studio",
-    href: "https://punchcard-studio.vercel.app",
+    href: "/punchcard",
     icon: "/assets/punch-card-studio-icon.svg",
     blurb:
       "a pattern generator for punch card knitting machines and hollerith cards. an experiment.",
@@ -224,7 +224,7 @@ export const resources = [
     slug: "altloom",
     menu: "toolkit",
     title: "altloom",
-    href: "https://alt-loom.vercel.app",
+    href: "/altloom",
     icon: "/assets/altloom-icon.svg",
     blurb: "find the images your alt text forgot and draft starter alt text.",
     tint: "#efedfb",
@@ -235,7 +235,7 @@ export const resources = [
     slug: "tinkerthread",
     menu: "toolkit",
     title: "tinkerthread",
-    href: "https://tinkerthread.netlify.app",
+    href: "/tinkerthread",
     icon: "/assets/tinkerthread-icon.svg",
     blurb:
       "a soft circuit simulator with leds, buttons, batteries, and resistors, plus a bill of materials.",
@@ -247,7 +247,7 @@ export const resources = [
     slug: "pixel-picnic",
     menu: "toolkit",
     title: "pixel picnic",
-    href: "https://pixel-picnic.vercel.app",
+    href: "/pixel-picnic",
     icon: "/assets/pixel-picnic-icon.svg",
     blurb:
       "turns photos into dithered pixel patterns, right in your browser. nothing gets uploaded.",
@@ -259,7 +259,7 @@ export const resources = [
     slug: "soft-queue",
     menu: "toolkit",
     title: "soft queue",
-    href: "https://soft-queue-app.vercel.app",
+    href: "/soft-queue",
     icon: "/assets/soft-queue-icon.svg",
     blurb:
       "a tiny os for unfinished things. revive what you started, using what you already have.",
