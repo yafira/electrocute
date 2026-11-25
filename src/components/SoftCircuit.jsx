@@ -1,4 +1,4 @@
-// a tiny sewable circuit that the nav lives inside of: coin cell,
+// a tiny sewable circuit that the nav lives inside of: 9v battery,
 // then the about/blog/contact/shop pills (sewn onto the board same as
 // any other component), then a switch, a sewable LED, and a small
 // continuity tester made of five cross-stitches. close the switch
@@ -17,44 +17,26 @@ import headerStyles from "../styles/Header.module.css";
 import styles from "../styles/SoftCircuit.module.css";
 import { startCircuitBuzz, stopCircuitBuzz } from "../lib/circuitBuzz";
 
-function CoinCell() {
+function NineVoltCell() {
   return (
     <svg className={styles.cellSvg} viewBox="0 0 48 48" aria-hidden="true">
-      <circle
-        cx="24"
-        cy="24"
-        r="19"
+      <rect
+        x="6"
+        y="13"
+        width="36"
+        height="22"
+        rx="3"
         fill="#efece6"
         stroke="#c3b9b9"
         strokeWidth="2"
       />
-      <circle
-        cx="24"
-        cy="24"
-        r="12.5"
-        fill="#e5e2dc"
-        stroke="#d5d0c6"
-        strokeWidth="1"
-      />
+      <circle cx="16" cy="11" r="2.2" fill="#e5e2dc" stroke="#c3b9b9" strokeWidth="1.2" />
+      <circle cx="32" cy="11" r="2.2" fill="#e5e2dc" stroke="#c3b9b9" strokeWidth="1.2" />
       <text x="24" y="28" textAnchor="middle" className={styles.moduleLabel}>
-        3v
+        9v
       </text>
-      <circle
-        cx="41"
-        cy="18"
-        r="2.6"
-        fill="#fbfcf5"
-        stroke="#c3b9b9"
-        strokeWidth="1.4"
-      />
-      <circle
-        cx="37"
-        cy="35"
-        r="2.6"
-        fill="#fbfcf5"
-        stroke="#c3b9b9"
-        strokeWidth="1.4"
-      />
+      <circle cx="44" cy="25" data-thread="ninev-pos" r="2.2" fill="#fbfcf5" stroke="#c3b9b9" strokeWidth="1.2" />
+      <circle cx="44" cy="33" data-thread="ninev-neg" r="2.2" fill="#fbfcf5" stroke="#c3b9b9" strokeWidth="1.2" />
     </svg>
   );
 }
@@ -175,6 +157,7 @@ function Led({ on }) {
       <circle
         cx="26"
         cy="40"
+        data-thread="led-out"
         r="2.6"
         fill="#fbfcf5"
         stroke="#d5c8fa"
@@ -210,7 +193,7 @@ export default function SoftCircuit({ on, ready, onToggle }) {
 
   return (
     <div className={styles.board}>
-      <CoinCell />
+      <Switch on={on} ready={ready} onToggle={onToggle} onKeyDown={onKeyDown} />
       <span className={`${styles.thread} ${on ? styles.flowing : ""}`} />
 
       <nav className={`${headerStyles.nav} ${styles.sewnNav}`}>
@@ -221,7 +204,7 @@ export default function SoftCircuit({ on, ready, onToggle }) {
       </nav>
 
       <span className={`${styles.thread} ${on ? styles.flowing : ""}`} />
-      <Switch on={on} ready={ready} onToggle={onToggle} onKeyDown={onKeyDown} />
+      <NineVoltCell />
       <span className={`${styles.thread} ${on ? styles.flowing : ""}`} />
       <Led on={on} />
       <span className={`${styles.thread} ${on ? styles.flowing : ""}`} />

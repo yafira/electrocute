@@ -871,8 +871,8 @@ export function BreadboardTrinket({
     const svg = potSvg.current;
     if (!svg) return;
     const r = svg.getBoundingClientRect();
-    // knob center in svg units is (68, 147.5)
-    const cx = r.left + (68 / 96) * r.width;
+    // knob center in svg units is (28, 147.5)
+    const cx = r.left + (28 / 96) * r.width;
     const cy = r.top + (147.5 / 200) * r.height;
     const angle = Math.atan2(e.clientX - cx, -(e.clientY - cy)) * (180 / Math.PI);
     const clamped = Math.max(-135, Math.min(135, angle));
@@ -882,7 +882,7 @@ export function BreadboardTrinket({
   if (isMobile) return null;
 
   const LEFT_COLS = [10, 19, 28, 37];
-  const RIGHT_COLS = [59, 68, 77, 86];
+  const RIGHT_COLS = [59, 68, 77, 86, 95];
   const ROWS = 14;
   const rowY = (r) => 14 + r * 13;
 
@@ -918,9 +918,9 @@ export function BreadboardTrinket({
       }}
     >
       <svg
-        width="96"
-        height="200"
-        viewBox="0 0 96 200"
+        width="112"
+        height="220"
+        viewBox="-3 0 102 200"
         ref={potSvg}
         onPointerMove={(e) => {
           if (potDrag.current) turnPot(e);
@@ -940,9 +940,9 @@ export function BreadboardTrinket({
           aria-label="decorative mini breadboard"
         >
           <rect
-            x="2"
+            x="-2"
             y="2"
-            width="92"
+            width="100"
             height="196"
             rx="6"
             className={styles.breadboardBody}
@@ -966,6 +966,7 @@ export function BreadboardTrinket({
                   cy={rowY(r)}
                   r="1.4"
                   className={`${styles.hole} ${litHole === key ? styles.holeLit : ""}`}
+                  data-thread={key === "L-0-0" ? "board-minus" : key === "L-0-2" ? "board-minus-led" : undefined}
                 />
               );
             }),
@@ -989,26 +990,12 @@ export function BreadboardTrinket({
           )}
         </g>
 
-        <g aria-hidden="true" pointerEvents="none">
+        <g aria-hidden="true" pointerEvents="none" transform="translate(0 26)">
           <circle
             cx="23.5"
             cy="12"
             r="14"
             className={`${styles.bbLedGlow} ${ledOn ? styles.bbLedGlowOn : ""}`}
-          />
-          <rect
-            x="18.3"
-            y="20"
-            width="1.4"
-            height="7.5"
-            className={styles.bbLedLeg}
-          />
-          <rect
-            x="27.3"
-            y="20"
-            width="1.4"
-            height="7.5"
-            className={styles.bbLedLeg}
           />
           <rect
             x="16"
@@ -1024,6 +1011,9 @@ export function BreadboardTrinket({
             r="7"
             className={`${styles.bbLedDome} ${ledOn ? styles.bbLedDomeOn : ""}`}
           />
+          {/* legs drawn last so they sit over the dome and end in row 1 */}
+          <rect x="18.3" y="19" width="1.4" height="8" className={styles.bbLedLeg} />
+          <rect x="27.3" y="19" width="1.4" height="8" className={styles.bbLedLeg} />
         </g>
 
         <g
@@ -1088,7 +1078,7 @@ export function BreadboardTrinket({
             body with tick marks, a blue knob, and a pointer that turns with
             the dial (-135 to 135 degrees). three short legs drop into the
             holes in row 12, the middle one under the body's center */}
-        <g aria-hidden="true" pointerEvents="none" transform="translate(0 26)">
+        <g aria-hidden="true" pointerEvents="none" transform="translate(-40 26)">
           {[59, 68, 77].map((x) => (
             <rect
               key={`leg-${x}`}
@@ -1121,9 +1111,43 @@ export function BreadboardTrinket({
             transform={`rotate(${-135 + dial * 270} 68 121.5)`}
           />
         </g>
+        {/* one rail column per outer edge, on the same 9-unit grid as the holes:
+            + on the left edge, - on the right edge */}
+        <g aria-hidden="true" pointerEvents="none">
+          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((r) => (
+            <g key={`rail-row-${r}`}>
+              <circle
+                cx="1"
+                cy={rowY(r)}
+                r="1.3"
+                className={styles.hole}
+                data-thread={r === 0 ? "board-plus" : undefined}
+              />
+            </g>
+          ))}
+          <text x="1" y="10" textAnchor="middle" fontSize="7" fontWeight="900" fill="#e0245e" fontFamily="monospace">+</text>
+          <text x="10" y="10" textAnchor="middle" fontSize="7" fontWeight="900" fill="#3b5bdb" fontFamily="monospace">-</text>
+        </g>
+
+        {/* jumper wires routed on the grid, with corners that stay clear of the holes.
+            teal is power, black is ground, lime is the pot's wiper going to the button,
+            and white carries the led: its long leg to the + column, its short leg to the - column */}
+        <g aria-hidden="true" pointerEvents="none" fill="none" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M28,53 L28,56 Q28,60 24,60 L5,60 Q1,60 1,56 L1,53" stroke="#8a8a86" strokeWidth="3.6" />
+          <path d="M28,53 L28,56 Q28,60 24,60 L5,60 Q1,60 1,56 L1,53" stroke="#f4f4f0" />
+          <path d="M19,53 L10,53" stroke="#2f2a3d" />
+          <path d="M37,170 L37,177 L1,177 L1,170" stroke="#1fa9a0" />
+          <path d="M19,170 L10,170" stroke="#2f2a3d" />
+          <path d="M28,170 L28,166 L46,166 L46,118 L59,118 L59,105" stroke="#34c759" />
+          <path d="M37,105 L32,105 L32,131 L10,131" stroke="#2f2a3d" />
+          {[[28,53],[1,53],[19,53],[10,53],[37,170],[1,170],[19,170],[10,170],[28,170],[59,105],[37,105],[10,131]].map(([cx, cy]) => (
+            <circle key={`plug-${cx}-${cy}`} cx={cx} cy={cy} r="1.6" fill="#1b1a24" />
+          ))}
+        </g>
+
         {/* invisible knob hit area so the pot can be turned */}
         <circle
-          cx="68"
+          cx="28"
           cy="147.5"
           r="14.5"
           fill="transparent"

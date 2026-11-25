@@ -8,6 +8,7 @@ import PunchCard from "@/components/PunchCard";
 import SoftPot from "@/components/SoftPot";
 import SoftCircuit from "@/components/SoftCircuit";
 import PowerCable from "@/components/PowerCable";
+import CircuitThreads from "@/components/CircuitThreads";
 import { playFeltTone } from "@/lib/feltTone";
 import { CIRCUIT_EVENT } from "@/components/SoftPot";
 import styles from "@/styles/Home.module.css";
@@ -47,6 +48,7 @@ export default function Home() {
       <Footer />
       <SoftPot />
       <PowerCable />
+      <CircuitThreads />
     </div>
   );
 }

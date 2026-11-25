@@ -326,7 +326,7 @@ export default function Container({ circuitOn = false }) {
               y="-7%"
               rot={-4}
               isMobile={false}
-              ledOn={ledOn}
+              ledOn={circuitOn}
               circuitOn={circuitOn}
               onButtonPress={handleBreadboardButtonPress}
             />
