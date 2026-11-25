@@ -53,7 +53,11 @@ export default function MoreProjects() {
               className={styles.item}
               style={style}
               onClick={() =>
-                setOpen({ href: project.href, title: project.title })
+                setOpen({
+                  href: project.href,
+                  title: project.title,
+                  externalUrl: project.externalHref,
+                })
               }
               title={project.title}
             >
@@ -78,6 +82,7 @@ export default function MoreProjects() {
         <IframePanel
           url={open.href}
           title={open.title}
+          externalUrl={open.externalUrl}
           onClose={() => setOpen(null)}
         />
       )}

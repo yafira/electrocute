@@ -100,7 +100,7 @@ const projects = [
   {
     slug: "soft-components",
     title: "soft components",
-    href: "https://soft-components.vercel.app",
+    href: "https://softcomponents.xyz",
     icon: "/assets/soft-components.png",
     blurb:
       "an interactive reference library for soft electronics — felt buttons, fabric sensors, and the physics behind each one, live in the browser.",
