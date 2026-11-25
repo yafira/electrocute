@@ -1,6 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
+	trailingSlash: true,
 	compiler: {
 		styledComponents: true,
 	},
@@ -20,14 +21,14 @@ module.exports = {
 			{ source: '/synthwave-chimes/:path*', destination: 'https://synthwave-chimes.netlify.app/:path*' },
 			{ source: '/fluoro', destination: 'https://fluoro-riso.vercel.app' },
 			{ source: '/fluoro/:path*', destination: 'https://fluoro-riso.vercel.app/:path*' },
-			{ source: '/punchcard', destination: 'https://punchcard-studio.vercel.app' },
-			{ source: '/punchcard/:path*', destination: 'https://punchcard-studio.vercel.app/:path*' },
+			{ source: '/punchcard', destination: 'https://punchcard-studio.vercel.app/punchcard' },
+			{ source: '/punchcard/:path*', destination: 'https://punchcard-studio.vercel.app/punchcard/:path*' },
 			{ source: '/altloom', destination: 'https://alt-loom.vercel.app' },
 			{ source: '/altloom/:path*', destination: 'https://alt-loom.vercel.app/:path*' },
 			{ source: '/tinkerthread', destination: 'https://tinkerthread.netlify.app' },
 			{ source: '/tinkerthread/:path*', destination: 'https://tinkerthread.netlify.app/:path*' },
-			{ source: '/pixel-picnic', destination: 'https://pixel-picnic.vercel.app' },
-			{ source: '/pixel-picnic/:path*', destination: 'https://pixel-picnic.vercel.app/:path*' },
+			{ source: '/pixel-picnic', destination: 'https://pixel-picnic.vercel.app/pixel-picnic' },
+			{ source: '/pixel-picnic/:path*', destination: 'https://pixel-picnic.vercel.app/pixel-picnic/:path*' },
 			{ source: '/soft-queue', destination: 'https://soft-queue-app.vercel.app' },
 			{ source: '/soft-queue/:path*', destination: 'https://soft-queue-app.vercel.app/:path*' },
 		]
