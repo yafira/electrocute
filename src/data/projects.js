@@ -140,7 +140,7 @@ const projects = [
     title: "iron bloom",
     // itch's embed player, since itch.io game pages can't be framed.
     // "open in new tab" goes to the regular itch page instead
-    href: "https://itch.io/embed-upload/18218369?color=fbfcf5",
+    href: "https://itch.io/embed-upload/20443431?color=fbfcf5",
     externalHref: "https://electrocute.itch.io/iron-bloom",
     icon: "/assets/iron-bloom-icon.svg",
     photo:
