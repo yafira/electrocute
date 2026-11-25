@@ -935,8 +935,24 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
+/* the graticule: a still grid behind the wave, so only the trace scrolls */
+.scopeLarge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, rgba(148, 241, 211, 0.18) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 241, 211, 0.18) 1px, transparent 1px);
+  background-size: 18px 18px;
+  background-position: center;
+}
+
 .scopeSvgLarge {
   display: block;
+  position: relative;
+  z-index: 1;
   animation: scopeScrollLarge 1.3s linear infinite;
 }
 

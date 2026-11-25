@@ -323,7 +323,7 @@ export default function Container({ circuitOn = false }) {
             {/* stays clear of the sewn nav's led on smaller laptops */}
             <BreadboardTrinket
               x="max(76%, calc(50% + 310px))"
-              y="-10%"
+              y="-7%"
               rot={-4}
               isMobile={false}
               ledOn={ledOn}
