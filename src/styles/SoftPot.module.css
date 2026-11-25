@@ -9,13 +9,22 @@
   gap: 2px;
 }
 
+/* the slider is hidden on screen but stays focusable for keyboard and
+   screen reader users, who still set the ambience with it */
 .slider {
   -webkit-appearance: none;
   appearance: none;
-  width: 108px;
-  height: 22px;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
   background: transparent;
-  cursor: pointer;
 }
 
 /* the ribbon track: a running stitch */
@@ -83,6 +92,8 @@
   letter-spacing: 0.08em;
   color: #9a93b8;
   user-select: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
 .reading {
@@ -124,8 +135,5 @@
     position: static;
     margin: 0 auto 28px;
     width: fit-content;
-  }
-  .slider {
-    width: 120px;
   }
 }

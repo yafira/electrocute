@@ -167,7 +167,10 @@ export default function SoftPot() {
         aria-label={`ambience, currently ${label}`}
         style={{ opacity: circuitOn ? 1 : 0.4 }}
       />
-      <span className={styles.tag} aria-hidden="true">
+      <span
+        className={`${styles.tag} ${showLabel ? styles.visible : ""}`}
+        aria-hidden="true"
+      >
         {circuitOn ? "ambience" : "circuit off"}
       </span>
 
