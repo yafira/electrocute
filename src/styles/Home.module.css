@@ -1219,6 +1219,8 @@
   padding: 0;
   cursor: pointer;
   line-height: 0;
+  position: relative;
+  top: -66px;
 }
 
 .breadboardSvg {

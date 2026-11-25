@@ -874,7 +874,8 @@ export function BreadboardTrinket({
     // knob center in svg units is (28, 147.5)
     const cx = r.left + (28 / 96) * r.width;
     const cy = r.top + (147.5 / 200) * r.height;
-    const angle = Math.atan2(e.clientX - cx, -(e.clientY - cy)) * (180 / Math.PI);
+    const angle =
+      Math.atan2(e.clientX - cx, -(e.clientY - cy)) * (180 / Math.PI);
     const clamped = Math.max(-135, Math.min(135, angle));
     dialAmbience(((clamped + 135) / 270) * 1023);
   };
@@ -966,7 +967,13 @@ export function BreadboardTrinket({
                   cy={rowY(r)}
                   r="1.4"
                   className={`${styles.hole} ${litHole === key ? styles.holeLit : ""}`}
-                  data-thread={key === "L-0-0" ? "board-minus" : key === "L-0-2" ? "board-minus-led" : undefined}
+                  data-thread={
+                    key === "L-0-0"
+                      ? "board-minus"
+                      : key === "L-0-2"
+                        ? "board-minus-led"
+                        : undefined
+                  }
                 />
               );
             }),
@@ -1012,12 +1019,25 @@ export function BreadboardTrinket({
             className={`${styles.bbLedDome} ${ledOn ? styles.bbLedDomeOn : ""}`}
           />
           {/* legs drawn last so they sit over the dome and end in row 1 */}
-          <rect x="18.3" y="19" width="1.4" height="8" className={styles.bbLedLeg} />
-          <rect x="27.3" y="19" width="1.4" height="8" className={styles.bbLedLeg} />
+          <rect
+            x="18.3"
+            y="19"
+            width="1.4"
+            height="8"
+            className={styles.bbLedLeg}
+          />
+          <rect
+            x="27.3"
+            y="19"
+            width="1.4"
+            height="8"
+            className={styles.bbLedLeg}
+          />
         </g>
 
         <g
           className={styles.pushButtonGroup}
+          transform="translate(0 -13)"
           onClick={handleButtonClick}
           aria-label="push button that toggles the led"
         >
@@ -1078,7 +1098,11 @@ export function BreadboardTrinket({
             body with tick marks, a blue knob, and a pointer that turns with
             the dial (-135 to 135 degrees). three short legs drop into the
             holes in row 12, the middle one under the body's center */}
-        <g aria-hidden="true" pointerEvents="none" transform="translate(-40 26)">
+        <g
+          aria-hidden="true"
+          pointerEvents="none"
+          transform="translate(-40 26)"
+        >
           {[59, 68, 77].map((x) => (
             <rect
               key={`leg-${x}`}
@@ -1125,23 +1149,79 @@ export function BreadboardTrinket({
               />
             </g>
           ))}
-          <text x="1" y="10" textAnchor="middle" fontSize="7" fontWeight="900" fill="#e0245e" fontFamily="monospace">+</text>
-          <text x="10" y="10" textAnchor="middle" fontSize="7" fontWeight="900" fill="#3b5bdb" fontFamily="monospace">-</text>
+          <text
+            x="1"
+            y="10"
+            textAnchor="middle"
+            fontSize="7"
+            fontWeight="900"
+            fill="#e0245e"
+            fontFamily="monospace"
+          >
+            +
+          </text>
+          <text
+            x="10"
+            y="10"
+            textAnchor="middle"
+            fontSize="7"
+            fontWeight="900"
+            fill="#3b5bdb"
+            fontFamily="monospace"
+          >
+            -
+          </text>
         </g>
 
         {/* jumper wires routed on the grid, with corners that stay clear of the holes.
             teal is power, black is ground, lime is the pot's wiper going to the button,
             and white carries the led: its long leg to the + column, its short leg to the - column */}
-        <g aria-hidden="true" pointerEvents="none" fill="none" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M28,53 L28,56 Q28,60 24,60 L5,60 Q1,60 1,56 L1,53" stroke="#8a8a86" strokeWidth="3.6" />
-          <path d="M28,53 L28,56 Q28,60 24,60 L5,60 Q1,60 1,56 L1,53" stroke="#f4f4f0" />
+        <g
+          aria-hidden="true"
+          pointerEvents="none"
+          fill="none"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path
+            d="M28,53 L28,56 Q28,60 24,60 L5,60 Q1,60 1,56 L1,53"
+            stroke="#8a8a86"
+            strokeWidth="3.6"
+          />
+          <path
+            d="M28,53 L28,56 Q28,60 24,60 L5,60 Q1,60 1,56 L1,53"
+            stroke="#f4f4f0"
+          />
           <path d="M19,53 L10,53" stroke="#2f2a3d" />
           <path d="M37,170 L37,177 L1,177 L1,170" stroke="#1fa9a0" />
           <path d="M19,170 L10,170" stroke="#2f2a3d" />
-          <path d="M28,170 L28,166 L46,166 L46,118 L59,118 L59,105" stroke="#34c759" />
-          <path d="M37,105 L32,105 L32,131 L10,131" stroke="#2f2a3d" />
-          {[[28,53],[1,53],[19,53],[10,53],[37,170],[1,170],[19,170],[10,170],[28,170],[59,105],[37,105],[10,131]].map(([cx, cy]) => (
-            <circle key={`plug-${cx}-${cy}`} cx={cx} cy={cy} r="1.6" fill="#1b1a24" />
+          <path
+            d="M28,170 L28,166 L46,166 L46,118 L68,118 L68,92"
+            stroke="#34c759"
+          />
+          <path d="M28,79 C 22,90 14,112 10,131" stroke="#2f2a3d" />
+          {[
+            [28, 53],
+            [1, 53],
+            [19, 53],
+            [10, 53],
+            [37, 170],
+            [1, 170],
+            [19, 170],
+            [10, 170],
+            [28, 170],
+            [28, 79],
+            [68, 92],
+            [10, 131],
+          ].map(([cx, cy]) => (
+            <circle
+              key={`plug-${cx}-${cy}`}
+              cx={cx}
+              cy={cy}
+              r="1.6"
+              fill="#1b1a24"
+            />
           ))}
         </g>
 
