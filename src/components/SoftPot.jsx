@@ -1,14 +1,18 @@
-// a soft potentiometer for the whole site: slide it and the page
-// washes through the lab palette (paper, blush, butter, matcha,
-// wisteria), dims into evening, and at the very end the lights go
-// out and the lab turns goth. remembered per device.
+// the ambience for the whole site. a potentiometer on the breadboard
+// (read over bluetooth, see lib/bluetoothLink) washes the page through
+// the lab palette (paper, blush, butter, matcha, wisteria), dims into
+// evening, and at the very end the lights go out and the lab turns goth.
+// the pot only counts while the circuit is on. remembered per device.
 
 import { useEffect, useRef, useState } from "react";
 import styles from "../styles/SoftPot.module.css";
 
 const LOCAL_KEY = "electrocute:softpot";
+const CIRCUIT_KEY = "electrocute:circuit"; // same key index.js uses
+export const DIAL_EVENT = "electrocute:ambience";
+export const CIRCUIT_EVENT = "electrocute:circuit-change";
 
-// palette stops along the slider, 0 -> 1
+// palette stops along the dial, 0 -> 1
 const STOPS = [
   { at: 0.0, color: "#fbfcf5", label: "paper" },
   { at: 0.18, color: "#fff3f8", label: "blush" },
@@ -77,8 +81,18 @@ const savedAmbience = () => {
   return Number.isFinite(saved) ? saved : 0;
 };
 
+// called by the bluetooth link with the pot's raw reading, 0 to 1023.
+// ignored while the circuit is off, so the last ambience just stays put
+export function dialAmbience(raw) {
+  if (localStorage.getItem(CIRCUIT_KEY) !== "on") return;
+  const v = Math.max(0, Math.min(1, raw / 1023));
+  applyAmbience(v);
+  localStorage.setItem(LOCAL_KEY, String(v));
+  window.dispatchEvent(new CustomEvent(DIAL_EVENT, { detail: v }));
+}
+
 // for pages that are dressed for every ambience but don't carry the
-// slider themselves (about, contact, shop): they follow whatever it was
+// dial themselves (about, contact, shop): they follow whatever it was
 // last set to, and hand the lights back when you leave
 export function useAmbience() {
   useEffect(() => {
@@ -91,14 +105,32 @@ export default function SoftPot() {
   const [value, setValue] = useState(0);
   const [label, setLabel] = useState("paper");
   const [showLabel, setShowLabel] = useState(false);
+  const [circuitOn, setCircuitOn] = useState(false);
   const hideTimer = useRef(null);
 
   useEffect(() => {
     const v = savedAmbience();
     setValue(v);
     setLabel(labelFor(v));
+    setCircuitOn(localStorage.getItem(CIRCUIT_KEY) === "on");
     applyAmbience(v);
+
+    const onDial = (event) => {
+      setValue(event.detail);
+      setLabel(labelFor(event.detail));
+      setShowLabel(true);
+      if (hideTimer.current) clearTimeout(hideTimer.current);
+      hideTimer.current = setTimeout(() => setShowLabel(false), 1200);
+    };
+    const onCircuit = () =>
+      setCircuitOn(localStorage.getItem(CIRCUIT_KEY) === "on");
+
+    window.addEventListener(DIAL_EVENT, onDial);
+    window.addEventListener(CIRCUIT_EVENT, onCircuit);
+
     return () => {
+      window.removeEventListener(DIAL_EVENT, onDial);
+      window.removeEventListener(CIRCUIT_EVENT, onCircuit);
       if (hideTimer.current) clearTimeout(hideTimer.current);
       // most other pages aren't dressed for goth yet, so leaving the
       // homepage turns the lights back on. the ones that are call
@@ -107,25 +139,23 @@ export default function SoftPot() {
     };
   }, []);
 
-  const onChange = (event) => {
-    const v = Number(event.target.value) / 100;
-    setValue(v);
-    setLabel(labelFor(v));
-    setShowLabel(true);
-    applyAmbience(v);
-    localStorage.setItem(LOCAL_KEY, String(v));
-    if (hideTimer.current) clearTimeout(hideTimer.current);
-    hideTimer.current = setTimeout(() => setShowLabel(false), 1200);
-  };
-
   return (
-    <div className={styles.pot} title="soft potentiometer: set the ambience">
+    <div
+      className={styles.pot}
+      title={
+        circuitOn
+          ? "breadboard pot: set the ambience"
+          : "turn the circuit on to use the breadboard pot"
+      }
+    >
       <span
         className={`${styles.reading} ${showLabel ? styles.visible : ""}`}
-        aria-hidden="true"
+        aria-live="polite"
       >
         {label}
       </span>
+      {/* follows the breadboard pot, and can be dragged too. both only
+          count while the circuit is on */}
       <input
         className={styles.slider}
         type="range"
@@ -133,11 +163,12 @@ export default function SoftPot() {
         max="100"
         step="1"
         value={Math.round(value * 100)}
-        onChange={onChange}
+        onChange={(e) => dialAmbience((Number(e.target.value) / 100) * 1023)}
         aria-label={`ambience, currently ${label}`}
+        style={{ opacity: circuitOn ? 1 : 0.4 }}
       />
       <span className={styles.tag} aria-hidden="true">
-        ambience
+        {circuitOn ? "ambience" : "circuit off"}
       </span>
 
       {/* dusk overlay, driven by --dusk on :root */}

@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "../styles/Home.module.css";
+import { DIAL_EVENT, dialAmbience } from "./SoftPot";
 
 let audioCtx = null;
 
@@ -839,7 +840,8 @@ export function ChipTrinket({
 
 // portrait mini breadboard — narrow like the real thing, with the led
 // seated in the left terminal strip and a tactile button straddling
-// the center channel. pressing the button toggles the led on/off.
+// the center channel. its four legs go into the holes on rows 6 and 7,
+// one pair on each side of the channel. pressing the button toggles the led on/off.
 export function BreadboardTrinket({
   x = "76%",
   y = "-10%",
@@ -851,6 +853,31 @@ export function BreadboardTrinket({
 }) {
   const [litHole, setLitHole] = useState(null);
   const [pressAnim, setPressAnim] = useState(false);
+  // where the breadboard's pot is turned, 0 to 1, matching the site's dial
+  const [dial, setDial] = useState(0);
+  useEffect(() => {
+    const saved = parseFloat(localStorage.getItem("electrocute:softpot"));
+    if (Number.isFinite(saved)) setDial(saved);
+    const onDial = (event) => setDial(event.detail);
+    window.addEventListener(DIAL_EVENT, onDial);
+    return () => window.removeEventListener(DIAL_EVENT, onDial);
+  }, []);
+
+  // dragging the pot's knob turns the dial. it goes through dialAmbience,
+  // so it only moves while the circuit is on, and the slider follows
+  const potSvg = useRef(null);
+  const potDrag = useRef(false);
+  const turnPot = (e) => {
+    const svg = potSvg.current;
+    if (!svg) return;
+    const r = svg.getBoundingClientRect();
+    // knob center in svg units is (68, 147.5)
+    const cx = r.left + (68 / 96) * r.width;
+    const cy = r.top + (147.5 / 200) * r.height;
+    const angle = Math.atan2(e.clientX - cx, -(e.clientY - cy)) * (180 / Math.PI);
+    const clamped = Math.max(-135, Math.min(135, angle));
+    dialAmbience(((clamped + 135) / 270) * 1023);
+  };
 
   if (isMobile) return null;
 
@@ -859,8 +886,8 @@ export function BreadboardTrinket({
   const ROWS = 14;
   const rowY = (r) => 14 + r * 13;
 
+  // the board itself is silent, only the button makes a sound
   const handleBoardClick = () => {
-    playSynthSound("led");
     const side = Math.random() < 0.5 ? "L" : "R";
     const col = Math.floor(Math.random() * 4);
     const row = Math.floor(Math.random() * ROWS);
@@ -894,6 +921,16 @@ export function BreadboardTrinket({
         width="96"
         height="200"
         viewBox="0 0 96 200"
+        ref={potSvg}
+        onPointerMove={(e) => {
+          if (potDrag.current) turnPot(e);
+        }}
+        onPointerUp={() => {
+          potDrag.current = false;
+        }}
+        onPointerLeave={() => {
+          potDrag.current = false;
+        }}
         className={styles.breadboardSvg}
         shapeRendering="geometricPrecision"
       >
@@ -995,57 +1032,108 @@ export function BreadboardTrinket({
           aria-label="push button that toggles the led"
         >
           <rect
-            x="26"
-            y="98"
-            width="8"
+            x="37"
+            y="90.7"
+            width="3.1"
             height="2.6"
             className={styles.pushButtonPin}
           />
           <rect
-            x="26"
-            y="113"
-            width="8"
+            x="37"
+            y="103.7"
+            width="3.1"
             height="2.6"
             className={styles.pushButtonPin}
           />
           <rect
-            x="62"
-            y="98"
-            width="8"
+            x="55.9"
+            y="90.7"
+            width="3.1"
             height="2.6"
             className={styles.pushButtonPin}
           />
           <rect
-            x="62"
-            y="113"
-            width="8"
+            x="55.9"
+            y="103.7"
+            width="3.1"
             height="2.6"
             className={styles.pushButtonPin}
           />
 
           <rect
-            x="34"
-            y="92"
-            width="28"
-            height="30"
+            x="40"
+            y="91"
+            width="16"
+            height="16"
             rx="3"
             className={styles.pushButtonHousing}
           />
 
-          <circle cx="39" cy="97" r="1.6" className={styles.pushButtonRivet} />
-          <circle cx="57" cy="97" r="1.6" className={styles.pushButtonRivet} />
-          <circle cx="39" cy="117" r="1.6" className={styles.pushButtonRivet} />
-          <circle cx="57" cy="117" r="1.6" className={styles.pushButtonRivet} />
+          <circle cx="43" cy="95" r="1.2" className={styles.pushButtonRivet} />
+          <circle cx="53" cy="95" r="1.2" className={styles.pushButtonRivet} />
+          <circle cx="43" cy="104" r="1.2" className={styles.pushButtonRivet} />
+          <circle cx="53" cy="104" r="1.2" className={styles.pushButtonRivet} />
 
           <circle
             cx="48"
-            cy="107"
-            r="8.5"
+            cy="99"
+            r="5.5"
             className={`${styles.pushButtonCap} ${
               pressAnim ? styles.pushButtonCapPressed : ""
             }`}
           />
         </g>
+
+        {/* silver rotary pot, seen from above like the reference: a large dark
+            body with tick marks, a blue knob, and a pointer that turns with
+            the dial (-135 to 135 degrees). three short legs drop into the
+            holes in row 12, the middle one under the body's center */}
+        <g aria-hidden="true" pointerEvents="none" transform="translate(0 26)">
+          {[59, 68, 77].map((x) => (
+            <rect
+              key={`leg-${x}`}
+              x={x - 0.6}
+              y="132"
+              width="1.2"
+              height="12"
+              fill="#9aa3ad"
+            />
+          ))}
+          <circle cx="68" cy="121.5" r="14.5" fill="#5d6470" />
+          <circle
+            cx="68"
+            cy="121.5"
+            r="12.6"
+            fill="none"
+            stroke="#c9ced8"
+            strokeWidth="2.2"
+            strokeDasharray="0.5 0.7"
+          />
+          <circle cx="68" cy="121.5" r="10.4" fill="#b9bfca" />
+          <line
+            x1="68"
+            y1="121.5"
+            x2="68"
+            y2="113.5"
+            stroke="#3a3f4a"
+            strokeWidth="2.6"
+            strokeLinecap="round"
+            transform={`rotate(${-135 + dial * 270} 68 121.5)`}
+          />
+        </g>
+        {/* invisible knob hit area so the pot can be turned */}
+        <circle
+          cx="68"
+          cy="147.5"
+          r="14.5"
+          fill="transparent"
+          style={{ cursor: "grab" }}
+          onPointerDown={(e) => {
+            potDrag.current = true;
+            e.currentTarget.ownerSVGElement.setPointerCapture(e.pointerId);
+            turnPot(e);
+          }}
+        />
       </svg>
     </div>
   );

@@ -8,6 +8,7 @@ import {
   setBoardLed,
 } from "../lib/bluetoothLink";
 import { musicPlaying, startMusic, stopMusic } from "../lib/musicBox";
+import { dialAmbience } from "./SoftPot";
 import { tone } from "../lib/tinySynth";
 import styles from "../styles/StatusBar.module.css";
 
@@ -335,6 +336,7 @@ export default function StatusBar() {
       setPairing("looking for a board…");
       const name = await connectBoard({
         onPress: pressBreadboard,
+        onPot: dialAmbience,
         onDisconnect: () => setBoard(null),
       });
       setBoard(name);

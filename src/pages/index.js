@@ -9,6 +9,7 @@ import SoftPot from "@/components/SoftPot";
 import SoftCircuit from "@/components/SoftCircuit";
 import PowerCable from "@/components/PowerCable";
 import { playFeltTone } from "@/lib/feltTone";
+import { CIRCUIT_EVENT } from "@/components/SoftPot";
 import styles from "@/styles/Home.module.css";
 
 const CIRCUIT_KEY = "electrocute:circuit";
@@ -27,6 +28,7 @@ export default function Home() {
     setOn((current) => {
       const next = !current;
       localStorage.setItem(CIRCUIT_KEY, next ? "on" : "off");
+      window.dispatchEvent(new Event(CIRCUIT_EVENT));
       playFeltTone(next ? 640 : 320);
       return next;
     });
