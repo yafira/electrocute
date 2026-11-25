@@ -34,7 +34,7 @@ const projects = [
     hoverBg: "#e9ecef",
     hoverBorder: "#dadfe5",
     shape: "wide",
-    pos: { x: "62%", y: "12%", rot: 1, z: 10 },
+    pos: { x: "62%", y: "13%", rot: 3, z: 10 },
   },
   {
     slug: "computer-art",
