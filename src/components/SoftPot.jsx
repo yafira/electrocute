@@ -91,6 +91,25 @@ export function dialAmbience(raw) {
   window.dispatchEvent(new CustomEvent(DIAL_EVENT, { detail: v }));
 }
 
+// a welcome wave for a newly paired board: the page washes up to a
+// soft evening and back, then settles on whatever it was set to
+export function sweepAmbience() {
+  const start = savedAmbience();
+  const peak = 0.8; // stays short of goth so it's only a wave
+  const steps = 40;
+  let i = 0;
+  const id = setInterval(() => {
+    i++;
+    const t = i / steps;
+    const k = t < 0.5 ? t * 2 : (1 - t) * 2;
+    applyAmbience(start + (peak - start) * k);
+    if (i >= steps) {
+      clearInterval(id);
+      applyAmbience(start);
+    }
+  }, 60);
+}
+
 // for pages that are dressed for every ambience but don't carry the
 // dial themselves (about, contact, shop): they follow whatever it was
 // last set to, and hand the lights back when you leave

@@ -1193,14 +1193,14 @@ export function BreadboardTrinket({
             d="M28,53 L28,56 Q28,60 24,60 L5,60 Q1,60 1,56 L1,53"
             stroke="#f4f4f0"
           />
-          <path d="M19,53 L10,53" stroke="#2f2a3d" />
+          <path d="M19,53 L10,53" stroke="#2f2a3d" className={styles.inkWire} />
           <path d="M37,170 L37,177 L1,177 L1,170" stroke="#1fa9a0" />
-          <path d="M19,170 L10,170" stroke="#2f2a3d" />
+          <path d="M19,170 L10,170" stroke="#2f2a3d" className={styles.inkWire} />
           <path
             d="M28,170 L28,166 L46,166 L46,118 L68,118 L68,92"
             stroke="#34c759"
           />
-          <path d="M28,79 C 22,90 14,112 10,131" stroke="#2f2a3d" />
+          <path d="M28,79 C 22,90 14,112 10,131" stroke="#2f2a3d" className={styles.inkWire} />
           {[
             [28, 53],
             [1, 53],
@@ -1221,6 +1221,7 @@ export function BreadboardTrinket({
               cy={cy}
               r="1.6"
               fill="#1b1a24"
+              className={styles.inkPlug}
             />
           ))}
         </g>

@@ -8,7 +8,7 @@ import {
   setBoardLed,
 } from "../lib/bluetoothLink";
 import { musicPlaying, startMusic, stopMusic } from "../lib/musicBox";
-import { dialAmbience } from "./SoftPot";
+import { dialAmbience, sweepAmbience } from "./SoftPot";
 import { tone } from "../lib/tinySynth";
 import styles from "../styles/StatusBar.module.css";
 
@@ -326,6 +326,21 @@ export default function StatusBar() {
     pairTimers.current.push(setTimeout(() => setPairing(null), 4000));
   };
 
+  // blinks the board's led on and off a few times as a hello
+  const blinkBoardLed = (times) => {
+    let on = false;
+    let blinks = 0;
+    const id = setInterval(() => {
+      on = !on;
+      setBoardLed(on);
+      if (!on) blinks++;
+      if (blinks >= times) {
+        clearInterval(id);
+        setBoardLed(false);
+      }
+    }, 220);
+  };
+
   // option-click (alt-click) opens the browser's picker for a real board
   const pairBoard = async () => {
     if (linkedBoard()) {
@@ -342,6 +357,8 @@ export default function StatusBar() {
       setBoard(name);
       setPairing(null);
       chirp();
+      sweepAmbience();
+      blinkBoardLed(3);
     } catch {
       // picker closed or no board found
       setPairing("no board paired");

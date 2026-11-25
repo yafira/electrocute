@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import styles from "../styles/Home.module.css";
 
 // draws the threads that tie the nav circuit to the breadboard. each end
 // is found through a data-thread attribute, so the threads follow the parts
@@ -95,6 +96,7 @@ export default function CircuitThreads() {
           d={p.d}
           fill="none"
           stroke={p.color}
+          className={p.color === "#2f2a3d" ? styles.inkWire : undefined}
           strokeWidth="2.2"
           strokeLinecap="round"
         />

@@ -477,6 +477,21 @@
   fill: #6a6480;
 }
 
+/* the black wires, plugs and button housing would vanish on the dark
+   board, so they go light grey in dark mode */
+:global(body.ecute-dark) .inkWire {
+  stroke: #a9a4bd;
+}
+
+:global(body.ecute-dark) .inkPlug {
+  fill: #c4bfd6;
+}
+
+:global(body.ecute-dark) .pushButtonHousing {
+  fill: #5a5670;
+  stroke: #a9a4bd;
+}
+
 /* resources grid */
 
 .resourcesGrid {
