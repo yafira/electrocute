@@ -1,4 +1,4 @@
-# electrocute.io 🌸 ⚡️
+# electrocute lab 🌸 ⚡️
 
 ### a digital space at the intersection of art, design and engineering
 
@@ -8,16 +8,29 @@ electrocute is where i document my creative endeavors, experiments, craft, and c
 
 ## what lives here
 
-- **[soft interfaces](https://electrocute.io/soft-interfaces)** · a portfolio of projects rendered as pastel swatch cards pinned to a graph paper wall
-- **[computer art](https://electrocute.io/computer-art)** · a dark, directory-indexed gallery of generative p5.js sketches and plotter prints; click any piece to view it full screen
-- **[electronic text](https://electrocute.io/electronic-text)** · generative poems and poetry objects in black and white, including a computer of ___, a live poem readers can write into
-- **[poetronics](https://electrocute.io/poetronics)** · electronics with the sensibility of a poem, made to slow you down
-- **[electrodex](https://electrocute.io/electrodex)** · a community directory of creative tech spaces, makerspaces, and textile/craft communities, styled as a singly linked list (hex memory addresses, pointer wires and all)
-- **[punch card archive](https://electrocute.io/punch-card-archive)** · every communal punch card visitors have finished, with the swatch each one knit
-- **[colophon](https://electrocute.io/colophon)** · how the site is made, written like a bill of materials
+- **[soft interfaces](https://electrocutelab.com/soft-interfaces)** · a portfolio of projects rendered as pastel swatch cards pinned to a graph paper wall
+- **[computer art](https://electrocutelab.com/computer-art)** · a dark, directory-indexed gallery of generative p5.js sketches and plotter prints; click any piece to view it full screen
+- **[electronic text](https://electrocutelab.com/electronic-text)** · generative poems and poetry objects in black and white, including a computer of ___, a live poem readers can write into
+- **[poetronics](https://electrocutelab.com/poetronics)** · electronics with the sensibility of a poem, made to slow you down
+- **[electrodex](https://electrocutelab.com/electrodex)** · a community directory of creative tech spaces, makerspaces, and textile/craft communities, styled as a singly linked list (hex memory addresses, pointer wires and all)
+- **[punch card archive](https://electrocutelab.com/punch-card-archive)** · every communal punch card visitors have finished, with the swatch each one knit
+- **[colophon](https://electrocutelab.com/colophon)** · how the site is made, written like a bill of materials
 - **poemdeck** · a little generative poetry gadget powered by tracery grammars
 - **about + contact** · who i am and how to reach me
 - and much more!
+
+## toolkit
+
+tools i've built, all hosted under this domain:
+
+- **[fluoro](https://electrocutelab.com/fluoro/)** · riso-fy images and web pages
+- **[punch card studio](https://electrocutelab.com/punchcard/)** · knitting machine and hollerith punch card patterns
+- **[pixel picnic](https://electrocutelab.com/pixel-picnic/)** · browser-based dithering
+- **[alt loom](https://electrocutelab.com/altloom/)** · alt-text accessibility audit
+- **[tinkerthread](https://electrocutelab.com/tinkerthread/)** · a web tool for tinkering with threads
+- **[synthwave chimes](https://electrocutelab.com/synthwave-chimes/)** · a digital wind chime
+- **[soft queue](https://electrocutelab.com/soft-queue/)** · a tiny os for unfinished things
+- **[neural nectar](https://electrocutelab.com/neural-nectar/)** · a generative text tool
 
 ## tiny tools & interactions
 
@@ -30,7 +43,7 @@ the site is a little workbench, full of things to poke at:
 - **breadboard + power cable** · a mini breadboard with a cable plugged into the "b" of the logo. press its button and current runs up the cable, the logo flickers on like a neon sign, and you hear a hum and a little beep
 - **dial-up modem** (under the logo) · the front panel of an old external modem. its data lights blink whenever you click around the page, and clicking it dials in, screech and all
 - **tiny moth** (under the logo) · rests near the "e". when the breadboard powers the logo, it flies up to the light and flutters around it until the power goes off
-- **communal punch card** · a 24-stitch knitting machine card (in honor of the KH-930). every visitor punches one hole in carriage order, bottom row first, and the fabric below knits itself live: punched holes become contrast stitches. when the last hole lands, the card is saved to the [archive](https://electrocute.io/punch-card-archive)
+- **communal punch card** · a 24-stitch knitting machine card (in honor of the KH-930). every visitor punches one hole in carriage order, bottom row first, and the fabric below knits itself live: punched holes become contrast stitches. when the last hole lands, the card is saved to the [archive](https://electrocutelab.com/punch-card-archive)
 - **punchi** (beside the punch card) · a pastel egg pet whose mood follows the current card: sleepy on a fresh one, cheering as it fills up, all hearts when it's finished. A feeds it, B pets it, C asks how it's doing
 - **soft potentiometer** (bottom left) · slides the page through paper → blush → butter → matcha → wisteria → evening
 
