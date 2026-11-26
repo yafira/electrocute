@@ -28,7 +28,7 @@ tools i've built, all hosted under this domain:
 - **[pixel picnic](https://electrocutelab.com/pixel-picnic/)** · browser-based dithering
 - **[alt loom](https://electrocutelab.com/altloom/)** · alt-text accessibility audit
 - **[tinkerthread](https://electrocutelab.com/tinkerthread/)** · a web tool for tinkering with threads
-- **[synthwave chimes](https://electrocutelab.com/synthwave-chimes/)** · a digital wind chime
+- **[tiny instruments](https://electrocutelab.com/tiny-instruments/)** · small browser instruments: a night harp and synthwave chimes
 - **[soft queue](https://electrocutelab.com/soft-queue/)** · a tiny os for unfinished things
 - **[neural nectar](https://electrocutelab.com/neural-nectar/)** · a generative text tool
 

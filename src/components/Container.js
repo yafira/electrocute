@@ -39,7 +39,7 @@ const COLLAGE_ORDER = [
   { type: "card", slug: "electronic-text" },
   { type: "card", slug: "soft-circuit-library" },
   { type: "photo", slug: "kofi" },
-  { type: "card", slug: "synthwave-chimes" },
+  { type: "card", slug: "tiny-instruments" },
   { type: "photo", slug: "pocket-oracle-of-time" },
   { type: "card", slug: "iron-bloom" },
   { type: "photo", slug: "puffcast" },

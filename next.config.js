@@ -17,8 +17,10 @@ module.exports = {
 		return [
 			{ source: '/neural-nectar', destination: 'https://neural-nectar.vercel.app' },
 			{ source: '/neural-nectar/:path*', destination: 'https://neural-nectar.vercel.app/:path*' },
-			{ source: '/synthwave-chimes', destination: 'https://synthwave-chimes.netlify.app' },
-			{ source: '/synthwave-chimes/:path*', destination: 'https://synthwave-chimes.netlify.app/:path*' },
+			{ source: '/tiny-instruments', destination: 'https://tiny-instruments.vercel.app' },
+			{ source: '/tiny-instruments/:path*', destination: 'https://tiny-instruments.vercel.app/:path*' },
+			{ source: '/synthwave-chimes', destination: 'https://tiny-instruments.vercel.app/chimes' },
+			{ source: '/synthwave-chimes/:path*', destination: 'https://tiny-instruments.vercel.app/chimes/:path*' },
 			{ source: '/fluoro', destination: 'https://fluoro-riso.vercel.app' },
 			{ source: '/fluoro/:path*', destination: 'https://fluoro-riso.vercel.app/:path*' },
 			{ source: '/punchcard', destination: 'https://punchcard-studio.vercel.app/punchcard' },
