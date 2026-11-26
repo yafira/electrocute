@@ -128,7 +128,7 @@ const projects = [
     title: "tiny instruments",
     href: "/tiny-instruments/",
     icon: "/assets/tiny-instruments-icon.svg",
-    blurb: "small browser music instruments and toys. drag, tap, or hover to play.",
+    blurb: "a series of small browser music instruments and toys. drag, tap, or hover to play.",
     tint: "#f5e6fd",
     hoverBg: "#e9d4f4",
     hoverBorder: "#e89cf1",
