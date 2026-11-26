@@ -97,8 +97,8 @@ export default function ElectronicText() {
 
       <main className={styles.page}>
         <header className={styles.header}>
-          <a className={styles.eyebrow} href="https://electrocute.io">
-            {"←"} electrocute.io
+          <a className={styles.eyebrow} href="https://electrocutelab.com">
+            {"←"} electrocute lab
           </a>
           <h1 className={styles.title1}>electronic text</h1>
           <p className={styles.tagline}>{TAGLINE}</p>

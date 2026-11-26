@@ -82,7 +82,7 @@ const PROJECTS = [
     blurb:
       "printed circuit boards, but by hand. copper tape traces on craft foam stand in for etched copper on fiberglass, so the board becomes something you can cut, bend, and mend. an ongoing studio practice that also became a hands on workshop at itp camp, where anyone can trace their own board and light something up.",
     links: {
-      recap: "https://blog.electrocute.io/posts/soft-circuit-boards/",
+      recap: "https://blog.electrocutelab.com/posts/soft-circuit-boards/",
       deck: "/assets/scb-workshop-deck.pdf",
     },
     img: "../assets/soft-circuit-boards.png",
@@ -159,8 +159,8 @@ export default function SoftInterfaces() {
 
       <main className={styles.page}>
         <header className={styles.header}>
-          <a className={styles.eyebrow} href="https://electrocute.io">
-            {"\u2190"} electrocute.io
+          <a className={styles.eyebrow} href="https://electrocutelab.com">
+            {"\u2190"} electrocute lab
           </a>
           <h1 className={styles.title}>soft interfaces</h1>
           <p className={styles.tagline}>{TAGLINE}</p>
